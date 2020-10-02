@@ -20,4 +20,11 @@ Before we start:
 
 * Make sure Castle Editor is compiled and ready to use.
 
-## 
+## Creating a base project
+
+@michaliskambi, _note, I've never ever been able to setup the environment variables correctly, and generating a new project from a template never worked for me neither on Linux or on Windows. So I'm cheating here - I'm creating the project in Lazarus. You may want to change this chapter for a better, Castle Engine based approach._
+
+In Lazarus press 
+
+![File->New](images/lazarus-file-new.png)
+
