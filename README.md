@@ -559,4 +559,68 @@ begin
 end;
 ```
 
+Next we have to create dummy procedures that will be assigned to the buttons' click events:
+
+```Pascal
+type
+  TStateMainMenu = class(TUiState)
+  private
+    StartGameButton, OptionsButton, CreditsButton, QuitButton: TCastleButton;
+    procedure ClickStart(Sender: TObject);
+    procedure ClickOptions(Sender: TObject);
+    procedure ClickCredits(Sender: TObject);
+    procedure ClickQuit(Sender: TObject);
+  public
+    procedure Start; override;
+  end;
+```
+
+And their corresponding implementation:
+
+```
+procedure TStateMainMenu.ClickStart(Sender: TObject);
+begin
+end;
+
+procedure TStateMainMenu.ClickOptions(Sender: TObject);
+begin
+end;
+
+procedure TStateMainMenu.ClickCredits(Sender: TObject);
+begin
+end;
+
+procedure TStateMainMenu.ClickQuit(Sender: TObject);
+begin
+end;
+```
+
+Lastly let's assign our buttons `OnClick` event to these procedures in the end of `Start`:
+
+```Pascal
+StartGameButton.OnClick := @ClickStart;
+OptionsButton.OnClick := @ClickOptions;
+CreditsButton.OnClick := @ClickCredits;
+QuitButton.OnClick := @ClickQuit;
+```
+
+Now we may immediately implement the Quit button behavior by adding `CastleWindow` to `uses` section and calling `Application.MainWindow.Close` in the button click event:
+
+```Pascal
+procedure TStateMainMenu.ClickQuit(Sender: TObject);
+begin
+  Application.MainWindow.Close;
+end; 
+```
+
+Now we can compile and test if this button is working as expected. We cannot implement the other buttons behavior yet, as we need to create corresponding game states.
+
+For now let's add one more quality of life detail. On mobile platform we usually don't need "Quit" button, as the apps are closed by the operation system. So we should simply disable it in this case. We can do it by adding:
+
+```Pascal
+{$ifdef CASTLE_IOS}QuitButton.Enabled := false;{$endif}
+{$ifdef ANDROID}QuitButton.Enabled := false;{$endif}
+  ```
+
+In a similar way as we did that when we forced the Window size on Desktop platforms.
 

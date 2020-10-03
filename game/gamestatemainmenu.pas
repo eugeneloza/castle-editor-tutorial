@@ -11,6 +11,10 @@ type
   TStateMainMenu = class(TUiState)
   private
     StartGameButton, OptionsButton, CreditsButton, QuitButton: TCastleButton;
+    procedure ClickStart(Sender: TObject);
+    procedure ClickOptions(Sender: TObject);
+    procedure ClickCredits(Sender: TObject);
+    procedure ClickQuit(Sender: TObject);
   public
     procedure Start; override;
   end;
@@ -20,7 +24,8 @@ var
 
 implementation
 uses
-  CastleComponentSerialize;
+  CastleComponentSerialize,
+  CastleWindow;
 
 procedure TStateMainMenu.Start;
 var
@@ -32,6 +37,29 @@ begin
   OptionsButton := UiOwner.FindRequiredComponent('OptionsButton') as TCastleButton;
   CreditsButton := UiOwner.FindRequiredComponent('CreditsButton') as TCastleButton;
   QuitButton := UiOwner.FindRequiredComponent('QuitButton') as TCastleButton;
+  StartGameButton.OnClick := @ClickStart;
+  OptionsButton.OnClick := @ClickOptions;
+  CreditsButton.OnClick := @ClickCredits;
+  QuitButton.OnClick := @ClickQuit;
+  {$ifdef CASTLE_IOS}QuitButton.Enabled := false;{$endif}
+  {$ifdef ANDROID}QuitButton.Enabled := false;{$endif}
+end;
+
+procedure TStateMainMenu.ClickStart(Sender: TObject);
+begin
+end;
+
+procedure TStateMainMenu.ClickOptions(Sender: TObject);
+begin
+end;
+
+procedure TStateMainMenu.ClickCredits(Sender: TObject);
+begin
+end;
+
+procedure TStateMainMenu.ClickQuit(Sender: TObject);
+begin
+  Application.MainWindow.Close;
 end;
 
 end.
