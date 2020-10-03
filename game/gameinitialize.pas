@@ -14,7 +14,7 @@ implementation
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties, CastleUiState,
-  GameStateMainMenu;
+  GameFont, GameStateMainMenu;
 
 var
   Window: TCastleWindowBase;
@@ -23,6 +23,8 @@ var
 procedure ApplicationInitialize;
 begin
   Window.Container.LoadSettings('castle-data:/CastleSettings.xml');
+
+  LoadFont;
 
   StateMainMenu := TStateMainMenu.Create(Application);
   TUiState.Current := StateMainMenu;

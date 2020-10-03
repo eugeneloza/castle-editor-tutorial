@@ -108,6 +108,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateMainMenu"/>
       </Unit>
+      <Unit>
+        <Filename Value="gamefont.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="GameFont"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
