@@ -25,7 +25,8 @@ var
 implementation
 uses
   CastleComponentSerialize,
-  CastleWindow;
+  CastleWindow,
+  GameFont;
 
 procedure TStateMainMenu.Start;
 var
@@ -41,6 +42,10 @@ begin
   OptionsButton.OnClick := @ClickOptions;
   CreditsButton.OnClick := @ClickCredits;
   QuitButton.OnClick := @ClickQuit;
+  StartGameButton.CustomFont := ButtonFont;
+  OptionsButton.CustomFont := ButtonFont;
+  CreditsButton.CustomFont := ButtonFont;
+  QuitButton.CustomFont := ButtonFont;
   {$ifdef CASTLE_IOS}QuitButton.Enabled := false;{$endif}
   {$ifdef ANDROID}QuitButton.Enabled := false;{$endif}
 end;
