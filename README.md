@@ -1,8 +1,8 @@
-# castle-editor-tutorial
+# Tutorial: Creating a simple clicker game in Castle Game Engine and Castle Editor
 
 ## Abstract
 
-A Castle Editor tutorial, that shows how to create and use Castle User Interface.
+This tutorial is aimed at new users, who have some minor knowledge of Pascal and general concepts of programming and game development. It will cover all steps necessary from creation and setting up of the project, to a small but finished game.
 
 ## Set up environment
 
