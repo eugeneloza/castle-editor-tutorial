@@ -265,6 +265,20 @@ The same way if we'd wanted to move the image horizontally from the anchor, we'd
 
 Let's rename this logo image into `LogoImage` and we're done here.
 
+### Create menu buttons
+
+Next we need to create the actual menu buttons. This is a vertically-aligned set of similar items, which should make use of automatic arrangement, so that we shall have no problems adding/removing the buttons in future. This part is covered by "Vertical Group" UI element. We can add it by Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Note, that first we should select the User Interface Component to which we add it - and it should be our `BackgroundImage`.
+
+![Vertical Group](images/vertical-group.png)
+
+Note, the item appearing in our design hierarchy:
+
+![Vertical Group](images/vertical-group-hierarchy.png)
+
+Now, we already know how to change this component's name to `MenuGroup`. Let's align it to the center of our design in a similar way how we aligned the logo, but this time using `hpMiddle` and `vpMiddle` anchors:
+
+![Vertical Group](images/vertical-group-alignment.png)
+
 
 
 .......................................................
