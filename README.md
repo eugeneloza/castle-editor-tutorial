@@ -235,7 +235,7 @@ Let's name our state "MainMenu" and press "Save":
 
 ![Save state](images/save-state.png)
 
-### Create Main Menu
+### Create Logo image
 
 In simple words, Main Menu is a game logo + a set of buttons that would allow the player to start the game, change options, see credits, etc.
 
@@ -262,6 +262,8 @@ Now we have a small detail - our logo is glued to the top of the design, which i
 ![UI alignment](images/alignment2.png)
 
 The same way if we'd wanted to move the image horizontally from the anchor, we'd have had to modify `HorizontalAnchorDelta` property.
+
+Let's rename this logo image into `LogoImage` and we're done here.
 
 
 
