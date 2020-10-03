@@ -3,6 +3,7 @@
 *.lps
 castle-engine-output
 lib
+backup
 
 # executables and releases
 #*.dll
