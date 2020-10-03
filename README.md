@@ -624,3 +624,28 @@ For now let's add one more quality of life detail. On mobile platform we usually
 
 In a similar way as we did that when we forced the Window size on Desktop platforms.
 
+### Set up Default font
+
+Before we proceed, we need to improve how our fonts look. We shall be using two fonts in this game - the default one and the font for captions and buttons. Let's set up the Default font first. It can be done by adding font information to `CastleSettings.xml`:
+
+```XML
+<castle_settings>
+  <ui_scaling
+    mode="EncloseReferenceSize"
+    reference_width="750"
+    reference_height="1334"
+  />
+  <default_font>
+    <regular
+      url="fonts/CatV_6x12_9.ttf"
+      size="30"
+      anti_aliased="true"
+    />
+  </default_font>
+</castle_settings>
+```
+
+This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 30. We can immediately see that it looks better:
+
+![New default font look](images/better-font.png)
+
