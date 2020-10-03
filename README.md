@@ -413,6 +413,9 @@ And we see that the design remains consistent no matter what screen resolution o
 
 ![Menu looks better](images/menu-looking-better4.png)
 
+Now, why don't we use this feature to make our Castle Editor window layout more convenient? Let our game window indeed be something Portrait-like. Let's drag the lower separator straight to the bottom, we shan't be using anything from below in this tutorial:
+
+![Editor arrangement](images/editor-arrangement.png)
 
 
 
