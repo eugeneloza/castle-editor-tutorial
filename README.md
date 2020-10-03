@@ -265,6 +265,8 @@ The same way if we'd wanted to move the image horizontally from the anchor, we'd
 
 Let's rename this logo image into `LogoImage` and we're done here.
 
+Note, that as we never explicitly set the size of the image, it will have its native dimensions of 740x310.
+
 ### Create menu buttons
 
 Next we need to create the actual menu buttons. This is a vertically-aligned set of similar items, which should make use of automatic arrangement, so that we shall have no problems adding/removing the buttons in future. This part is covered by "Vertical Group" UI element. We can add it by Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Note, that first we should select the User Interface Component to which we add it - and it should be our `BackgroundImage`.
@@ -380,6 +382,12 @@ Note that setting `reference_width` and `reference_height` doesn't enforce the a
 Here we set the `Window.Height` based on current monitor resolution `Application.ScreenHeight` - to fit almost all the screen height, and then scale `Window.Width` accordingly to our 750x1334 reference screen size.
 
 `{$ifndef CASTLE_IOS}...{$endif}` and `{$ifndef ANDROID}...{$endif}` are compiler directives that tell the Free Pascal compiler not to set `Window.Width` and `Window.Height` for Android and iOS devices.
+
+Now we can try and compile the game to see that our window is now has a correct shape in Portrait orientation.
+
+Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our MainMenu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
+
+![Menu looks better](images/menu-looking-better.png)
 
 
 
