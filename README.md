@@ -84,7 +84,7 @@ And there press the button "Create Debug and Release modes".
 
 Now our "Build Modes" screen should look like this:
 
-![Project options menu](project-options-build-modes-2.png)
+![Project options menu](images/project-options-build-modes-2.png)
 
 It is important to work on a project in "Debug" mode - which was conveniently autoselected for us already. Debug mode adds a lot of additional checks, that can really help with debugging the game, and also will report memory leaks if any.
 
