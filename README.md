@@ -402,13 +402,13 @@ Now let's close our project and reopen it again in Castle Editor, so that our ch
 
 ![Menu looks better](images/menu-looking-better.png)
 
-However, the buttons are still covering our logo a bit, and there is too much assymetric free space below. This happened because we aligned our Vertical Group exactly at the center of the screen. There are many different ways to fix this issue, but in the current design we can cheat a bit.
+However, the buttons are still covering our logo a bit, and there is too much asymmetric free space below. This happened because we aligned our Vertical Group exactly at the center of the screen. There are many different ways to fix this issue, but in the current design we can cheat a bit.
 
 As we already have the Vertical Group, let's just add our logo to it, so that it will be arranged the same way as the buttons. To do that, just click the `LogoImage` in the Hierarchy and drag it into the `MenuGroup`:
 
 ![Menu looks better](images/menu-looking-better2.png)
 
-Now the whole Logo + Menu buttons construction is properly aligned to the screen center vertically and horizontally, but they aren't algned to each other. It's fixed by selecting `MenuGroup` and going into "All" tab:
+Now the whole Logo + Menu buttons construction is properly aligned to the screen center vertically and horizontally, but they aren't aligned to each other. It's fixed by selecting `MenuGroup` and going into "All" tab:
 
 ![Alignment](images/menu-looking-better-alignment.png)
 
