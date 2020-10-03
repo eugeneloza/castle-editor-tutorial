@@ -225,4 +225,13 @@ This will make our background image stretch horizontally and vertically to fill 
 
 ![Background image](images/background-image-result.png)
 
+### Save State
+
+As Castle Editor doesn't support backups and autosaving yet, we should get a habit of saving our work often - and it's a good habit anyway. To do this we press Design -> Save (or Save As):
+
+![Save state](images/save-state-menu.png)
+
+Let's name our state "MainMenu" and press "Save":
+
+![Save state](images/save-state.png)
 
