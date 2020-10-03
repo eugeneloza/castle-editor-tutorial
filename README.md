@@ -88,6 +88,8 @@ Now our "Build Modes" screen should look like this:
 
 It is important to work on a project in "Debug" mode - which was conveniently autoselected for us already. Debug mode adds a lot of additional checks, that can really help with debugging the game, and also will report memory leaks if any.
 
+Obviously, such additional checks slow down the program, so when we are satisfied with the result and are releasing the game to the world, we need to use "Release" mode, which will work faster.
+
 Now we can close both "Build Modes" and "Project Options" windows by pressing OK (to save the changes) and we're ready to start working!
 
 
