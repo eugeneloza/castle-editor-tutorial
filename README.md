@@ -303,6 +303,10 @@ Now the button should look like this:
 
 However, the button is too small, let's go to "Layout" tab and uncheck the `AutoSize` property:
 
+![Start button image](images/auto-size-property.png)
+
+Now the button fits in a 100x100 square:
+
 ![Start button image](images/button-start-custom-background-autosizeoff.png)
 
 Now the button has size of `Width` and `Height` specified in the same tab. Let's change those values to 406x160:
