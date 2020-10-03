@@ -279,6 +279,63 @@ Now, we already know how to change this component's name to `MenuGroup`. Let's a
 
 ![Vertical Group](images/vertical-group-alignment.png)
 
+Now it's time to add our menu buttons to the Vertical Group. Select `MenuGroup` and add a button by Design -> Add User Interface Component -> Button (TCastleButton) and name it `StartGameButton`:
+
+![Start button](images/button-start.png)
+
+Now before adding other buttons, let's fix its design. First of all let's assign a proper `Caption` to the button: `Start`.
+
+![Start button](images/button-start-caption.png)
+
+Then we want to have some nicely designed image for the button instead of standard box button image. This can be done in "All" tab by modifying "CustomBackground" properties:
+
+![Start button image](images/button-start-custom-background.png)
+
+First we should tick the "CustomBackground" checkbox and next let's click `CustomBackgroundNormal`:
+
+![Start button image](images/button-start-custom-background-normal.png)
+
+It's easy to see, that it looks very similar to how we were working with `TCastleImageControl` as both are using `TCastleImage` class underneath. For now we are interested in `URL` property - let's add an image here just like we did before for background and logo. The same way let's add URLs of images to `CustomBackgroundPressed` (this will be the image displayed when user presses the button) and `CustomBackgroundFocused` (the image displayed when the user hovers the mouse pointer over the button).
+
+Now the button should look like this:
+
+![Start button image](images/button-start-custom-background-small.png)
+
+However, the button is too small, let's go to "Layout" tab and uncheck the `AutoSize` property:
+
+![Start button image](images/button-start-custom-background-autosizeoff.png)
+
+Now the button has size of `Width` and `Height` specified in the same tab. Let's change those values to 406x160:
+
+![Start button image](images/button-start-custom-background-size.png)
+
+Also let's change the font size, so that the text won't be so tiny. It can be done in "Basic" tab:
+
+![Start button image](images/button-start-font-size.png)
+
+Zero means "default" value, we'll learn to change it later. For now let's assign it to 80:
+
+![Start button image](images/button-start-font-size-result.png)
+
+Now, to avoid going through all this process again, we can just create copies of our already designed button. Let's select it and press Design -> Duplicate Component:
+
+![Duplicate component](images/duplicate-component.png)
+
+Now we have two identical buttons in the design. Let's create two more the same way, so that we have four buttons in total:
+
+![Duplicate buttons](images/four-buttons.png)
+
+Let's name the second button `OptionsButton` and set its caption "Options", then `CreditsButton` and set its caption "Credits" and finally `QuitButton` with "Quit" caption:
+
+![Duplicate buttons](images/four-buttons-done.png)
+
+And as a final touch let's add some spacing between the buttons by selecting `MenuGroup` and changing `Spacing` property in "Basic" tab:
+
+![Duplicate buttons](images/four-buttons-done-spacing.png)
+
+Let's set it to 20 and we're done with this part:
+
+![Duplicate buttons](images/four-buttons-done-finish.png)
 
 
 .......................................................
