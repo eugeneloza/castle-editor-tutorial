@@ -40,4 +40,17 @@ Let's open freshly created `ButtonClickerGame.lpi` in Lazarus. We can immediatel
 
 - `ButtonClickerGame.lpr` - a program initialization file, that was automatically created for us by Castle Editor and we don't need to change anything in there, maybe only update the proper game version as we would be working on it. You can open it in Lazarus or any text editor. `lpr` stands for "Lazarus project" but in everything else it's equal to a normal `pas` file.
 
-- 
+- `CastleEngineManifest.xml` - a Castle Game Engine manifest file, that describes some important settings for the project that control how the project is compiled, packaged and distributed. For now we don't need to change anything inside.
+
+- `gameinitialize.pas` - pascal unit for initialization of the game.
+
+- `gamestatemain.pas` - pascal unit for Main State of the User Interface. It describes how this State should work.
+
+- `data` folder, that contains game data. For now it's almost empty and contains only:
+
+- - `CastleSettings.xml` - settings of our game project.
+
+- - `state_main.castle-user-interface` - design of the Main State. We can edit it with Castle Editor.
+
+- - `README.txt` - short reminder of what the `data` folder is and where to get additional information. We don't need this file and it can be deleted right away.
+
