@@ -430,3 +430,15 @@ Now, why don't we use this feature to make our Castle Editor window layout more 
 
 ![Editor arrangement](images/editor-arrangement.png)
 
+### Use the Main Menu in the game
+
+Now as we have a ready Main Menu design, we need to use it in the game. Unfortunately at the moment it's still not possible to do that automatically and will require us to return to Lazarus.
+
+First of all we need to create a unit for our new Game State. It's done by clicking File -> New Unit:
+
+![New unit](images/file-new-unit.png)
+
+Now we've got an empty pascal unit with the first line containing its name: `unit Unit1;`. Let's change it to `unit GameStateMainMenu;` and save the file.
+
+
+
