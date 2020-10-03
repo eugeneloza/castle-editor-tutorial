@@ -197,3 +197,25 @@ Now our window should look like this:
 
 ![Empty state](images/designer-empty-state.png)
 
+On the left we see a "Hierarchy" - this is the tree of User Interface elements that are present within our State currently. For now it's only `ImageControl`. Let's select it by left-clicking in Hierarchy. Now on the right side we have a way to edit the properties of our user interface element:
+
+![Image control](images/image-control-basic.png)
+
+Let's change the `Name` field to "BackgroundImage" and select the actual image to display by clicking the `URL` field and then the button with three dots:
+
+![Url field](images/url-field.png)
+
+It will open the `data` folder of our project prompting us to select an image. All of our game data should be stored in this folder, so let's use our file manager to drop some assets there. For now let's add `images` subfolder and drop our background image there. Then our open window will look like this:
+
+![Open image](images/open-image.png)
+
+Let's select the background image and press "Open". We immediately see the image in our State:
+
+![Open image result](images/open-image-result.png)
+
+However, it doesn't seem to be exactly what we want - to behave as a background image, i.e. to fill the entire screen. To improve this behavior we need to go to "All" tab in properties of our ImageControl and set FullSize property to true:
+
+![Full size image](images/full-size.png)
+
+This will make our background image stretch horizontally and vertically to fill the entire parent User Interface. As this is our topmost user interface - it'll fill the entire window, which is exactly what we want here.
+
