@@ -341,9 +341,47 @@ Let's set it to 20 and we're done with this part:
 
 ![Duplicate buttons](images/four-buttons-done-finish.png)
 
+### Screen aspect ratio and orientation
+
+Obviously we have a problem that the buttons overlap with the game title. This happens because our current view has proportions of Landscape orientation, but we are aiming at mobile devices in Portrait orientation, which would define our design arrangement, but still the variety of mobile devices resolutions and aspect ratio is extremely high, and we have to make our interface flexible enough to fit most if not all of them. Fortunately, Castle Game Engine does most of this dirty work for us.
+
+There are several steps to fix this problem, but first of all, let's go to the settings file `CastleSettings.xml` and look inside. It contains the following lines:
+
+```XML
+<castle_settings>
+  <ui_scaling
+    mode="EncloseReferenceSize"
+    reference_width="1600"
+    reference_height="900"
+  />
+</castle_settings>
+```
+
+Let's set it to the ones specific to iPhone 6, 6s, 7 and 8 in Portrait orientation:
+
+```XML
+reference_width="750"
+reference_height="1334"
+```
+
+This will tell the engine that it should consider that all the internal designs of the game are designed for 750x1334 screen. The actual values don't really matter, as we try to aim at diverse possible screen ratios, it's just something that the game engine will take as reference.
+
+Note that setting `reference_width` and `reference_height` doesn't enforce the actual screen size, so in case of Desktop application we should do it manually. Let's open `GameInitialize` unit and add the following lines in the very end of `initialization` section, right before the `end.`:
+
+```Pascal
+{$ifndef CASTLE_IOS}
+  {$ifndef ANDROID}
+    Window.Height := Application.ScreenHeight * 5 div 6;
+    Window.Width := Window.Height * 750 div 1334;
+  {$endif}
+{$endif}
+```
+
+Here we set the `Window.Height` based on current monitor resolution `Application.ScreenHeight` - to fit almost all the screen height, and then scale `Window.Width` accordingly to our 750x1334 reference screen size.
+
+`{$ifndef CASTLE_IOS}...{$endif}` and `{$ifndef ANDROID}...{$endif}` are compiler directives that tell the Free Pascal compiler not to set `Window.Width` and `Window.Height` for Android and iOS devices.
+
+
 
 .......................................................
 
-We would be aiming at mobile devices in Portrait orientation, which would define our design arrangement, but still the variety of mobile devices resolutions and aspect ratio is extremely high, and we have to make our interface flexible enough to fit most if not all of them.
-
-Fortunately, Castle Game Engine does most of this dirty work for us.
