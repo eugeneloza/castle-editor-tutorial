@@ -319,7 +319,7 @@ Also let's change the font size, so that the text won't be so tiny. It can be do
 
 ![Start button image](images/button-start-font-size.png)
 
-Zero means "default" value, we'll learn to change it later. For now let's assign it to 80:
+Zero means "default" value, we'll learn to change it later. For now let's assign it to 60:
 
 ![Start button image](images/button-start-font-size-result.png)
 
@@ -648,4 +648,52 @@ Before we proceed, we need to improve how our fonts look. We shall be using two 
 This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 30. We can immediately see that it looks better:
 
 ![New default font look](images/better-font.png)
+
+### Load and use a custom font
+
+However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 30 - two times smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet, so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
+
+```Pascal
+unit GameFont;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses SysUtils,
+  CastleFonts;
+
+var
+  ButtonFont: TTextureFont;
+
+procedure LoadFont;
+
+implementation
+
+procedure LoadFont;
+begin
+  ButtonFont := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 60, true);
+end;
+
+finalization
+  FreeAndNil(ButtonFont);
+end.
+```
+
+This unit creates a variable ButtonFont with an alternative font `Big_Bottom_Cartoon.ttf` of size "60". We shall load it by calling `LoadFont` procedure, and it will be automatically freed upon the game end by calling `FreeAndNil(ButtonFont)` in `finalization` section.
+
+Now let's add this unit to `GameInitialize` `uses` section and call `LoadFont;` before creating `StateMainMenu`.
+
+The last step remaining is to assign this font to our buttons. To do this, add `GameFont` to the `uses` section and in the `Start` procedure write:
+
+```Pascal
+StartGameButton.CustomFont := ButtonFont;
+OptionsButton.CustomFont := ButtonFont;
+CreditsButton.CustomFont := ButtonFont;
+QuitButton.CustomFont := ButtonFont;
+```
+
+And now our design finally looks almost as it was anticipated:
+
+![New custom font](images/better-font2.png)
 
