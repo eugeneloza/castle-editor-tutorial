@@ -103,6 +103,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameInitialize"/>
       </Unit>
+      <Unit>
+        <Filename Value="gamestatemainmenu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="GameStateMainMenu"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
