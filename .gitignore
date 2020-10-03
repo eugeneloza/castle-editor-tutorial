@@ -1,0 +1,10 @@
+*~
+*.log
+*.lps
+castle-engine-output
+lib
+
+# executables and releases
+#*.dll
+*.exe
+
