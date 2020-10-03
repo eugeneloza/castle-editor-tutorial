@@ -66,3 +66,28 @@ If the Project Inspector is not visible on the screen, we may show it by going t
 
 Note, that the required packages `castle-base` and `castle-window` are already included as dependencies of our project.
 
+Next let's tweak a couple of Project Options, which can be found in Project -> Project Options:
+
+![Project options menu](images/project-options-menu.png)
+
+First of all, let's go to Project Options -> Miscellaneous and uncheck option "Main unit has Uses section containing all units of project". This will ensure our `lpr` file won't get spammed by all units we add to the game, and avoid compilation problems if we decide to rename our units at some point.
+
+![Project options menu](images/project-options-miscellaneous.png)
+
+Now let's go to any submenu of "Compiler Options" and click "..." button near "Build Modes: Default".
+
+![Project options menu](images/project-options-compiler-options.png)
+
+And there press the button "Create Debug and Release modes".
+
+![Project options menu](images/project-options-build-modes.png)
+
+Now our "Build Modes" screen should look like this:
+
+![Project options menu](project-options-build-modes-2.png)
+
+It is important to work on a project in "Debug" mode - which was conveniently autoselected for us already. Debug mode adds a lot of additional checks, that can really help with debugging the game, and also will report memory leaks if any.
+
+Now we can close both "Build Modes" and "Project Options" windows by pressing OK (to save the changes) and we're ready to start working!
+
+
