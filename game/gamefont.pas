@@ -4,7 +4,7 @@ unit GameFont;
 
 interface
 
-uses
+uses SysUtils,
   CastleFonts;
 
 var
@@ -16,8 +16,10 @@ implementation
 
 procedure LoadFont;
 begin
-  ButtonFont := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 80, true);
+  ButtonFont := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 60, true);
 end;
 
+finalization
+  FreeAndNil(ButtonFont);
 end.
 
