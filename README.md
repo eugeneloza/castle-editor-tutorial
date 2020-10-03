@@ -235,3 +235,21 @@ Let's name our state "MainMenu" and press "Save":
 
 ![Save state](images/save-state.png)
 
+### Create Main Menu
+
+In simple words, Main Menu is a game logo + a set of buttons that would allow the player to start the game, change options, see credits, etc.
+
+So first of all we add a logo of our game. The process is very similar to the one that we've been following when creating the empty State, but this time instead of creating a new State, we use Design -> Add User Interface Component like this:
+
+![Add User Interface Component](images/add-user-interface.png)
+
+And select an "Image (TCastleImageControl)". In the same way as we did with the background now we pick `images/buttonclickerlogo.png` as the image file. And our image is ready in our user interface:
+
+![Title added](images/title-added.png)
+
+
+.......................................................
+
+We would be aiming at mobile devices in Portrait orientation, which would define our design arrangement, but still the variety of mobile devices resolutions and aspect ratio is extremely high, and we have to make our interface flexible enough to fit most if not all of them.
+
+Fortunately, Castle Game Engine does most of this dirty work for us.
