@@ -699,7 +699,7 @@ And now our design finally looks almost as it was anticipated:
 
 ### Colored button text
 
-Still the black color is not good here, so let's go back to Castle Editor and change it to one of the design colors. Let's click one of the buttons, open the tab "All":
+Still the black color is not good here, so let's go back to Castle Editor and change it to one of the design colors. Let's select one of the buttons, open the tab "All":
 
 ![Button text color](images/button-text-color.png)
 
