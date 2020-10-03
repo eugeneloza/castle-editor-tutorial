@@ -37,4 +37,10 @@ initialization
   Window := TCastleWindowBase.Create(Application);
   Window.Caption := 'Button Clicker';
   Application.MainWindow := Window;
+  {$ifndef CASTLE_IOS}
+    {$ifndef ANDROID}
+      Window.Height := Application.ScreenHeight * 5 div 6;
+      Window.Width := Window.Height * 750 div 1334;
+    {$endif}
+  {$endif}
 end.
