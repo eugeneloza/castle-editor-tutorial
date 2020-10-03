@@ -430,7 +430,7 @@ Now, why don't we use this feature to make our Castle Editor window layout more 
 
 ![Editor arrangement](images/editor-arrangement.png)
 
-### Use the Main Menu in the game
+### Load the Main Menu in the game
 
 Now as we have a ready Main Menu design, we need to use it in the game. Unfortunately at the moment it's still not possible to do that automatically and will require us to return to Lazarus.
 
@@ -440,5 +440,64 @@ First of all we need to create a unit for our new Game State. It's done by click
 
 Now we've got an empty pascal unit with the first line containing its name: `unit Unit1;`. Let's change it to `unit GameStateMainMenu;` and save the file.
 
+Let's add `CastleUiState` to `uses` section, like this:
 
+```Pascal
+uses
+  Classes, SysUtils, CastleUiState; 
+```
+
+And create a dummy TStateMainMenu class right behind the `uses` section:
+
+```Pascal
+type
+  TStateMainMenu = class(TUiState)
+  end;
+```
+
+We should also create a singleton variable for this class, by adding right after the class definition:
+
+```Pascal
+var
+  StateMainMenu: TStateMainMenu;
+```
+
+Now we need to create a `Start` procedure that will be run when this state is activated. This is a `virtual` procedure, present in ancestor class, therefore we have to `override` it and use `inherited` inside to call the inherited code from the ancestor which is in turn required for the state to operate properly. Now our class declaration will look like this:
+
+```Pascal
+type
+  TStateMainMenu = class(TUiState)
+    procedure Start; override;
+  end;
+```
+
+And we have to _implement_ this procedure in `Implementation` section below:
+
+```Pascal
+implementation
+
+procedure TStateMainMenu.Start;
+begin
+  inherited;
+  //here will be our code
+end;
+```
+
+Next we have to load the specific design into our State:
+
+```Pascal
+procedure TStateMainMenu.Start;
+var
+  UiOwner: TComponent;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/MainMenu.castle-user-interface', FreeAtStop, UiOwner);
+end;
+```
+
+Here we use `InsertUserInterface` procedure to insert our newly designed `MainMenu.castle-user-interface` design into this State. Here `castle-data:/` is a protocol that enables us to reference the `data` folder in a safe cross-platform way, so that it'll work on Desktop and iPhone equally well.
+
+`FreeAtStop` is a `TComponent` class that will free every unit assigned to it when the State will call `Stop`.
+
+`UiOwner` is a container for our design, that we can use to get references to its specific components.
 
