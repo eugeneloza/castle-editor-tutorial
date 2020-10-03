@@ -90,7 +90,7 @@ It is important to work on a project in "Debug" mode - which was conveniently au
 
 Obviously, such additional checks slow down the program, so when we are satisfied with the result and are releasing the game to the world, we need to use "Release" mode, which will work faster.
 
-Now we can close both "Build Modes" and "Project Options" windows by pressing OK (to save the changes) and we're ready to start working!
+Now we can close both "Build Modes" and "Project Options" windows by pressing OK (to save the changes) and we can go a bit deeper.
 
 ## Deleting a State
 
@@ -164,4 +164,18 @@ Note that we also silently deleted a few other unused units from `uses` section,
 ![Unused units](images/unused-units.png)
 
 It's very reasonable to check "Messages" from time to time to see if Lazarus hints us to change something, usually it's quite useful.
+
+Now it's time to physically delete the files `state_main.castle-user-interface` and `gamestatemain.pas` - with any convenient file explorer.
+
+Note, that in case we've added `gamestatemain.pas` to our Project Inspector earlier, it will now complain that the file is missing:
+
+![Missing file](images/missing-file.png)
+
+It won't trigger an error or any other trouble, but we also should remove it by right clicking it and selecting "Remove":
+
+![Missing file](images/missing-file-remove.png)
+
+Of course we can also use "Remove" button which is located above.
+
+Now let's try to compile and run our project. We have a perfectly clean, truly "Empty" window. In case we missed some of the references to the deleted unit, we may run into compilation errors which in this case should be easy to fix, but after going through all the process above - we're all good and ready to start working!
 
