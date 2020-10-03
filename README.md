@@ -60,5 +60,9 @@ Firs of all, we may want to have all the project units listed in Project Inspect
 
 ![Project inspector](images/project-inspector.png)
 
+If the Project Inspector is not visible on the screen, we may show it by going to Project -> Project Inspector menu:
+
+![Project inspector menu](images/project-inspector-menu.png)
+
 Note, that the required packages `castle-base` and `castle-window` are already included as dependencies of our project.
 
