@@ -104,7 +104,7 @@ As you can see it will be called when the application (our game) will start up:
 
 ```Pascal
 initialization
-...
+  ...
   Application.OnInitialize := @ApplicationInitialize;
 ```
 
@@ -127,4 +127,34 @@ The next line `StateMain := TStateMain.Create(Application);` creates a singleton
 ```Pascal
 var
   StateMain: TStateMain; 
+```
+
+Next we set our `StateMain` as the `Current` state by calling `TUIState.Current := StateMain;`. 
+
+We shall create our own states in the very same way, but for now we are going to delete this state. This means we need to delete files `state_main.castle-user-interface` and `gamestatemain.pas` and remove the state initialization from `gameinitialize.pas`.
+
+Now our `ApplicationInitialize` will look like:
+
+```Pascal
+procedure ApplicationInitialize;
+begin
+  Window.Container.LoadSettings('castle-data:/CastleSettings.xml');
+end;
+```
+
+and we also should adjust our `uses` section to remove the reference to `GameStateMain` unit. That would be just changing:
+
+```Pascal
+uses SysUtils,
+  CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
+  CastleUIControls, CastleApplicationProperties,
+  GameStateMain;
+```
+
+into
+
+```Pascal
+uses SysUtils,
+  CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
+  CastleUIControls, CastleApplicationProperties;
 ```

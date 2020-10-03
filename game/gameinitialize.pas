@@ -13,8 +13,8 @@ implementation
 
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog,
-  CastleFilesUtils, CastleSceneCore, CastleKeysMouse, CastleColors,
-  CastleUIControls, CastleApplicationProperties, CastleUIState,
+  CastleFilesUtils,
+  CastleUIControls, CastleApplicationProperties,
   GameStateMain;
 
 var
@@ -24,9 +24,6 @@ var
 procedure ApplicationInitialize;
 begin
   Window.Container.LoadSettings('castle-data:/CastleSettings.xml');
-
-  StateMain := TStateMain.Create(Application);
-  TUIState.Current := StateMain;
 end;
 
 initialization
