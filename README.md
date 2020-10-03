@@ -22,7 +22,7 @@ Before we start:
 
 ## Creating a base project
 
-@michaliskambi, _I've never ever been able to setup the environment variables correctly, and generating a new project from a template never worked for me neither on Linux or on Windows. Therefore I'm cheating here - I'm creating the project in Lazarus and copy files from Castle Editor templates. Obviously, I'm not able to write this chapter properly._
+@michaliskambi, _I've never ever been able to setup the environment variables correctly, and generating a new project from a template never worked for me neither on Linux or on Windows. Therefore I'm cheating here - I'm creating the project in Lazarus and copy files from Castle Editor templates. Please, double-check if it makes sense._
 
 Run Castle Editor and select "New Project":
 
@@ -53,4 +53,12 @@ Let's open freshly created `ButtonClickerGame.lpi` in Lazarus. We can immediatel
 - - `state_main.castle-user-interface` - design of the Main State. We can edit it with Castle Editor.
 
 - - `README.txt` - short reminder of what the `data` folder is and where to get additional information. We don't need this file and it can be deleted right away.
+
+Before we finish this part, let's also update some settings in Lazarus for convenience of our future work.
+
+Firs of all, we may want to have all the project units listed in Project Inspector. We can do that either by simply dragging them from the folder, or by pressing "Add" button.
+
+![Project inspector](images/project-inspector.png)
+
+Note, that the required packages `castle-base` and `castle-window` are already included as dependencies of our project.
 
