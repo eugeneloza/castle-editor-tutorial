@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="ButtonClickerGame"
-  standalone_source="ButtonClickerGame_standalone.lpr"
+  standalone_source="ButtonClickerGame.lpr"
   game_units="GameInitialize"
-  qualified_name="com.mycompany.ButtonClickerGame"
+  qualified_name="io.castleengine.ButtonClickerGame"
   caption="Button Clicker"
 >
 </project>
