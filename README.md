@@ -519,7 +519,7 @@ uses SysUtils,
 
 Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons correctly react to mouse cursor hovering over them, and clicking. Though, they do nothing yet.
 
-![Game window](Images/game-window-basic.png)
+![Game window](images/game-window-basic.png)
 
 
 
