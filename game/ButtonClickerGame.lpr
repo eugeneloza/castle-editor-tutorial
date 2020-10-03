@@ -9,8 +9,7 @@ program ButtonClickerGame;
 {$ifdef CASTLE_AUTO_GENERATED_RESOURCES} {$R castle-auto-generated-resources.res} {$endif}
 
 uses
-  CastleApplicationProperties, CastleLog, castle_base, castle_window,
-  CastleWindow, GameInitialize;
+  CastleApplicationProperties, CastleLog, CastleWindow, GameInitialize;
 
 begin
   ApplicationProperties.Version := '0.1';
