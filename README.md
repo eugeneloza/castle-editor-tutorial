@@ -430,7 +430,3 @@ Now, why don't we use this feature to make our Castle Editor window layout more 
 
 ![Editor arrangement](images/editor-arrangement.png)
 
-
-
-.......................................................
-
