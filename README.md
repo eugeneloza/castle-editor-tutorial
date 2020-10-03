@@ -221,5 +221,8 @@ However, it doesn't seem to be exactly what we want - to behave as a background 
 
 ![Full size image](images/full-size.png)
 
-This will make our background image stretch horizontally and vertically to fill the entire parent User Interface. As this is our topmost user interface - it'll fill the entire window, which is exactly what we want here.
+This will make our background image stretch horizontally and vertically to fill the entire parent User Interface. As this is our topmost user interface - it'll fill the entire window, which is exactly what we want here. Now our background behaves as we intend it to:
+
+![Background image](images/background-image-result.png)
+
 
