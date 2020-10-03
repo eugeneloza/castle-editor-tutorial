@@ -181,6 +181,8 @@ Now let's try to compile and run our project. We have a perfectly clean, truly "
 
 ## Creating a Main Menu State
 
+### Create empty State
+
 Make sure Castle Engine is running and our project is open. If not, then it's easy to open it by:
 
 ![Recent projects](images/recent-projects.png)
@@ -196,6 +198,8 @@ Let's create our new state. There are many different user interface elements we 
 Now our window should look like this:
 
 ![Empty state](images/designer-empty-state.png)
+
+### Create background image
 
 On the left we see a "Hierarchy" - this is the tree of User Interface elements that are present within our State currently. For now it's only `ImageControl`. Let's select it by left-clicking in Hierarchy. Now on the right side we have a way to edit the properties of our user interface element:
 
