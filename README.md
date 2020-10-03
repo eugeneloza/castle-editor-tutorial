@@ -707,7 +707,7 @@ Check the `CutsomTextColorUse` checkbox and paste `162D40` into `CutsomTextColor
 
 ![Button text color](images/button-text-color2.png)
 
-Save and run the game from Lazarus:
+Save the design and run the game from Lazarus:
 
 ![Final view of Main Menu](images/main-menu-final.png)
 
