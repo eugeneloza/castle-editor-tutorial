@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="ButtonClickerGame"
+  standalone_source="ButtonClickerGame_standalone.lpr"
+  game_units="GameInitialize"
+  qualified_name="com.mycompany.ButtonClickerGame"
+  caption="Button Clicker"
+>
+</project>
