@@ -34,3 +34,10 @@ In this tutorial we'll be using the most basic template - "Empty". Write a name 
 
 This will create a simple dummy project we can start filling with our game-specific code and assets.
 
+Let's open freshly created `ButtonClickerGame.lpi` in Lazarus. We can immediately compile and run it. As it is a template, it's a fully functional minimalistic project, that will show us an empty dark gray window with a lone FPS counter. No, Empty project is not actually empty, but it contains:
+
+- `ButtonClickerGame.lpi` - Lazarus project file. It is created and maintained automatically by Lazarus.
+
+- `ButtonClickerGame.lpr` - a program initialization file, that was automatically created for us by Castle Editor and we don't need to change anything in there, maybe only update the proper game version as we would be working on it. You can open it in Lazarus or any text editor. `lpr` stands for "Lazarus project" but in everything else it's equal to a normal `pas` file.
+
+- 
