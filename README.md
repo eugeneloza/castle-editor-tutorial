@@ -385,6 +385,19 @@ Here we set the `Window.Height` based on current monitor resolution `Application
 
 Now we can try and compile the game to see that our window is now has a correct shape in Portrait orientation.
 
+Let's also add one important touch here, so that when we would want to compile for mobile platforms, our game will tell the device that it wants to run only in Portrait mode. Let's open `CastleEngineManifest.xml` and add a line `screen_orientation="portrait"` somewhere in `project` tag, e.g. after `caption` field. So now it will look something like this:
+
+```XML
+<project name="ButtonClickerGame"
+  standalone_source="ButtonClickerGame.lpr"
+  game_units="GameInitialize"
+  qualified_name="io.castleengine.ButtonClickerGame"
+  caption="Button Clicker"
+  screen_orientation="portrait"
+>
+</project>
+```
+
 Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our MainMenu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
 
 ![Menu looks better](images/menu-looking-better.png)
