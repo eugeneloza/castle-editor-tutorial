@@ -7,6 +7,6 @@ lib
 backup
 
 # executables and releases
-#*.dll
+*.dll
 *.exe
 
