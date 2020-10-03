@@ -92,4 +92,39 @@ Obviously, such additional checks slow down the program, so when we are satisfie
 
 Now we can close both "Build Modes" and "Project Options" windows by pressing OK (to save the changes) and we're ready to start working!
 
+## Deleting a State
 
+**State** is one of the game's view, like Main menu, Gameplay view, High scores, maybe some different States, like Inventory, Achievements, differnt gamemodes, etc.
+
+As we noted above the "Empty" template is not actually empty - it already contains a Main State with a FPS label. We could have cleaned those up and reused, but we might want to use this opportunity to learn how to delete a state.
+
+Simply deleting `state_main.castle-user-interface` and `gamestatemain.pas` is not enough, as they are referenced from within our game. Let's look more closely at our `gameinitialize.pas`. What we are interested in is the procedure `ApplicationInitialize`.
+
+As you can see it will be called when the application (our game) will start up:
+
+```Pascal
+initialization
+...
+  Application.OnInitialize := @ApplicationInitialize;
+```
+
+That is this procedure contains everything that happens during the game startup - usually loading of game data and initialization of game States. Let's see what we have there right now (comments are removed for more compact view):
+
+```Pascal
+procedure ApplicationInitialize;
+begin
+  Window.Container.LoadSettings('castle-data:/CastleSettings.xml');
+
+  StateMain := TStateMain.Create(Application);
+  TUIState.Current := StateMain;
+end;
+```
+
+So, first of all, we load `CastleSettings.xml` file by calling `Window.Container.LoadSettings`. It will set up our Window parameters. We could do this here by manually setting `Window` properties that we need to change from default, but having a `CastleSettings` file is usually more convenient and flexible. Moreover, it allows Castle Editor to know more about how our game should look like.
+
+The next line `StateMain := TStateMain.Create(Application);` creates a singleton for `TStateMain` - the class that manages our Main State. Inside `GameStateMain` unit you can see that the class API (`interface`), `implementation` and also declaration of the singleton variable:
+
+```Pascal
+var
+  StateMain: TStateMain; 
+```
