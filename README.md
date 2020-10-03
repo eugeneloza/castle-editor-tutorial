@@ -147,7 +147,7 @@ and we also should adjust our `uses` section to remove the reference to `GameSta
 ```Pascal
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
-  CastleUIControls, CastleApplicationProperties,
+  CastleUIControls, CastleApplicationProperties, CastleUiState
   GameStateMain;
 ```
 
@@ -156,7 +156,7 @@ into
 ```Pascal
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
-  CastleUIControls, CastleApplicationProperties;
+  CastleUIControls, CastleApplicationProperties, CastleUiState;
 ```
 
 Note that we also silently deleted a few other unused units from `uses` section, when you create a project from `Empty` template you may have a little more units there, but Lazarus will notify you in "Messages" window, that some units aren't used in the project:
@@ -500,4 +500,26 @@ Here we use `InsertUserInterface` procedure to insert our newly designed `MainMe
 `FreeAtStop` is a `TComponent` class that will free every unit assigned to it when the State will call `Stop`.
 
 `UiOwner` is a container for our design, that we can use to get references to its specific components.
+
+Last but not least we should create our `StateMainMenu` class and set it as current. We can do it in the unit `gameinitialize` - in `ApplicationInitialize` procedure by adding two lines:
+
+```Pascal
+StateMainMenu := TStateMainMenu.Create(Application);
+TUiState.Current := StateMainMenu; 
+```
+
+We also have to add the unit of the state to `gameinitialize`'s `uses` section:
+
+```Pascal
+uses SysUtils,
+  CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
+  CastleUIControls, CastleApplicationProperties,
+  GameStateMainMenu; 
+```
+
+Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons correctly react to mouse cursor hovering over them, and clicking. Though, they do nothing yet.
+
+![Game window](Images/game-window-basic.png)
+
+
 
