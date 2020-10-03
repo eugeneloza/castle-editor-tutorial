@@ -179,3 +179,21 @@ Of course we can also use "Remove" button which is located above.
 
 Now let's try to compile and run our project. We have a perfectly clean, truly "Empty" window. In case we missed some of the references to the deleted unit, we may run into compilation errors which in this case should be easy to fix, but after going through all the process above - we're all good and ready to start working!
 
+## Creating a Main Menu State
+
+Make sure Castle Engine is running and our project is open. If not, then it's easy to open it by:
+
+![Recent projects](images/recent-projects.png)
+
+After the project opens we see the Castle Editor Designer window:
+
+![Empty designer window](images/designer-empty.png)
+
+Let's create our new state. There are many different user interface elements we can use as a root, but usually it's most convenient to have either Empty rectangle as root, or a specific user interface we are going to use. In this case let's create a State based on "Image (TCastleImageControl)" - so that we shall have an image for background.
+
+![Create a new state](images/designer-create-state.png)
+
+Now our window should look like this:
+
+![Empty state](images/designer-empty-state.png)
+
