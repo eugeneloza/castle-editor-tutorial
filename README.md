@@ -697,3 +697,17 @@ And now our design finally looks almost as it was anticipated:
 
 ![New custom font](images/better-font2.png)
 
+### Colored button text
+
+Still the black color is not good here, so let's go back to Castle Editor and change it to one of the design colors. Let's click one of the buttons, open the tab "All":
+
+![Button text color](images/button-text-color.png)
+
+Check the `CutsomTextColorUse` checkbox and paste `162D40` into `CutsomTextColor` field above to get:
+
+![Button text color](images/button-text-color2.png)
+
+Save and run the game from Lazarus:
+
+![Final view of Main Menu](images/main-menu-final.png)
+
