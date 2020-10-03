@@ -467,6 +467,7 @@ Now we need to create a `Start` procedure that will be run when this state is ac
 ```Pascal
 type
   TStateMainMenu = class(TUiState)
+  public
     procedure Start; override;
   end;
 ```
@@ -517,9 +518,45 @@ uses SysUtils,
   GameStateMainMenu; 
 ```
 
-Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons correctly react to mouse cursor hovering over them, and clicking. Though, they do nothing yet.
+Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons react to mouse cursor hovering over them, and clicking.
 
 ![Game window](images/game-window-basic.png)
 
+### Adding click events
+
+Now we have to make those buttons actually perform some function. To do that we first have to "find" the button in the loaded design. Let's go back to `GameStateMainMenu` unit. First of all, let's create the variables for the buttons in our class, we'll also need to add `CastleControls` unit to the `uses` section:
+
+```Pascal
+uses
+  Classes, SysUtils, CastleUiState, CastleControls;
+
+type
+  TStateMainMenu = class(TUiState)
+  private
+    StartGameButton, OptionsButton, CreditsButton, QuitButton: TCastleButton;
+  public
+    procedure Start; override;
+  end;
+```
+
+Next we'll need to add `CastleComponentSerialize` unit to our `uses` section, let's add it after `implementation`. It will allow us to "find" the buttons by their names in the loaded design by calling:
+
+```Pascal
+implementation
+uses
+  CastleComponentSerialize;
+
+procedure TStateMainMenu.Start;
+var
+  UiOwner: TComponent;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/MainMenu.castle-user-interface', FreeAtStop, UiOwner);
+  StartGameButton := UiOwner.FindRequiredComponent('StartGameButton') as TCastleButton;
+  OptionsButton := UiOwner.FindRequiredComponent('OptionsButton') as TCastleButton;
+  CreditsButton := UiOwner.FindRequiredComponent('CreditsButton') as TCastleButton;
+  QuitButton := UiOwner.FindRequiredComponent('QuitButton') as TCastleButton;
+end;
+```
 
 
