@@ -247,6 +247,23 @@ And select an "Image (TCastleImageControl)". In the same way as we did with the 
 
 ![Title added](images/title-added.png)
 
+Now we should position it in the upper center of our design. To do that we use "Layout" tab of the Castle Editor:
+
+![Layout tab](images/layout-tab.png)
+
+Let's set `HorizontalAnchorParent` (i.e. to which side of the Parent (currently that is `BackgroundImage`) we align our interface element) and HorizontalAnchorSelf (which side of this user interface element is aligned) both to `hpMiddle` (which stands for "horizontal position - Middle). And `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpTop` (which stands for "vertical position - Top"). Now we should have something like:
+
+![UI alignment](images/alignment.png)
+
+Note, that the values we've changed from the default ones are highlighted in bold and dark red color.
+
+Now we have a small detail - our logo is glued to the top of the design, which is not nice. We need to add a gap, which we can do by changing `VerticalAnchorDelta` property of our logo image. As we are moving the image _down_ we have to specify a _negative value_ here, let's say "-50". Now our image has some free space around it in the design:
+
+![UI alignment](images/alignment2.png)
+
+The same way if we'd wanted to move the image horizontally from the anchor, we'd have had to modify `HorizontalAnchorDelta` property.
+
+
 
 .......................................................
 
