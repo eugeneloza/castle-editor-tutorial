@@ -4,5 +4,6 @@
   game_units="GameInitialize"
   qualified_name="io.castleengine.ButtonClickerGame"
   caption="Button Clicker"
+  screen_orientation="portrait"
 >
 </project>
