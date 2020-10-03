@@ -6,6 +6,21 @@
   "FullSize" : true,
   "Name" : "BackgroundImage",
   "$Children" : [
+    {
+      "Content" : {
+        "URL" : "castle-data:/images/buttonclickerlogo.png",
+        "$ClassName" : "TCastleImagePersistent"
+      },
+      "HorizontalAnchorParent" : "hpMiddle",
+      "HorizontalAnchorSelf" : "hpMiddle",
+      "Name" : "ImageControl1",
+      "VerticalAnchorDelta" : -5.0000000000000000E+001,
+      "VerticalAnchorParent" : "vpTop",
+      "VerticalAnchorSelf" : "vpTop",
+      "$Children" : [
+      ],
+      "$ClassName" : "TCastleImageControl"
+    }
   ],
   "$ClassName" : "TCastleImageControl"
 }
