@@ -101,10 +101,7 @@
       <Unit>
         <Filename Value="gameinitialize.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="gamestatemain.pas"/>
-        <IsPartOfProject Value="True"/>
+        <UnitName Value="GameInitialize"/>
       </Unit>
     </Units>
   </ProjectOptions>

@@ -12,10 +12,8 @@ interface
 implementation
 
 uses SysUtils,
-  CastleWindow, CastleScene, CastleControls, CastleLog,
-  CastleFilesUtils,
-  CastleUIControls, CastleApplicationProperties,
-  GameStateMain;
+  CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
+  CastleUIControls, CastleApplicationProperties;
 
 var
   Window: TCastleWindowBase;
