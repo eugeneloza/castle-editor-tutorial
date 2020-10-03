@@ -158,3 +158,10 @@ uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties;
 ```
+
+Note that we also silently deleted a few other unused units from `uses` section, when you create a project from `Empty` template you may have a little more units there, but Lazarus will notify you in "Messages" window, that some units aren't used in the project:
+
+![Unused units](images/unused-units.png)
+
+It's very reasonable to check "Messages" from time to time to see if Lazarus hints us to change something, usually it's quite useful.
+
