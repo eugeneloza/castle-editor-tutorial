@@ -849,3 +849,55 @@ Now if we reload our project in Castle Editor, everything looks crisp:
 
 ![Gameplay design result](images/gameplay-result-crisp.png)
 
+### Start Game State
+
+Now it's time to start integrating the new State into our game. Let's create a new unit in Lazarus and call it `GameStateGame`. Let's crate a yet empty `class` `TStateGame` with a yet empty `Start` procedure and a singleton variable for our class:
+
+```Pascal
+uses
+  Classes, SysUtils,
+  CastleUiState, CastleControls;
+
+type
+  TStateGame = class(TUiState)
+  private
+  public
+    procedure Start; override;
+  end;
+
+var
+  StateGame: TStateGame;
+
+implementation
+uses
+  CastleComponentSerialize,
+  GameFont;
+
+procedure TStateGame.Start;
+var
+  UiOwner: TComponent;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/Game.castle-user-interface', FreeAtStop, UiOwner);
+end;
+```
+
+Let's also create our state in `GameInitialize` by adding `GameStateGame` to `uses` section and inside `ApplicationInitialize` after `LoadFonts` add a line:
+
+```Pascal
+StateGame := TStateGame.Create(Application);
+```
+
+Now let's also show this state if in Main Menu the Player clicks the button "Start". To do this, let's go to `GameStateMainMenu` unit and add `GameStateGame` to `uses` section and in `ClickStart` let's set `StateGame` as current:
+
+```Pascal
+procedure TStateMainMenu.ClickStart(Sender: TObject);
+begin
+  TUiState.Current := StateGame;
+end;
+```
+
+If we did everything correctly, now our state should show in the game after we press "Start" button. As simple as that.
+
+![State Game is working](images/state-game-first-steps.png)
+
