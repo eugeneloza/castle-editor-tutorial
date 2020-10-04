@@ -711,3 +711,17 @@ Save the design and run the game from Lazarus:
 
 ![Final view of Main Menu](images/main-menu-final.png)
 
+## Creating a Game State
+
+### Designing Game State
+
+Now, finally we can start working on the game. Let's not here, that it is actually better to start working on the game from the start, and only then create other UI states, like Main Menu. This way we shall have a working prototype quite soon, that can be easily tested and some adjustments can be made as early as possible. However, as in our case the game is expected to be extra simple and still creating a game is more complex than creation of a simple UI - we did the first part so now we can concentrate more on the game itself, than on using the Castle Editor.
+
+But of course, we shall be creating the game screen in Castle Editor. Let's start by creating a new Design by doing the same way as we did for Main Menu: Design -> New User Interface (Chosen Root) -> Image (TCastleImageControl). Again, let's call this image `BackgroundImage` and load our background image in "Basic" tab and make it `FullScreen` in "All" tab.
+
+Finally let's save this design as `Game.castle-user-interface`.
+
+Next, again as our design is quite simple, let's reuse the cheat we've done in Main Menu and create a one large Vertical Group for all our design: Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Let's name it `GameGroup` and set `Spacing` to 20. Let's again align it to the center by setting `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle` and `VerticalAnchorDelta` and `VerticalAnchorSelf` to `vpMiddle` in "Layout" tab.
+
+
+
