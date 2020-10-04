@@ -191,7 +191,7 @@ After the project opens we see the Castle Editor Designer window:
 
 ![Empty designer window](images/designer-empty.png)
 
-Let's create our new state. There are many different user interface elements we can use as a root, but usually it's most convenient to have either Empty rectangle as root, or a specific user interface we are going to use. In this case let's create a State based on "Image (TCastleImageControl)" - so that we shall have an image for background.
+Let's create our new state. There are many different user interface elements we can use as a root, but usually it's most convenient to have either Empty rectangle as root, or a specific user interface we are going to use. In this case let's create a State based on "Image" - so that we shall have an image for background. That is: Design -> New User Interface (Chosen Root) -> Image (TCastleImageControl).
 
 ![Create a new state](images/designer-create-state.png)
 
