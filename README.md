@@ -803,7 +803,7 @@ Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighSco
 
 ![Gameplay design result](images/gameplay-result.png)
 
-### Loading different font sizes
+### Loading multiple different font sizes
 
 Before we proceed, note that our numbers are blurry. This happened because again we've used the font significantly larger than the one we've requested in `CastleSettings.XML`. Let's go back to it and add a line `sizes_at_load="30 40 80"` to `<default_font>`, like this:
 
