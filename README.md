@@ -723,5 +723,28 @@ Finally let's save this design as `Game.castle-user-interface`.
 
 Next, again as our design is quite simple, let's reuse the cheat we've done in Main Menu and create a one large Vertical Group for all our design: Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Let's name it `GameGroup` and set `Spacing` to 20. Let's again align it to the center by setting `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle` and `VerticalAnchorDelta` and `VerticalAnchorSelf` to `vpMiddle` in "Layout" tab. Also let's set `Alignment` to `hpMiddle` at "All" tab.
 
+Now what we want to do is to have our UI organized in the following way:
+
+- Score: 99999
+
+- Gameplay area with 3x4 buttons
+
+- High Score: 99999
+
+Let's start with creating a "Score" area. If we create a "Label" right away, as it is aligned to the center (remember `Alignment` in GameGroup is `hpMiddle`) it will shift around when the score increases. So we have to create a "container" for it, so that we can strictly fix its position horizontally. So, let's add an "Empty Rectangle" by Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface). Let's name it `ScoreArea`. Note, that it's not mandatory to name our UI elements - Castle Editor already provides us valid and unique names for them, however it's a good habit to learn.
+
+By default it has dimensions 100x100. Let's make it 650x100, like this:
+
+![Empty rectangle width](images/empty-rectangle-width.png)
+
+Now we have a rigid container which size won't change. Let's add two labels to it by Design -> Add User Interface Component -> Label (TCastleLabel). Be sure to select `GameGroup` after adding the first label before adding the second one - as the first label will be automatically selected, and the second label will be added as its child. This is not a problem, but it's better to keep things clean.
+
+![Score area](images/score-area.png)
+
+Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Score:" and "9999999". Let's set color of both to `162D40` and font size "60" for both. Now our labels properties "Basic" tabs look like this:
+
+![Label's properties](images/scoretext-properties.png)
+
+![Label's properties](images/scorelabel-properties.png)
 
 
