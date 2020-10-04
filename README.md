@@ -741,10 +741,13 @@ Now we have a rigid container which size won't change. Let's add two labels to i
 
 ![Score area](images/score-area.png)
 
-Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Score:" and "9999999". Let's set color of both to `162D40` and font size "60" for both. Now our labels properties "Basic" tabs look like this:
+Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Score:" and "9999999". Let's set color of both to `162D40` and font size "60" for the first one and "80" for the second. Now our labels properties "Basic" tabs look like this:
 
 ![Label's properties](images/scoretext-properties.png)
 
 ![Label's properties](images/scorelabel-properties.png)
 
+Let's go to Layout tab and set `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpMiddle` for both labels. Let's leave `HorizontalAnchorParent` and `HorizontalAnchorSelf` at default `hpLeft` and change `HorizontalAnchorDelta` to "150" and "350" correspondingly. Now our design looks like this:
+
+![Labels anchors](images/score-label-anchors.png)
 
