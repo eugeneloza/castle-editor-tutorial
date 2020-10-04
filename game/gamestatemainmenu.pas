@@ -26,7 +26,7 @@ implementation
 uses
   CastleComponentSerialize,
   CastleWindow,
-  GameFont;
+  GameFont, GameStateGame;
 
 procedure TStateMainMenu.Start;
 var
@@ -52,6 +52,7 @@ end;
 
 procedure TStateMainMenu.ClickStart(Sender: TObject);
 begin
+  TUiState.Current := StateGame;
 end;
 
 procedure TStateMainMenu.ClickOptions(Sender: TObject);
