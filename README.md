@@ -749,7 +749,7 @@ Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Sco
 
 ![Label's properties](images/scorelabel-properties.png)
 
-Let's go to Layout tab and set `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpMiddle` for both labels. Let's leave `HorizontalAnchorParent` and `HorizontalAnchorSelf` at default `hpLeft` and change `HorizontalAnchorDelta` to "150" and "350" correspondingly. Now our design looks like this:
+Let's go to Layout tab and set `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpMiddle` for both labels. Let's leave `HorizontalAnchorParent` and `HorizontalAnchorSelf` at default `hpLeft` and change `HorizontalAnchorDelta` to "100" and "320" correspondingly. Now our design looks like this:
 
 ![Labels anchors](images/score-label-anchors.png)
 

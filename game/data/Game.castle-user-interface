@@ -31,7 +31,7 @@
                 "$ClassName" : "TCastleColorPersistent"
               },
               "FontSize" : 6.0000000000000000E+001,
-              "HorizontalAnchorDelta" : 1.5000000000000000E+002,
+              "HorizontalAnchorDelta" : 1.0000000000000000E+002,
               "Name" : "ScoreText",
               "Text" : [
                 "Score:"
@@ -50,7 +50,7 @@
                 "$ClassName" : "TCastleColorPersistent"
               },
               "FontSize" : 8.0000000000000000E+001,
-              "HorizontalAnchorDelta" : 3.5000000000000000E+002,
+              "HorizontalAnchorDelta" : 3.0000000000000000E+002,
               "Name" : "ScoreLabel",
               "Text" : [
                 "9999999"
