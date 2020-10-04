@@ -8,18 +8,18 @@ uses SysUtils,
   CastleFonts;
 
 var
-  ButtonFont: TTextureFont;
+  CartoonFont60: TTextureFont;
 
-procedure LoadFont;
+procedure LoadFonts;
 
 implementation
 
-procedure LoadFont;
+procedure LoadFonts;
 begin
-  ButtonFont := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 60, true);
+  CartoonFont60 := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 60, true);
 end;
 
 finalization
-  FreeAndNil(ButtonFont);
+  FreeAndNil(CartoonFont60);
 end.
 

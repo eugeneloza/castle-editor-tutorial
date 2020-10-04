@@ -42,10 +42,10 @@ begin
   OptionsButton.OnClick := @ClickOptions;
   CreditsButton.OnClick := @ClickCredits;
   QuitButton.OnClick := @ClickQuit;
-  StartGameButton.CustomFont := ButtonFont;
-  OptionsButton.CustomFont := ButtonFont;
-  CreditsButton.CustomFont := ButtonFont;
-  QuitButton.CustomFont := ButtonFont;
+  StartGameButton.CustomFont := CartoonFont60;
+  OptionsButton.CustomFont := CartoonFont60;
+  CreditsButton.CustomFont := CartoonFont60;
+  QuitButton.CustomFont := CartoonFont60;
   {$ifdef CASTLE_IOS}QuitButton.Enabled := false;{$endif}
   {$ifdef ANDROID}QuitButton.Enabled := false;{$endif}
 end;

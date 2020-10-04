@@ -24,7 +24,7 @@ procedure ApplicationInitialize;
 begin
   Window.Container.LoadSettings('castle-data:/CastleSettings.xml');
 
-  LoadFont;
+  LoadFonts;
 
   StateMainMenu := TStateMainMenu.Create(Application);
   TUiState.Current := StateMainMenu;
