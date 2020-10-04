@@ -50,7 +50,7 @@
                 "$ClassName" : "TCastleColorPersistent"
               },
               "FontSize" : 8.0000000000000000E+001,
-              "HorizontalAnchorDelta" : 3.0000000000000000E+002,
+              "HorizontalAnchorDelta" : 3.2000000000000000E+002,
               "Name" : "ScoreLabel",
               "Text" : [
                 "9999999"
@@ -63,6 +63,60 @@
             }
           ],
           "$ClassName" : "TCastleUserInterface"
+        },
+        {
+          "Alignment" : "hpMiddle",
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "GameplayArea",
+          "VerticalAnchorDelta" : -1.2000000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+            {
+              "HorizontalAnchorParent" : "hpMiddle",
+              "HorizontalAnchorSelf" : "hpMiddle",
+              "Name" : "GameplayRow1",
+              "VerticalAnchorParent" : "vpTop",
+              "VerticalAnchorSelf" : "vpTop",
+              "$Children" : [
+                {
+                  "Content" : {
+                    "URL" : "castle-data:/images/buttons/button.png",
+                    "$ClassName" : "TCastleImagePersistent"
+                  },
+                  "Name" : "Button11",
+                  "VerticalAnchorParent" : "vpMiddle",
+                  "VerticalAnchorSelf" : "vpMiddle",
+                  "$Children" : [
+                    {
+                      "ColorPersistent" : {
+                        "Blue" : 2.5098040699958801E-001,
+                        "Green" : 1.7647059261798859E-001,
+                        "Red" : 8.6274512112140656E-002,
+                        "$ClassName" : "TCastleColorPersistent"
+                      },
+                      "FontSize" : 8.0000000000000000E+001,
+                      "HorizontalAnchorParent" : "hpMiddle",
+                      "HorizontalAnchorSelf" : "hpMiddle",
+                      "Name" : "Label11",
+                      "Text" : [
+                        "999"
+                      ],
+                      "VerticalAnchorParent" : "vpMiddle",
+                      "VerticalAnchorSelf" : "vpMiddle",
+                      "$Children" : [
+                      ],
+                      "$ClassName" : "TCastleLabel"
+                    }
+                  ],
+                  "$ClassName" : "TCastleImageControl"
+                }
+              ],
+              "$ClassName" : "TCastleHorizontalGroup"
+            }
+          ],
+          "$ClassName" : "TCastleVerticalGroup"
         }
       ],
       "$ClassName" : "TCastleVerticalGroup"
