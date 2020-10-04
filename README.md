@@ -664,33 +664,33 @@ uses SysUtils,
   CastleFonts;
 
 var
-  ButtonFont: TTextureFont;
+  CartoonFont60: TTextureFont;
 
-procedure LoadFont;
+procedure LoadFonts;
 
 implementation
 
-procedure LoadFont;
+procedure LoadFonts;
 begin
-  ButtonFont := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 60, true);
+  CartoonFont60 := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 60, true);
 end;
 
 finalization
-  FreeAndNil(ButtonFont);
+  FreeAndNil(CartoonFont60);
 end.
 ```
 
-This unit creates a variable ButtonFont with an alternative font `Big_Bottom_Cartoon.ttf` of size "60". We shall load it by calling `LoadFont` procedure, and it will be automatically freed upon the game end by calling `FreeAndNil(ButtonFont)` in `finalization` section.
+This unit creates a variable CartoonFont60 with an alternative font `Big_Bottom_Cartoon.ttf` of size "60". We shall load it by calling `LoadFonts` procedure, and it will be automatically freed upon the game end by calling `FreeAndNil(CartoonFont60)` in `finalization` section.
 
-Now let's add this unit to `GameInitialize` `uses` section and call `LoadFont;` before creating `StateMainMenu`.
+Now let's add this unit to `GameInitialize` `uses` section and call `LoadFonts;` before creating `StateMainMenu`.
 
 The last step remaining is to assign this font to our buttons. To do this, add `GameFont` to the `uses` section of `GameStateMainMenu` and in the `Start` procedure write:
 
 ```Pascal
-StartGameButton.CustomFont := ButtonFont;
-OptionsButton.CustomFont := ButtonFont;
-CreditsButton.CustomFont := ButtonFont;
-QuitButton.CustomFont := ButtonFont;
+StartGameButton.CustomFont := CartoonFont60;
+OptionsButton.CustomFont := CartoonFont60;
+CreditsButton.CustomFont := CartoonFont60;
+QuitButton.CustomFont := CartoonFont60;
 ```
 
 And now our design finally looks almost as it was anticipated:
