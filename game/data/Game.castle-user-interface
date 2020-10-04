@@ -31,10 +31,13 @@
                 "$ClassName" : "TCastleColorPersistent"
               },
               "FontSize" : 6.0000000000000000E+001,
+              "HorizontalAnchorDelta" : 1.5000000000000000E+002,
               "Name" : "ScoreText",
               "Text" : [
                 "Score:"
               ],
+              "VerticalAnchorParent" : "vpMiddle",
+              "VerticalAnchorSelf" : "vpMiddle",
               "$Children" : [
               ],
               "$ClassName" : "TCastleLabel"
@@ -46,11 +49,14 @@
                 "Red" : 8.6274512112140656E-002,
                 "$ClassName" : "TCastleColorPersistent"
               },
-              "FontSize" : 6.0000000000000000E+001,
+              "FontSize" : 8.0000000000000000E+001,
+              "HorizontalAnchorDelta" : 3.5000000000000000E+002,
               "Name" : "ScoreLabel",
               "Text" : [
                 "9999999"
               ],
+              "VerticalAnchorParent" : "vpMiddle",
+              "VerticalAnchorSelf" : "vpMiddle",
               "$Children" : [
               ],
               "$ClassName" : "TCastleLabel"
