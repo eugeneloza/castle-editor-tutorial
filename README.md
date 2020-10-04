@@ -713,7 +713,7 @@ Save the design and run the game from Lazarus:
 
 ## Creating a Game State
 
-### Designing Game State
+### Start designing Game State
 
 Now, finally we can start working on the game. Let's not here, that it is actually better to start working on the game from the start, and only then create other UI states, like Main Menu. This way we shall have a working prototype quite soon, that can be easily tested and some adjustments can be made as early as possible. However, as in our case the game is expected to be extra simple and still creating a game is more complex than creation of a simple UI - we did the first part so now we can concentrate more on the game itself, than on using the Castle Editor.
 
@@ -730,6 +730,8 @@ Now what we want to do is to have our UI organized in the following way:
 - Gameplay area with 3x4 buttons
 
 - High Score: 99999
+
+### Design score area
 
 Let's start with creating a "Score" area. If we create a "Label" right away, as it is aligned to the center (remember `Alignment` in GameGroup is `hpMiddle`) it will shift around when the score increases. So we have to create a "container" for it, so that we can strictly fix its position horizontally. So, let's add an "Empty Rectangle" by Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface). Let's name it `ScoreArea`. Note, that it's not mandatory to name our UI elements - Castle Editor already provides us valid and unique names for them, however it's a good habit to learn.
 
@@ -750,4 +752,6 @@ Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Sco
 Let's go to Layout tab and set `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpMiddle` for both labels. Let's leave `HorizontalAnchorParent` and `HorizontalAnchorSelf` at default `hpLeft` and change `HorizontalAnchorDelta` to "150" and "350" correspondingly. Now our design looks like this:
 
 ![Labels anchors](images/score-label-anchors.png)
+
+### Design gameplay area
 
