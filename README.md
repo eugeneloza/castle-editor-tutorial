@@ -793,3 +793,13 @@ Note that Castle Editor named our rows correctly, but other elements - `ButtonGr
 
 ![Hierarchy after duplications](images/gameplay-hierarchy.png)
 
+### Adding High Score label
+
+Finally, let's duplicate our `ScoreArea` and name the copy `HighScoreArea`. Let's drag it to the very bottom of our `GameGroup` hierarchy. Hint, we can simply drag it onto `GameGroup` element in the Hierarchy until a gray triangle shows up on the right - this will avoid us having to drag it all along and trying to snap to the end of the group:
+
+![Hierarchy after duplications](images/dragging-high-score.png)
+
+Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighScoreText` and `HighScoreLabel`, set the corresponding font sizes to "30" and "40" and `HorizontalAnchorDelta`s to "160" and "360" to accomodate the new font sizes. Let's change `HighScoreText` caption to "High Score:".
+
+![Gameplay design result](images/gameplay-result.png)
+
