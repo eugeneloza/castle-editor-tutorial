@@ -783,3 +783,13 @@ Now let's drag `Button11` into `ButtonGroup11`. Let's go to "Layout" tab, and se
 
 ![button-group](images/button-group.png)
 
+Now let's duplicate our `ButtonGroup11` two times. Note that Castle Editor sometimes "remembers" names of already deleted components and may try to call the new ones with insequential numbers. To fix that we have to save and re-open the design:
+
+![duplicate button-group](images/duplicating-buttongroups.png)
+
+Now, let's duplicate the `GameplayRow1` three times to get four rows in total
+
+Note that Castle Editor named our rows correctly, but other elements - `ButtonGroup`s, `Button`s and `Label`s are simply keep naming consequently. Let's change their names so that the first digit would correspond to row number and the second one - column number. We'll have to start from the bottom, as e.g. name "21" is already taken by some of the elements lower in the hierarchy. Now our hierarchy looks like this:
+
+![Hierarchy after duplications](images/gameplay-hierarchy.png)
+
