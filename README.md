@@ -820,7 +820,7 @@ Before we proceed, note that our numbers are blurry. This happened because again
 
 This will instruct Castle Game Engine to load font sizes "30", "40" and "80" for our default font.
 
-Let's also go to our `GameFont` unit and ask it to load different font sizes for our fancy font. We already have `CartoonFont60` there, so let's create CartoonFont30 the same way:
+Let's also go to our `GameFont` unit and ask it to load different font sizes for our fancy font. We already have `CartoonFont60` there, so let's create `CartoonFont30` the same way:
 
 ```Pascal
 var
