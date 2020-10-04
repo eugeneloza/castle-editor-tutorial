@@ -803,3 +803,47 @@ Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighSco
 
 ![Gameplay design result](images/gameplay-result.png)
 
+### Loading different font sizes
+
+Before we proceed, note that our numbers are blurry. This happened because again we've used the font significantly larger than the one we've requested in `CastleSettings.XML`. Let's go back to it and add a line `sizes_at_load="30 40 80"` to `<default_font>`, like this:
+
+```XML
+<default_font>
+  <regular
+    url="fonts/CatV_6x12_9.ttf"
+    size="30"
+    anti_aliased="true"
+    sizes_at_load="30 40 80"
+  />
+</default_font>
+```
+
+This will instruct Castle Game Engine to load font sizes "30", "40" and "80" for our default font.
+
+Let's also go to our `GameFont` unit and ask it to load different font sizes for our fancy font. We already have `CartoonFont60` there, so let's create CartoonFont30 the same way:
+
+```Pascal
+var
+  CartoonFont60: TTextureFont;
+  CartoonFont30: TTextureFont;
+
+procedure LoadFonts;
+
+implementation
+
+procedure LoadFonts;
+begin
+  CartoonFont60 := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 60, true);
+  CartoonFont30 := TTextureFont.Create('castle-data:/fonts/Big_Bottom_Cartoon.ttf', 30, true);
+end;
+
+finalization
+  FreeAndNil(CartoonFont60);
+  FreeAndNil(CartoonFont30);
+end.
+```
+
+Now if we reload our project in Castle Editor, everything looks crisp:
+
+![Gameplay design result](images/gameplay-result-crisp.png)
+
