@@ -1,0 +1,22 @@
+{
+  "Content" : {
+    "URL" : "castle-data:/images/abstract-wallpaper-1544138641N95_CC0_by_Charles_Rondeau.jpg",
+    "$ClassName" : "TCastleImagePersistent"
+  },
+  "FullSize" : true,
+  "Name" : "BackgroundImage",
+  "$Children" : [
+    {
+      "HorizontalAnchorParent" : "hpMiddle",
+      "HorizontalAnchorSelf" : "hpMiddle",
+      "Name" : "GameGroup",
+      "Spacing" : 2.0000000000000000E+001,
+      "VerticalAnchorParent" : "vpMiddle",
+      "VerticalAnchorSelf" : "vpMiddle",
+      "$Children" : [
+      ],
+      "$ClassName" : "TCastleVerticalGroup"
+    }
+  ],
+  "$ClassName" : "TCastleImageControl"
+}
