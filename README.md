@@ -684,7 +684,7 @@ This unit creates a variable ButtonFont with an alternative font `Big_Bottom_Car
 
 Now let's add this unit to `GameInitialize` `uses` section and call `LoadFont;` before creating `StateMainMenu`.
 
-The last step remaining is to assign this font to our buttons. To do this, add `GameFont` to the `uses` section and in the `Start` procedure write:
+The last step remaining is to assign this font to our buttons. To do this, add `GameFont` to the `uses` section of `GameStateMainMenu` and in the `Start` procedure write:
 
 ```Pascal
 StartGameButton.CustomFont := ButtonFont;
