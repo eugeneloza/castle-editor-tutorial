@@ -763,6 +763,23 @@ Let's add an image to it, calling it `Button11` and load "button.png" file by us
 
 ![Adding button](images/adding-button-image.png)
 
-Before adding another image, let's add a Label to this one, name it "Label11", set its `Caption` to "999", `Font` to "80" and `Color` to "162D40". Finally, let's go into "Layout" tab and set its anchors: `VerticalAnchorParent`:`vpMiddle`; `VerticalAnchorSelf`:`vpMiddle`; `HorizontalAnchorParent`:`hpMiddle`; `HorizontalAnchorSelf`:`hpMiddle`.
+Before adding another image, let's add a Label to this one, name it "Label11", set its `Caption` to "999", `Font` to "80" and `Color` to "162D40". Finally, let's go into "Layout" tab and set its anchors: `VerticalAnchorParent`:`vpMiddle`; `VerticalAnchorSelf`:`vpMiddle`; `HorizontalAnchorParent`:`hpMiddle`; `HorizontalAnchorSelf`:`hpMiddle`. Now our button looks like this:
 
+![designing-clicker-button](images/designing-clicker-button.png)
+
+Yes, you might have already noticed, that we say "button" but actually we've created an "Image". We'll know why we did that a bit later.
+
+For now let's create two copies of our button by selecting and duplicating (Design -> Duplicate Component) it. Now our design looks like this:
+
+![duplicating-buttons](images/duplicating-buttons.png)
+
+As we can see the buttons are too close to each other. We could have done this by selecting `GameplayRow` and set `Spacing` to "50". However, it's not the best idea to go this way. Let's rather increase the size of the buttons, so that the Player will not have "dead areas" where clicking/tapping the gameplay field will not trigger any events. Yes, that means we'll learn to rework a ready design.
+
+Surprisingly, it's usually easier to delete the duplicated components and duplicate them again later, than to apply some significant change to every component. Let's delete our `Button12` and `Button13` by Design -> Delete Component.
+
+Let's add an Empty Rectangle (Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface)) to our `GameplayArea` and call it `ButtonGroup11`. If you peek into our `data` folder, our image has dimensions of 176x185 and Our screen has reference width 750. To let 3 buttons cover it completely, our "clickable area" should have size 750/3 = 250x250, so, let's set `ButtonGroup11` `Width` and `Height` to "250" in "Layout" tab.
+
+Now let's drag `Button11` into `ButtonGroup11`. Let's go to "Layout" tab, and set `VerticalAnchorDelta` and `HorizontalAnchorDelta` to zero and `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle`. Now our design looks like:
+
+![button-group](images/button-group.png)
 
