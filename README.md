@@ -820,7 +820,7 @@ Before we proceed, note that our numbers are blurry. This happened because again
 
 This will instruct Castle Game Engine to load font sizes "30", "40" and "80" for our default font.
 
-Note, that every loaded font size is a texture, which occupies some decent amount of memory. So, normally, the quantity of the font sizes loaded should be limited to 2-4, also it'd be a bad idea to load a huge size font, as the texture size will be too big. There is a way to optimize this behavior by specifying only specific limited set of characters that should be loaded, but it is outside of the scope of this tutorial.
+Note, that every loaded font size is a texture, which occupies some decent amount of memory. So, normally, the quantity of the font sizes loaded should be limited to 2-4. Also it'd be a bad idea to load a huge size font, as the texture size will be too big. There is a way to optimize this behavior by specifying only specific limited set of characters that should be loaded (e.g. load only numbers in case this font size is used only for showing game score), but it is outside of the scope of this tutorial.
 
 Let's also go to our `GameFont` unit and ask it to load different font sizes for our fancy font. We already have `CartoonFont60` there, so let's create `CartoonFont30` the same way:
 
