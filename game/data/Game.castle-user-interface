@@ -81,36 +81,48 @@
               "VerticalAnchorSelf" : "vpTop",
               "$Children" : [
                 {
-                  "Content" : {
-                    "URL" : "castle-data:/images/buttons/button.png",
-                    "$ClassName" : "TCastleImagePersistent"
-                  },
-                  "Name" : "Button11",
+                  "Height" : 2.5000000000000000E+002,
+                  "Name" : "ButtonGroup11",
                   "VerticalAnchorParent" : "vpMiddle",
                   "VerticalAnchorSelf" : "vpMiddle",
+                  "Width" : 2.5000000000000000E+002,
                   "$Children" : [
                     {
-                      "ColorPersistent" : {
-                        "Blue" : 2.5098040699958801E-001,
-                        "Green" : 1.7647059261798859E-001,
-                        "Red" : 8.6274512112140656E-002,
-                        "$ClassName" : "TCastleColorPersistent"
+                      "Content" : {
+                        "URL" : "castle-data:/images/buttons/button.png",
+                        "$ClassName" : "TCastleImagePersistent"
                       },
-                      "FontSize" : 8.0000000000000000E+001,
                       "HorizontalAnchorParent" : "hpMiddle",
                       "HorizontalAnchorSelf" : "hpMiddle",
-                      "Name" : "Label11",
-                      "Text" : [
-                        "999"
-                      ],
+                      "Name" : "Button11",
                       "VerticalAnchorParent" : "vpMiddle",
                       "VerticalAnchorSelf" : "vpMiddle",
                       "$Children" : [
+                        {
+                          "ColorPersistent" : {
+                            "Blue" : 2.5098040699958801E-001,
+                            "Green" : 1.7647059261798859E-001,
+                            "Red" : 8.6274512112140656E-002,
+                            "$ClassName" : "TCastleColorPersistent"
+                          },
+                          "FontSize" : 8.0000000000000000E+001,
+                          "HorizontalAnchorParent" : "hpMiddle",
+                          "HorizontalAnchorSelf" : "hpMiddle",
+                          "Name" : "Label11",
+                          "Text" : [
+                            "999"
+                          ],
+                          "VerticalAnchorParent" : "vpMiddle",
+                          "VerticalAnchorSelf" : "vpMiddle",
+                          "$Children" : [
+                          ],
+                          "$ClassName" : "TCastleLabel"
+                        }
                       ],
-                      "$ClassName" : "TCastleLabel"
+                      "$ClassName" : "TCastleImageControl"
                     }
                   ],
-                  "$ClassName" : "TCastleImageControl"
+                  "$ClassName" : "TCastleUserInterface"
                 }
               ],
               "$ClassName" : "TCastleHorizontalGroup"
