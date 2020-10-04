@@ -15,6 +15,49 @@
       "VerticalAnchorParent" : "vpMiddle",
       "VerticalAnchorSelf" : "vpMiddle",
       "$Children" : [
+        {
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "ScoreArea",
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "Width" : 6.5000000000000000E+002,
+          "$Children" : [
+            {
+              "ColorPersistent" : {
+                "Blue" : 2.5098040699958801E-001,
+                "Green" : 1.7647059261798859E-001,
+                "Red" : 8.6274512112140656E-002,
+                "$ClassName" : "TCastleColorPersistent"
+              },
+              "FontSize" : 6.0000000000000000E+001,
+              "Name" : "ScoreText",
+              "Text" : [
+                "Score:"
+              ],
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleLabel"
+            },
+            {
+              "ColorPersistent" : {
+                "Blue" : 2.5098040699958801E-001,
+                "Green" : 1.7647059261798859E-001,
+                "Red" : 8.6274512112140656E-002,
+                "$ClassName" : "TCastleColorPersistent"
+              },
+              "FontSize" : 6.0000000000000000E+001,
+              "Name" : "ScoreLabel",
+              "Text" : [
+                "9999999"
+              ],
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleLabel"
+            }
+          ],
+          "$ClassName" : "TCastleUserInterface"
+        }
       ],
       "$ClassName" : "TCastleVerticalGroup"
     }
