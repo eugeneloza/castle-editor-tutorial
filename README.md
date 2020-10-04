@@ -901,3 +901,44 @@ If we did everything correctly, now our state should show in the game after we p
 
 ![State Game is working](images/state-game-first-steps.png)
 
+### Parse Score and High Score labels
+
+Let's start from easier task, which we already had some experience with. Let's find our 4 labels in the design that correspond to Score and High Score. This is done the same way as we made it with buttons. We have to create references for them in our `TStateGame` class and `FindRequiredComponent` in `Start` like this:
+
+```Pascal
+type
+  TStateGame = class(TUiState)
+  private
+    ScoreText, ScoreLabel, HighScoreText, HighScoreLabel: TCastleLabel;
+  public
+    procedure Start; override;
+  end;
+...
+procedure TStateGame.Start;
+var
+  UiOwner: TComponent;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/Game.castle-user-interface', FreeAtStop, UiOwner);
+  ScoreText := UiOwner.FindRequiredComponent('ScoreText') as TCastleLabel;
+  ScoreLabel := UiOwner.FindRequiredComponent('ScoreLabel') as TCastleLabel;
+  HighScoreText := UiOwner.FindRequiredComponent('HighScoreText') as TCastleLabel;
+  HighScoreLabel := UiOwner.FindRequiredComponent('HighScoreLabel') as TCastleLabel;
+end;
+```
+
+Let's also use `CartoonFont60` and `CartoonFont30` for the `ScoreText` and `HighScoreText` labels the same way as we did with the `Button`s in the Main Menu. Let's add these two lines to `Start`:
+
+```Pascal
+ScoreText.CustomFont := CartoonFont60;
+HighscoreText.CustomFont := CartoonFont30;
+```
+
+As we can see:
+
+![Wrong font positi](images/wrong-font-position.png)
+
+The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design. Let's fix this by going back to Castle Editor. For `ScoreText` let's change `HorizontalAnchorDelta` from "100" to "50" and `VerticalAnchorDelta` from "0" to "11". And for `HighScoreText` change `HorizontalAnchorDelta` from "160" to "110" and `VerticalAnchorDelta` from "0" to "5". Now it looks much better:
+
+![Wrong font position fixed](images/wrong-font-position-fixed.png)
+
