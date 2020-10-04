@@ -126,10 +126,10 @@ The next line `StateMain := TStateMain.Create(Application);` creates a singleton
 
 ```Pascal
 var
-  StateMain: TStateMain; 
+  StateMain: TStateMain;
 ```
 
-Next we set our `StateMain` as the `Current` state by calling `TUIState.Current := StateMain;`. 
+Next we set our `StateMain` as the `Current` state by calling `TUIState.Current := StateMain;`.
 
 We shall create our own states in the very same way, but for now we are going to delete this state. This means we need to delete files `state_main.castle-user-interface` and `gamestatemain.pas` and remove the state initialization from `gameinitialize.pas`.
 
@@ -444,7 +444,7 @@ Let's add `CastleUiState` to `uses` section, like this:
 
 ```Pascal
 uses
-  Classes, SysUtils, CastleUiState; 
+  Classes, SysUtils, CastleUiState;
 ```
 
 And create a dummy TStateMainMenu class right behind the `uses` section:
@@ -506,7 +506,7 @@ Last but not least we should create our `StateMainMenu` class and set it as curr
 
 ```Pascal
 StateMainMenu := TStateMainMenu.Create(Application);
-TUiState.Current := StateMainMenu; 
+TUiState.Current := StateMainMenu;
 ```
 
 We also have to add the unit of the state to `gameinitialize`'s `uses` section:
@@ -515,7 +515,7 @@ We also have to add the unit of the state to `gameinitialize`'s `uses` section:
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties,
-  GameStateMainMenu; 
+  GameStateMainMenu;
 ```
 
 Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons react to mouse cursor hovering over them, and clicking.
@@ -610,7 +610,7 @@ Now we may immediately implement the Quit button behavior by adding `CastleWindo
 procedure TStateMainMenu.ClickQuit(Sender: TObject);
 begin
   Application.MainWindow.Close;
-end; 
+end;
 ```
 
 Now we can compile and test if this button is working as expected. We cannot implement the other buttons behavior yet, as we need to create corresponding game states.
