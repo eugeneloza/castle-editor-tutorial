@@ -7,6 +7,7 @@
   "Name" : "BackgroundImage",
   "$Children" : [
     {
+      "Alignment" : "hpMiddle",
       "HorizontalAnchorParent" : "hpMiddle",
       "HorizontalAnchorSelf" : "hpMiddle",
       "Name" : "GameGroup",

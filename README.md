@@ -721,7 +721,7 @@ But of course, we shall be creating the game screen in Castle Editor. Let's star
 
 Finally let's save this design as `Game.castle-user-interface`.
 
-Next, again as our design is quite simple, let's reuse the cheat we've done in Main Menu and create a one large Vertical Group for all our design: Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Let's name it `GameGroup` and set `Spacing` to 20. Let's again align it to the center by setting `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle` and `VerticalAnchorDelta` and `VerticalAnchorSelf` to `vpMiddle` in "Layout" tab.
+Next, again as our design is quite simple, let's reuse the cheat we've done in Main Menu and create a one large Vertical Group for all our design: Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Let's name it `GameGroup` and set `Spacing` to 20. Let's again align it to the center by setting `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle` and `VerticalAnchorDelta` and `VerticalAnchorSelf` to `vpMiddle` in "Layout" tab. Also let's set `Alignment` to `hpMiddle` at "All" tab.
 
 
 
