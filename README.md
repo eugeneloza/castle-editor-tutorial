@@ -703,7 +703,7 @@ Still the black color is not good here, so let's go back to Castle Editor and ch
 
 ![Button text color](images/button-text-color.png)
 
-Check the `CutsomTextColorUse` checkbox and paste `162D40` into `CutsomTextColor` field above to get:
+Check the `CutsomTextColorUse` checkbox and paste "162D40" into `CutsomTextColor` field above to get:
 
 ![Button text color](images/button-text-color2.png)
 
@@ -743,7 +743,7 @@ Now we have a rigid container which size won't change. Let's add two labels to i
 
 ![Score area](images/score-area.png)
 
-Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Score:" and "9999999". Let's set color of both to `162D40` and font size "60" for the first one and "80" for the second. Now our labels properties "Basic" tabs look like this:
+Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Score:" and "9999999". Let's set color of both to "162D40" and font size "60" for the first one and "80" for the second. Now our labels properties "Basic" tabs look like this:
 
 ![Label's properties](images/scoretext-properties.png)
 
@@ -754,4 +754,15 @@ Let's go to Layout tab and set `VerticalAnchorParent` and `VerticalAnchorSelf` t
 ![Labels anchors](images/score-label-anchors.png)
 
 ### Design gameplay area
+
+Now, the gameplay area is a grid 3x4 consisting of "buttons". There's no "Grid" component for Castle Game Engine ready out-of-the box, but actually we don't really need it here. Let's select `GameGroup` create a Vertical Group and call it `GameplayArea`, also setting `Alignment` to `hpMiddle` again.
+
+Let's add a "Horizontal Group" to it and call it `GameplayRow1`.
+
+Let's add an image to it, calling it `Button11` and load "button.png" file by using `URL` property. Now it looks like this:
+
+![Adding button](images/adding-button-image.png)
+
+Before adding another image, let's add a Label to this one, name it "Label11", set its `Caption` to "999", `Font` to "80" and `Color` to "162D40". Finally, let's go into "Layout" tab and set its anchors: `VerticalAnchorParent`:`vpMiddle`; `VerticalAnchorSelf`:`vpMiddle`; `HorizontalAnchorParent`:`hpMiddle`; `HorizontalAnchorSelf`:`hpMiddle`.
+
 
