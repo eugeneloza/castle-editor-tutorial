@@ -16,6 +16,7 @@
       url="fonts/CatV_6x12_9.ttf"
       size="30"
       anti_aliased="true"
+      sizes_at_load="30 40 80"
     />
   </default_font>
 </castle_settings>
