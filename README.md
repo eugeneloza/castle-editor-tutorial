@@ -30,7 +30,7 @@ Run Castle Editor and select "New Project":
 
 ![New project](images/new-project.png)
 
-In this tutorial we'll be using the most basic template - "Empty". Write a name for the project and press "Create Project" button. Note that the name cannot start with a number. And it's best to avoid non-ASCII characters or spaces in project name or path.
+In this tutorial we'll be using the most basic template - "Empty". Write a name for the project and press "Create Project" button. Note that the name cannot start with a number. And it's best to avoid non-ASCII characters or spaces in project name or path. Also it's a good idea to limit the path to the project to 255 symbols, which might cause bugs on some exotic platforms.
 
 ![Create new project](images/new-project-create.png)
 
