@@ -12,9 +12,11 @@ Before we start:
 
 * Make sure that Lazarus + FPC are properly installed.
 
-* Make sure Castle Game Engine packages are installed, compiled and working properly. We shall be using `castle_base.lpk` and `castle_window.lpk` packages. Try compiling a few examples from `examples` folder to make sure they're working
+* Make sure Castle Game Engine packages are installed, compiled and working properly. We shall be using `castle_base.lpk` and `castle_window.lpk` packages.
 
-* Make sure that `alternative_castle_window_based_on_lcl.lpk` is _**NOT**_ installed in Lazarus, as it will conflict with window package we shall be using.
+* Make sure that `alternative_castle_window_based_on_lcl.lpk` is _**NOT**_ installed in Lazarus, as it will conflict with `castle_window.lpk` package we shall be using.
+
+* Make sure the required libraries are available on system $PATH. Try compiling a few examples from `examples` folder to make sure they're working.
 
 * Make sure system environment variables required for Castle Game Engine are set up properly.
 
