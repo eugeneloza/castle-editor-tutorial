@@ -219,7 +219,7 @@ Let's select the background image and press "Open". We immediately see the image
 
 ![Open image result](images/open-image-result.png)
 
-However, it doesn't seem to be exactly what we want - to behave as a background image, i.e. to fill the entire screen. To improve this behavior we need to go to "All" tab in properties of our ImageControl and set FullSize property to true:
+However, it doesn't seem to be exactly what we want - to behave as a background image, i.e. to fill the entire screen. To improve this behavior we need to go to "All" tab in properties of our ImageControl and set `FullSize` property to true:
 
 ![Full size image](images/full-size.png)
 
