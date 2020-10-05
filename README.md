@@ -291,11 +291,11 @@ Now before adding other buttons, let's fix its design. First of all let's assign
 
 ![Start button](images/button-start-caption.png)
 
-Then we want to have some nicely designed image for the button instead of standard box button image. This can be done in "All" tab by modifying "CustomBackground" properties:
+Then we want to have some nicely designed image for the button instead of standard box button image. This can be done in "All" tab by modifying "Custom Background" properties:
 
 ![Start button image](images/button-start-custom-background.png)
 
-First we should tick the "CustomBackground" checkbox and next let's click `CustomBackgroundNormal`:
+First we should tick the `CustomBackground` checkbox and next let's click `CustomBackgroundNormal`:
 
 ![Start button image](images/button-start-custom-background-normal.png)
 
