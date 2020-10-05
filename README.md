@@ -938,7 +938,8 @@ As we can see:
 
 ![Wrong font positi](images/wrong-font-position.png)
 
-The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design. Let's fix this by going back to Castle Editor. For `ScoreText` let's change `HorizontalAnchorDelta` from "100" to "50" and `VerticalAnchorDelta` from "0" to "11". And for `HighScoreText` change `HorizontalAnchorDelta` from "160" to "110" and `VerticalAnchorDelta` from "0" to "5". Now it looks much better:
+The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design (because there is no way to set and preview the second font in Castle Editor yet). Let's fix this by going back to Castle Editor. For `ScoreText` let's change `HorizontalAnchorDelta` from "100" to "50" and `VerticalAnchorDelta` from "0" to "11". And for `HighScoreText` change `HorizontalAnchorDelta` from "160" to "110" and `VerticalAnchorDelta` from "0" to "5". Now it looks much better:
 
 ![Wrong font position fixed](images/wrong-font-position-fixed.png)
+
 
