@@ -1115,10 +1115,10 @@ Next, let's define 2 constants, that will govern our game pace: time for the but
 ```Pascal
 const
   GrowTime = 2;
-  RipeTime = GrowTime + 8;
+  RipeTime = GrowTime + 10;
 ```
 
-As the gameplay will be accelerating and the buttons will ripe and overripe much faster plus each button will "grow" with a randomly different speed. So, let's add the relative variables for each of our "buttons":
+The gameplay will be accelerating and the buttons will ripe and overripe much faster plus each button will "grow" with a randomly different speed, therefore these values are only for reference - but an "average button at the start of the game" will take 2 seconds to "grow" and 10 seconds to "ripe". So, let's add the relative variables for each of our "buttons":
 
 ```Pascal
 type
