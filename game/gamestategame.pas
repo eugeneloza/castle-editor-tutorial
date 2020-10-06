@@ -32,7 +32,6 @@ type
     GamePads: array[1..3, 1..4] of TGamePad;
     ScoreText, ScoreLabel, HighScoreText, HighScoreLabel: TCastleLabel;
     procedure ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
-    //procedure UpdateButton(const SecondsPassed: Single; const ThisGamePad: ^GamePad);
   public
     procedure Start; override;
     procedure Update(const SecondsPassed: Single; var HandleInput: boolean); override;
@@ -158,6 +157,7 @@ begin
           GamePads[X, Y].Score := -1;
           GamePads[X, Y].Caption.Exists := false;
           GamePads[X, Y].Image.Image := BrokenButton;
+          GamePads[X, Y].Image.OwnsImage := false;
           GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
         end;
       end;
