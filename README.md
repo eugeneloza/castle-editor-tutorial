@@ -1073,3 +1073,28 @@ Yes, surely now we should compile our game and try it out!
 
 ![Testing OnPress event](images/gameplay-onpress-testing.png)
 
+### Update event
+
+Now, next thing that we should do - is to have something happen on the screen as the time passes. That is something should happen every frame, which is handled by `Update` event, which we can `override`:
+
+```Pascal
+type
+  TStateGame = class(TUiState)
+  ...
+  public
+    procedure Start; override;
+    procedure Update(const SecondsPassed: Single; var HandleInput: boolean); override;
+  end;
+```
+
+And add its implementation, empty for now:
+
+```Pascal
+procedure TStateGame.Update(const SecondsPassed: Single; var HandleInput: boolean);
+begin
+  inherited;
+end; 
+```
+
+Again, as we `override` some virtual method, we have to call `inherited` to make sure that the parent `class`es run their `Update` code properly.
+
