@@ -858,7 +858,7 @@ Now it's time to start integrating the new State into our game. Let's create a n
 ```Pascal
 uses
   Classes, SysUtils,
-  CastleUiState, CastleControls;
+  CastleUiState, CastleUiControls, CastleControls;
 
 type
   TStateGame = class(TUiState)
@@ -943,6 +943,16 @@ As we can see:
 The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design (because there is no way to set and preview the second font in Castle Editor yet). Let's fix this by going back to Castle Editor. For `ScoreText` let's change `HorizontalAnchorDelta` from "100" to "50" and `VerticalAnchorDelta` from "0" to "11". And for `HighScoreText` change `HorizontalAnchorDelta` from "160" to "110" and `VerticalAnchorDelta` from "0" to "5". Now it looks much better:
 
 ![Wrong font position fixed](images/wrong-font-position-fixed.png)
+
+### Quick-reacting button
+
+Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch. On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the user `Press`es and `Release`s the button. This way we'll have to create "our own button" that reacts to `Press` event.
+
+It's not hard. All we have to do is to create a "custom" `class` as a child of some other User Interface Element, and `override` its `Press` method adding our code inside. That's one of rare situations when "easier done, than said".
+
+Let's create a child of `TCastleUserInterface` (note that when creating unit `GameStateGame` we've added an additional unit to `uses` section `CastleUiControls` which is required to work with `TCastleUserInterface`):
+
+
 
 ### Parse game field
 
