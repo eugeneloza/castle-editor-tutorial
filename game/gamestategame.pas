@@ -66,6 +66,7 @@ begin
       GamePads[X, Y].Group.OnPress := @ButtonPress;
       GamePads[X, Y].Image := UiOwner.FindRequiredComponent('Button' + Y.ToString + X.ToString) as TCastleImageControl;
       GamePads[X, Y].Caption := UiOwner.FindRequiredComponent('Label' + Y.ToString + X.ToString) as TCastleLabel;
+      GamePads[X, Y].Score := 0;
       GamePads[X, Y].Ripeness := 0.0;
       GamePads[X, Y].Speed := 0.5 + Random;
     end;
@@ -95,7 +96,15 @@ begin
       else
         raise Exception.Create('Unexpected Button name: ' + Sender.Name);
     end;
-    ThisGamePad^.Caption.Caption := '!!!';
+    if ThisGamePad^.Score > 0 then
+    begin
+      GameScore += ThisGamePad^.Score;
+      ThisGamePad^.Score := 0;
+      ThisGamePad^.Ripeness := 0.0;
+      ThisGamePad^.Speed := 0.5 + Random;
+    end else
+    if ThisGamePad^.Score = 0 then
+      GamePace += 0.5;
   end;
 end;
 
@@ -123,7 +132,7 @@ begin
       end else
       begin
         //GameOver
-        GamePads[X, Y].Score := 0;
+        GamePads[X, Y].Score := -1;
         GamePads[X, Y].Caption.Exists := true;
         GamePads[X, Y].Caption.Caption := 'XXX';
         GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
