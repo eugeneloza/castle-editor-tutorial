@@ -57,7 +57,29 @@ begin
 end;
 
 procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
+var
+  ThisGamePad: ^TGamePad;
 begin
+  if Event.EventType = itMouseButton then
+  begin
+    case Sender.Name of
+      'ButtonGroup11': ThisGamePad := @GamePads[1, 1];
+      'ButtonGroup12': ThisGamePad := @GamePads[2, 1];
+      'ButtonGroup13': ThisGamePad := @GamePads[3, 1];
+      'ButtonGroup21': ThisGamePad := @GamePads[1, 2];
+      'ButtonGroup22': ThisGamePad := @GamePads[2, 2];
+      'ButtonGroup23': ThisGamePad := @GamePads[3, 2];
+      'ButtonGroup31': ThisGamePad := @GamePads[1, 3];
+      'ButtonGroup32': ThisGamePad := @GamePads[2, 3];
+      'ButtonGroup33': ThisGamePad := @GamePads[3, 3];
+      'ButtonGroup41': ThisGamePad := @GamePads[1, 4];
+      'ButtonGroup42': ThisGamePad := @GamePads[2, 4];
+      'ButtonGroup43': ThisGamePad := @GamePads[3, 4];
+      else
+        raise Exception.Create('Unexpected Button name: ' + Sender.Name);
+    end;
+    ThisGamePad^.Caption.Caption := '!!!';
+  end;
 end;
 
 end.
