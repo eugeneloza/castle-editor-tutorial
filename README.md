@@ -1359,8 +1359,11 @@ GameRunning := false;
 GamePads[X, Y].Score := -1;
 GamePads[X, Y].Caption.Exists := false;
 GamePads[X, Y].Image.Image := BrokenButton;
+GamePads[X, Y].Image.OwnsImage := false;
 GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
 ```
+
+Note, that we also set `OwnsImage := false;` so that Castle Game Engine won't free this image, when this `TCastleImageControl` will be `destroy`ed - as the whole idea is that we want to keep this image in memory until the game quits, and images are created and destroyed every time the Player starts or finishes the game.
 
 This replaces the image of `TCastleImageControl` with our new image of a broken button:
 
