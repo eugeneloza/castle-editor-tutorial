@@ -45,7 +45,7 @@ var
 implementation
 uses
   CastleComponentSerialize,
-  CastleVectors,
+  CastleVectors, CastleConfig,
   GameFont;
 
 constructor TStateGame.Create(AOwner: TComponent);
@@ -88,6 +88,7 @@ begin
   GamePace := 1.0;
   GameScore := 0;
   GameRunning := true;
+  HighScoreLabel.Caption := UserConfig.GetValue('high_score', 0).ToString;
 end;
 
 procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
@@ -154,6 +155,11 @@ begin
         begin
           //GameOver
           GameRunning := false;
+          if UserConfig.GetValue('high_score', 0) < GameScore then
+          begin
+            UserConfig.SetValue('high_score', GameScore);
+            UserConfig.Save;
+          end;
           GamePads[X, Y].Score := -1;
           GamePads[X, Y].Caption.Exists := false;
           GamePads[X, Y].Image.Image := BrokenButton;

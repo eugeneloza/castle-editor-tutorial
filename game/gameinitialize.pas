@@ -13,7 +13,7 @@ implementation
 
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
-  CastleUIControls, CastleApplicationProperties, CastleUiState,
+  CastleUIControls, CastleApplicationProperties, CastleUiState, CastleConfig,
   GameFont, GameStateMainMenu, GameStateGame;
 
 var
@@ -25,6 +25,7 @@ begin
   Window.Container.LoadSettings('castle-data:/CastleSettings.xml');
 
   LoadFonts;
+  UserConfig.Load;
 
   StateGame := TStateGame.Create(Application);
   StateMainMenu := TStateMainMenu.Create(Application);
