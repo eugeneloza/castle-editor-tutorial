@@ -944,46 +944,17 @@ The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design
 
 ![Wrong font position fixed](images/wrong-font-position-fixed.png)
 
-### Quick-reacting button
-
-Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch. On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the user `Press`es and `Release`s the button. This way we'll have to create "our own button" that reacts to `Press` event.
-
-It's not hard. All we have to do is to create a "custom" `class` as a child of some other User Interface Element, and `override` its `Press` method adding our code inside. That's one of rare situations when "easier done, than said".
-
-Let's create a child of `TCastleUserInterface`:
-
-```Pascal
-type
-  TQuickButton = class(TCastleUserInterface)
-  public
-    OnPress: TNotifyEvent;
-    function Press(const Event: TInputPressRelease): Boolean;
-  end;
-```
-
-Note, that `TCastleUserInterface` is located inside `CastleUiControls` and `TInputPressRelease` is inside `CastleKeysMouse`, so we have to add those two units to `uses` section, which will now look like this:
-
-```Pascal
-uses
-  Classes, SysUtils,
-  CastleUiState, CastleControls, CastleUiControls, CastleKeysMouse; 
-```
-
-Now we need to implement `Press` function in `implementation` section - let's do it in the very end of our unit, right before `end.`:
-
-```Pascal
-function TQuickButton.Press(const Event: TInputPressRelease): Boolean;
-begin
-  Result := inherited;
-  if Event.EventType = itMouseButton then
-    OnPress;
-end;
-```
-
-
-
-
 ### Parse game field
 
 Finally we're getting closer to making an actual game. Let's parse the designed elements for gameplay field. We could do it the same way as we did for buttons of the Main Menu and labels for score and high score. However, as we have 12 "buttons" here and we shall need to operate them conveniently, let's create a construction that will contain all the information we need about the "button" in one place.
 
+
+
+
+
+
+Note, that `TCastleUserInterface` is located inside `CastleUiControls` and `TInputPressRelease` is inside `CastleKeysMouse`, so we have to add those two units to `uses` section, which will now look like this:
+
+
+
+Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch. On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the user `Press`es and `Release`s the button. This way we'll have to create "our own button" that reacts to `Press` event.
