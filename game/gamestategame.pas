@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils,
-  CastleUiState, CastleControls, CastleUiControls, CastleKeysMouse;
+  CastleUiState, CastleControls, CastleUiControls, CastleKeysMouse, CastleImages;
 
 const
   GrowTime = 2;
@@ -25,6 +25,7 @@ type
 type
   TStateGame = class(TUiState)
   private
+    BrokenButton: TCastleImage;
     GamePace: Single;
     GameScore: Integer;
     GameRunning: Boolean;
@@ -35,6 +36,8 @@ type
   public
     procedure Start; override;
     procedure Update(const SecondsPassed: Single; var HandleInput: boolean); override;
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
   end;
 
 var
@@ -45,6 +48,18 @@ uses
   CastleComponentSerialize,
   CastleVectors,
   GameFont;
+
+constructor TStateGame.Create(AOwner: TComponent);
+begin
+  inherited;
+  BrokenButton := LoadImage('castle-data:/images/buttons/button_broken.png', [TRGBAlphaImage]);
+end;
+
+destructor TStateGame.Destroy;
+begin
+  FreeAndNil(BrokenButton);
+  inherited;
+end;
 
 procedure TStateGame.Start;
 var
@@ -141,8 +156,8 @@ begin
           //GameOver
           GameRunning := false;
           GamePads[X, Y].Score := -1;
-          GamePads[X, Y].Caption.Exists := true;
-          GamePads[X, Y].Caption.Caption := 'XXX';
+          GamePads[X, Y].Caption.Exists := false;
+          GamePads[X, Y].Image.Image := BrokenButton;
           GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
         end;
       end;
