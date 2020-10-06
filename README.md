@@ -1387,7 +1387,7 @@ Now in `GameStateGame` we again have to add `CastleConfig` in `uses` section of 
 HighScoreLabel.Caption := UserConfig.GetValue('high_score', 0).ToString;
 ```
 
-I.e. here we set the `Caption` of our `HighScoreLabel` to the value of `'high_score'` stored in our `UserConfig`. And in case no value is stored, we have this value set to `0`.
+I.e. here we set the `Caption` of our `HighScoreLabel` to the value of `'high_score'` configuration entry stored in our `UserConfig`. And in case no value is stored, we have this value set to `0`.
 
 And finally, we have to set the High Score when the game is over:
 
@@ -1406,4 +1406,6 @@ end;
 ```
 
 Done! Now our High Score is automatically assigned when the Player finishes the game and is safely stored in game configuration.
+
+![High Score saved](images/gameplay-high-score.png)
 
