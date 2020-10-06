@@ -1025,4 +1025,51 @@ begin
 end;
 ```
 
+### Buttons reaction to clicks
+
+Let's go on with implementing `ButtonPress` procedure. There are more efficient way to handle this, but here we'll go with a simple and straightforward solution - we'll determine which button was clicked by its Name, like this:
+
+```Pascal
+procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
+var
+  ThisGamePad: ^TGamePad;
+begin
+  if Event.EventType = itMouseButton then
+  begin
+    case Sender.Name of
+      'ButtonGroup11': ThisGamePad := @GamePads[1, 1];
+      'ButtonGroup12': ThisGamePad := @GamePads[2, 1];
+      'ButtonGroup13': ThisGamePad := @GamePads[3, 1];
+      'ButtonGroup21': ThisGamePad := @GamePads[1, 2];
+      'ButtonGroup22': ThisGamePad := @GamePads[2, 2];
+      'ButtonGroup23': ThisGamePad := @GamePads[3, 2];
+      'ButtonGroup31': ThisGamePad := @GamePads[1, 3];
+      'ButtonGroup32': ThisGamePad := @GamePads[2, 3];
+      'ButtonGroup33': ThisGamePad := @GamePads[3, 3];
+      'ButtonGroup41': ThisGamePad := @GamePads[1, 4];
+      'ButtonGroup42': ThisGamePad := @GamePads[2, 4];
+      'ButtonGroup43': ThisGamePad := @GamePads[3, 4];
+      else
+        raise Exception.Create('Unexpected Button name: ' + Sender.Name);
+    end;
+    ThisGamePad^.Caption.Caption := '!!!';
+  end;
+end;
+```
+
+Here we've done a lot of things, let's explain what they mean line-by-line:
+
+- `ThisGamePad: ^TGamePad;` is a pointer to our `TGamePad` construction.
+
+- `if Event.EventType = itMouseButton then` checks what exactly was `Press`ed. It can be a key on the keyboard, a mouse wheel or a mouse button. We proceed only in case a mouse button was pressed. This can be either left or right mouse button - we don't really care. This can also be a touch on mobile devices. Note that on mobile devices we can receive multiple touches simultaneously for different UI elements - and we don't have to worry about this, Castle Game Engine will take care of all of them and will send an `OnPress` callback for each.
+
+- `case Sender.Name of` cycles through possible values of `Sender.Name` and in the next lines determines actions that should be taken in each specific case. For example `'ButtonGroup22': ThisGamePad := @GamePads[2, 2];` means that in case `Sender.Name` is equal to `ButtonGroup22` then `ThisGamePad` pointer should point (`@` symbol) at `GamePads[2, 2]`.
+
+- `else raise Exception.Create('Unexpected Button name: ' + Sender.Name);` is a sanity check, that we didn't forget how we've called our buttons in Castle Editor and didn't make any typos.
+
+- And finally `ThisGamePad^.Caption.Caption := '!!!';` is a temporary measure to provide us some feedback that the button was detected and clicked successfully. It replaces the `Caption` of the button from "999" originally determined in the Castle Editor into "!!!" so that we can easily see that exactly the button we've clicked reacted to our click and we've made no errors.
+
+Yes, surely now we should compile our game and try it out!
+
+![Testing OnPress event](images/gameplay-onpress-testing.png)
 
