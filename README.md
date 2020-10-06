@@ -1148,9 +1148,18 @@ type
   private
     GamePace: Single;
     GameScore: Integer;
+    GameRunning: Boolean;
   ...
   end;
 ```
+
+Here:
+
+- `GamePace` - current speed of the game. The longer the player plays, the faster the game becomes.
+
+- `GameScore` - current Player's score.
+
+- `GameRunning` - answers the question is the game currently running? The game starts running and stops after "Game Over".
 
 Now let's set the initial values for each of these new variables in our `Start` procedure:
 
@@ -1175,6 +1184,7 @@ begin
     end;
   GamePace := 1.0;
   GameScore := 0;
+  GameRunning := true;
 end;
 ```
 
@@ -1186,17 +1196,22 @@ var
   X, Y: Integer;
 begin
   inherited;
-  for X := 1 to 3 do
-    for Y := 1 to 4 do
-    begin
-      GamePads[X, Y].Ripeness += SecondsPassed * GamePace * GamePads[X, Y].Speed;
-    end;
-  GamePace += SecondsPassed / 60;
+  if GameRunning then
+  begin
+    for X := 1 to 3 do
+      for Y := 1 to 4 do
+      begin
+        GamePads[X, Y].Ripeness += SecondsPassed * GamePace * GamePads[X, Y].Speed;
+      end;
+    GamePace += SecondsPassed / 60;
+  end;
   ScoreLabel.Caption := GameScore.ToString;
 end;
 ```
 
 Here:
+
+- `if GameRunning then` checks if the game is running, and doesn't update `GamePads` or `GamePace` otherwise.
 
 - `GamePads[X, Y].Ripeness += SecondsPassed * GamePace * GamePads[X, Y].Speed;` increases `Ripeness` of this button by amount of `SecondsPassed` multiplied by `GamePace` multiplied by this specific button grow `GamePads[X, Y].Speed`.
 
@@ -1226,6 +1241,7 @@ for X := 1 to 3 do
     end else
     begin
       //GameOver
+      GameRunning := false;
       GamePads[X, Y].Score := -1;
       GamePads[X, Y].Caption.Exists := true;
       GamePads[X, Y].Caption.Caption := 'XXX';
@@ -1259,23 +1275,28 @@ var
 begin
   if Event.EventType = itMouseButton then
   begin
-    case Sender.Name of
-      ...
-    end;
-    if ThisGamePad^.Score > 0 then
+    if GameRunning then
     begin
-      GameScore += ThisGamePad^.Score;
-      ThisGamePad^.Score := 0;
-      ThisGamePad^.Ripeness := 0.0;
-      ThisGamePad^.Speed := 0.5 + Random;
-    end else
-    if ThisGamePad^.Score = 0 then
-      GamePace += 0.5;
+      case Sender.Name of
+        ...
+      end;
+      if ThisGamePad^.Score > 0 then
+      begin
+        GameScore += ThisGamePad^.Score;
+        ThisGamePad^.Score := 0;
+        ThisGamePad^.Ripeness := 0.0;
+        ThisGamePad^.Speed := 0.5 + Random;
+      end else
+      if ThisGamePad^.Score = 0 then
+        GamePace += 0.5;
+    end;
   end;
 end;
 ```
 
 Here:
+
+- `if GameRunning then` checks if the game is currently running, and doesn't allow clicking GamePads if the game is lost.
 
 - If `Score` of the clicked Pad is greater than zero, we add this `Score` to `GameScore` and reset the pad, so that it'll start growing again from zero.
 
