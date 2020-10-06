@@ -858,7 +858,7 @@ Now it's time to start integrating the new State into our game. Let's create a n
 ```Pascal
 uses
   Classes, SysUtils,
-  CastleUiState, CastleUiControls, CastleControls;
+  CastleUiState, CastleControls;
 
 type
   TStateGame = class(TUiState)
@@ -950,7 +950,36 @@ Now it's time to talk a bit about the gameplay. So, as we know, we're making a c
 
 It's not hard. All we have to do is to create a "custom" `class` as a child of some other User Interface Element, and `override` its `Press` method adding our code inside. That's one of rare situations when "easier done, than said".
 
-Let's create a child of `TCastleUserInterface` (note that when creating unit `GameStateGame` we've added an additional unit to `uses` section `CastleUiControls` which is required to work with `TCastleUserInterface`):
+Let's create a child of `TCastleUserInterface`:
+
+```Pascal
+type
+  TQuickButton = class(TCastleUserInterface)
+  public
+    OnPress: TNotifyEvent;
+    function Press(const Event: TInputPressRelease): Boolean;
+  end;
+```
+
+Note, that `TCastleUserInterface` is located inside `CastleUiControls` and `TInputPressRelease` is inside `CastleKeysMouse`, so we have to add those two units to `uses` section, which will now look like this:
+
+```Pascal
+uses
+  Classes, SysUtils,
+  CastleUiState, CastleControls, CastleUiControls, CastleKeysMouse; 
+```
+
+Now we need to implement `Press` function in `implementation` section - let's do it in the very end of our unit, right before `end.`:
+
+```Pascal
+function TQuickButton.Press(const Event: TInputPressRelease): Boolean;
+begin
+  Result := inherited;
+  if Event.EventType = itMouseButton then
+    OnPress;
+end;
+```
+
 
 
 
