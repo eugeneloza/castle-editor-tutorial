@@ -1226,7 +1226,7 @@ for X := 1 to 3 do
     end else
     begin
       //GameOver
-      GamePads[X, Y].Score := 0;
+      GamePads[X, Y].Score := -1;
       GamePads[X, Y].Caption.Exists := true;
       GamePads[X, Y].Caption.Caption := 'XXX';
       GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
@@ -1247,4 +1247,41 @@ Here:
 Let's compile our project and run it:
 
 ![Testing Update event](images/gameplay-update-testing.png)
+
+### Clicking those buttons!
+
+We're very close. Now we want to be able to harvest those ripe buttons and add their score to player's score. Let's do this by modifying `TStateGame.ButtonPress` procedure:
+
+```Pascal
+procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
+var
+  ThisGamePad: ^TGamePad;
+begin
+  if Event.EventType = itMouseButton then
+  begin
+    case Sender.Name of
+      ...
+    end;
+    if ThisGamePad^.Score > 0 then
+    begin
+      GameScore += ThisGamePad^.Score;
+      ThisGamePad^.Score := 0;
+      ThisGamePad^.Ripeness := 0.0;
+      ThisGamePad^.Speed := 0.5 + Random;
+    end else
+    if ThisGamePad^.Score = 0 then
+      GamePace += 0.5;
+  end;
+end;
+```
+
+Here:
+
+- If `Score` of the clicked Pad is greater than zero, we add this `Score` to `GameScore` and reset the pad, so that it'll start growing again from zero.
+
+- If `Score` is equal to zero (i.e. this button is not "ripe" yet, as we set it in `Update`) - we "punish" the Player by significantly accelerating the `GamePace` (equivalent of stealing 30 seconds from gameplay time).
+
+Let's compile and now we can finally start playing this game!
+
+![Testing the gameplay for the first time](images/gameplay-testing.png)
 
