@@ -1093,7 +1093,7 @@ And add its implementation, empty for now:
 procedure TStateGame.Update(const SecondsPassed: Single; var HandleInput: boolean);
 begin
   inherited;
-end; 
+end;
 ```
 
 Again, as we `override` some virtual method, we have to call `inherited` to make sure that the parent `class`es run their `Update` code properly.
@@ -1368,3 +1368,42 @@ Note, that we also set `OwnsImage := false;` so that Castle Game Engine won't fr
 This replaces the image of `TCastleImageControl` with our new image of a broken button:
 
 ![Replacing the image runtime](images/gameplay-broken-button.png)
+
+### Loading and Saving High Score
+
+Before we start implementing Game Over state, let's do one more small but important thing - learn to save and load some information about our game. We'll start from "High Score". There are multiple ways we can do this, but in our simple case (and in many complex cases) we're perfectly good with using a ready solution from `CastleConfig` unit, which takes care of storing our game data in a very safe and cross-platform way.
+
+First, let's "load" the configuration. To do this, let's add `CastleConfig` to `uses` section of `GameInitialize` and in `ApplicationInitialize` add a line somewhere around `LoadFonts`:
+
+```Pascal
+UserConfig.Load;
+```
+
+As simple as that. Now our information (whatever it is) will be properly loaded from game configuration file. Note, that in case this file doesn't exist (e.g. when the Player runs the game for the first time) there will be no information in `UserConfig`.
+
+Now in `GameStateGame` we again have to add `CastleConfig` in `uses` section of `implementation`. And in the end of `Start` procedure add the line:
+
+```Pascal
+HighScoreLabel.Caption := UserConfig.GetValue('high_score', 0).ToString;
+```
+
+I.e. here we set the `Caption` of our `HighScoreLabel` to the value of `'high_score'` stored in our `UserConfig`. And in case no value is stored, we have this value set to `0`.
+
+And finally, we have to set the High Score when the game is over:
+
+```Pascal
+begin
+  //GameOver
+  GameRunning := false;
+  if UserConfig.GetValue('high_score', 0) < GameScore then
+  begin
+    UserConfig.SetValue('high_score', GameScore);
+    UserConfig.Save;
+  end;
+  GamePads[X, Y].Score := -1;
+  ...
+end;
+```
+
+Done! Now our High Score is automatically assigned when the Player finishes the game and is safely stored in game configuration.
+
