@@ -992,12 +992,37 @@ begin
 end;
 ```
 
+### Responsive buttons
+
+Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch.
+
+On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the clicker button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the user `Press`es and `Release`s the button. This way we'll have to create "our own button" that reacts to `Press` event.
+
+We could have done that by creating a child of `TCastleUserInterface` (or any other UI element, e.g. `TCastleImagecontrol`) and override its `Press` function. But in current simple situation, Castle Game Engine already has this solution ready for us - `OnPress` event, that works very similarly to `OnClick`.
+
+Let's create a `private` callback for this event inside `TStateGame`:
+
+```Pascal
+procedure ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
+```
+
+Note that `TInputPressRelease` is inside `CastleKeysMouse`, so we have to add those two units to `uses` section too. This procedure will receive three parameters: `Sender` which will be the object that was clicked, we'll need its `Name` to determine which exactly button was clicked, `Event` - a thorough description of the `Press` `Event` that happened and if this event was already `Handled` by some other UI element (we won't need it in this game).
+
+Next, let's assign `OnPress` event to this procedure for our "ButtonGroup"s. In the loop we need just to add one line:
+
+```Pascal
+GamePads[X, Y].Group := UiOwner.FindRequiredComponent('ButtonGroup' + Y.ToString + X.ToString) as TCastleUserInterface;
+GamePads[X, Y].Group.OnPress := @ButtonPress;
+GamePads[X, Y].Image := UiOwner.FindRequiredComponent('Button' + Y.ToString + X.ToString) as TCastleImageControl;
+GamePads[X, Y].Caption := UiOwner.FindRequiredComponent('Label' + Y.ToString + X.ToString) as TCastleLabel;
+```
+
+And finally let's implement an empty `ButtonPress` procedure somewhere in `implementation` section.
+
+```Pascal
+procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
+begin
+end;
+```
 
 
-
-
-`TInputPressRelease` is inside `CastleKeysMouse`, so we have to add those two units to `uses` section, which will now look like this:
-
-
-
-Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch. On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the user `Press`es and `Release`s the button. This way we'll have to create "our own button" that reacts to `Press` event.

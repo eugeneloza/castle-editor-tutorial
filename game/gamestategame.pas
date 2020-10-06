@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils,
-  CastleUiState, CastleControls, CastleUiControls;
+  CastleUiState, CastleControls, CastleUiControls, CastleKeysMouse;
 
 type
   TGamePad = record
@@ -20,6 +20,7 @@ type
   private
     GamePads: array[1..3, 1..4] of TGamePad;
     ScoreText, ScoreLabel, HighScoreText, HighScoreLabel: TCastleLabel;
+    procedure ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
   public
     procedure Start; override;
   end;
@@ -49,9 +50,14 @@ begin
     for Y := 1 to 4 do
     begin
       GamePads[X, Y].Group := UiOwner.FindRequiredComponent('ButtonGroup' + Y.ToString + X.ToString) as TCastleUserInterface;
+      GamePads[X, Y].Group.OnPress := @ButtonPress;
       GamePads[X, Y].Image := UiOwner.FindRequiredComponent('Button' + Y.ToString + X.ToString) as TCastleImageControl;
       GamePads[X, Y].Caption := UiOwner.FindRequiredComponent('Label' + Y.ToString + X.ToString) as TCastleLabel;
     end;
+end;
+
+procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
+begin
 end;
 
 end.
