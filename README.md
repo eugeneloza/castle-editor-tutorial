@@ -1098,3 +1098,153 @@ end;
 
 Again, as we `override` some virtual method, we have to call `inherited` to make sure that the parent `class`es run their `Update` code properly.
 
+### Adding gameplay elements
+
+Let's think a bit about the anticipated gameplay:
+
+- Start the button "from zero".
+
+- The button "grow"s until it's "ripe".
+
+- When the button is "ripe" it can be "harvested" by the player.
+
+- If some button becomes "overripe", then the game is over.
+
+Next, let's define 2 constants, that will govern our game pace: time for the button to "grow"->"ripe" and "ripe"-"overripe".
+
+```Pascal
+const
+  GrowTime = 3;
+  RipeTime = GrowTime + 3;
+```
+
+As the gameplay will be accelerating and the buttons will ripe and overripe much faster plus each button will "grow" with a randomly different speed. So, let's add the relative variables for each of our "buttons":
+
+```Pascal
+type
+  TGamePad = record
+    Speed: Single;
+    Ripeness: Single;
+    Score: Integer;
+    Group: TCastleUserInterface;
+    Image: TCastleImageControl;
+    Caption: TCastleLabel;
+  end;
+```
+
+Here:
+
+- `Speed` will define how quickly will our button grow and ripe relative to an "average button" - a random number from `0.5` to `1.5`.
+
+- `Ripeness` is the current progress of this button (0..GrowTime - button is growing; GrowTime..RipeTime - button is ripening; if this value is larger than RipeTime, the game is over).
+
+- `Score` conveniently stored button's score, calculated based on it's `Ripeness` - the more ripe the button, the larger the score is, will start at "100" and grow up to "999". This way the later the Player presses the button, the more score he/she will get, encouraging risky gameplay.
+
+Also, let's introduce global game pace in `TStateGame`:
+
+```Pascal
+type
+  TStateGame = class(TUiState)
+  private
+    GamePace: Single;
+    GameScore: Integer;
+  ...
+  end;
+```
+
+Now let's set the initial values for each of these new variables in our `Start` procedure:
+
+```Pascal
+procedure TStateGame.Start;
+var
+  UiOwner: TComponent;
+  X, Y: Integer;
+begin
+  inherited;
+  ...
+  Randomize;
+  for X := 1 to 3 do
+    for Y := 1 to 4 do
+    begin
+      GamePads[X, Y].Group := UiOwner.FindRequiredComponent('ButtonGroup' + Y.ToString + X.ToString) as TCastleUserInterface;
+      GamePads[X, Y].Group.OnPress := @ButtonPress;
+      GamePads[X, Y].Image := UiOwner.FindRequiredComponent('Button' + Y.ToString + X.ToString) as TCastleImageControl;
+      GamePads[X, Y].Caption := UiOwner.FindRequiredComponent('Label' + Y.ToString + X.ToString) as TCastleLabel;
+      GamePads[X, Y].Ripeness := 0.0;
+      GamePads[X, Y].Speed := 0.5 + Random;
+    end;
+  GamePace := 1.0;
+  GameScore := 0;
+end;
+```
+
+And finally in `Update` we cycle through all of our buttons and update them properly:
+
+```Pascal
+procedure TStateGame.Update(const SecondsPassed: Single; var HandleInput: boolean);
+var
+  X, Y: Integer;
+begin
+  inherited;
+  for X := 1 to 3 do
+    for Y := 1 to 4 do
+    begin
+      GamePads[X, Y].Ripeness += SecondsPassed * GamePace * GamePads[X, Y].Speed;
+    end;
+  GamePace += SecondsPassed / 60;
+  ScoreLabel.Caption := GameScore.ToString;
+end;
+```
+
+Here:
+
+- `GamePads[X, Y].Ripeness += SecondsPassed * GamePace * GamePads[X, Y].Speed;` increases `Ripeness` of this button by amount of `SecondsPassed` multiplied by `GamePace` multiplied by this specific button grow `GamePads[X, Y].Speed`.
+
+- `GamePace += SecondsPassed / 60;` makes the game accelerate with time.
+
+- `ScoreLabel.Caption := GameScore.ToString;` sets `Caption` of our label that represents the game score to current Player's score.
+
+Next thing to do, we should update our visuals, based on how "ripe" the button is. Let's do this by working inside the loop in `Update`:
+
+```Pascal
+for X := 1 to 3 do
+  for Y := 1 to 4 do
+  begin
+    GamePads[X, Y].Ripeness += SecondsPassed * GamePace * GamePads[X, Y].Speed;
+    if GamePads[X, Y].Ripeness < GrowTime then
+    begin
+      GamePads[X, Y].Score := 0;
+      GamePads[X, Y].Caption.Exists := false;
+      GamePads[X, Y].Image.Color := Vector4(GamePads[X, Y].Ripeness / GrowTime, 1.0, 0.0, 1.0);
+    end else
+    if GamePads[X, Y].Ripeness <= RipeTime then
+    begin
+      GamePads[X, Y].Score := 100 + Trunc(899 * (GamePads[X, Y].Ripeness - GrowTime) / (RipeTime - GrowTime));
+      GamePads[X, Y].Caption.Exists := true;
+      GamePads[X, Y].Caption.Caption := GamePads[X, Y].Score.ToString;
+      GamePads[X, Y].Image.Color := Vector4(1.0, 1.0 - (GamePads[X, Y].Ripeness - GrowTime) / (RipeTime - GrowTime), 0.0, 1.0);
+    end else
+    begin
+      //GameOver
+      GamePads[X, Y].Score := 0;
+      GamePads[X, Y].Caption.Exists := true;
+      GamePads[X, Y].Caption.Caption := 'XXX';
+      GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
+    end;
+  end;
+```
+
+Here:
+
+- First, we update `Ripeness` as we already did before.
+
+- Next we check if `Ripeness` is less than `GrowTime` and if it is, the button is only growing - it's not ripe yet. In this case we set the `Score` of the button to zero, we don't show the button Caption by setting `Exists := false` of the label and we change the color of the button by modifying it's `Color` property - and assigning it result of `Vector4` function as in `Vector4(Red, Green, Blue, Alpha)` - in this case it goes from green to yellow color.
+
+- If the first condition is not met, then we check if the `Ripeness` is still less than `RipeTime`. In this case the button is "ripe" and we can harvest it to get some score. Here we show the score label by setting its `Exists := true` and its caption to current `Score` for this button which is calculated above. And finally we set the button's color progressively from yellow to red depending on `Ripeness`.
+
+- Finally, if neither of the above conditions are met, we have a "Game Over". We'll put more work into this situation later, for now we'll just make this button have "XXX" for caption and pure red color.
+
+Let's compile our project and run it:
+
+![Testing Update event](images/gameplay-update-testing.png)
+
