@@ -6,14 +6,7 @@ interface
 
 uses
   Classes, SysUtils,
-  CastleUiState, CastleControls, CastleUiControls, CastleKeysMouse;
-
-type
-  TQuickButton = class(TCastleUserInterface)
-  public
-    OnPress: TNotifyEvent;
-    function Press(const Event: TInputPressRelease): Boolean;
-  end;
+  CastleUiState, CastleControls, CastleUiControls;
 
 type
   TGamePad = class
@@ -50,13 +43,6 @@ begin
   HighScoreLabel := UiOwner.FindRequiredComponent('HighScoreLabel') as TCastleLabel;
   ScoreText.CustomFont := CartoonFont60;
   HighscoreText.CustomFont := CartoonFont30;
-end;
-
-function TQuickButton.Press(const Event: TInputPressRelease): Boolean;
-begin
-  Result := inherited;
-  if Event.EventType = itMouseButton then
-    OnPress;
 end;
 
 end.
