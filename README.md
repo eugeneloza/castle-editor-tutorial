@@ -1367,4 +1367,4 @@ Note, that we also set `OwnsImage := false;` so that Castle Game Engine won't fr
 
 This replaces the image of `TCastleImageControl` with our new image of a broken button:
 
-![Replacing the image runtime](image/gameplay-broken-button.png)
+![Replacing the image runtime](images/gameplay-broken-button.png)
