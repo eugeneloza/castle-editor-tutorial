@@ -944,4 +944,7 @@ The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design
 
 ![Wrong font position fixed](images/wrong-font-position-fixed.png)
 
+### Parse game field
+
+Finally we're getting closer to making an actual game. Let's parse the designed elements for gameplay field. We could do it the same way as we did for buttons of the Main Menu and labels for score and high score. However, as we have 12 "buttons" here and we shall need to operate them conveniently, let's create a construction that will contain all the information we need about the "button" in one place.
 
