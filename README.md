@@ -946,14 +946,57 @@ The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design
 
 ### Parse game field
 
-Finally we're getting closer to making an actual game. Let's parse the designed elements for gameplay field. We could do it the same way as we did for buttons of the Main Menu and labels for score and high score. However, as we have 12 "buttons" here and we shall need to operate them conveniently, let's create a construction that will contain all the information we need about the "button" in one place.
+Finally we're getting closer to making an actual game. Let's parse the designed elements for gameplay field. We could do it the same way as we did for buttons of the Main Menu and labels for score and high score. However, as we have 12 "buttons" here and we shall need to operate them conveniently, let's create a construction that will contain all the information we need about the "button" in one place:
+
+```Pascal
+type
+  TGamePad = record
+    Group: TCastleUserInterface;
+    Image: TCastleImageControl;
+    Caption: TCastleLabel;
+  end;
+```
+
+Here we're using a minimalistic `record` data type for simplicity reasons. Often when creating such complex UI elements, we would want to create a `class` that would manage them appropriately. However, in our case we only need to keep them together, and avoiding memory management here is favorable.
+
+Note, that unlike other UI elements, `TCastleUserInterface` is located inside `CastleUiControls`, so we have to add this unit to the `uses` section.
+
+Now we can have a (again minimalistic) static 2-dimensional array to hold our 12 `TGamePad`s inside `TStateGame`:
+
+```Pascal
+type
+  TStateGame = class(TUiState)
+  private
+    GamePads: array[1..3, 1..4] of TGamePad;
+    ScoreText, ScoreLabel, HighScoreText, HighScoreLabel: TCastleLabel;
+  ...
+  end;
+```
+
+And finally in `Start` we "find" all those 12 pads in our design. Of course we could do it the same way as we did with labels and buttons, but here it'll be much more efficient to make a loop that will cycle through all 3x4 elements and assign them to corresponding array elements:
+
+```Pascal
+procedure TStateGame.Start;
+var
+  UiOwner: TComponent;
+  X, Y: Integer;
+begin
+  ...
+  for X := 1 to 3 do
+    for Y := 1 to 4 do
+    begin
+      GamePads[X, Y].Group := UiOwner.FindRequiredComponent('ButtonGroup' + Y.ToString + X.ToString) as TCastleUserInterface;
+      GamePads[X, Y].Image := UiOwner.FindRequiredComponent('Button' + Y.ToString + X.ToString) as TCastleImageControl;
+      GamePads[X, Y].Caption := UiOwner.FindRequiredComponent('Label' + Y.ToString + X.ToString) as TCastleLabel;
+    end;
+end;
+```
 
 
 
 
 
-
-Note, that `TCastleUserInterface` is located inside `CastleUiControls` and `TInputPressRelease` is inside `CastleKeysMouse`, so we have to add those two units to `uses` section, which will now look like this:
+`TInputPressRelease` is inside `CastleKeysMouse`, so we have to add those two units to `uses` section, which will now look like this:
 
 
 
