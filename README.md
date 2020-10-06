@@ -1243,8 +1243,7 @@ for X := 1 to 3 do
       //GameOver
       GameRunning := false;
       GamePads[X, Y].Score := -1;
-      GamePads[X, Y].Caption.Exists := true;
-      GamePads[X, Y].Caption.Caption := 'XXX';
+      GamePads[X, Y].Caption.Exists := false;
       GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
     end;
   end;
@@ -1254,11 +1253,11 @@ Here:
 
 - First, we update `Ripeness` as we already did before.
 
-- Next we check if `Ripeness` is less than `GrowTime` and if it is, the button is only growing - it's not ripe yet. In this case we set the `Score` of the button to zero, we don't show the button Caption by setting `Exists := false` of the label and we change the color of the button by modifying it's `Color` property - and assigning it result of `Vector4` function as in `Vector4(Red, Green, Blue, Alpha)` - in this case it goes from green to yellow color.
+- Next we check if `Ripeness` is less than `GrowTime` and if it is, the button is only growing - it's not ripe yet. In this case we set the `Score` of the button to zero, we don't show the button Caption by setting `Exists := false` of the label and we change the color of the button by modifying it's `Color` property - and assigning it result of `Vector4` function as in `Vector4(Red, Green, Blue, Alpha)` - in this case it goes from green to yellow color. Note that to use `Vector4` function we'll need to include `CastleVectors` unit in `uses` section.
 
 - If the first condition is not met, then we check if the `Ripeness` is still less than `RipeTime`. In this case the button is "ripe" and we can harvest it to get some score. Here we show the score label by setting its `Exists := true` and its caption to current `Score` for this button which is calculated above. And finally we set the button's color progressively from yellow to red depending on `Ripeness`.
 
-- Finally, if neither of the above conditions are met, we have a "Game Over". We'll put more work into this situation later, for now we'll just make this button have "XXX" for caption and pure red color.
+- Finally, if neither of the above conditions are met, we have a "Game Over". We'll put more work into this situation later, for now we'll just make this button have no caption and pure red color.
 
 Let's compile our project and run it:
 
@@ -1306,3 +1305,63 @@ Let's compile and now we can finally start playing this game!
 
 ![Testing the gameplay for the first time](images/gameplay-testing.png)
 
+### Replacing an image runtime
+
+Now before going back to gameplay, let's add a tiny touch to how our game looks. Let's replace the button image for something obviously broken if the Player loses the game. To do this we'll need to load an image with "broken button" and replace it runtime if the game is lost.
+
+First of all, let's add `CastleImages` unit to our `uses` section and in `TStateGame` add the button image:
+
+```Pascal
+type
+  TStateGame = class(TUiState)
+  private
+    BrokenButton: TCastleImage;
+  ...
+  end;
+```
+
+We could have loaded the `BrokenButton` in `Start`, but that'll make the image loaded every time the Player start playing the game, while the image itself never changes. So, let's go a bit harder but more efficient way. By loading the image in `constructor`. Of course, we'll need to remember to `FreeAndNil` it in `destructor`. Let's add `constructor` and `destructor` to our class, keeping in mind that they are `virtual` so that we have to `override` them and call parent's code by `inherited`:
+
+```Pascal
+type
+  TStateGame = class(TUiState)
+  ...
+  public
+    ...
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+  end;
+```
+
+With their corresponding `implementation`:
+
+```Pascal
+constructor TStateGame.Create(AOwner: TComponent);
+begin
+  inherited;
+  BrokenButton := LoadImage('castle-data:/images/buttons/button_broken.png', [TRGBAlphaImage]);
+end;
+
+destructor TStateGame.Destroy;
+begin
+  FreeAndNil(BrokenButton);
+  inherited;
+end;
+```
+
+Here we load the `BrokenButton` image by calling `LoadImage` providing it the image URL and expected image type. `TRGBAlphaImage` means that the image is RGB with Alpha (transparency). And in destructor we free the memory occupied by the image by caling `FreeAndNil(BrokenButton);`.
+
+Finally in our `Update` we add a line `GamePads[X, Y].Image.Image := BrokenButton;` to "GameOver" section:
+
+```Pascal
+//GameOver
+GameRunning := false;
+GamePads[X, Y].Score := -1;
+GamePads[X, Y].Caption.Exists := false;
+GamePads[X, Y].Image.Image := BrokenButton;
+GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
+```
+
+This replaces the image of `TCastleImageControl` with our new image of a broken button:
+
+![Replacing the image runtime](image/gameplay-broken-button.png)
