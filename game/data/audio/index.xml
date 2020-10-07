@@ -3,4 +3,53 @@
 <sounds>
   <sound name="menu_music" url="music/Curious_Critters_CC_BY_Matthew_Pablo.ogg" stream="true" />
   <sound name="game_music" url="music/Casual_game_track_CC_BY_Alexandr_Zhelanov.ogg" stream="true" />
+
+  <sound name="click_01" url="clicks/01-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_02" url="clicks/02-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_03" url="clicks/03-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_04" url="clicks/04-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_05" url="clicks/05-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_06" url="clicks/06-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_07" url="clicks/07-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_08" url="clicks/08-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_09" url="clicks/09-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_10" url="clicks/10-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_11" url="clicks/11-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_12" url="clicks/12-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_13" url="clicks/13-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_14" url="clicks/14-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_15" url="clicks/15-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_16" url="clicks/16-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_17" url="clicks/17-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_18" url="clicks/18-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_19" url="clicks/19-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_20" url="clicks/20-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_21" url="clicks/21-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_22" url="clicks/22-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <alias name="click">
+    <target name="click_01" />
+    <target name="click_02" />
+    <target name="click_03" />
+    <target name="click_04" />
+    <target name="click_05" />
+    <target name="click_06" />
+    <target name="click_07" />
+    <target name="click_08" />
+    <target name="click_09" />
+    <target name="click_10" />
+    <target name="click_11" />
+    <target name="click_12" />
+    <target name="click_13" />
+    <target name="click_14" />
+    <target name="click_15" />
+    <target name="click_16" />
+    <target name="click_17" />
+    <target name="click_18" />
+    <target name="click_19" />
+    <target name="click_20" />
+    <target name="click_21" />
+    <target name="click_22" />
+  </alias>
+
+  <sound name="accelerate" url="clicks/349311__newagesoup__uplifter-sweep-10s-three-tones_CC0_by_newagesoup.wav" />
 </sounds>
