@@ -1648,3 +1648,236 @@ If `AnimationTime >= AnimationDuration` we just set the final values for the var
 
 ![Animated Game Over](images/animated-gameover.png)
 
+## Audio
+
+As you've might have noticed, the game is already quite playable at current stage. Once we shall have added sound and music to the game, we'll be done with most critically important game features and left with only some polishing to do.
+
+### Audio repository
+
+There are several ways of working with audio in Castle Game Engine. Also there are several possible audio backends to be used. We'll stick with simplest and default solution - through using audio repository. This approach suggests us creating a special "audio registry" in XML format that would describe how our sounds should be called from the game.
+
+Let's go to our `data` folder and create `audio` subfolder, and after dropping our sound files inside, create a file named `index.xml` with the following content:
+
+```XML
+<?xml version="1.0"?>
+
+<sounds>
+</sounds>
+```
+
+This is our minimal (and empty) sound repository registry. Now let's go into `GameInitialize` unit, add `CastleSoundEngine` to `uses` section and in `ApplicationInitialize` load it somewhere near `LoadFonts;`:
+
+```Pascal
+SoundEngine.RepositoryURL := 'castle-data:/audio/index.xml';
+```
+
+This will instruct Castle Game Engine's SoundEngine to load our `index.xml` file which will be immediately ready to use.
+
+### Music Information
+
+Let's go back to our `index.xml` file and start filling it up with useful information. Let's add information about our two music tracks inside:
+
+```XML
+<sounds>
+  <sound name="menu_music" url="music/Curious_Critters_CC_BY_Matthew_Pablo.ogg" stream="true" />
+  <sound name="game_music" url="music/Casual_game_track_CC_BY_Alexandr_Zhelanov.ogg" stream="true" />
+</sounds>
+```
+
+Here:
+
+- `sound` is a keyword, telling that this is a description of a sound file.
+
+- `name` is the name of the sound or music track. We'll use it to call our sound or music from the game.
+
+- `url` is an optional field, that specifies exact filename to be loaded for this sound.
+
+- `stream` will tell the `SoundEngine` not to load our whole music track, but stream it from HDD/SDD or other source. That's a good idea for music files, which tend to be large and may take a lot of time to load, but a bad idea for short sound files that must be immediately available without any possible delays.
+
+### Playing Music
+
+Let's now play our music in game. Let's go to our `GameStateMainMenu` unit and add `CastleSoundEngine` to `uses` section. Now somewhere in `Start` let's add a line:
+
+```Pascal
+SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
+```
+
+Which instructs to loop a track named `menu_music` on channel #0. As simple as that. We can now compile and run and see that the music is already working!
+
+Let's now go into `GameStateGame`, again add `CastleSoundEngine` to `uses` section and a similar line somewhere in `Start` procedure:
+
+```Pascal
+SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
+```
+
+And it also works without any problems. We can also test and see that the music is switched when we go from Main Menu State into Game State and back.
+
+### Button clicking sounds
+
+Let's add our sounds to the registry in the very same way as we did with the music:
+
+```XML
+<sounds>
+  <sound name="menu_music" url="music/Curious_Critters_CC_BY_Matthew_Pablo.ogg" stream="true" />
+  <sound name="game_music" url="music/Casual_game_track_CC_BY_Alexandr_Zhelanov.ogg" stream="true" />
+
+  <sound name="click_01" url="clicks/01-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_02" url="clicks/02-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_03" url="clicks/03-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_04" url="clicks/04-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_05" url="clicks/05-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_06" url="clicks/06-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_07" url="clicks/07-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_08" url="clicks/08-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_09" url="clicks/09-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_10" url="clicks/10-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_11" url="clicks/11-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_12" url="clicks/12-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_13" url="clicks/13-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_14" url="clicks/14-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_15" url="clicks/15-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_16" url="clicks/16-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_17" url="clicks/17-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_18" url="clicks/18-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_19" url="clicks/19-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_20" url="clicks/20-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_21" url="clicks/21-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+  <sound name="click_22" url="clicks/22-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
+</sounds>
+```
+
+As we've already noted, we aren't using `stream` feature here. Also using uncompressed `wav` format instead of `ogg`. We'd want all of these 22 click sounds to play randomized in our game, when we click game pads. We could do that by providing the `SoundEngine` with the proper sound names, but it can already do this for us. Let's add a spcial `alias` feature here:
+
+```XML
+<?xml version="1.0"?>
+
+<sounds>
+  ...
+  <alias name="click">
+    <target name="click_01" />
+    <target name="click_02" />
+    <target name="click_03" />
+    <target name="click_04" />
+    <target name="click_05" />
+    <target name="click_06" />
+    <target name="click_07" />
+    <target name="click_08" />
+    <target name="click_09" />
+    <target name="click_10" />
+    <target name="click_11" />
+    <target name="click_12" />
+    <target name="click_13" />
+    <target name="click_14" />
+    <target name="click_15" />
+    <target name="click_16" />
+    <target name="click_17" />
+    <target name="click_18" />
+    <target name="click_19" />
+    <target name="click_20" />
+    <target name="click_21" />
+    <target name="click_22" />
+  </alias>
+</sounds>
+```
+
+This means, that when we call sound named `"click"` from the game it will randomly play any of the sound that we've specified as `target`s here.
+
+### Accelerate and Game Over sounds
+
+The very same way we can add an "acceleration" sound when the Player clicked an empty button:
+
+```XML
+<sounds>
+  ...
+  <sound name="accelerate" url="clicks/349311__newagesoup__uplifter-sweep-10s-three-tones_CC0_by_newagesoup.wav" />
+</sounds>
+```
+
+Now in our `GameStateGame` unit we can navigate to `ButtonPress` procedure and at the point where we process the result of user click add two lines to play `"click"` or `"accelerate"` sound depending on which button was clicked:
+
+```Pascal
+if ThisGamePad^.Score > 0 then
+begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('click'));
+  GameScore += ThisGamePad^.Score;
+  ThisGamePad^.Score := 0;
+  ThisGamePad^.Ripeness := 0.0;
+  ThisGamePad^.Speed := 0.5 + Random;
+end else
+if ThisGamePad^.Score = 0 then
+begin
+  GamePace += 0.5;
+  SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
+end;
+```
+
+Here `SoundEngine.Sound` plays a sound which is in turn found "by name" using `SoundEngine.SoundFromName`. We can now test and see that it's working.
+
+The same way adding a "game over" sound:
+
+```XML
+<sounds>
+  ...
+  <sound name="game_over" url="clicks/245646__unfa__cartoon-pop-distorted_CC0_by_unfa.wav" />
+</sounds>
+```
+
+And play it in `Update`:
+
+```Pascal
+begin
+  //GameOver
+  SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
+  GameRunning := false;
+  ...
+end;
+```
+
+### The rest of UI sounds
+
+Let's quickly add some other sounds for UI events:
+
+```XML
+<sounds>
+  ...
+  <sound name="ui_click_1" url="ui/click_001_CC0_by_Kenney.wav" />
+  <sound name="ui_click_2" url="ui/click_002_CC0_by_Kenney.wav" />
+  <sound name="ui_click_3" url="ui/click_003_CC0_by_Kenney.wav" />
+  <alias name="ui_click">
+    <target name="ui_click_1" />
+    <target name="ui_click_2" />
+    <target name="ui_click_3" />
+  </alias>
+
+  <sound name="start_game_1" url="ui/confirmation_001_CC0_by_Kenney.wav" />
+  <sound name="start_game_2" url="ui/confirmation_002_CC0_by_Kenney.wav" />
+  <sound name="start_game_3" url="ui/confirmation_004_CC0_by_Kenney.wav" />
+  <alias name="start_game">
+    <target name="start_game_1" />
+    <target name="start_game_2" />
+    <target name="start_game_3" />
+  </alias>
+
+  <sound name="quit_1" url="ui/switch_001_CC0_by_Kenney.wav" />
+  <sound name="quit_2" url="ui/switch_002_CC0_by_Kenney.wav" />
+  <sound name="quit_3" url="ui/switch_003_CC0_by_Kenney.wav" />
+  <sound name="quit_4" url="ui/switch_004_CC0_by_Kenney.wav" />
+  <sound name="quit_5" url="ui/switch_005_CC0_by_Kenney.wav" />
+  <sound name="quit_6" url="ui/switch_006_CC0_by_Kenney.wav" />
+  <sound name="quit_7" url="ui/switch_007_CC0_by_Kenney.wav" />
+  <alias name="quit">
+    <target name="quit_1" />
+    <target name="quit_2" />
+    <target name="quit_3" />
+    <target name="quit_4" />
+    <target name="quit_5" />
+    <target name="quit_6" />
+    <target name="quit_7" />
+  </alias>
+</sounds>
+```
+
+Let's put `SoundEngine.Sound(SoundEngine.SoundFromName('start_game'));` inside `ClickStart` in `GameStateMainMenu` and inside `ClickPlayAgain` in `GameStateGameOver` (don't forget to add `CastleSoundEngine` to `uses` section). Let's add `SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));` into `ClickOptions`, `ClickCredits` in `GameStateMainMenu`. And finally `SoundEngine.Sound(SoundEngine.SoundFromName('quit'));` to `ClickQuit` in `GameStateMainMenu` and `ClickMainMenu` in `GameStateGameOver`.
+
+Let's note that now the music plays a bit too loud to properly hear `ui_click` sound. Let's leavie it like that, we'll change default music volume when we'll be making Options.
+
