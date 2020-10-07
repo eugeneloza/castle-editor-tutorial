@@ -1597,7 +1597,7 @@ const
   AnimationDuration = 0.3;
 ```
 
-This specifies the animation duration - 1 second. Now in `TStateGameOver` let's create a `private` variable:
+This specifies the animation duration - 0.3 seconds. Now in `TStateGameOver` let's create a `private` variable:
 
 ```Pascal
 type
