@@ -8,9 +8,13 @@ uses
   Classes, SysUtils,
   CastleUiState, CastleControls, CastleUiControls;
 
+const
+  AnimationDuration = 0.3;
+
 type
   TStateGameOver = class(TUiState)
   private
+    AnimationTime: Single;
     BackgroundColor: TCastleRectangleControl;
     GameOverPopup: TCastleUserInterface;
     GameOverImage, HighScoreImage: TCastleImageControl;
@@ -73,6 +77,16 @@ end;
 procedure TStateGameOver.Update(const SecondsPassed: Single; var HandleInput: Boolean);
 begin
   inherited;
+  AnimationTime += SecondsPassed;
+  if AnimationTime < AnimationDuration then
+  begin
+    BackgroundColor.Color := Vector4(0.57, 0.80, 0.92, 0.9 * AnimationTime/AnimationDuration);
+    GameOverPopup.VerticalAnchorDelta := -0.5 * 1334 * (1.0 - Sqrt(AnimationTime/AnimationDuration));
+  end else
+  begin
+    BackgroundColor.Color := Vector4(0.57, 0.80, 0.92, 0.9);
+    GameOverPopup.VerticalAnchorDelta := 0;
+  end;
 end;
 
 end.
