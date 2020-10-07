@@ -1429,9 +1429,9 @@ Again, let's add inside a "Vertical Group" by Design -> Add User Interface Compo
 
 Let's add two images inside. Let's name one `GameOverImage` and load a `gameover.png` image URL. The second one `HighScoreImage` with `highscore.png` image URL. Note, that now they are displayed on top of one another, however in-game only one of them will be visible. We can try how it looks by enabling/disabling `Exists` property of the images.
 
-Let's add two labels `ScoreTextLabel` and `ScoreValueLabel` with `FontSize` "60" and "80" correspondingly. Let's change `Caption` of the first one to "Your Score:" and of the second one - "9999999".
+Let's add two labels `ScoreTextLabel` and `ScoreValueLabel` with `FontSize` "60" and "80" correspondingly. Let's change `Caption` of the first one to "Your Score:" and of the second one - "9999999". `Color` of both: `162D40`.
 
-Finally let's a button `PlayAgainButton`. Let's make their design equal to those of Main Menu buttons (check up above): `FontColor`: "60"; `CustomBackground`: checked; set proper images for `CustomBackgroundFocused`, `CustomBackgroundNormal` and `CustomBackgroundPressed`; `Width`: "550"; `Height`: "160"; `AutoSize`: unchecked; `Caption`: "Play Again".
+Finally let's a button `PlayAgainButton`. Let's make their design equal to those of Main Menu buttons (check up above): `FontColor`: "60"; `CustomBackground`: checked; set proper images for `CustomBackgroundFocused`, `CustomBackgroundNormal` and `CustomBackgroundPressed`; `Width`: "550"; `Height`: "160"; `AutoSize`: unchecked; `Caption`: "Play Again"; `CustomTextColorUse`: checked; `CustomTextColor`: "162D40".
 
 Let's duplicate this button and name it `MainMenuButton` with `Caption`: "Main Menu".
 
