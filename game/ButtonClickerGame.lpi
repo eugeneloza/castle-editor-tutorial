@@ -118,6 +118,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateGame"/>
       </Unit>
+      <Unit>
+        <Filename Value="gamestategameover.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="GameStateGameOver"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

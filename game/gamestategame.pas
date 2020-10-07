@@ -34,7 +34,7 @@ type
     procedure ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
   public
     procedure Start; override;
-    procedure Update(const SecondsPassed: Single; var HandleInput: boolean); override;
+    procedure Update(const SecondsPassed: Single; var HandleInput: Boolean); override;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   end;
@@ -46,7 +46,7 @@ implementation
 uses
   CastleComponentSerialize,
   CastleVectors, CastleConfig,
-  GameFont;
+  GameStateGameOver, GameFont;
 
 constructor TStateGame.Create(AOwner: TComponent);
 begin
@@ -130,7 +130,7 @@ begin
   end;
 end;
 
-procedure TStateGame.Update(const SecondsPassed: Single; var HandleInput: boolean);
+procedure TStateGame.Update(const SecondsPassed: Single; var HandleInput: Boolean);
 var
   X, Y: Integer;
 begin
@@ -157,16 +157,20 @@ begin
         begin
           //GameOver
           GameRunning := false;
+          StateGameOver.Score := GameScore;
           if UserConfig.GetValue('high_score', 0) < GameScore then
           begin
             UserConfig.SetValue('high_score', GameScore);
             UserConfig.Save;
-          end;
+            StateGameOver.HighScore := true;
+          end else
+            StateGameOver.HighScore := false;
           GamePads[X, Y].Score := -1;
           GamePads[X, Y].Caption.Exists := false;
           GamePads[X, Y].Image.Image := BrokenButton;
           GamePads[X, Y].Image.OwnsImage := false;
           GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
+          TUiState.Push(StateGameOver);
         end;
       end;
     GamePace += SecondsPassed / 60;
