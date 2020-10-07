@@ -61,6 +61,7 @@ begin
   ScoreValueLabel.Caption := Score.ToString;
   HighScoreImage.Exists := HighScore;
   GameOverImage.Exists := not HighScore;
+  AnimationTime := 0;
   Update(0, UnusedBooleanVariable);
 end;
 
