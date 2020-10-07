@@ -1548,3 +1548,43 @@ Save, compile and run. We've got our State Game Over running with both buttons a
 
 ![Game Over state - first results](images/gameover-first-results.png)
 
+### Customizing Game Over Popup
+
+Now, let's pass some data to the Popup, so that it will show relevant image and score. Let's add two `public` variables to `TStateGameOver`:
+
+```Pascal
+type
+  TStateGameOver = class(TUiState)
+  ...
+  public
+    Score: Integer;
+    HighScore: Boolean;
+    procedure Start; override;
+    procedure Update(const SecondsPassed: Single; var HandleInput: Boolean); override;
+  end;
+```
+
+In `Start` let's add somewhere near the end, before calling `Update` hack:
+
+```Pascal
+ScoreValueLabel.Caption := Score.ToString;
+HighScoreImage.Exists := HighScore;
+GameOverImage.Exists := not HighScore;
+```
+
+This way we set the `Caption` of `ScoreValueLabel` to value of `Score` and set visibility of `HighScoreImage` and `GameOverImage` based on boolean variable `HighScore`. Now in `GameStateGame` in the block relating to "Game Over" let's set these variables to current Player's results:
+
+```Pascal
+GameRunning := false;
+StateGameOver.Score := GameScore;
+if UserConfig.GetValue('high_score', 0) < GameScore then
+begin
+  UserConfig.SetValue('high_score', GameScore);
+  UserConfig.Save;
+  StateGameOver.HighScore := true;
+end else
+  StateGameOver.HighScore := false;
+```
+
+![Passing data to a State](images/passing-data-to-state.png)
+
