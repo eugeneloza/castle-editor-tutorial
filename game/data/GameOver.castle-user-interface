@@ -1,7 +1,155 @@
 {
   "FullSize" : true,
-  "Name" : "RectangleControl1",
+  "Name" : "BackgroundColor",
   "$Children" : [
+    {
+      "AutoSizeToChildren" : true,
+      "HorizontalAnchorParent" : "hpMiddle",
+      "HorizontalAnchorSelf" : "hpMiddle",
+      "Name" : "GameOverPopup",
+      "VerticalAnchorParent" : "vpMiddle",
+      "VerticalAnchorSelf" : "vpMiddle",
+      "$Children" : [
+        {
+          "Alignment" : "hpMiddle",
+          "Name" : "GameOverGroup",
+          "Spacing" : 5.0000000000000000E+001,
+          "$Children" : [
+            {
+              "Content" : {
+                "URL" : "castle-data:/images/gameover.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "HorizontalAnchorParent" : "hpMiddle",
+              "HorizontalAnchorSelf" : "hpMiddle",
+              "Name" : "GameOverImage",
+              "VerticalAnchorParent" : "vpTop",
+              "VerticalAnchorSelf" : "vpTop",
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleImageControl"
+            },
+            {
+              "Content" : {
+                "URL" : "castle-data:/images/highscore.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "HorizontalAnchorParent" : "hpMiddle",
+              "HorizontalAnchorSelf" : "hpMiddle",
+              "Name" : "HighScoreImage",
+              "VerticalAnchorDelta" : -2.6200000000000000E+002,
+              "VerticalAnchorParent" : "vpTop",
+              "VerticalAnchorSelf" : "vpTop",
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleImageControl"
+            },
+            {
+              "FontSize" : 6.0000000000000000E+001,
+              "HorizontalAnchorParent" : "hpMiddle",
+              "HorizontalAnchorSelf" : "hpMiddle",
+              "Name" : "ScoreTextLabel",
+              "Text" : [
+                "Your score:"
+              ],
+              "VerticalAnchorDelta" : -5.3100000000000000E+002,
+              "VerticalAnchorParent" : "vpTop",
+              "VerticalAnchorSelf" : "vpTop",
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleLabel"
+            },
+            {
+              "FontSize" : 6.0000000000000000E+001,
+              "HorizontalAnchorParent" : "hpMiddle",
+              "HorizontalAnchorSelf" : "hpMiddle",
+              "Name" : "ScoreValueLabel",
+              "Text" : [
+                "9999999"
+              ],
+              "VerticalAnchorDelta" : -6.3500000000000000E+002,
+              "VerticalAnchorParent" : "vpTop",
+              "VerticalAnchorSelf" : "vpTop",
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleLabel"
+            },
+            {
+              "AutoSize" : false,
+              "Caption" : "Play Again",
+              "CustomBackground" : true,
+              "CustomBackgroundDisabled" : {
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "CustomBackgroundFocused" : {
+                "URL" : "castle-data:/images/buttons/button_green.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "CustomBackgroundNormal" : {
+                "URL" : "castle-data:/images/buttons/button_cyan.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "CustomBackgroundPressed" : {
+                "URL" : "castle-data:/images/buttons/button_yellow.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "FontSize" : 6.0000000000000000E+001,
+              "Height" : 1.6000000000000000E+002,
+              "HorizontalAnchorParent" : "hpMiddle",
+              "HorizontalAnchorSelf" : "hpMiddle",
+              "Image" : {
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "Name" : "PlayAgainButton",
+              "VerticalAnchorDelta" : -7.3900000000000000E+002,
+              "VerticalAnchorParent" : "vpTop",
+              "VerticalAnchorSelf" : "vpTop",
+              "Width" : 4.0600000000000000E+002,
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleButton"
+            },
+            {
+              "AutoSize" : false,
+              "Caption" : "Main Menu",
+              "CustomBackground" : true,
+              "CustomBackgroundDisabled" : {
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "CustomBackgroundFocused" : {
+                "URL" : "castle-data:/images/buttons/button_green.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "CustomBackgroundNormal" : {
+                "URL" : "castle-data:/images/buttons/button_cyan.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "CustomBackgroundPressed" : {
+                "URL" : "castle-data:/images/buttons/button_yellow.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "FontSize" : 6.0000000000000000E+001,
+              "Height" : 1.6000000000000000E+002,
+              "HorizontalAnchorParent" : "hpMiddle",
+              "HorizontalAnchorSelf" : "hpMiddle",
+              "Image" : {
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "Name" : "MainMenuButton",
+              "VerticalAnchorDelta" : -9.4900000000000000E+002,
+              "VerticalAnchorParent" : "vpTop",
+              "VerticalAnchorSelf" : "vpTop",
+              "Width" : 4.0600000000000000E+002,
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleButton"
+            }
+          ],
+          "$ClassName" : "TCastleVerticalGroup"
+        }
+      ],
+      "$ClassName" : "TCastleUserInterface"
+    }
   ],
   "$ClassName" : "TCastleRectangleControl"
 }
