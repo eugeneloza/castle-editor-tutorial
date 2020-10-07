@@ -1531,3 +1531,20 @@ We've already been through all of this process twice, so let's not waste any tim
 
 The same way as before let's create our State in `GameInitialize` adding `GameStateGameOver` to `uses` section and `StateGameOver := TStateGameOver.Create(Application);` somewhere in `ApplicationInitialize`.
 
+### Showing Game Over Popup
+
+Now, as this is a popup, we'd want to show it without hiding the underlying state. Let's go into unit `GameStateGame`, add `GameStateGameOver` to `uses` section in `implementation` and inside `TStateGame.Update` find our block that corresponds to "Game Over" state. In the end of this block, when everything was updated correctly, let's add `TUiState.Push(StateGameOver);` like this:
+
+```Pascal
+begin
+  //GameOver
+  ...
+  GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
+  TUiState.Push(StateGameOver);
+end;
+```
+
+Save, compile and run. We've got our State Game Over running with both buttons already useful:
+
+![Game Over state - first results](images/gameover-first-results.png)
+
