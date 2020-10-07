@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<sounds>
+  <sound name="menu_music" url="music/Curious_Critters_CC_BY_Matthew_Pablo.ogg" stream="true" />
+  <sound name="game_music" url="music/Casual_game_track_CC_BY_Alexandr_Zhelanov.ogg" stream="true" />
+</sounds>
