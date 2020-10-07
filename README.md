@@ -1548,7 +1548,7 @@ Save, compile and run. We've got our State Game Over running with both buttons a
 
 ![Game Over state - first results](images/gameover-first-results.png)
 
-### Customizing Game Over Popup
+### Passing Data to Game Over Popup
 
 Now, let's pass some data to the Popup, so that it will show relevant image and score. Let's add two `public` variables to `TStateGameOver`:
 
