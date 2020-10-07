@@ -1419,3 +1419,23 @@ To make it simple, let's make a small hack. It's unsafe to do this way in a gene
 
 Currently the game simply stops when one button becomes "overripe". Of course we'd want to show some nice screen that would show the Player current game score and congratulate with getting the High Score. Obviously, we go back to Castle Editor to design such a screen. However, it may be a good idea to make this State not as a "normal" State we've been making till now, but something more like a popup - so that the gameplay field will still be visible underneath plus add some nice fly-in effect for our design.
 
+### Designing a Popup
+
+Let's create a new State, but this time we'll choose a Color Rectangle as a root: Design -> New User Interface (Chosen Root) -> Color Rectangle (TCastleRectnagleControl). Let's save our Design and name it `GameOver.castle-user-interface`. Note, that unlike "Image", "Color Rectangle" was automatically set to `FullSize`. Let's name it `BackgroundColor`.
+
+Let's add an "Empty Rectangle" by Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface). Let's name it `GameOverPoup` and position in the center of the screen (`HorizontalAnchorParent` and `HorizontalAnchorSelf` set to `hpMiddle`; `VerticalAnchorParent` and `VerticalAnchorSelf` set to `vpMiddle`). Let's also set `AutoSizeToChildren` property to `true` (i.e. check the corresponding checkbox) - this will make our `GameOverPoup` scale together with its content.
+
+Again, let's add inside a "Vertical Group" by Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Name it `GameOverGroup`, set `Align` to `hpMiddle` and `Spacing` to "50".
+
+Let's add two images inside. Let's name one `GameOverImage` and load a `gameover.png` image URL. The second one `HighScoreImage` with `highscore.png` image URL. Note, that now they are displayed on top of one another, however in-game only one of them will be visible. We can try how it looks by enabling/disabling `Exists` property of the images.
+
+Let's add two labels `ScoreTextLabel` and `ScoreValueLabel` with `FontSize` 60 for both. Let's change `Caption` of the first one to "Your Score:" and of the second one - "9999999".
+
+Finally let's a button `PlayAgainButton`. Let's make their design equal to those of Main Menu buttons (check up above): `FontColor`: "60"; `CustomBackground`: checked; set proper images for `CustomBackgroundFocused`, `CustomBackgroundNormal` and `CustomBackgroundPressed`; `Width`: "406"; `Height`: "160"; `AutoSize`: unchecked; `Caption`: "Play Again".
+
+Let's duplicate this button and name it `MainMenuButton` with `Caption`: "Main Menu".
+
+Now our State design looks like:
+
+![Game Over popup](images/designing-gameover-popup.png)
+
