@@ -1414,3 +1414,8 @@ Done! Now our High Score is automatically assigned when the Player finishes the 
 Now, before we proceed, let's make our code a bit more "bullet-proof". The problem here is that `Update` event can come at different moments on different platforms. Therefore it'd be a very good idea to `Update` our game view before the first frame is rendered, so that the Player won't see our placeholders for a fraction of a second. Therefore we'd want to `Update` our UI in the end of `Start` procedure.
 
 To make it simple, let's make a small hack. It's unsafe to do this way in a general case, but in our simple game there isn't anything that can go wrong here. So let's just add `UnusedBooleanVariable: Boolean = false;` to `var` section of `Start` and `Update(0, UnusedBooleanVariable);` in the end of `Start` procedure - after every UI item was found and all variables have proper values.
+
+## Creating Game Over Popup
+
+Currently the game simply stops when one button becomes "overripe". Of course we'd want to show some nice screen that would show the Player current game score and congratulate with getting the High Score. Obviously, we go back to Castle Editor to design such a screen. However, it may be a good idea to make this State not as a "normal" State we've been making till now, but something more like a popup - so that the gameplay field will still be visible underneath plus add some nice fly-in effect for our design.
+
