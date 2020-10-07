@@ -52,4 +52,40 @@
   </alias>
 
   <sound name="accelerate" url="clicks/349311__newagesoup__uplifter-sweep-10s-three-tones_CC0_by_newagesoup.wav" />
+  <sound name="game_over" url="clicks/245646__unfa__cartoon-pop-distorted_CC0_by_unfa.wav" />
+
+  <sound name="ui_click_1" url="ui/click_001_CC0_by_Kenney.wav" />
+  <sound name="ui_click_2" url="ui/click_002_CC0_by_Kenney.wav" />
+  <sound name="ui_click_3" url="ui/click_003_CC0_by_Kenney.wav" />
+  <alias name="ui_click">
+    <target name="ui_click_1" />
+    <target name="ui_click_2" />
+    <target name="ui_click_3" />
+  </alias>
+
+  <sound name="start_game_1" url="ui/confirmation_001_CC0_by_Kenney.wav" />
+  <sound name="start_game_2" url="ui/confirmation_002_CC0_by_Kenney.wav" />
+  <sound name="start_game_3" url="ui/confirmation_004_CC0_by_Kenney.wav" />
+  <alias name="start_game">
+    <target name="start_game_1" />
+    <target name="start_game_2" />
+    <target name="start_game_3" />
+  </alias>
+
+  <sound name="quit_1" url="ui/switch_001_CC0_by_Kenney.wav" />
+  <sound name="quit_2" url="ui/switch_002_CC0_by_Kenney.wav" />
+  <sound name="quit_3" url="ui/switch_003_CC0_by_Kenney.wav" />
+  <sound name="quit_4" url="ui/switch_004_CC0_by_Kenney.wav" />
+  <sound name="quit_5" url="ui/switch_005_CC0_by_Kenney.wav" />
+  <sound name="quit_6" url="ui/switch_006_CC0_by_Kenney.wav" />
+  <sound name="quit_7" url="ui/switch_007_CC0_by_Kenney.wav" />
+  <alias name="quit">
+    <target name="quit_1" />
+    <target name="quit_2" />
+    <target name="quit_3" />
+    <target name="quit_4" />
+    <target name="quit_5" />
+    <target name="quit_6" />
+    <target name="quit_7" />
+  </alias>
 </sounds>
