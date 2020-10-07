@@ -37,7 +37,7 @@
               "HorizontalAnchorParent" : "hpMiddle",
               "HorizontalAnchorSelf" : "hpMiddle",
               "Name" : "HighScoreImage",
-              "VerticalAnchorDelta" : -2.6200000000000000E+002,
+              "VerticalAnchorDelta" : -2.5400001525878906E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "$Children" : [
@@ -52,7 +52,7 @@
               "Text" : [
                 "Your score:"
               ],
-              "VerticalAnchorDelta" : -5.3100000000000000E+002,
+              "VerticalAnchorDelta" : -5.0900000000000000E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "$Children" : [
@@ -60,14 +60,14 @@
               "$ClassName" : "TCastleLabel"
             },
             {
-              "FontSize" : 6.0000000000000000E+001,
+              "FontSize" : 8.0000000000000000E+001,
               "HorizontalAnchorParent" : "hpMiddle",
               "HorizontalAnchorSelf" : "hpMiddle",
               "Name" : "ScoreValueLabel",
               "Text" : [
                 "9999999"
               ],
-              "VerticalAnchorDelta" : -6.3500000000000000E+002,
+              "VerticalAnchorDelta" : -6.1300000000000000E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "$Children" : [
@@ -101,10 +101,10 @@
                 "$ClassName" : "TCastleImagePersistent"
               },
               "Name" : "PlayAgainButton",
-              "VerticalAnchorDelta" : -7.3900000000000000E+002,
+              "VerticalAnchorDelta" : -7.3700000000000000E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
-              "Width" : 4.0600000000000000E+002,
+              "Width" : 5.5000000000000000E+002,
               "$Children" : [
               ],
               "$ClassName" : "TCastleButton"
@@ -136,10 +136,10 @@
                 "$ClassName" : "TCastleImagePersistent"
               },
               "Name" : "MainMenuButton",
-              "VerticalAnchorDelta" : -9.4900000000000000E+002,
+              "VerticalAnchorDelta" : -9.4700000000000000E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
-              "Width" : 4.0600000000000000E+002,
+              "Width" : 5.5000000000000000E+002,
               "$Children" : [
               ],
               "$ClassName" : "TCastleButton"
