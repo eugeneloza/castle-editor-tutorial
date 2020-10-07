@@ -64,6 +64,7 @@ procedure TStateGame.Start;
 var
   UiOwner: TComponent;
   X, Y: Integer;
+  UnusedBooleanVariable: Boolean = false;
 begin
   inherited;
   InsertUserInterface('castle-data:/Game.castle-user-interface', FreeAtStop, UiOwner);
@@ -89,6 +90,7 @@ begin
   GameScore := 0;
   GameRunning := true;
   HighScoreLabel.Caption := UserConfig.GetValue('high_score', 0).ToString;
+  Update(0, UnusedBooleanVariable);
 end;
 
 procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
