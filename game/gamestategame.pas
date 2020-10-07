@@ -45,7 +45,7 @@ var
 implementation
 uses
   CastleComponentSerialize,
-  CastleVectors, CastleConfig,
+  CastleVectors, CastleConfig, CastleSoundEngine,
   GameStateGameOver, GameFont;
 
 constructor TStateGame.Create(AOwner: TComponent);
@@ -74,6 +74,7 @@ begin
   HighScoreLabel := UiOwner.FindRequiredComponent('HighScoreLabel') as TCastleLabel;
   ScoreText.CustomFont := CartoonFont60;
   HighscoreText.CustomFont := CartoonFont30;
+  SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('game_music');
   Randomize;
   for X := 1 to 3 do
     for Y := 1 to 4 do
@@ -119,13 +120,17 @@ begin
       end;
       if ThisGamePad^.Score > 0 then
       begin
+        SoundEngine.Sound(SoundEngine.SoundFromName('click'));
         GameScore += ThisGamePad^.Score;
         ThisGamePad^.Score := 0;
         ThisGamePad^.Ripeness := 0.0;
         ThisGamePad^.Speed := 0.5 + Random;
       end else
       if ThisGamePad^.Score = 0 then
+      begin
         GamePace += 0.5;
+        SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
+      end;
     end;
   end;
 end;
@@ -156,6 +161,7 @@ begin
         end else
         begin
           //GameOver
+          SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
           GameRunning := false;
           StateGameOver.Score := GameScore;
           if UserConfig.GetValue('high_score', 0) < GameScore then

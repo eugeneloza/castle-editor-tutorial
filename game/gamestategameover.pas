@@ -35,7 +35,7 @@ var
 implementation
 uses
   CastleComponentSerialize,
-  CastleVectors,
+  CastleVectors, CastleSoundEngine,
   GameFont, GameStateGame, GameStateMainMenu;
 
 procedure TStateGameOver.Start;
@@ -67,11 +67,13 @@ end;
 
 procedure TStateGameOver.ClickPlayAgain(Sender: TObject);
 begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('start_game'));
   TUiState.Current := StateGame;
 end;
 
 procedure TStateGameOver.ClickMainMenu(Sender: TObject);
 begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('quit'));
   TUiState.Current := StateMainMenu;
 end;
 

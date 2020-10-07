@@ -25,7 +25,7 @@ var
 implementation
 uses
   CastleComponentSerialize,
-  CastleWindow,
+  CastleWindow, CastleSoundEngine,
   GameFont, GameStateGame;
 
 procedure TStateMainMenu.Start;
@@ -48,23 +48,28 @@ begin
   QuitButton.CustomFont := CartoonFont60;
   {$ifdef CASTLE_IOS}QuitButton.Enabled := false;{$endif}
   {$ifdef ANDROID}QuitButton.Enabled := false;{$endif}
+  SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
 end;
 
 procedure TStateMainMenu.ClickStart(Sender: TObject);
 begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('start_game'));
   TUiState.Current := StateGame;
 end;
 
 procedure TStateMainMenu.ClickOptions(Sender: TObject);
 begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));
 end;
 
 procedure TStateMainMenu.ClickCredits(Sender: TObject);
 begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));
 end;
 
 procedure TStateMainMenu.ClickQuit(Sender: TObject);
 begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('quit'));
   Application.MainWindow.Close;
 end;
 

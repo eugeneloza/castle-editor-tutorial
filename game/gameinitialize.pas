@@ -14,6 +14,7 @@ implementation
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties, CastleUiState, CastleConfig,
+  CastleSoundEngine,
   GameFont, GameStateMainMenu, GameStateGame, GameStateGameOver;
 
 var
@@ -26,6 +27,7 @@ begin
 
   LoadFonts;
   UserConfig.Load;
+  SoundEngine.RepositoryURL := 'castle-data:/audio/index.xml';
 
   StateGame := TStateGame.Create(Application);
   StateGameOver := TStateGameOver.Create(Application);
