@@ -1439,3 +1439,95 @@ Now our State design looks like:
 
 ![Game Over popup](images/designing-gameover-popup.png)
 
+### Creating a State for Game Over Popup
+
+The very same way as we already did twice, let's make a State for Game Over Popup. Let's create a unit `GameStateGameOver` with the following contents:
+
+```Pascal
+unit GameStateGameOver;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils,
+  CastleUiState, CastleControls, CastleUiControls;
+
+type
+  TStateGameOver = class(TUiState)
+  private
+    BackgroundColor: TCastleRectangleControl;
+    GameOverPopup: TCastleUserInterface;
+    GameOverImage, HighScoreImage: TCastleImageControl;
+    ScoreTextLabel, ScoreValueLabel: TCastleLabel;
+    PlayAgainButton, MainMenuButton: TCastleButton;
+    procedure ClickPlayAgain(Sender: TObject);
+    procedure ClickMainMenu(Sender: TObject);
+  public
+    procedure Start; override;
+    procedure Update(const SecondsPassed: Single; var HandleInput: Boolean); override;
+  end;
+
+var
+  StateGameOver: TStateGameOver;
+
+implementation
+uses
+  CastleComponentSerialize,
+  CastleVectors,
+  GameFont, GameStateGame, GameStateMainMenu;
+
+procedure TStateGameOver.Start;
+var
+  UiOwner: TComponent;
+  UnusedBooleanVariable: Boolean = false;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/GameOver.castle-user-interface', FreeAtStop, UiOwner);
+  BackgroundColor := UiOwner.FindRequiredComponent('BackgroundColor') as TCastleRectangleControl;
+  GameOverPopup := UiOwner.FindRequiredComponent('GameOverPopup') as TCastleUserInterface;
+  GameOverImage := UiOwner.FindRequiredComponent('GameOverImage') as TCastleImageControl;
+  HighScoreImage := UiOwner.FindRequiredComponent('HighScoreImage') as TCastleImageControl;
+  ScoreTextLabel := UiOwner.FindRequiredComponent('ScoreTextLabel') as TCastleLabel;
+  ScoreValueLabel := UiOwner.FindRequiredComponent('ScoreValueLabel') as TCastleLabel;
+  PlayAgainButton := UiOwner.FindRequiredComponent('PlayAgainButton') as TCastleButton;
+  MainMenuButton := UiOwner.FindRequiredComponent('MainMenuButton') as TCastleButton;
+  ScoreTextLabel.CustomFont := CartoonFont60;
+  PlayAgainButton.CustomFont := CartoonFont60;
+  MainMenuButton.CustomFont := CartoonFont60;
+  PlayAgainButton.OnClick := @ClickPlayAgain;
+  MainMenuButton.OnClick := @ClickMainMenu;
+  Update(0, UnusedBooleanVariable);
+end;
+
+procedure TStateGameOver.ClickPlayAgain(Sender: TObject);
+begin
+  TUiState.Current := StateGame;
+end;
+
+procedure TStateGameOver.ClickMainMenu(Sender: TObject);
+begin
+  TUiState.Current := StateMainMenu;
+end;
+
+procedure TStateGameOver.Update(const SecondsPassed: Single; var HandleInput: Boolean);
+begin
+  inherited;
+end;
+
+end.
+```
+
+We've already been through all of this process twice, so let's not waste any time here. Just a short summary of what we did here:
+
+- We've created `TStateGameOver` and it's singleton variable `StateGameOver`.
+
+- We've parsed the State Design in `Start` procedure and assigned fonts and `OnClick` events.
+
+- We've implemented button clicks that will change `TUiState.Current` to either `StateGame` or `StateMainMenu` depending on Player's choice.
+
+- We've created an empty `Update` procedure to take care of animations.
+
+The same way as before let's create our State in `GameInitialize` adding `GameStateGameOver` to `uses` section and `StateGameOver := TStateGameOver.Create(Application);` somewhere in `ApplicationInitialize`.
+
