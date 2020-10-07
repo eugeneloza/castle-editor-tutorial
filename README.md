@@ -717,7 +717,7 @@ Let's repeat this step for all buttons, save the design and run the game from La
 
 ### Start designing Game State
 
-Now, finally we can start working on the game. Let's not here, that it is actually better to start working on the game from the start, and only then create other UI states, like Main Menu. This way we shall have a working prototype quite soon, that can be easily tested and some adjustments can be made as early as possible. However, as in our case the game is expected to be extra simple and still creating a game is more complex than creation of a simple UI - we did the first part so now we can concentrate more on the game itself, than on using the Castle Editor.
+Now, finally we can start working on the game. Let's note here, that it is actually better to start working on the gameplay from the beginning, and only after that create other UI states, like Main Menu. This way we shall have a working prototype quite soon, that can be easily tested and some adjustments can be made as early as possible. However, as in our case the game is expected to be extra simple and still creating a game is more complex than creation of a simple UI - we did the first part so now we can concentrate more on the game itself, than on using the Castle Editor.
 
 But of course, we shall be creating the game screen in Castle Editor. Let's start by creating a new Design by doing the same way as we did for Main Menu: Design -> New User Interface (Chosen Root) -> Image (TCastleImageControl). Again, let's call this image `BackgroundImage` and load our background image in "Basic" tab and make it `FullScreen` in "All" tab.
 
