@@ -1588,3 +1588,63 @@ end else
 
 ![Passing data to a State](images/passing-data-to-state.png)
 
+### Animating Game Over Popup
+
+As we've already noted, we'll do the animations through `Update` procedure in `GameStateGameOver`. We'll be animating two objects: color of `BackgroundColor` and position of `GameOverPopup`. First let's add a `const` with animation time somewhere in `interface` section:
+
+```Pascal
+const
+  AnimationDuration = 0.3;
+```
+
+This specifies the animation duration - 1 second. Now in `TStateGameOver` let's create a `private` variable:
+
+```Pascal
+type
+  TStateGameOver = class(TUiState)
+  private
+    AnimationTime: Single;
+    ...
+  end;
+```
+
+Set it to zero in `Start`:
+
+```Pascal
+procedure TStateGameOver.Start;
+var
+  UiOwner: TComponent;
+  UnusedBooleanVariable: Boolean = false;
+begin
+  inherited;
+  ...
+  AnimationTime := 0;
+  Update(0, UnusedBooleanVariable);
+end;
+```
+
+Now let's add `SecondsPassed` to it in `Update` and set parameters of our two animated objects based on this value:
+
+```
+procedure TStateGameOver.Update(const SecondsPassed: Single; var HandleInput: Boolean);
+begin
+  inherited;
+  AnimationTime += SecondsPassed;
+  if AnimationTime < AnimationDuration then
+  begin
+    BackgroundColor.Color := Vector4(0.57, 0.80, 0.92, 0.9 * AnimationTime/AnimationDuration);
+    GameOverPopup.VerticalAnchorDelta := -0.5 * 1334 * (1.0 - Sqrt(AnimationTime/AnimationDuration));
+  end else
+  begin
+    BackgroundColor.Color := Vector4(0.57, 0.80, 0.92, 0.9);
+    GameOverPopup.VerticalAnchorDelta := 0;
+  end;
+end;
+```
+
+Here we increase `AnimationTime` every frame. If it's less than `AnimationDuration` we slowly increase alpha (opacity) of `BackgroundColor` and set it to a cyan tint. Also we're changing `GameOverPopup.VerticalAnchorDelta` which is its vertical position - moving it from below the screen to central position (where `VerticalAnchorDelta` is zero).
+
+If `AnimationTime >= AnimationDuration` we just set the final values for the variables. Now our Game Over screen looks like this:
+
+![Animated Game Over](images/animated-gameover.png)
+
