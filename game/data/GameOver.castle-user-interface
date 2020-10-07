@@ -1,0 +1,7 @@
+{
+  "FullSize" : true,
+  "Name" : "RectangleControl1",
+  "$Children" : [
+  ],
+  "$ClassName" : "TCastleRectangleControl"
+}
