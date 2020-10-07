@@ -1625,7 +1625,7 @@ end;
 
 Now let's add `SecondsPassed` to it in `Update` and set parameters of our two animated objects based on this value:
 
-```
+```Pascal
 procedure TStateGameOver.Update(const SecondsPassed: Single; var HandleInput: Boolean);
 begin
   inherited;
