@@ -1409,3 +1409,8 @@ Done! Now our High Score is automatically assigned when the Player finishes the 
 
 ![High Score saved](images/gameplay-high-score.png)
 
+### Fix a possible bug with Update order
+
+Now, before we proceed, let's make our code a bit more "bullet-proof". The problem here is that `Update` event can come at different moments on different platforms. Therefore it'd be a very good idea to `Update` our game view before the first frame is rendered, so that the Player won't see our placeholders for a fraction of a second. Therefore we'd want to `Update` our UI in the end of `Start` procedure.
+
+To make it simple, let's make a small hack. It's unsafe to do this way in a general case, but in our simple game there isn't anything that can go wrong here. So let's just add `UnusedBooleanVariable: Boolean = false;` to `var` section of `Start` and `Update(0, UnusedBooleanVariable);` in the end of `Start` procedure - after every UI item was found and all variables have proper values.
