@@ -45,6 +45,12 @@
               "$ClassName" : "TCastleImageControl"
             },
             {
+              "ColorPersistent" : {
+                "Blue" : 2.5098040699958801E-001,
+                "Green" : 1.7647059261798859E-001,
+                "Red" : 8.6274512112140656E-002,
+                "$ClassName" : "TCastleColorPersistent"
+              },
               "FontSize" : 6.0000000000000000E+001,
               "HorizontalAnchorParent" : "hpMiddle",
               "HorizontalAnchorSelf" : "hpMiddle",
@@ -60,6 +66,12 @@
               "$ClassName" : "TCastleLabel"
             },
             {
+              "ColorPersistent" : {
+                "Blue" : 2.5098040699958801E-001,
+                "Green" : 1.7647059261798859E-001,
+                "Red" : 8.6274512112140656E-002,
+                "$ClassName" : "TCastleColorPersistent"
+              },
               "FontSize" : 8.0000000000000000E+001,
               "HorizontalAnchorParent" : "hpMiddle",
               "HorizontalAnchorSelf" : "hpMiddle",
@@ -93,6 +105,13 @@
                 "URL" : "castle-data:/images/buttons/button_yellow.png",
                 "$ClassName" : "TCastleImagePersistent"
               },
+              "CustomTextColorPersistent" : {
+                "Blue" : 2.5098040699958801E-001,
+                "Green" : 1.7647059261798859E-001,
+                "Red" : 8.6274512112140656E-002,
+                "$ClassName" : "TCastleColorPersistent"
+              },
+              "CustomTextColorUse" : true,
               "FontSize" : 6.0000000000000000E+001,
               "Height" : 1.6000000000000000E+002,
               "HorizontalAnchorParent" : "hpMiddle",
@@ -128,6 +147,13 @@
                 "URL" : "castle-data:/images/buttons/button_yellow.png",
                 "$ClassName" : "TCastleImagePersistent"
               },
+              "CustomTextColorPersistent" : {
+                "Blue" : 2.5098040699958801E-001,
+                "Green" : 1.7647059261798859E-001,
+                "Red" : 8.6274512112140656E-002,
+                "$ClassName" : "TCastleColorPersistent"
+              },
+              "CustomTextColorUse" : true,
               "FontSize" : 6.0000000000000000E+001,
               "Height" : 1.6000000000000000E+002,
               "HorizontalAnchorParent" : "hpMiddle",
