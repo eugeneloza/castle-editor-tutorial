@@ -15,7 +15,8 @@ uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties, CastleUiState, CastleConfig,
   CastleSoundEngine,
-  GameFont, GameStateMainMenu, GameStateGame, GameStateGameOver;
+  GameFont, GameStateMainMenu, GameStateGame, GameStateGameOver,
+  GameStateOptions;
 
 var
   Window: TCastleWindowBase;
@@ -29,8 +30,12 @@ begin
   UserConfig.Load;
   SoundEngine.RepositoryURL := 'castle-data:/audio/index.xml';
 
+  SoundEngine.Volume := UserConfig.GetFloat('volume', 1.0);
+  SoundEngine.LoopingChannel[0].Volume := UserConfig.GetFloat('music', 0.5);
+
   StateGame := TStateGame.Create(Application);
   StateGameOver := TStateGameOver.Create(Application);
+  StateOptions := TStateOptions.Create(Application);
   StateMainMenu := TStateMainMenu.Create(Application);
   TUiState.Current := StateMainMenu;
 end;

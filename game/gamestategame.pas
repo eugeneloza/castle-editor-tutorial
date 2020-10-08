@@ -130,7 +130,8 @@ begin
       begin
         GamePace += 0.5;
         SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
-        Vibrate(100);
+        if UserConfig.GetValue('vibration', true) then
+          Vibrate(100);
       end;
     end;
   end;
@@ -162,6 +163,8 @@ begin
         end else
         begin
           //GameOver
+          if UserConfig.GetValue('vibration', true) then
+            Vibrate(500);
           SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
           StateGameOver.Score := GameScore;
           if UserConfig.GetValue('high_score', 0) < GameScore then
