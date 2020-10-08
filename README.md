@@ -2338,6 +2338,8 @@ Still one note to be made: we've changed some of the labels `Alignment` property
 
 ![Text alignment on Label](images/text-alignment-on-label.png)
 
+And edited images `Color` property, the same way as we do it in-game, to emulate how the button will look.
+
 ### Implement State Tutorial
 
 Implementation of this state is almost identical to `StateCredits`:
