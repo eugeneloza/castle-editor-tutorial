@@ -2254,9 +2254,11 @@ Another very small and simple state to create is a short information for the Pla
 
 ## Achievements
 
-It happens quite so often, that there are last-minute requested changes before the release. Let's emulate this situation and learn one more cool feature of Castle Editor. Let's add Achievements to our game. No, we won't be publishing our game on Apple Store or Google Play Store, it's certainly outside of the scope of this game. But let's make an internal system for handling some Achievements to motivate the Player reach the new heights.
+It happens quite so often, that there are last-minute requested changes before the release. Let's emulate this situation and learn one more cool feature of Castle Editor.
 
-We'll show Achievements both in a special Hall of Fame and in Game Over screen in case Player has reached a new achievement. That means that we might be better to reuse every achievement design, so that we won't have to draw them again and again.
+Let's add Achievements to our game. No, we won't be publishing our game on Apple Store or Google Play Store, it's certainly outside of the scope of this tutorial. But let's make an internal system for handling some Achievements to motivate the Player reach the new heights.
+
+We'll show Achievements both in a special Achievements page, accessible from Main Menu and in Game Over screen in case Player has reached a new achievement. That means that we might be better to reuse every achievement design, so that we won't have to draw them again and again.
 
 ## Happy End!
 
