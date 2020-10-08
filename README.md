@@ -2226,3 +2226,6 @@ if UserConfig.GetValue('vibration', true) then
   Vibrate(500);
 ```
 
+## State Credits
+
+It is respectful and often legally required to mention the people who worked on a game and whose assets (like graphics, music, sounds) were used in it. So, again, let's create a special - this time very simple - state Credits for this purpose.
