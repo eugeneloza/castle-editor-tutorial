@@ -1636,7 +1636,7 @@ begin
   if AnimationTime < AnimationDuration then
   begin
     BackgroundColor.Color := Vector4(0.57, 0.80, 0.92, 0.9 * AnimationTime/AnimationDuration);
-    GameOverPopup.VerticalAnchorDelta := -0.5 * 1334 * (1.0 - Sqrt(AnimationTime/AnimationDuration));
+    GameOverPopup.VerticalAnchorDelta := -0.5 * 1334 * (1.0 - AnimationTime/AnimationDuration);
   end else
   begin
     BackgroundColor.Color := Vector4(0.57, 0.80, 0.92, 0.9);
