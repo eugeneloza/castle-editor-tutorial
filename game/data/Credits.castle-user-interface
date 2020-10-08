@@ -251,7 +251,7 @@
           },
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
-          "Name" : "GraphicsAuthors",
+          "Name" : "GraphicsAuthorsLabel",
           "Text" : [
             "pzUH, Charles Rondeau"
           ],
