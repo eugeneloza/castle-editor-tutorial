@@ -2336,6 +2336,61 @@ We know everything now! Let's just make it without any additional words:
 
 ### Implement State Tutorial
 
+Implementation of this state is almost identical to `StateCredits`:
+
+```Pascal
+unit GameStateTutorial;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, CastleUiState, CastleControls, CastleKeysMouse;
+
+type
+  TStateTutorial = class(TUiState)
+  public
+    procedure Start; override;
+    function Press(const Event: TInputPressRelease): Boolean; override;
+  end;
+
+var
+  StateTutorial: TStateTutorial;
+
+implementation
+uses
+  CastleComponentSerialize,
+  CastleSoundEngine,
+  GameStateGame;
+
+procedure TStateTutorial.Start;
+var
+  UiOwner: TComponent;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/Tutorial.castle-user-interface', FreeAtStop, UiOwner);
+end;
+
+function TStateTutorial.Press(const Event: TInputPressRelease): Boolean;
+begin
+  Result := inherited;
+  SoundEngine.Sound(SoundEngine.SoundFromName('start_game'));
+  TUiState.Current := StateGame;
+end;
+
+end.
+```
+
+Exactly the same way we add `GameStateTutorial` to `uses` section of `GameInitialize` and create the `TStateTutorial` class in `ApplicationInitialize`:
+
+```Pascal
+StateTutorial := TStateTutorial.Create(Application);
+```
+
+The only thing left to do - is now to show the tutorial before going into `StateGame` state from the `StateMainMenu`. We simply have to replace `GameStateGame` for `GameStateTutorial` in `uses` section of `GameStateMainMenu` and replace `StateGame` with `StateTutorial` in `ClickStart`.
+
+All done! Now we can compile, run and see that our Tutorial is displayed when we start a new game.
 
 ## Splash Screen
 
