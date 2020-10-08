@@ -123,6 +123,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateGameOver"/>
       </Unit>
+      <Unit>
+        <Filename Value="gamestateoptions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="GameStateOptions"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
