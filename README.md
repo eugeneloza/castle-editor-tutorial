@@ -1006,7 +1006,7 @@ Let's create a `private` callback for this event inside `TStateGame`:
 procedure ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
 ```
 
-Note that `TInputPressRelease` is inside `CastleKeysMouse`, so we have to add those two units to `uses` section too. This procedure will receive three parameters: `Sender` which will be the object that was clicked, we'll need its `Name` to determine which exactly button was clicked, `Event` - a thorough description of the `Press` `Event` that happened and if this event was already `Handled` by some other UI element (we won't need it in this game).
+Note that `TInputPressRelease` is inside `CastleKeysMouse`, so we have to add this unit to `uses` section too. This procedure will receive three parameters: `Sender` which will be the object that was clicked, we'll need its `Name` to determine which exactly button was clicked, `Event` - a thorough description of the `Press` `Event` that happened and if this event was already `Handled` by some other UI element (we won't need it in this game).
 
 Next, let's assign `OnPress` event to this procedure for our "ButtonGroup"s. In the loop we need just to add one line:
 
