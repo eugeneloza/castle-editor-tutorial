@@ -2319,7 +2319,7 @@ procedure TStateMainMenu.ClickCredits(Sender: TObject);
 begin
   SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));
   TUiState.Current := StateCredits;
-end; 
+end;
 ```
 
 All done!
@@ -2396,7 +2396,57 @@ All done! Now we can compile, run and see that our Tutorial is displayed when we
 
 ### Creating a Splash Screen Image
 
+Our game also needs a more prominent "Splash Screen" than a minimal "Loading..." text provided to us by Castle Game Engine. We have to note that loading of the game, especially on slow mobile devices, can take relatively significant amount of time, therefore the splash screen is not a regular "State" with which we had some experience before. In the very beginning we can't even count that it's possible to read files, as the corresponding permissions may have not yet been given to our game - that is we can't read the Splash Screen image from a file.
+
+There is a solution. We can have the splash screen as a part of our code. This way it will be absolutely robust and will load lighting-fast and will be ready to display as soon as anything can be displayed. Therefore we have to convert an image to Pascal code. This can be done by Castle Game Engine's tool called `image-to-pascal`. It can be found in `tools` folder. You can compile it using Lazarus by double-clicking the `image-to-pascal.lpi` file and pressing F9 or Run.
+
+There is one catch though, it is a command-line app, not a GUI one. So we have to use console. On Windows it can be done by pressing `Win+R` and typing in `cmd`. Then navigate to the drive and folder where `image-to-pascal` is located. This might be not trivial if you've never had experience using console. Let's imagine our Castle Game Engine installation is in "D:\castle-engine" folder. Then we have to do it this way:
+
+```Shell
+C:\Users\Username\>D:
+```
+
+This will change our current drive to "D:" and then:
+
+```Shell
+D:\>cd castle-engine\tools\image-to-pascal
+```
+
+Which will make `image-to-pascal` folder current.
+
+Now let's specify the following parameters for `image-to-pascal`:
+
+```Shell
+D:\castle-engine\tools\image-to-pascal\>image-to-pascal SplashScreen SplashImage.png
+```
+
+You can find the original `SplashImage.png` image for Button Clicker inside `splashscreen_image` directory in `game` folder of this tutorial.
+
+The command above will generate two files: `splashscreen.pas` which contains the image definition and `splashscreen.image_data` which contains the image data. Let's copy or move those to our game folder.
+
 ### Using Splash Screen in the Game
+
+Let's add `SplashScreen` and `CastleColors` to `uses` section of `GameInitialize` and in `initialization` add:
+
+```Pascal
+initialization
+  ApplicationProperties.ApplicationName := 'ButtonClickerGame';
+
+  if IsLibrary then
+    InitializeLog;
+
+  Theme.LoadingBackgroundColor := HexToColor('6fbee4');
+  Theme.Images[tiLoading] := SplashImage;
+  Theme.OwnsImages[tiLoading] := false;
+  Theme.LoadingImageForWindowHeight := 1334;
+  ...
+```
+
+Here we modify default values of the `Theme` - to set background color (`LoadingBackgroundColor`) for our Splash Screen (that would be color of everything beyond our image). `HexToColor` is a useful function from `CastleColors` that converts color in HEX notation (often used by graphic designers) into `TCastleColor` - that is a color usable in the program.
+
+Next we set one of `Theme`'s images namely `tiLoading` which is shown as a Splash Screen while the application is loading. As our generated image file automatically frees the image for us, Theme should not "own" this image.
+
+And finally we suggest `Theme` the resolution for which the image has been created. This doesn't work as good as UI scaling we've been using so far, so we should take some caution that our Splash Screen image would look fine in different aspect ratios.
 
 ## Achievements
 
