@@ -2294,7 +2294,13 @@ end;
 end.
 ```
 
-The only "new" thing here is `function Press` which is called when the Player presses mouse button, keyboard key or taps the screen. It's very similar to the `OnPress` event we've used when implementing `GameStateGame`. And in the function itself we simply send the Player back to `StateMainMenu` - upon pressing anything.
+The only "new" thing here is `function Press` which is called when the Player presses mouse button, keyboard key or taps the screen. It's very similar to the `OnPress` event we've used when implementing `GameStateGame`. And in the function itself we simply send the Player back to `StateMainMenu` - upon pressing anything. Also note the new syntax of calling `inherited;`:
+
+```Pascal
+Result := inherited;
+```
+
+Which sets the `Result` of our `function` to the `Result` of the `function` inherited from the Parent class.
 
 Also note, that we actually don't even process anything in `Start` - this state is "static" just a single unchanging screen.
 
