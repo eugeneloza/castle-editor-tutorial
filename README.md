@@ -1811,7 +1811,7 @@ end;
 
 Here `SoundEngine.Sound` plays a sound which is in turn found "by name" using `SoundEngine.SoundFromName`. We can now test and see that it's working.
 
-The same way adding a "game over" sound:
+The same way we add a "game over" sound:
 
 ```XML
 <sounds>
