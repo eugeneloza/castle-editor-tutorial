@@ -1909,3 +1909,35 @@ end;
 
 Note, that it's safe to call this function on platforms that don't support vibration, but nothing will happen.
 
+## State Options
+
+The Player might want to fine-tune some game settings for more convenient gameplay. There isn't really much to tweak in our simple game, but we might want to let Player change the volume of the music and sound.
+
+### Designing State Options
+
+Let's create a new Design, the very same way as we did for Main Menu and Game States, with `TCastleImagecontrol` as root element, call it `BackgroundImage` and load our regular background image into it. Save the design as `Options.castle-user-interface`. Again, let's add a `TCastleVerticalGroup` to the design naming it `OptionsGroup` and centering it on screen "Layout" tab, and setting `Alignment` to `hpMiddle`.
+
+Let's add a `TCastleHorizontalGroup` named `VolumeGroup` inside. Let's add a `TCastleLabel` named `VolumeText` with caption "Volume:" and color "162D40". Let's add a button with `CustomBackgroun` and `CustomBackgroundNormal`: "smallbutton_cyan.png"; `CustomBackgroundFocused`: "smallbutton_green.png"; `CustomBackgroundPressed`: "smallbutton_yellow.png"; `AutoSizeToChildren`: "false"; `CustomTextColorUse`: "true"; `CustomTextColor`: "162D40"; `Width`: "76"; `Height`: "80"; `Name`: "ButtonVolume0"; `Caption`: "0%".
+
+As a child of `ButtonVolume0` let's add a `TCastleImageControl` with name "SelectedVolume0" and URL pointing to "selected_circle.png", let's center it in "Layout" tab. So it'll now look like this:
+
+![Volume button design](images/volume-button-design.png)
+
+Now, it's just to duplicate our button 4 times so that we have 5 buttons:
+
+![Volume buttons](images/volume-buttons.png)
+
+Now let's duplicate our whole `VolumeGroup` and name it `MusicGroup`. Also let's rename all buttons and images correspondingly:
+
+![Volume and music options](images/volume-and-music-options.png)
+
+Note that here we've also done a small trick and `MusicText` `Caption` is set to "Music: " (notice space in the end) - just to avoid alignment problems quick and dirty thanks to using monospace font.
+
+Let's duplicate our `MusicGroup` and call it `VibrateGroup`, doing the very same renames, but only leave 2 buttons with captions changed into "OFF" and "ON":
+
+![Volume, music and vibration options](images/volume-music-vibration-options.png)
+
+Let's add an Empty Rectangle to `OptionsGroup` that would work as a separator here. And in the end add a button with equal design like Main Menu buttons:
+
+![Options design](images/options-design.png)
+
