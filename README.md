@@ -1931,7 +1931,7 @@ Now let's duplicate our whole `VolumeGroup` and name it `MusicGroup`. Also let's
 
 Note that here we've also done a small trick and `MusicText` `Caption` is set to "Music: " (notice space in the end) - just to avoid alignment problems quick and dirty thanks to using monospace font.
 
-Let's duplicate our `MusicGroup` and call it `VibrateGroup`, doing the very same renames, but only leave 2 buttons with captions changed into "OFF" and "ON":
+Let's duplicate our `MusicGroup` and call it `VibrationGroup`, doing the very same renames, but only leave 2 buttons with captions changed into "OFF" and "ON":
 
 ![Volume, music and vibration options](images/volume-music-vibration-options.png)
 
