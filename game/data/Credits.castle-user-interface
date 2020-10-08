@@ -1,0 +1,17 @@
+{
+  "Content" : {
+    "URL" : "castle-data:/images/abstract-wallpaper-1544138641N95_CC0_by_Charles_Rondeau.jpg",
+    "$ClassName" : "TCastleImagePersistent"
+  },
+  "FullSize" : true,
+  "Name" : "BackgroundImage",
+  "$Children" : [
+    {
+      "Name" : "CreditsGroup",
+      "$Children" : [
+      ],
+      "$ClassName" : "TCastleVerticalGroup"
+    }
+  ],
+  "$ClassName" : "TCastleImageControl"
+}
