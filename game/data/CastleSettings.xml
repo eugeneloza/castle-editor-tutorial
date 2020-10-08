@@ -14,9 +14,9 @@
   <default_font>
     <regular
       url="fonts/CatV_6x12_9.ttf"
-      size="30"
+      size="40"
       anti_aliased="true"
-      sizes_at_load="30 40 80"
+      sizes_at_load="40 80"
     />
   </default_font>
 </castle_settings>

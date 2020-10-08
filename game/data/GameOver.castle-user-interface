@@ -37,7 +37,7 @@
               "HorizontalAnchorParent" : "hpMiddle",
               "HorizontalAnchorSelf" : "hpMiddle",
               "Name" : "HighScoreImage",
-              "VerticalAnchorDelta" : -2.5400001525878906E+002,
+              "VerticalAnchorDelta" : -2.5400000000000000E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "$Children" : [
@@ -79,7 +79,7 @@
               "Text" : [
                 "9999999"
               ],
-              "VerticalAnchorDelta" : -6.1300000000000000E+002,
+              "VerticalAnchorDelta" : -6.1450000000000000E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "$Children" : [
@@ -120,7 +120,7 @@
                 "$ClassName" : "TCastleImagePersistent"
               },
               "Name" : "PlayAgainButton",
-              "VerticalAnchorDelta" : -7.3700000000000000E+002,
+              "VerticalAnchorDelta" : -7.3850000000000000E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "Width" : 5.5000000000000000E+002,
@@ -162,7 +162,7 @@
                 "$ClassName" : "TCastleImagePersistent"
               },
               "Name" : "MainMenuButton",
-              "VerticalAnchorDelta" : -9.4700000000000000E+002,
+              "VerticalAnchorDelta" : -9.4850000000000000E+002,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "Width" : 5.5000000000000000E+002,

@@ -67,7 +67,6 @@
                     "Red" : 8.6274512112140656E-002,
                     "$ClassName" : "TCastleColorPersistent"
                   },
-                  "FontSize" : 4.0000000000000000E+001,
                   "HorizontalAnchorDelta" : -5.0000000000000000E+001,
                   "HorizontalAnchorSelf" : "hpRight",
                   "LineSpacing" : 1.5000000000000000E+001,
@@ -140,7 +139,6 @@
                     "Red" : 8.6274512112140656E-002,
                     "$ClassName" : "TCastleColorPersistent"
                   },
-                  "FontSize" : 4.0000000000000000E+001,
                   "HorizontalAnchorDelta" : 5.0000000000000000E+001,
                   "HorizontalAnchorParent" : "hpRight",
                   "LineSpacing" : 1.5000000000000000E+001,
@@ -196,7 +194,6 @@
                     "Red" : 8.6274512112140656E-002,
                     "$ClassName" : "TCastleColorPersistent"
                   },
-                  "FontSize" : 4.0000000000000000E+001,
                   "HorizontalAnchorDelta" : -5.0000000000000000E+001,
                   "HorizontalAnchorSelf" : "hpRight",
                   "LineSpacing" : 1.5000000000000000E+001,
@@ -310,7 +307,6 @@
                     "Red" : 8.6274512112140656E-002,
                     "$ClassName" : "TCastleColorPersistent"
                   },
-                  "FontSize" : 4.0000000000000000E+001,
                   "HorizontalAnchorDelta" : 6.0000000000000000E+001,
                   "HorizontalAnchorParent" : "hpRight",
                   "LineSpacing" : 1.5000000000000000E+001,
@@ -390,7 +386,6 @@
             "Red" : 8.6274512112140656E-002,
             "$ClassName" : "TCastleColorPersistent"
           },
-          "FontSize" : 4.0000000000000000E+001,
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "GameGoalLabel",
@@ -409,7 +404,7 @@
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "Spacer2",
-          "VerticalAnchorDelta" : -1.0460000000000000E+003,
+          "VerticalAnchorDelta" : -1.0470000000000000E+003,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -430,7 +425,7 @@
           "Text" : [
             "Good Luck!"
           ],
-          "VerticalAnchorDelta" : -1.0960000000000000E+003,
+          "VerticalAnchorDelta" : -1.0970000000000000E+003,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -444,14 +439,13 @@
             "Red" : 8.6274512112140656E-002,
             "$ClassName" : "TCastleColorPersistent"
           },
-          "FontSize" : 4.0000000000000000E+001,
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "ClickToStartLabel",
           "Text" : [
             "Click to start"
           ],
-          "VerticalAnchorDelta" : -1.1700000000000000E+003,
+          "VerticalAnchorDelta" : -1.1710000000000000E+003,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [

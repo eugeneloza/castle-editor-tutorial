@@ -640,20 +640,20 @@ Before we proceed, we need to improve how our fonts look. We shall be using two 
   <default_font>
     <regular
       url="fonts/CatV_6x12_9.ttf"
-      size="30"
+      size="40"
       anti_aliased="true"
     />
   </default_font>
 </castle_settings>
 ```
 
-This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 30. We can immediately see that it looks better:
+This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. We can immediately see that it looks better:
 
 ![New default font look](images/better-font.png)
 
 ### Load and use a custom font
 
-However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 30 - two times smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet, so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
+However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 40 - much smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet, so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
 
 ```Pascal
 unit GameFont;
@@ -807,20 +807,20 @@ Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighSco
 
 ### Loading multiple different font sizes
 
-Before we proceed, note that our numbers are blurry. This happened because again we've used the font significantly larger than the one we've requested in `CastleSettings.XML`. Let's go back to it and add a line `sizes_at_load="30 40 80"` to `<default_font>`, like this:
+Before we proceed, note that our numbers are blurry. This happened because again we've used the font significantly larger than the one we've requested in `CastleSettings.XML`. Let's go back to it and add a line `sizes_at_load="40 80"` to `<default_font>`, like this:
 
 ```XML
 <default_font>
   <regular
     url="fonts/CatV_6x12_9.ttf"
-    size="30"
+    size="40"
     anti_aliased="true"
-    sizes_at_load="30 40 80"
+    sizes_at_load="40 80"
   />
 </default_font>
 ```
 
-This will instruct Castle Game Engine to load font sizes "30", "40" and "80" for our default font.
+This will instruct Castle Game Engine to load font sizes "40" and "80" for our default font.
 
 Note, that every loaded font size is a texture, which occupies some decent amount of memory. So, normally, the quantity of the font sizes loaded should be limited to 2-4. Also it'd be a bad idea to load a huge size font, as the texture size will be too big. There is a way to optimize this behavior by specifying only specific limited set of characters that should be loaded (e.g. load only numbers in case this font size is used only for showing game score), but it is outside of the scope of this tutorial.
 
@@ -2253,3 +2253,4 @@ Another very small and simple state to create is a short information for the Pla
 ### Using Splash Screen in the Game
 
 ## Happy End!
+
