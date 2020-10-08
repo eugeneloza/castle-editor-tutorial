@@ -45,7 +45,7 @@ var
 implementation
 uses
   CastleComponentSerialize,
-  CastleVectors, CastleConfig, CastleSoundEngine,
+  CastleVectors, CastleConfig, CastleSoundEngine, CastleOpenDocument,
   GameStateGameOver, GameFont;
 
 constructor TStateGame.Create(AOwner: TComponent);
@@ -130,6 +130,7 @@ begin
       begin
         GamePace += 0.5;
         SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
+        Vibrate(100);
       end;
     end;
   end;
