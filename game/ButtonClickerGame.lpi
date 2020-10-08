@@ -133,6 +133,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateCredits"/>
       </Unit>
+      <Unit>
+        <Filename Value="gamestatetutorial.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="GameStateTutorial"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

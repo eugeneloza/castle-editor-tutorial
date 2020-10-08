@@ -26,7 +26,7 @@ implementation
 uses
   CastleComponentSerialize,
   CastleWindow, CastleSoundEngine,
-  GameFont, GameStateGame, GameStateOptions, GameStateCredits;
+  GameFont, GameStateTutorial, GameStateOptions, GameStateCredits;
 
 procedure TStateMainMenu.Start;
 var
@@ -54,7 +54,7 @@ end;
 procedure TStateMainMenu.ClickStart(Sender: TObject);
 begin
   SoundEngine.Sound(SoundEngine.SoundFromName('start_game'));
-  TUiState.Current := StateGame;
+  TUiState.Current := StateTutorial;
 end;
 
 procedure TStateMainMenu.ClickOptions(Sender: TObject);

@@ -16,7 +16,7 @@ uses SysUtils,
   CastleUIControls, CastleApplicationProperties, CastleUiState, CastleConfig,
   CastleSoundEngine,
   GameFont, GameStateMainMenu, GameStateGame, GameStateGameOver,
-  GameStateOptions, GameStateCredits;
+  GameStateOptions, GameStateCredits, GameStateTutorial;
 
 var
   Window: TCastleWindowBase;
@@ -37,6 +37,7 @@ begin
   StateGameOver := TStateGameOver.Create(Application);
   StateOptions := TStateOptions.Create(Application);
   StateCredits := TStateCredits.Create(Application);
+  StateTutorial := TStateTutorial.Create(Application);
   StateMainMenu := TStateMainMenu.Create(Application);
   TUiState.Current := StateMainMenu;
 end;
