@@ -1519,7 +1519,7 @@ end;
 end.
 ```
 
-We've already been through all of this process twice, so let's not waste any time here. Just a short summary of what we did here:
+We've already been through all of this process twice, so let's not waste any time. Just a short summary of what we did here:
 
 - We've created `TStateGameOver` and it's singleton variable `StateGameOver`.
 
