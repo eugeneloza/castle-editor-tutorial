@@ -2275,6 +2275,7 @@ var
 implementation
 uses
   CastleComponentSerialize,
+  CastleSoundEngine,
   GameStateMainMenu;
 
 procedure TStateCredits.Start;
@@ -2288,6 +2289,7 @@ end;
 function TStateCredits.Press(const Event: TInputPressRelease): Boolean;
 begin
   Result := inherited;
+  SoundEngine.Sound(SoundEngine.SoundFromName('quit'));
   TUiState.Current := StateMainMenu;
 end;
 
