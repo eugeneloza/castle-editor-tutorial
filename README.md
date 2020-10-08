@@ -2328,9 +2328,12 @@ Another very small and simple state to create is a short information for the Pla
 
 ### Design State Tutorial
 
+We know everything now! Let's just make it without any additional words:
+
+![Tutorial design](images/tutorial-design.png)
+
 ### Implement State Tutorial
 
-### Add Tutorial to the Game
 
 ## Splash Screen
 
