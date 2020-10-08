@@ -2232,6 +2232,20 @@ It is respectful and often legally required to mention the people who worked on 
 
 ### Design State Credits
 
+We already know how to create designs in Castle Editor, so let's not go into any detail and just get straight into our result:
+
+![State Credits design](images/credits-design.png)
+
+The only thing worth mentioning here is `CastleGameEngineLabel`. First of all, this label has multiple lines. Large labels can be edited by editing `Text` property (press button with three dots) instead of `Caption`:
+
+![Editing large labels](images/credits-multiline-label.png)
+
+And the second one is we set this label as a child of Castle Game Engine logo and align `hpLeft` of the label to `hpRight` of Parent with `HorizontalAnchorDelta` of 20. This way the label starts exactly 20 pixels to the right of the parent (in this case - logo).
+
+In order for the lines of multiline text don't stick together too tightly, we can increase `LineSpacing` from "2" to "10" in "All" tab:
+
+![Line spacing](images/credits-line-spacing.png)
+
 ### Implement State Credits in the Game
 
 ### Use State Credits in the Game
