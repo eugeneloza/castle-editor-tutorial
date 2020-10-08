@@ -177,7 +177,8 @@ begin
           GamePads[X, Y].Image.Image := BrokenButton;
           GamePads[X, Y].Image.OwnsImage := false;
           GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
-          TUiState.Push(StateGameOver);
+          if GameRunning then
+            TUiState.Push(StateGameOver);
         end;
       end;
     GamePace += SecondsPassed / 60;

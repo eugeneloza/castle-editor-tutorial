@@ -1540,9 +1540,12 @@ begin
   //GameOver
   ...
   GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
-  TUiState.Push(StateGameOver);
+  if GameRunning then
+    TUiState.Push(StateGameOver);
 end;
 ```
+
+We've also added `if GameRunning then` condition to avoid possible rare bug in case two popups will fire simultaneously.
 
 Save, compile and run. We've got our State Game Over running with both buttons already useful:
 
