@@ -1939,3 +1939,9 @@ Let's add an Empty Rectangle to `OptionsGroup` that would work as a separator he
 
 ![Options design](images/options-design.png)
 
+### Adding State Options to the Game
+
+Again, we're quickly going through the already known process of implementing a `GameStateOptions` unit. Let's make a short summary of its content:
+
+```Pascal
+```
