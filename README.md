@@ -2238,6 +2238,8 @@ It is respectful and often legally required to mention the people who worked on 
 
 ## State Tutorial
 
+Another very small and simple state to create is a short information for the Player on how to play our game. Again it's so small and simple and so similar to the State Credits we've just made, that we won't go into any detail here. It's just a small but important quality-of-life feature for our Game.
+
 ### Design State Tutorial
 
 ### Implement State Tutorial
