@@ -11,7 +11,7 @@
       "HorizontalAnchorParent" : "hpMiddle",
       "HorizontalAnchorSelf" : "hpMiddle",
       "Name" : "CreditsGroup",
-      "Spacing" : 2.0000000000000000E+001,
+      "Spacing" : 1.8000000000000000E+001,
       "VerticalAnchorParent" : "vpMiddle",
       "VerticalAnchorSelf" : "vpMiddle",
       "$Children" : [
@@ -42,7 +42,7 @@
           "Text" : [
             "A game by EugeneLoza"
           ],
-          "VerticalAnchorDelta" : -3.3000000000000000E+002,
+          "VerticalAnchorDelta" : -3.2800000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -54,7 +54,7 @@
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "CastleGameEngineGroup",
-          "VerticalAnchorDelta" : -3.8700000000000000E+002,
+          "VerticalAnchorDelta" : -3.8300000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "Width" : 5.5000000000000000E+002,
@@ -106,7 +106,7 @@
           "Text" : [
             "Featuring music by:"
           ],
-          "VerticalAnchorDelta" : -5.5700000000000000E+002,
+          "VerticalAnchorDelta" : -5.5100000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -128,7 +128,7 @@
             "Alexandr Zhelanov",
             "soundcloud.com/alexandr-zhelanov"
           ],
-          "VerticalAnchorDelta" : -6.1400000000000000E+002,
+          "VerticalAnchorDelta" : -6.0600000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -150,7 +150,7 @@
             "Matthew Pablo",
             "www.matthewpablo.com"
           ],
-          "VerticalAnchorDelta" : -7.0400000000000000E+002,
+          "VerticalAnchorDelta" : -6.9400000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -158,11 +158,11 @@
           "$ClassName" : "TCastleLabel"
         },
         {
-          "Height" : 3.0000000000000000E+001,
+          "Height" : 2.0000000000000000E+001,
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "Spacer2",
-          "VerticalAnchorDelta" : -7.9400000000000000E+002,
+          "VerticalAnchorDelta" : -7.8200000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -182,7 +182,7 @@
           "Text" : [
             "Sounds by:"
           ],
-          "VerticalAnchorDelta" : -8.4400000000000000E+002,
+          "VerticalAnchorDelta" : -8.2000000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -196,13 +196,14 @@
             "Red" : 8.6274512112140656E-002,
             "$ClassName" : "TCastleColorPersistent"
           },
+          "FontSize" : 3.8000000000000000E+001,
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "SoundAuthorsLabel",
           "Text" : [
             "johnthewizar, Kenney, newagesoup, unfa"
           ],
-          "VerticalAnchorDelta" : -9.0100000000000000E+002,
+          "VerticalAnchorDelta" : -8.7500000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -210,11 +211,11 @@
           "$ClassName" : "TCastleLabel"
         },
         {
-          "Height" : 3.0000000000000000E+001,
+          "Height" : 2.0000000000000000E+001,
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "Spacer3",
-          "VerticalAnchorDelta" : -9.5800000000000000E+002,
+          "VerticalAnchorDelta" : -9.2815002441406250E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -234,7 +235,7 @@
           "Text" : [
             "Graphics by:"
           ],
-          "VerticalAnchorDelta" : -1.0080000000000000E+003,
+          "VerticalAnchorDelta" : -9.6615002441406250E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -254,7 +255,7 @@
           "Text" : [
             "pzUH, Charles Rondeau"
           ],
-          "VerticalAnchorDelta" : -1.0650000000000000E+003,
+          "VerticalAnchorDelta" : -1.0211500244140625E+003,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -262,11 +263,51 @@
           "$ClassName" : "TCastleLabel"
         },
         {
-          "Height" : 7.0000000000000000E+001,
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "FontsByLabel",
+          "Text" : [
+            "Fonts by:"
+          ],
+          "VerticalAnchorDelta" : -1.0761500244140625E+003,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "FontsAuthorsLabel",
+          "Text" : [
+            "HolyBlackCat and Karen B. Jones"
+          ],
+          "VerticalAnchorDelta" : -1.1311500244140625E+003,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "Height" : 5.0000000000000000E+001,
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "Spacer1",
-          "VerticalAnchorDelta" : -1.1220000000000000E+003,
+          "VerticalAnchorDelta" : -1.1861500244140625E+003,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -286,7 +327,7 @@
           "Text" : [
             "Click to return to Main Menu"
           ],
-          "VerticalAnchorDelta" : -1.2120000000000000E+003,
+          "VerticalAnchorDelta" : -1.2541500244140625E+003,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
