@@ -1650,7 +1650,7 @@ If `AnimationTime >= AnimationDuration` we just set the final values for the var
 
 ## Audio
 
-As you've might have noticed, the game is already quite playable at current stage. Once we shall have added sound and music to the game, we'll be done with most critically important game features and left with only some polishing to do.
+Let's note that the game is already quite playable at current stage. Once we shall have added sound and music to the game, we'll be done with most critically important game features and left with only some polishing to do.
 
 ### Audio repository
 
