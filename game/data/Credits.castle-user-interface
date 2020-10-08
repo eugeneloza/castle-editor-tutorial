@@ -253,7 +253,7 @@
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "GraphicsAuthorsLabel",
           "Text" : [
-            "pzUH, Charles Rondeau"
+            "pzUH and Charles Rondeau"
           ],
           "VerticalAnchorDelta" : -1.0211500244140625E+003,
           "VerticalAnchorParent" : "vpTop",
