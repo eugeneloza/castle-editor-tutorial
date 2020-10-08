@@ -14,7 +14,8 @@ implementation
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties, CastleUiState, CastleConfig,
-  CastleSoundEngine,
+  CastleSoundEngine, CastleColors,
+  SplashScreen,
   GameFont, GameStateMainMenu, GameStateGame, GameStateGameOver,
   GameStateOptions, GameStateCredits, GameStateTutorial;
 
@@ -47,6 +48,11 @@ initialization
 
   if IsLibrary then
     InitializeLog;
+
+  Theme.LoadingBackgroundColor := HexToColor('6fbee4');
+  Theme.Images[tiLoading] := SplashImage;
+  Theme.OwnsImages[tiLoading] := false;
+  Theme.LoadingImageForWindowHeight := 1334;
 
   { Initialize Application.OnInitialize. }
   Application.OnInitialize := @ApplicationInitialize;
