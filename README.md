@@ -2199,3 +2199,30 @@ That's how our Options State now looks on Desktop:
 
 ![Options in game](images/options-in-game.png)
 
+### Using the new Options
+
+First of all, we have to create our `StateOptions` in `GameInitialize`. Let's add `GameStateOptions` in `uses` section, and create the state by `StateOptions := TStateOptions.Create(Application);` in `ApplicationInitialize`.
+
+As we are already changing the volumes for `SoundEngine` it's a good idea to set them to the values stored in `UserConfig`:
+
+```Pascal
+SoundEngine.Volume := UserConfig.GetFloat('volume', 1.0);
+SoundEngine.LoopingChannel[0].Volume := UserConfig.GetFloat('music', 0.5);
+```
+
+Note, that both here and in `GameStateOptions` we propose 0.5 default music volume.
+
+Yes, that's all about sound. Now, the final touch - in `GameStateGame` let's call `Vibrate` only in case it's enabled in `UserConfig`. In `ButtonPress` we set:
+
+```Pascal
+if UserConfig.GetValue('vibration', true) then
+  Vibrate(100);
+```
+
+And in `Update` - where our GameOver state happens:
+
+```Pascal
+if UserConfig.GetValue('vibration', true) then
+  Vibrate(500);
+```
+
