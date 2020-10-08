@@ -163,7 +163,6 @@ begin
         begin
           //GameOver
           SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
-          GameRunning := false;
           StateGameOver.Score := GameScore;
           if UserConfig.GetValue('high_score', 0) < GameScore then
           begin
@@ -179,6 +178,7 @@ begin
           GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
           if GameRunning then
             TUiState.Push(StateGameOver);
+          GameRunning := false;
         end;
       end;
     GamePace += SecondsPassed / 60;

@@ -1241,10 +1241,10 @@ for X := 1 to 3 do
     end else
     begin
       //GameOver
-      GameRunning := false;
       GamePads[X, Y].Score := -1;
       GamePads[X, Y].Caption.Exists := false;
       GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
+      GameRunning := false;
     end;
   end;
 ```
@@ -1355,12 +1355,12 @@ Finally in our `Update` we add a line `GamePads[X, Y].Image.Image := BrokenButto
 
 ```Pascal
 //GameOver
-GameRunning := false;
 GamePads[X, Y].Score := -1;
 GamePads[X, Y].Caption.Exists := false;
 GamePads[X, Y].Image.Image := BrokenButton;
 GamePads[X, Y].Image.OwnsImage := false;
 GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
+GameRunning := false;
 ```
 
 Note, that we also set `OwnsImage := false;` so that Castle Game Engine won't free this image, when this `TCastleImageControl` will be `destroy`ed - as the whole idea is that we want to keep this image in memory until the game quits, and images are created and destroyed every time the Player starts or finishes the game.
@@ -1394,7 +1394,6 @@ And finally, we have to set the High Score when the game is over:
 ```Pascal
 begin
   //GameOver
-  GameRunning := false;
   if UserConfig.GetValue('high_score', 0) < GameScore then
   begin
     UserConfig.SetValue('high_score', GameScore);
@@ -1402,6 +1401,7 @@ begin
   end;
   GamePads[X, Y].Score := -1;
   ...
+  GameRunning := false;
 end;
 ```
 
@@ -1542,6 +1542,7 @@ begin
   GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
   if GameRunning then
     TUiState.Push(StateGameOver);
+  GameRunning := false;
 end;
 ```
 
@@ -1578,7 +1579,6 @@ GameOverImage.Exists := not HighScore;
 This way we set the `Caption` of `ScoreValueLabel` to value of `Score` and set visibility of `HighScoreImage` and `GameOverImage` based on boolean variable `HighScore`. Now in `GameStateGame` in the block relating to "Game Over" let's set these variables to current Player's results:
 
 ```Pascal
-GameRunning := false;
 StateGameOver.Score := GameScore;
 if UserConfig.GetValue('high_score', 0) < GameScore then
 begin
@@ -1829,7 +1829,6 @@ And play it in `Update`:
 begin
   //GameOver
   SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
-  GameRunning := false;
   ...
 end;
 ```
@@ -1903,7 +1902,6 @@ begin
   //GameOver
   Vibrate(500);
   SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
-  GameRunning := false;
   ...
 end;
 ```
