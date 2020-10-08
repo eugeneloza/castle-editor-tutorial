@@ -7,8 +7,302 @@
   "Name" : "BackgroundImage",
   "$Children" : [
     {
+      "Alignment" : "hpMiddle",
+      "HorizontalAnchorParent" : "hpMiddle",
+      "HorizontalAnchorSelf" : "hpMiddle",
       "Name" : "CreditsGroup",
+      "Spacing" : 2.0000000000000000E+001,
+      "VerticalAnchorParent" : "vpMiddle",
+      "VerticalAnchorSelf" : "vpMiddle",
       "$Children" : [
+        {
+          "Content" : {
+            "URL" : "castle-data:/images/buttonclickerlogo.png",
+            "$ClassName" : "TCastleImagePersistent"
+          },
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "ImageLogo",
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleImageControl"
+        },
+        {
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "GameByLabel",
+          "Text" : [
+            "A game by EugeneLoza"
+          ],
+          "VerticalAnchorDelta" : -3.3000000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "Height" : 1.5000000000000000E+002,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "CastleGameEngineGroup",
+          "VerticalAnchorDelta" : -3.8600000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "Width" : 5.5000000000000000E+002,
+          "$Children" : [
+            {
+              "Content" : {
+                "URL" : "castle-data:/images/castle_game_engine_icon.png",
+                "$ClassName" : "TCastleImagePersistent"
+              },
+              "Name" : "CastleGameEngineLogo",
+              "$Children" : [
+                {
+                  "ColorPersistent" : {
+                    "Blue" : 2.5098040699958801E-001,
+                    "Green" : 1.7647059261798859E-001,
+                    "Red" : 8.6274512112140656E-002,
+                    "$ClassName" : "TCastleColorPersistent"
+                  },
+                  "FontSize" : 4.0000000000000000E+001,
+                  "HorizontalAnchorDelta" : 2.0000000000000000E+001,
+                  "HorizontalAnchorParent" : "hpRight",
+                  "LineSpacing" : 1.0000000000000000E+001,
+                  "Name" : "CastleGameEngineLabel",
+                  "Text" : [
+                    "Created in",
+                    "Castle Game Engine"
+                  ],
+                  "VerticalAnchorParent" : "vpMiddle",
+                  "VerticalAnchorSelf" : "vpMiddle",
+                  "$Children" : [
+                  ],
+                  "$ClassName" : "TCastleLabel"
+                }
+              ],
+              "$ClassName" : "TCastleImageControl"
+            }
+          ],
+          "$ClassName" : "TCastleUserInterface"
+        },
+        {
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "MusicByLabel",
+          "Text" : [
+            "Featuring music by:"
+          ],
+          "VerticalAnchorDelta" : -5.5600000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "Alignment" : "hpMiddle",
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "AlexanderZhelanovLabel",
+          "Text" : [
+            "Alexandr Zhelanov",
+            "soundcloud.com/alexandr-zhelanov"
+          ],
+          "VerticalAnchorDelta" : -6.1200000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "Alignment" : "hpMiddle",
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "AlexanderZhelanovLabel1",
+          "Text" : [
+            "Matthew Pablo",
+            "www.matthewpablo.com"
+          ],
+          "VerticalAnchorDelta" : -7.0066668701171875E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "Height" : 3.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "Spacer2",
+          "VerticalAnchorDelta" : -7.8933337402343750E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleUserInterface"
+        },
+        {
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "SoundsByLabel",
+          "Text" : [
+            "Sounds by:"
+          ],
+          "VerticalAnchorDelta" : -8.3933337402343750E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "SoundAuthorsLabel",
+          "Text" : [
+            "johnthewizar, Kenney, newagesoup, unfa"
+          ],
+          "VerticalAnchorDelta" : -8.9533337402343750E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "Height" : 3.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "Spacer3",
+          "VerticalAnchorDelta" : -9.5133337402343750E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleUserInterface"
+        },
+        {
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "GraphicsByLabel",
+          "Text" : [
+            "Graphics by:"
+          ],
+          "VerticalAnchorDelta" : -1.0013333740234375E+003,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "GraphicsAuthors",
+          "Text" : [
+            "pzUH, Charles Rondeau"
+          ],
+          "VerticalAnchorDelta" : -1.0573333740234375E+003,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        },
+        {
+          "Height" : 7.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "Spacer1",
+          "VerticalAnchorDelta" : -1.1133333740234375E+003,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleUserInterface"
+        },
+        {
+          "ColorPersistent" : {
+            "Blue" : 2.5098040699958801E-001,
+            "Green" : 1.7647059261798859E-001,
+            "Red" : 8.6274512112140656E-002,
+            "$ClassName" : "TCastleColorPersistent"
+          },
+          "FontSize" : 4.0000000000000000E+001,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "ClickToReturnLabel",
+          "Text" : [
+            "Click to return to Main Menu"
+          ],
+          "VerticalAnchorDelta" : -1.2033333740234375E+003,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleLabel"
+        }
       ],
       "$ClassName" : "TCastleVerticalGroup"
     }
