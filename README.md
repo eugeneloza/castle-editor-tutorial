@@ -2334,6 +2334,10 @@ We know everything now! Let's just make it without any additional words:
 
 ![Tutorial design](images/tutorial-design.png)
 
+Still one note to be made: we've changed some of the labels `Alignment` property that can align the text left (`hpLeft`) or right (`hpRight`):
+
+![Text alignment on Label](images/text-alignment-on-label.png)
+
 ### Implement State Tutorial
 
 Implementation of this state is almost identical to `StateCredits`:
