@@ -1881,3 +1881,31 @@ Let's put `SoundEngine.Sound(SoundEngine.SoundFromName('start_game'));` inside `
 
 Let's note that now the music plays a bit too loud to properly hear `ui_click` sound. Let's leavie it like that, we'll change default music volume when we'll be making Options.
 
+### Vibration
+
+Some platform, mobile devices first of all, can also vibrate. Normally, we shouldn't overuse this feature. Let's add some vibration in case when the player clicks an empty button (and the game accelerates) and when losing the game.
+
+Let's add `CastleOpenDocument` to `uses` section of `GameStateGame`. Next, navigate to `ButtonPress` and add `Vibrate(100);` near the line where we play the sound. This will tell our device to vibrate for 100 milliseconds:
+
+```Pascal
+begin
+  GamePace += 0.5;
+  SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
+  Vibrate(100);
+end;
+```
+
+And in `Update` add `Vibrate(500);` to vibrate for 0.5 seconds in case the game is over:
+
+```Pascal
+begin
+  //GameOver
+  Vibrate(500);
+  SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
+  GameRunning := false;
+  ...
+end;
+```
+
+Note, that it's safe to call this function on platforms that don't support vibration, but nothing will happen.
+
