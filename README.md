@@ -2246,9 +2246,75 @@ In order for the lines of multiline text don't stick together too tightly, we ca
 
 ![Line spacing](images/credits-line-spacing.png)
 
+Everything else is something that we've already done before - labels, images and empty rectangles packed inside a `TCastleVerticalGroup`.
+
 ### Implement State Credits in the Game
 
-### Use State Credits in the Game
+Let's create a unit `GameStateCredits` in Lazarus, as we usually do:
+
+```Pascal
+unit GameStateCredits;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, CastleUiState, CastleControls, CastleKeysMouse;
+
+type
+  TStateCredits = class(TUiState)
+  public
+    procedure Start; override;
+    function Press(const Event: TInputPressRelease): Boolean; override;
+  end;
+
+var
+  StateCredits: TStateCredits;
+
+implementation
+uses
+  CastleComponentSerialize,
+  GameStateMainMenu;
+
+procedure TStateCredits.Start;
+var
+  UiOwner: TComponent;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/Credits.castle-user-interface', FreeAtStop, UiOwner);
+end;
+
+function TStateCredits.Press(const Event: TInputPressRelease): Boolean;
+begin
+  Result := inherited;
+  TUiState.Current := StateMainMenu;
+end;
+
+end.
+```
+
+The only "new" thing here is `function Press` which is called when the Player presses mouse button, keyboard key or taps the screen. It's very similar to the `OnPress` event we've used when implementing `GameStateGame`. And in the function itself we simply send the Player back to `StateMainMenu` - upon pressing anything.
+
+Also note, that we actually don't even process anything in `Start` - this state is "static" just a single unchanging screen.
+
+Now, as usually let's add `GameStateCredits` to `uses` section of `GameInitialize` and create our State in `ApplicationInitialize`:
+
+```Pascal
+StateCredits := TStateCredits.Create(Application);
+```
+
+And again add `GameStateCredits` to `uses` section of `StateMainMenu` and in `ClickCredits` set `StateCredits` as `Current`:
+
+```Pascal
+procedure TStateMainMenu.ClickCredits(Sender: TObject);
+begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));
+  TUiState.Current := StateCredits;
+end; 
+```
+
+All done!
 
 ## State Tutorial
 
