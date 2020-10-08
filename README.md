@@ -1749,8 +1749,6 @@ Let's add our sounds to the registry in the very same way as we did with the mus
 As we've already noted, we aren't using `stream` feature here. Also using uncompressed `wav` format instead of `ogg`. We'd want all of these 22 click sounds to play randomized in our game, when we click game pads. We could do that by providing the `SoundEngine` with the proper sound names, but it can already do this for us. Let's add a spcial `alias` feature here:
 
 ```XML
-<?xml version="1.0"?>
-
 <sounds>
   ...
   <alias name="click">
