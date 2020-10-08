@@ -11,7 +11,7 @@
       "HorizontalAnchorParent" : "hpMiddle",
       "HorizontalAnchorSelf" : "hpMiddle",
       "Name" : "OptionsGroup",
-      "Spacing" : 5.0000000000000000E+001,
+      "Spacing" : 4.0000000000000000E+001,
       "VerticalAnchorParent" : "vpMiddle",
       "VerticalAnchorSelf" : "vpMiddle",
       "$Children" : [
@@ -313,7 +313,7 @@
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "MusicGroup",
           "Spacing" : 2.0000000000000000E+001,
-          "VerticalAnchorDelta" : -1.3000000000000000E+002,
+          "VerticalAnchorDelta" : -1.2000000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -607,7 +607,7 @@
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "VibrationGroup",
           "Spacing" : 2.0000000000000000E+001,
-          "VerticalAnchorDelta" : -2.6000000000000000E+002,
+          "VerticalAnchorDelta" : -2.4000000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -741,7 +741,7 @@
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "Separator",
-          "VerticalAnchorDelta" : -3.9000000000000000E+002,
+          "VerticalAnchorDelta" : -3.6000000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "$Children" : [
@@ -782,7 +782,7 @@
             "$ClassName" : "TCastleImagePersistent"
           },
           "Name" : "BackButton",
-          "VerticalAnchorDelta" : -5.4000000000000000E+002,
+          "VerticalAnchorDelta" : -5.0000000000000000E+002,
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
           "Width" : 4.0600000000000000E+002,
