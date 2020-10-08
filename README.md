@@ -2229,3 +2229,25 @@ if UserConfig.GetValue('vibration', true) then
 ## State Credits
 
 It is respectful and often legally required to mention the people who worked on a game and whose assets (like graphics, music, sounds) were used in it. So, again, let's create a special - this time very simple - state Credits for this purpose.
+
+### Design State Credits
+
+### Implement State Credits in the Game
+
+### Use State Credits in the Game
+
+## State Tutorial
+
+### Design State Tutorial
+
+### Implement State Tutorial
+
+### Add Tutorial to the Game
+
+## Splash Screen
+
+### Creating a Splash Screen Image
+
+### Using Splash Screen in the Game
+
+## Happy End!
