@@ -1778,7 +1778,7 @@ As we've already noted, we aren't using `stream` feature here. Also using uncomp
 </sounds>
 ```
 
-This means, that when we call sound named `"click"` from the game it will randomly play any of the sound that we've specified as `target`s here.
+This means, that when we call sound named `"click"` from the game `SoundEngine` will randomly play any of the sound that we've specified as `target`s here.
 
 ### Accelerate and Game Over sounds
 
