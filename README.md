@@ -96,7 +96,7 @@ Now we can close both "Build Modes" and "Project Options" windows by pressing OK
 
 ## Deleting a State
 
-**State** is one of the game's view, like Main menu, Gameplay view, High scores, maybe some different States, like Inventory, Achievements, differnt gamemodes, etc.
+**State** is one of the game's view, like Main menu, Gameplay view, High scores, maybe some different States, like Inventory, Achievements, different game modes, etc.
 
 As we noted above the "Empty" template is not actually empty - it already contains a Main State with a FPS label. We could have cleaned those up and reused, but we might want to use this opportunity to learn how to delete a state.
 
@@ -801,7 +801,7 @@ Finally, let's duplicate our `ScoreArea` and name the copy `HighScoreArea`. Let'
 
 ![Hierarchy after duplications](images/dragging-high-score.png)
 
-Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighScoreText` and `HighScoreLabel`, set the corresponding font sizes to "30" and "40" and `HorizontalAnchorDelta`s to "160" and "360" to accomodate the new font sizes. Let's change `HighScoreText` caption to "High Score:".
+Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighScoreText` and `HighScoreLabel`, set the corresponding font sizes to "30" and "40" and `HorizontalAnchorDelta`s to "160" and "360" to accommodate the new font sizes. Let's change `HighScoreText` caption to "High Score:".
 
 ![Gameplay design result](images/gameplay-result.png)
 
@@ -938,7 +938,7 @@ HighscoreText.CustomFont := CartoonFont30;
 
 As we can see:
 
-![Wrong font positi](images/wrong-font-position.png)
+![Wrong font position](images/wrong-font-position.png)
 
 The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design (because there is no way to set and preview the second font in Castle Editor yet). Let's fix this by going back to Castle Editor. For `ScoreText` let's change `HorizontalAnchorDelta` from "100" to "50" and `VerticalAnchorDelta` from "0" to "11". And for `HighScoreText` change `HorizontalAnchorDelta` from "160" to "110" and `VerticalAnchorDelta` from "0" to "5". Now it looks much better:
 
@@ -1349,7 +1349,7 @@ begin
 end;
 ```
 
-Here we load the `BrokenButton` image by calling `LoadImage` providing it the image URL and expected image type. `TRGBAlphaImage` means that the image is RGB with Alpha (transparency). And in destructor we free the memory occupied by the image by caling `FreeAndNil(BrokenButton);`.
+Here we load the `BrokenButton` image by calling `LoadImage` providing it the image URL and expected image type. `TRGBAlphaImage` means that the image is RGB with Alpha (transparency). And in `destructor` we free the memory occupied by the image by calling `FreeAndNil(BrokenButton);`.
 
 Finally in our `Update` we add a line `GamePads[X, Y].Image.Image := BrokenButton;` to "GameOver" section:
 
@@ -1749,7 +1749,7 @@ Let's add our sounds to the registry in the very same way as we did with the mus
 </sounds>
 ```
 
-As we've already noted, we aren't using `stream` feature here. Also using uncompressed `wav` format instead of `ogg`. We'd want all of these 22 click sounds to play randomized in our game, when we click game pads. We could do that by providing the `SoundEngine` with the proper sound names, but it can already do this for us. Let's add a spcial `alias` feature here:
+As we've already noted, we aren't using `stream` feature here. Also using uncompressed `wav` format instead of `ogg`. We'd want all of these 22 click sounds to play randomized in our game, when we click game pads. We could do that by providing the `SoundEngine` with the proper sound names, but it can already do this for us. Let's add a special `alias` feature here:
 
 ```XML
 <sounds>
@@ -1879,7 +1879,7 @@ Let's quickly add some other sounds for UI events:
 
 Let's put `SoundEngine.Sound(SoundEngine.SoundFromName('start_game'));` inside `ClickStart` in `GameStateMainMenu` and inside `ClickPlayAgain` in `GameStateGameOver` (don't forget to add `CastleSoundEngine` to `uses` section). Let's add `SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));` into `ClickOptions`, `ClickCredits` in `GameStateMainMenu`. And finally `SoundEngine.Sound(SoundEngine.SoundFromName('quit'));` to `ClickQuit` in `GameStateMainMenu` and `ClickMainMenu` in `GameStateGameOver`.
 
-Let's note that now the music plays a bit too loud to properly hear `ui_click` sound. Let's leavie it like that, we'll change default music volume when we'll be making Options.
+Let's note that now the music plays a bit too loud to properly hear `ui_click` sound. Let's leave it like that, we'll change default music volume when we'll be making Options.
 
 ### Vibration
 
