@@ -2456,7 +2456,7 @@ And finally we suggest `Theme` the resolution for which the image has been creat
 
 ## Achievements
 
-It happens quite so often, that there are last-minute requested changes before the release. Let's emulate this situation and learn one more cool feature of Castle Editor.
+It sometimes happens, that there are last-minute requested changes before the release. Let's emulate this situation and learn one more cool feature of Castle Editor.
 
 Let's add Achievements to our game. No, we won't be publishing our game on Apple Store or Google Play Store, it's certainly outside of the scope of this tutorial. But let's make an internal system for handling some Achievements to motivate the Player reach the new heights.
 
