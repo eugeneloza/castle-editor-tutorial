@@ -2484,5 +2484,17 @@ Inside this group have two labels - `AchievementCaption` with larger font that w
 
 ![Achievement design](images/achievement-design.png)
 
+### Creating 5 achievements
+
+Now let's save our design as `achievements/achievement1.castle-user-interface` and copy this file 4 times, so that we have equal files. Let's rename the files and modify their content that it would be the following:
+
+| Filename       | ScoreLabel   | AchievementCaption      | AchievementDescription           |
+| :------------: | :----------: | :---------------------: | :------------------------------: |
+| achievement1   | 50k          | Nice!                   | Keep it up!                      |
+| achievement2   | 100k         | Very Good!              | You're getting the hang of that! |
+| achievement3   | 200k         | Remarkable!             | That's certainly some skill!     |
+| achievement4   | 300k         | Magnificent!            | A result to be proud of.         |
+| achievement5   | 500k         | Unbelievable!           | Are you joking?! WOW!!!          |
+
 ## Happy End!
 
