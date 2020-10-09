@@ -1,9 +1,9 @@
 {
-  "Height" : 2.5000000000000000E+002,
+  "Height" : 2.0000000000000000E+002,
   "Name" : "Root",
   "VerticalAnchorParent" : "vpTop",
   "VerticalAnchorSelf" : "vpTop",
-  "Width" : 7.0000000000000000E+002,
+  "Width" : 7.1200000000000000E+002,
   "$Children" : [
     {
       "Content" : {

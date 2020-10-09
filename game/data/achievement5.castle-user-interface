@@ -1,9 +1,9 @@
 {
-  "Height" : 2.5000000000000000E+002,
+  "Height" : 2.0000000000000000E+002,
   "Name" : "Root",
   "VerticalAnchorParent" : "vpTop",
   "VerticalAnchorSelf" : "vpTop",
-  "Width" : 7.0000000000000000E+002,
+  "Width" : 7.1200000000000000E+002,
   "$Children" : [
     {
       "Content" : {
@@ -68,7 +68,7 @@
               "Text" : [
                 "Are you serious?! WOW!!!"
               ],
-              "VerticalAnchorDelta" : -7.4000007629394531E+001,
+              "VerticalAnchorDelta" : -7.3999992370605469E+001,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "$Children" : [
