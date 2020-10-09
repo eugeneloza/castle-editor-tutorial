@@ -317,7 +317,7 @@ Now the button has size of `Width` and `Height` specified in the same tab. Let's
 
 ![Start button image](images/button-start-custom-background-size.png)
 
-Also let's change the font size, so that the text won't be so tiny. It can be done in "Basic" tab:
+Also let's change the `FontSize`, so that the text won't be so tiny. It can be done in "Basic" tab:
 
 ![Start button image](images/button-start-font-size.png)
 
