@@ -2454,6 +2454,8 @@ Next we set one of `Theme`'s images namely `tiLoading` which is shown as a Splas
 
 And finally we suggest `Theme` the resolution for which the image has been created. This doesn't work as good as UI scaling we've been using so far, so we should take some caution that our Splash Screen image would look fine in different aspect ratios.
 
+![Splash Screen](images/splashscreen.png)
+
 ## Achievements
 
 It sometimes happens, that there are last-minute requested changes before the release. Let's emulate this situation and learn one more cool feature of Castle Editor.
