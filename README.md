@@ -2500,5 +2500,11 @@ We can do that by editing the same file and (not forgetting to) saving it under 
 
 Let's note that this is not the optimal way to deal with achievements. Most likely we'd rather have some sort of a database of achievements and corresponding images, but for this tutorial let's stick with a less flexible path, that will show us how to use blocks in designing other states.
 
+### Designing State Achievements
+
+First of all, we'd like to have a separate page where the Player can see all the achievements to be proud of. This will be a normal state very similar to `StateMainMenu` or `StateCredits`. Let's create a new Design using Image (TCastleImageControl) as Root. As usually let's add a `TCastleVerticalGroup` named `AchievementsGroup` to this group.
+
+On the top line let's show current High Score, the same way we did in `StateGame`.
+
 ## Happy End!
 
