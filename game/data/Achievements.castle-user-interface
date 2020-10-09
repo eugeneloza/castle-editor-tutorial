@@ -1,0 +1,69 @@
+{
+  "Content" : {
+    "URL" : "castle-data:/images/abstract-wallpaper-1544138641N95_CC0_by_Charles_Rondeau.jpg",
+    "$ClassName" : "TCastleImagePersistent"
+  },
+  "FullSize" : true,
+  "Name" : "BackgroundImage",
+  "$Children" : [
+    {
+      "Alignment" : "hpMiddle",
+      "HorizontalAnchorParent" : "hpMiddle",
+      "HorizontalAnchorSelf" : "hpMiddle",
+      "Name" : "AchievementsGroup",
+      "VerticalAnchorParent" : "vpMiddle",
+      "VerticalAnchorSelf" : "vpMiddle",
+      "$Children" : [
+        {
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "HorizontalGroup1",
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "$Children" : [
+            {
+              "ColorPersistent" : {
+                "Blue" : 2.5098040699958801E-001,
+                "Green" : 1.7647059261798859E-001,
+                "Red" : 8.6274512112140656E-002,
+                "$ClassName" : "TCastleColorPersistent"
+              },
+              "FontSize" : 6.0000000000000000E+001,
+              "Name" : "HighScoreText",
+              "Text" : [
+                "High Score:"
+              ],
+              "VerticalAnchorParent" : "vpMiddle",
+              "VerticalAnchorSelf" : "vpMiddle",
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleLabel"
+            },
+            {
+              "ColorPersistent" : {
+                "Blue" : 2.5098040699958801E-001,
+                "Green" : 1.7647059261798859E-001,
+                "Red" : 8.6274512112140656E-002,
+                "$ClassName" : "TCastleColorPersistent"
+              },
+              "FontSize" : 8.0000000000000000E+001,
+              "HorizontalAnchorDelta" : 3.3000000000000000E+002,
+              "Name" : "HighScoreValue",
+              "Text" : [
+                "999999"
+              ],
+              "VerticalAnchorParent" : "vpMiddle",
+              "VerticalAnchorSelf" : "vpMiddle",
+              "$Children" : [
+              ],
+              "$ClassName" : "TCastleLabel"
+            }
+          ],
+          "$ClassName" : "TCastleHorizontalGroup"
+        }
+      ],
+      "$ClassName" : "TCastleVerticalGroup"
+    }
+  ],
+  "$ClassName" : "TCastleImageControl"
+}
