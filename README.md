@@ -2496,5 +2496,9 @@ Now let's save our design as `achievement1.castle-user-interface` and let's make
 | achievement4   | 300k         | Magnificent!            | A result to be proud of! |
 | achievement5   | 500k         | Unbelievable!           | Are you serious?! WOW!!! |
 
+We can do that by editing the same file and (not forgetting to) saving it under a different name, or by making several copies of the file and editing them separately.
+
+Let's note that this is not the optimal way to deal with achievements. Most likely we'd rather have some sort of a database of achievements and corresponding images, but for this tutorial let's stick with a less flexible path, that will show us how to use blocks in designing other states.
+
 ## Happy End!
 
