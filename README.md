@@ -2486,7 +2486,7 @@ Inside this group have two labels - `AchievementCaption` with larger font that w
 
 ### Creating 5 achievements
 
-Now let's save our design as `achievements/achievement1.castle-user-interface` and copy this file 4 times, so that we have equal files. Let's rename the files and modify their content that it would be the following:
+Now let's save our design as `achievement1.castle-user-interface` and let's make 5 similar files following the next pattern:
 
 | Filename       | ScoreLabel   | AchievementCaption      | AchievementDescription   |
 | :------------: | :----------: | :---------------------: | :----------------------: |
