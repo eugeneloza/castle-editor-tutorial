@@ -2472,5 +2472,17 @@ Let's add Achievements to our game. No, we won't be publishing our game on Apple
 
 We'll show Achievements both in a special Achievements page, accessible from Main Menu and in Game Over screen in case Player has reached a new achievement. That means that we might be better to reuse every achievement design, so that we won't have to draw them again and again.
 
+### Creating an achievement
+
+In our minimalistic case we could have made it in a simpler way, but let's use this opportunity to learn to use `TCastleDesign` which allows us to reuse designed cuhnks of the UI in different UI states. Let's create our `Achievement1` Design, with Empty Rectangle as Root: Design -> New User Interface (Empty Rectangle as Root) and name it `Root`.
+
+Let's go to "All" tab and uncheck `FullSize` property. Then set `Width`: "700" and `Height`:"250".
+
+Inside let's add an image `AchievementImage` place a `ScoreLabel` with text "50k" over it, and also as a child of this image add a `TCastleVerticalGroup` named `AchievementInfoGroup` and having its `HorizontalAnchorSelf` `hpLeft` anchored to `HorizontalAnchorParent` `hpRight` with `HorizontalAnchorDelta` of 20 pixels.
+
+Inside this group have two labels - `AchievementCaption` with larger font that will hold the caption of the achievement, and `AchievementDescription` which will have the description of the achievement. Don't forget to set color of all labels to `162D40`.
+
+![Achievement design](images/achievement-design.png)
+
 ## Happy End!
 
