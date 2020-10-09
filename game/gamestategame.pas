@@ -128,7 +128,7 @@ begin
       end else
       if ThisGamePad^.Score = 0 then
       begin
-        GamePace += 0.5;
+        GamePace += 0.25;
         SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
         if UserConfig.GetValue('vibration', true) then
           Vibrate(100);
@@ -184,7 +184,7 @@ begin
           GameRunning := false;
         end;
       end;
-    GamePace += SecondsPassed / 60;
+    GamePace += SecondsPassed / 120;
   end;
   ScoreLabel.Caption := GameScore.ToString;
 end;

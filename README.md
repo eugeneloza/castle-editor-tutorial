@@ -1203,7 +1203,7 @@ begin
       begin
         GamePads[X, Y].Ripeness += SecondsPassed * GamePace * GamePads[X, Y].Speed;
       end;
-    GamePace += SecondsPassed / 60;
+    GamePace += SecondsPassed / 120;
   end;
   ScoreLabel.Caption := GameScore.ToString;
 end;
@@ -1215,7 +1215,7 @@ Here:
 
 - `GamePads[X, Y].Ripeness += SecondsPassed * GamePace * GamePads[X, Y].Speed;` increases `Ripeness` of this button by amount of `SecondsPassed` multiplied by `GamePace` multiplied by this specific button grow `GamePads[X, Y].Speed`.
 
-- `GamePace += SecondsPassed / 60;` makes the game accelerate with time.
+- `GamePace += SecondsPassed / 120;` makes the game accelerate with time, i.e. at the beginning the game speed is 1.0, in 2 minutes the game speed will be 2.0 and in 4 minutes - 3.0.
 
 - `ScoreLabel.Caption := GameScore.ToString;` sets `Caption` of our label that represents the game score to current Player's score.
 
@@ -1287,7 +1287,7 @@ begin
         ThisGamePad^.Speed := 0.5 + Random;
       end else
       if ThisGamePad^.Score = 0 then
-        GamePace += 0.5;
+        GamePace += 0.25;
     end;
   end;
 end;
@@ -1807,7 +1807,7 @@ begin
 end else
 if ThisGamePad^.Score = 0 then
 begin
-  GamePace += 0.5;
+  GamePace += 0.25;
   SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
 end;
 ```
@@ -1889,7 +1889,7 @@ Let's add `CastleOpenDocument` to `uses` section of `GameStateGame`. Next, navig
 
 ```Pascal
 begin
-  GamePace += 0.5;
+  GamePace += 0.25;
   SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
   Vibrate(100);
 end;
