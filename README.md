@@ -94,6 +94,10 @@ Obviously, such additional checks slow down the program, so when we are satisfie
 
 Now we can close both "Build Modes" and "Project Options" windows by pressing OK (to save the changes) and we can go a bit deeper.
 
+### Running the Project
+
+...
+
 ## Deleting a State
 
 **State** is one of the game's view, like Main menu, Gameplay view, High scores, maybe some different States, like Inventory, Achievements, different game modes, etc.
