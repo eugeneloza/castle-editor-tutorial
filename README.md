@@ -2430,9 +2430,13 @@ Now let's specify the following parameters for `image-to-pascal`:
 D:\castle-engine\tools\image-to-pascal\>image-to-pascal SplashScreen SplashImage.png
 ```
 
+This will create `SplashScreen` unit containing the whole `SplashImage.png`.
+
 You can find the original `SplashImage.png` image for Button Clicker inside `splashscreen_image` directory in `game` folder of this tutorial.
 
 The command above will generate two files: `splashscreen.pas` which contains the image definition and `splashscreen.image_data` which contains the image data. Let's copy or move those to our game folder.
+
+On Linux system the shell commands are very similar, however, Linux users usually know how to deal with those.
 
 ### Using Splash Screen in the Game
 
