@@ -2504,7 +2504,17 @@ Let's note that this is not the optimal way to deal with achievements. Most like
 
 First of all, we'd like to have a separate page where the Player can see all the achievements to be proud of. This will be a normal state very similar to `StateMainMenu` or `StateCredits`. Let's create a new Design using Image (TCastleImageControl) as Root. As usually let's add a `TCastleVerticalGroup` named `AchievementsGroup` to this group.
 
-On the top line let's show current High Score, the same way we did in `StateGame`.
+On the top line let's show current High Score, the same way we did in `StateGame`. We won't go into detail here, we already know how to do that.
+
+And now for the new part - inserting another Design into this one.
+
+There's a special UI element that allows us to load another Castle User Interface as a Component in this Design: `TCastleDesign`. Let's add it to our `AchievementsGroup`: Design -> Add User Interface Component -> Design (Reference Another castle-user-interface File) (TCastleDesign). Let's name it `DesignAchievement1`.
+
+Now we have a familiar `URL` field. Let's click the three dots button again and pick our `achievement1.castle-user-interface`.
+
+Unfortunately it can't scale automatically to fit the underlying design, so we'll have to manually set `Width`:"700" and `Height`:"250" to match those of the design we load. The same way we add the rest of 5 achievements.
+
+
 
 ## Happy End!
 
