@@ -494,7 +494,7 @@ type
   end;
 ```
 
-And we have to _implement_ this procedure in `Implementation` section below:
+And we have to _implement_ this procedure in `implementation` section below:
 
 ```Pascal
 implementation
@@ -531,7 +531,7 @@ StateMainMenu := TStateMainMenu.Create(Application);
 TUiState.Current := StateMainMenu;
 ```
 
-We also have to add the unit of the state to `gameinitialize`'s `uses` section:
+We also have to add the unit of the state to `GameInitialize`'s `uses` section:
 
 ```Pascal
 uses SysUtils,
@@ -597,7 +597,7 @@ type
   end;
 ```
 
-And their corresponding implementation:
+And their corresponding `implementation`:
 
 ```
 procedure TStateMainMenu.ClickStart(Sender: TObject);
@@ -626,7 +626,7 @@ CreditsButton.OnClick := @ClickCredits;
 QuitButton.OnClick := @ClickQuit;
 ```
 
-Now we may immediately implement the Quit button behavior by adding `CastleWindow` to `uses` section and calling `Application.MainWindow.Close` in the button click event:
+Now we may immediately implement the `QuitButton` behavior by adding `CastleWindow` to `uses` section and calling `Application.MainWindow.Close` in the button click procedure (`ClickQuit`):
 
 ```Pascal
 procedure TStateMainMenu.ClickQuit(Sender: TObject);
