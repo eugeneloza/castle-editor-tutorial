@@ -4,6 +4,8 @@
 
 This tutorial is aimed at new users, who have some minor knowledge of Pascal and general concepts of programming and game development. It will cover all steps necessary from creation and setting up of the project, to a small but finished game.
 
+You can download the compiled version of the game at https://decoherence.itch.io/button-clicker-game.
+
 ## Set up environment
 
 For this tutorial we shall be using Lazarus IDE. We shan't use GUI provided by Lazarus, therefore this is not a requirement, just a personal preference. You can easily follow this tutorial in any other IDE capable of editing FreePascal code.
