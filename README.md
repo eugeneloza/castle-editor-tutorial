@@ -2518,9 +2518,71 @@ Unfortunately it can't scale automatically to fit the underlying design, so we'l
 
 ### Adding Achievements to the Game
 
-### Adding Achievements to Main Menu
+The FreePascal unit `StateAchievements` will be very similar to `StateCredits` and `StateTutorial`. However, just as in `StateGame` let's load an image to replace runtime:
 
-### Adding Achievements to Game Over
+```Pascal
+unit GameStateAchievements;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, CastleUiState, CastleControls, CastleKeysMouse, CastleImages;
+
+type
+  TStateAchievements = class(TUiState)
+  private
+    NoAchievementImage: TCastleImage;
+  public
+    procedure Start; override;
+    function Press(const Event: TInputPressRelease): Boolean; override;
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+  end;
+
+var
+  StateAchievements: TStateAchievements;
+
+implementation
+uses
+  CastleComponentSerialize,
+  CastleSoundEngine,
+  GameStateMainMenu;
+
+constructor TStateAchievements.Create(AOwner: TComponent);
+begin
+  inherited;
+  NoAchievementImage := LoadImage('castle-data:/images/buttons/achievement_0.png', [TRGBAlphaImage]);
+end;
+
+destructor TStateAchievements.Destroy;
+begin
+  FreeAndNil(NoAchievementImage);
+  inherited;
+end;
+
+procedure TStateAchievements.Start;
+var
+  UiOwner: TComponent;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/Achievements.castle-user-interface', FreeAtStop, UiOwner);
+end;
+
+function TStateAchievements.Press(const Event: TInputPressRelease): Boolean;
+begin
+  Result := inherited;
+  SoundEngine.Sound(SoundEngine.SoundFromName('quit'));
+  TUiState.Current := StateMainMenu;
+end;
+
+end.
+```
+
+As usually, let's add `GameStateAchievements` to `uses` section of `GameInitialize` and create the state with `StateAchievements := TStateAchievements.Create(Application);` in `ApplicationInitialize`.
+
+### Adding Achievements to Main Menu and Game Over
 
 ## Happy End!
 
