@@ -87,7 +87,8 @@ begin
     (DesignAchievement5.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
     (DesignAchievement5.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
-
+  (UiOwner.FindRequiredComponent('HighScoreText') as TCastleLabel).CustomFont := CartoonFont60;
+  (UiOwner.FindRequiredComponent('HighScoreValue') as TCastleLabel).Caption := UserConfig.GetValue('high_score', 0).ToString;
 end;
 
 function TStateAchievements.Press(const Event: TInputPressRelease): Boolean;
