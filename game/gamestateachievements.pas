@@ -25,7 +25,7 @@ implementation
 uses
   CastleComponentSerialize,
   CastleSoundEngine, CastleConfig,
-  GameStateMainMenu;
+  GameStateMainMenu, GameFont;
 
 constructor TStateAchievements.Create(AOwner: TComponent);
 begin
@@ -53,6 +53,7 @@ begin
     (DesignAchievement1.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement1.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement1.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement1.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
   if not UserConfig.GetValue('achievement2', false) then
   begin
@@ -60,6 +61,7 @@ begin
     (DesignAchievement2.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement2.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement2.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement2.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
   if not UserConfig.GetValue('achievement3', false) then
   begin
@@ -67,6 +69,7 @@ begin
     (DesignAchievement3.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement3.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement3.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement3.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
   if not UserConfig.GetValue('achievement4', false) then
   begin
@@ -74,6 +77,7 @@ begin
     (DesignAchievement4.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement4.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement4.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement4.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
   if not UserConfig.GetValue('achievement5', false) then
   begin
@@ -81,6 +85,7 @@ begin
     (DesignAchievement5.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement5.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement5.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement5.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
 
 end;
