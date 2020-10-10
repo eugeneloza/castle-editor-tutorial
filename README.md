@@ -2488,6 +2488,8 @@ And finally we suggest `Theme` the resolution for which the image has been creat
 
 ![Splash Screen](images/splashscreen.png)
 
+Note, that Splash Screen is just a static image that appears any time the game is initializing. That happens once on Desktop platforms, but may happen often on mobile devices - to be more exact, every time the app starts or returns from background. Also, if at some point we'll need an animated Splash Screen, we'll have to implement it as a separate state that would start before any other state in the game.
+
 ## Achievements
 
 It sometimes happens, that there are last-minute requested changes before the release. Let's emulate this situation and learn one more cool feature of Castle Editor.
