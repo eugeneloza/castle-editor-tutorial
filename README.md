@@ -2800,7 +2800,5 @@ Now it's time to switch our build mode to "Release" and compile the game. Maybe 
 
 And eventually when everything is running as intended, we can release our game to the public. And don't forget to share your game with Castle Game Engine community, we're very curious to see your progress!
 
-Thanks for reading!
-
 Hope you will have many efficient and productive hours developing your games or programs in Castle Game Engine!
 
