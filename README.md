@@ -18,7 +18,7 @@ Before we start:
 
 * Make sure the required libraries are available on system $PATH. Try compiling a few examples from `examples` folder to make sure they're working.
 
-* Make sure system environment variables required for Castle Game Engine are set up properly.
+* Make sure system environment variables required for Castle Game Engine and Castle Editor are set up properly.
 
 * Make sure Castle Editor is compiled and ready to use.
 
