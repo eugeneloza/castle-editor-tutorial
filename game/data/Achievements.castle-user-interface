@@ -11,15 +11,17 @@
       "HorizontalAnchorParent" : "hpMiddle",
       "HorizontalAnchorSelf" : "hpMiddle",
       "Name" : "AchievementsGroup",
+      "Spacing" : 3.0000000000000000E+001,
       "VerticalAnchorParent" : "vpMiddle",
       "VerticalAnchorSelf" : "vpMiddle",
       "$Children" : [
         {
           "HorizontalAnchorParent" : "hpMiddle",
           "HorizontalAnchorSelf" : "hpMiddle",
-          "Name" : "HorizontalGroup1",
+          "Name" : "HighScoreGroup",
           "VerticalAnchorParent" : "vpTop",
           "VerticalAnchorSelf" : "vpTop",
+          "Width" : 7.0000000000000000E+002,
           "$Children" : [
             {
               "ColorPersistent" : {
@@ -29,10 +31,13 @@
                 "$ClassName" : "TCastleColorPersistent"
               },
               "FontSize" : 6.0000000000000000E+001,
+              "HorizontalAnchorParent" : "hpMiddle",
+              "HorizontalAnchorSelf" : "hpRight",
               "Name" : "HighScoreText",
               "Text" : [
                 "High Score:"
               ],
+              "VerticalAnchorDelta" : 1.1000000000000000E+001,
               "VerticalAnchorParent" : "vpMiddle",
               "VerticalAnchorSelf" : "vpMiddle",
               "$Children" : [
@@ -47,7 +52,8 @@
                 "$ClassName" : "TCastleColorPersistent"
               },
               "FontSize" : 8.0000000000000000E+001,
-              "HorizontalAnchorDelta" : 3.3000000000000000E+002,
+              "HorizontalAnchorDelta" : 8.0000000000000000E+001,
+              "HorizontalAnchorParent" : "hpMiddle",
               "Name" : "HighScoreValue",
               "Text" : [
                 "999999"
@@ -59,7 +65,77 @@
               "$ClassName" : "TCastleLabel"
             }
           ],
-          "$ClassName" : "TCastleHorizontalGroup"
+          "$ClassName" : "TCastleUserInterface"
+        },
+        {
+          "Height" : 2.0000000000000000E+002,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "DesignAchievement1",
+          "URL" : "castle-data:/achievement1.castle-user-interface",
+          "VerticalAnchorDelta" : -1.3000000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "Width" : 7.1200000000000000E+002,
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleDesign"
+        },
+        {
+          "Height" : 2.0000000000000000E+002,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "DesignAchievement2",
+          "URL" : "castle-data:/achievement2.castle-user-interface",
+          "VerticalAnchorDelta" : -3.6000000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "Width" : 7.1200000000000000E+002,
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleDesign"
+        },
+        {
+          "Height" : 2.0000000000000000E+002,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "DesignAchievement3",
+          "URL" : "castle-data:/achievement3.castle-user-interface",
+          "VerticalAnchorDelta" : -5.9000000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "Width" : 7.1200000000000000E+002,
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleDesign"
+        },
+        {
+          "Height" : 2.0000000000000000E+002,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "DesignAchievement4",
+          "URL" : "castle-data:/achievement4.castle-user-interface",
+          "VerticalAnchorDelta" : -8.2000000000000000E+002,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "Width" : 7.1200000000000000E+002,
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleDesign"
+        },
+        {
+          "Height" : 2.0000000000000000E+002,
+          "HorizontalAnchorParent" : "hpMiddle",
+          "HorizontalAnchorSelf" : "hpMiddle",
+          "Name" : "DesignAchievement5",
+          "URL" : "castle-data:/achievement5.castle-user-interface",
+          "VerticalAnchorDelta" : -1.0500000000000000E+003,
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop",
+          "Width" : 7.1200000000000000E+002,
+          "$Children" : [
+          ],
+          "$ClassName" : "TCastleDesign"
         }
       ],
       "$ClassName" : "TCastleVerticalGroup"
