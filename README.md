@@ -2432,7 +2432,7 @@ D:\castle-engine\tools\image-to-pascal\>image-to-pascal SplashScreen SplashImage
 
 This will create `SplashScreen` unit containing the whole `SplashImage.png`.
 
-You can find the original `SplashImage.png` image for Button Clicker inside `splashscreen_image` directory in `game` folder of this tutorial.
+You can find the original `SplashImage.png` image for Button Clicker inside `source_images` directory in `game` folder of this tutorial.
 
 The command above will generate two files: `splashscreen.pas` which contains the image definition and `splashscreen.image_data` which contains the image data. Let's copy or move those to our game folder.
 
