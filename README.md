@@ -2798,7 +2798,9 @@ At last! Everything we wanted to put inside this small game is finished. Surpris
 
 Now it's time to switch our build mode to "Release" and compile the game. Maybe also compile it for Android or iOS. Then give it a nice thorough testing, playing as if there is no tomorrow. From time to time fine-tuning some game variables or designs to make the game is convenient and fun to play.
 
-And eventually when everything is running as intended, we can release our game to the public. And don't forget to share your game with Castle Game Engine community, we're very curious to see your progress!
+And eventually when everything is running as intended, we can release our game to the public. In the end, we'll need to "package" everything together - we'll need the `ButtonClickerGame.exe` file - our compiled game, `data` folder - our assets, `README` that would describe how to run and play the game. On Windows platforms it's also necessary to package the _DLL_ libraries that are required to run the game. On Linux platforms we'll need to mention in README what libraries are required for the user to run the game.
+
+And don't forget to share your game with Castle Game Engine community, we're very curious to see your progress!
 
 Hope you will have many efficient and productive hours developing your games or programs in Castle Game Engine!
 
