@@ -24,7 +24,7 @@
           "HorizontalAnchorSelf" : "hpMiddle",
           "Name" : "ScoreLabel",
           "Text" : [
-            "300k"
+            "350k"
           ],
           "VerticalAnchorParent" : "vpMiddle",
           "VerticalAnchorSelf" : "vpMiddle",
@@ -68,7 +68,7 @@
               "Text" : [
                 "A result to be proud of!"
               ],
-              "VerticalAnchorDelta" : -7.3999992370605469E+001,
+              "VerticalAnchorDelta" : -7.4000000000000000E+001,
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop",
               "$Children" : [

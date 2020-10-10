@@ -2493,7 +2493,7 @@ Now let's save our design as `achievement1.castle-user-interface` and let's make
 | achievement1   | 50k          | Nice!                   | Keep it up!              |
 | achievement2   | 100k         | Very Good!              | You're doing great!      |
 | achievement3   | 200k         | Remarkable!             | Now that's some skill!   |
-| achievement4   | 300k         | Magnificent!            | A result to be proud of! |
+| achievement4   | 350k         | Magnificent!            | A result to be proud of! |
 | achievement5   | 500k         | Unbelievable!           | Are you serious?! WOW!!! |
 
 We can do that by editing the same file and (not forgetting to) saving it under a different name, or by making several copies of the file and editing them separately.
