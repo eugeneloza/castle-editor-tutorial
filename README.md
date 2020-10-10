@@ -2582,6 +2582,82 @@ end.
 
 As usually, let's add `GameStateAchievements` to `uses` section of `GameInitialize` and create the state with `StateAchievements := TStateAchievements.Create(Application);` in `ApplicationInitialize`.
 
+### Parsing Embedded Designs
+
+Now in `Start` procedure let's work a bit with our embedded designs. Also, we'll use a bit different approach here - just not to get too bored with doing the same things over and over again. And practically it's more efficient to do it the following way. Before for every UI element we wanted to change or work with we created a new `private` variable in our state. However, as already seen, we aren't going to change any of them outside of our `Start` procedure. Therefore, we may not spam `private` section with temporary variables, that will be used only once, but we can simply declare them as local variables. Or even not use any variables at all, but directly modify the UI element that was returned by `FindRequiredComponent`. So, first of all, let's find our `TCastleDesign` instances in the usual way:
+
+```Pascal
+procedure TStateAchievements.Start;
+var
+  UiOwner: TComponent;
+  DesignAchievement1, DesignAchievement2, DesignAchievement3,
+    DesignAchievement4, DesignAchievement5: TCastleDesign;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/Achievements.castle-user-interface', FreeAtStop, UiOwner);
+  DesignAchievement1 := UiOwner.FindRequiredComponent('DesignAchievement1') as TCastleDesign;
+  DesignAchievement2 := UiOwner.FindRequiredComponent('DesignAchievement2') as TCastleDesign;
+  DesignAchievement3 := UiOwner.FindRequiredComponent('DesignAchievement3') as TCastleDesign;
+  DesignAchievement4 := UiOwner.FindRequiredComponent('DesignAchievement4') as TCastleDesign;
+  DesignAchievement5 := UiOwner.FindRequiredComponent('DesignAchievement5') as TCastleDesign;
+end;
+```
+
+The only difference above is that we declared variables `DesignAchievement1, DesignAchievement2, DesignAchievement3, DesignAchievement4, DesignAchievement5` as local variables inside `Start` procedure.
+
+Next goes the new part. As we've already mentioned `UiOwner.FindRequiredComponent` finds a UI component inside `UiOwner`. However when we have embedded designs, their child components don't belong to `UiOwner`, but to their respective parent classes. That is to find a child of `DesignAchievement1` we'll have to use the construction `DesignAchievement1.FindRequiredComponent`.
+
+And the second feature - we don't actually have to create a variable to work with the result of `FindRequiredComponent` - if it's just a single (or very rare) operation to perform, we can just directly work on the `FindRequiredComponent` result like this:
+
+```
+procedure TStateAchievements.Start;
+var
+  UiOwner: TComponent;
+  DesignAchievement1, DesignAchievement2, DesignAchievement3,
+    DesignAchievement4, DesignAchievement5: TCastleDesign;
+begin
+  inherited;
+  InsertUserInterface('castle-data:/Achievements.castle-user-interface', FreeAtStop, UiOwner);
+  if not UserConfig.GetValue('achievement1', false) then
+  begin
+    DesignAchievement1 := UiOwner.FindRequiredComponent('DesignAchievement1') as TCastleDesign;
+    (DesignAchievement1.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
+    (DesignAchievement1.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
+    (DesignAchievement1.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+  end;
+  if not UserConfig.GetValue('achievement2', false) then
+  begin
+    DesignAchievement2 := UiOwner.FindRequiredComponent('DesignAchievement2') as TCastleDesign;
+    (DesignAchievement2.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
+    (DesignAchievement2.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
+    (DesignAchievement2.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+  end;
+  if not UserConfig.GetValue('achievement3', false) then
+  begin
+    DesignAchievement3 := UiOwner.FindRequiredComponent('DesignAchievement3') as TCastleDesign;
+    (DesignAchievement3.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
+    (DesignAchievement3.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
+    (DesignAchievement3.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+  end;
+  if not UserConfig.GetValue('achievement4', false) then
+  begin
+    DesignAchievement4 := UiOwner.FindRequiredComponent('DesignAchievement4') as TCastleDesign;
+    (DesignAchievement4.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
+    (DesignAchievement4.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
+    (DesignAchievement4.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+  end;
+  if not UserConfig.GetValue('achievement5', false) then
+  begin
+    DesignAchievement5 := UiOwner.FindRequiredComponent('DesignAchievement5') as TCastleDesign;
+    (DesignAchievement5.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
+    (DesignAchievement5.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
+    (DesignAchievement5.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+  end;
+end;
+```
+
+Here again we check if the Player has an achievement by checking if the information about achievement is stored in the `UserConfig`: `UserConfig.GetValue('achievement1', false)` and in case it is not found, then we replace the achievement image by `NoAchievementImage` and hide the `AchievementDescription` label by `Exists := false` - repeating for all 5 achievements. In case the achievement is obtained by the player there is no need to do anything - our design already contains all the elements we should show to the Player in this case, there is even no need to find `DesignAchievement1` in `UiOwner` as we aren't going to change it in this case.
+
 ### Adding Achievements to Main Menu and Game Over
 
 ## Happy End!
