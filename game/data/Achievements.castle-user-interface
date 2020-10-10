@@ -30,7 +30,8 @@
                 "Red" : 8.6274512112140656E-002,
                 "$ClassName" : "TCastleColorPersistent"
               },
-              "FontSize" : 6.0000000000000000E+001,
+              "FontSize" : 5.5000000000000000E+001,
+              "HorizontalAnchorDelta" : 7.0000000000000000E+001,
               "HorizontalAnchorParent" : "hpMiddle",
               "HorizontalAnchorSelf" : "hpRight",
               "Name" : "HighScoreText",
@@ -51,7 +52,7 @@
                 "Red" : 8.6274512112140656E-002,
                 "$ClassName" : "TCastleColorPersistent"
               },
-              "FontSize" : 8.0000000000000000E+001,
+              "FontSize" : 7.5000000000000000E+001,
               "HorizontalAnchorDelta" : 8.0000000000000000E+001,
               "HorizontalAnchorParent" : "hpMiddle",
               "Name" : "HighScoreValue",
