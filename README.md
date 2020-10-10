@@ -2648,6 +2648,7 @@ begin
     (DesignAchievement4.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement4.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement4.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement4.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
   if not UserConfig.GetValue('achievement5', false) then
   begin
@@ -2664,6 +2665,42 @@ end;
 
 Here again we check if the Player has an achievement by checking if the information about achievement is stored in the `UserConfig`: `UserConfig.GetValue('achievement1', false)` and in case it is not found, then we replace the achievement image by `NoAchievementImage` and hide the `AchievementDescription` label by `Exists := false` - repeating for all 5 achievements. In case the achievement is obtained by the player there is no need to do anything - our design already contains all the elements we should show to the Player in this case, there is even no need to find `DesignAchievement1` in `UiOwner` as we aren't going to change it in this case.
 
+Finally we change the font of `HighScoreText` label and value of `HighScoreValue` to represent the current Player's High Score. Also change of the font forced us to move `HorizontalAnchorDelta`s of both labels a bit in the Design, as usually, but we already know how to do that and let's pretend that nothing happened :)
+
+### Adding Achievements to Main Menu
+
+Let's add our new `StateAchievements` to `GameStateMainMenu`. First of all we'll need to add one more button to Main Menu design by duplicating some other button and naming it `AchievementsButton`. In `GameStateMainMenu` let's add a private variable `AchievementsButton: TCastleButton;` and work with it in `Start` procedure:
+
+```Pascal
+procedure TStateMainMenu.Start;
+var
+  UiOwner: TComponent;
+begin
+  ...
+  AchievementsButton := UiOwner.FindRequiredComponent('AchievementsButton') as TCastleButton;
+  AchievementsButton.OnClick := @ClickAchievements;
+  AchievementsButton.CustomFont := CartoonFont60;
+  ...
+end;
+```
+
+Let's add `GameStateAchievements` to `uses` section and a `private` procedure to accept clicks `procedure ClickAchievements(Sender: TObject);` with the following implementation:
+
+```Pascal
+procedure TStateMainMenu.ClickAchievements(Sender: TObject);
+begin
+  SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));
+  TUiState.Current := StateAchievements;
+end;
+```
+
+However, if we compile and run the game now, we see that "Achievements" button caption is too large to fit in our button. Let's go back into Castle Editor and change `Width` of all our buttons from 406 to 650. Now everything looks good:
+
+![Main Menu with Achievements button](images/achievements-main-menu.png)
+
+We can also try clicking the button and see our `StateAchievements` in-game:
+
+![State Achievements in Game](images/achievements-in-game.png)
 
 ## Happy End!
 
