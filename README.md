@@ -2547,8 +2547,8 @@ var
 implementation
 uses
   CastleComponentSerialize,
-  CastleSoundEngine,
-  GameStateMainMenu;
+  CastleSoundEngine, CastleConfig,
+  GameStateMainMenu, GameFont;
 
 constructor TStateAchievements.Create(AOwner: TComponent);
 begin
@@ -2624,6 +2624,7 @@ begin
     (DesignAchievement1.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement1.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement1.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement1.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
   if not UserConfig.GetValue('achievement2', false) then
   begin
@@ -2631,6 +2632,7 @@ begin
     (DesignAchievement2.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement2.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement2.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement2.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
   if not UserConfig.GetValue('achievement3', false) then
   begin
@@ -2638,6 +2640,7 @@ begin
     (DesignAchievement3.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement3.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement3.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement3.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
   if not UserConfig.GetValue('achievement4', false) then
   begin
@@ -2652,13 +2655,15 @@ begin
     (DesignAchievement5.FindRequiredComponent('AchievementImage') as TCastleImageControl).Image := NoAchievementImage;
     (DesignAchievement5.FindRequiredComponent('AchievementImage') as TCastleImageControl).OwnsImage := false;
     (DesignAchievement5.FindRequiredComponent('AchievementDescription') as TCastleLabel).Exists := false;
+    (DesignAchievement5.FindRequiredComponent('AchievementCaption') as TCastleLabel).Exists := false;
   end;
+  (UiOwner.FindRequiredComponent('HighScoreText') as TCastleLabel).CustomFont := CartoonFont60;
+  (UiOwner.FindRequiredComponent('HighScoreValue') as TCastleLabel).Caption := UserConfig.GetValue('high_score', 0).ToString;
 end;
 ```
 
 Here again we check if the Player has an achievement by checking if the information about achievement is stored in the `UserConfig`: `UserConfig.GetValue('achievement1', false)` and in case it is not found, then we replace the achievement image by `NoAchievementImage` and hide the `AchievementDescription` label by `Exists := false` - repeating for all 5 achievements. In case the achievement is obtained by the player there is no need to do anything - our design already contains all the elements we should show to the Player in this case, there is even no need to find `DesignAchievement1` in `UiOwner` as we aren't going to change it in this case.
 
-### Adding Achievements to Main Menu and Game Over
 
 ## Happy End!
 
