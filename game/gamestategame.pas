@@ -167,9 +167,35 @@ begin
             Vibrate(500);
           SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
           StateGameOver.Score := GameScore;
+          StateGameOver.Achievement := '';
           if UserConfig.GetValue('high_score', 0) < GameScore then
           begin
             UserConfig.SetValue('high_score', GameScore);
+            if (GameScore >= 50000) and not UserConfig.GetValue('achievement1', false) then
+            begin
+              UserConfig.SetValue('achievement1', true);
+              StateGameOver.Achievement := 'achievement1';
+            end;
+            if (GameScore >= 100000) and not UserConfig.GetValue('achievement2', false) then
+            begin
+              UserConfig.SetValue('achievement2', true);
+              StateGameOver.Achievement := 'achievement2';
+            end;
+            if (GameScore >= 200000) and not UserConfig.GetValue('achievement3', false) then
+            begin
+              UserConfig.SetValue('achievement3', true);
+              StateGameOver.Achievement := 'achievement3';
+            end;
+            if (GameScore >= 350000) and not UserConfig.GetValue('achievement4', false) then
+            begin
+              UserConfig.SetValue('achievement4', true);
+              StateGameOver.Achievement := 'achievement4';
+            end;
+            if (GameScore >= 500000) and not UserConfig.GetValue('achievement5', false) then
+            begin
+              UserConfig.SetValue('achievement5', true);
+              StateGameOver.Achievement := 'achievement5';
+            end;
             UserConfig.Save;
             StateGameOver.HighScore := true;
           end else

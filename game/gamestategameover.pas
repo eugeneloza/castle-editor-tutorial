@@ -20,11 +20,13 @@ type
     GameOverImage, HighScoreImage: TCastleImageControl;
     ScoreTextLabel, ScoreValueLabel: TCastleLabel;
     PlayAgainButton, MainMenuButton: TCastleButton;
+    DesignAchievement: TCastleDesign;
     procedure ClickPlayAgain(Sender: TObject);
     procedure ClickMainMenu(Sender: TObject);
   public
     Score: Integer;
     HighScore: Boolean;
+    Achievement: String;
     procedure Start; override;
     procedure Update(const SecondsPassed: Single; var HandleInput: Boolean); override;
   end;
@@ -53,6 +55,15 @@ begin
   ScoreValueLabel := UiOwner.FindRequiredComponent('ScoreValueLabel') as TCastleLabel;
   PlayAgainButton := UiOwner.FindRequiredComponent('PlayAgainButton') as TCastleButton;
   MainMenuButton := UiOwner.FindRequiredComponent('MainMenuButton') as TCastleButton;
+  DesignAchievement := UiOwner.FindRequiredComponent('DesignAchievement') as TCastleDesign;
+  case Achievement of
+    'achievement1': DesignAchievement.Url := 'castle-data:/achievement1.castle-user-interface';
+    'achievement2': DesignAchievement.Url := 'castle-data:/achievement2.castle-user-interface';
+    'achievement3': DesignAchievement.Url := 'castle-data:/achievement3.castle-user-interface';
+    'achievement4': DesignAchievement.Url := 'castle-data:/achievement4.castle-user-interface';
+    'achievement5': DesignAchievement.Url := 'castle-data:/achievement5.castle-user-interface';
+    else DesignAchievement.Exists := false;
+  end;
   ScoreTextLabel.CustomFont := CartoonFont60;
   PlayAgainButton.CustomFont := CartoonFont60;
   MainMenuButton.CustomFont := CartoonFont60;
