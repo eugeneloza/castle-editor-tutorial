@@ -2722,5 +2722,55 @@ end;
 
 Here we find `DesignAchievement` inside our design. And then based on the value of `Achievement` variable we load a different `Url` runtime. In case `Achievement` variable is not found in the expected list (e.g. empty) we will hide the whole UI element by `Exists := false`.
 
+### Adding Achievements to Game
+
+Next, let's go into `GameStateGame` and inside `Update` find our block that corresponds to "Game Over" situation and around `UserConfig.Save;` let's add code that will award the Player:
+
+```Pascal
+StateGameOver.Achievement := '';
+if UserConfig.GetValue('high_score', 0) < GameScore then
+begin
+  UserConfig.SetValue('high_score', GameScore);
+  if (GameScore >= 50000) and not UserConfig.GetValue('achievement1', false) then
+  begin
+    UserConfig.SetValue('achievement1', true);
+    StateGameOver.Achievement := 'achievement1';
+  end;
+  if (GameScore >= 100000) and not UserConfig.GetValue('achievement2', false) then
+  begin
+    UserConfig.SetValue('achievement2', true);
+    StateGameOver.Achievement := 'achievement2';
+  end;
+  if (GameScore >= 200000) and not UserConfig.GetValue('achievement3', false) then
+  begin
+    UserConfig.SetValue('achievement3', true);
+    StateGameOver.Achievement := 'achievement3';
+  end;
+  if (GameScore >= 350000) and not UserConfig.GetValue('achievement4', false) then
+  begin
+    UserConfig.SetValue('achievement4', true);
+    StateGameOver.Achievement := 'achievement4';
+  end;
+  if (GameScore >= 500000) and not UserConfig.GetValue('achievement5', false) then
+  begin
+    UserConfig.SetValue('achievement5', true);
+    StateGameOver.Achievement := 'achievement5';
+  end;
+  UserConfig.Save;
+  StateGameOver.HighScore := true;
+end else
+  StateGameOver.HighScore := false;
+```
+
+...
+
+Finally we can see our achievements in the Game Over screen:
+
+![Achievements in Game Over](images/achievements-on-gameover.png)
+
+And in our Hall of Fame:
+
+![Achievements in State Achievements](images/achievements-final.png)
+
 ## Happy End!
 
