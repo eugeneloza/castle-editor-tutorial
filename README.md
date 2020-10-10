@@ -2702,5 +2702,25 @@ We can also try clicking the button and see our `StateAchievements` in-game:
 
 ![State Achievements in Game](images/achievements-in-game.png)
 
+### Adding Achievements to Game Over
+
+The final step is to award the player with Achievements when the player reaches some milestone. First let's create a way to display an achievement on `StateGameOver` screen. In Castle Editor in `GameOver.castle-user-interface` let's add a `TCastleDesign` named `DesignAchievement` inside `GameOverGroup`. Let's change its `Width`:"712" and `Height`:"200". No need to set any URL, we'll do that from the code.
+
+Now in `TStateGameOver` let's create a `private` variable `DesignAchievement: TCastleDesign;` and a `public` variable `Achievement: String;`. Then somewhere inside `Start` let's add:
+
+```Pascal
+DesignAchievement := UiOwner.FindRequiredComponent('DesignAchievement') as TCastleDesign;
+case Achievement of
+  'achievement1': DesignAchievement.Url := 'castle-data:/achievement1.castle-user-interface';
+  'achievement2': DesignAchievement.Url := 'castle-data:/achievement2.castle-user-interface';
+  'achievement3': DesignAchievement.Url := 'castle-data:/achievement3.castle-user-interface';
+  'achievement4': DesignAchievement.Url := 'castle-data:/achievement4.castle-user-interface';
+  'achievement5': DesignAchievement.Url := 'castle-data:/achievement5.castle-user-interface';
+  else DesignAchievement.Exists := false;
+end;
+```
+
+Here we find `DesignAchievement` inside our design. And then based on the value of `Achievement` variable we load a different `Url` runtime. In case `Achievement` variable is not found in the expected list (e.g. empty) we will hide the whole UI element by `Exists := false`.
+
 ## Happy End!
 
