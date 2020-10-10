@@ -96,7 +96,25 @@ Now we can close both "Build Modes" and "Project Options" windows by pressing OK
 
 ### Running the Project
 
-...
+Now we can **Run** our project. To do that, let's go to Run -> Compile:
+
+![Running project](images/running-project.png)
+
+As we're going to use this feature very often to check if our game works as expected after recent changes, it's good to know that we can do the same using F9 key.
+
+Note that there are also several useful options here:
+
+- **Compile** - Will compile and run the game.
+
+- **Build** - Will only compile the game, without running it.
+
+- **Clean up and Build** - Will recompile everything clean, without running the game. In case of working with huge projects sometimes it's necessary.
+
+There's also a set of convenient buttons on the Lazarus Toolbar:
+
+![Running Project from Toolbar](images/running-project-toolbar.png)
+
+First of all we have a green arrow that will do the same as **Compile** menu above - compile and run our game. Next there is a green arrow with a red cross that will do the same, except for disabled debugging - we will get less information in case the game crashes, but the game will run much faster. And finally a cog with a wrench - that allows us quickly chose between run modes (Debug/Release).
 
 ## Deleting a State
 
