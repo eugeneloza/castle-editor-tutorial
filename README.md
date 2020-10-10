@@ -2476,7 +2476,7 @@ We'll show Achievements both in a special Achievements page, accessible from Mai
 
 In our minimalistic case we could have made it in a simpler way, but let's use this opportunity to learn to use `TCastleDesign` which allows us to reuse designed cuhnks of the UI in different UI states. Let's create our `Achievement1` Design, with Empty Rectangle as Root: Design -> New User Interface (Empty Rectangle as Root) and name it `Root`.
 
-Let's go to "All" tab and uncheck `FullSize` property. Then set `Width`: "700" and `Height`:"250".
+Let's go to "All" tab and uncheck `FullSize` property. Then set `Width`: "712" and `Height`:"200". Note that these values don't matter in this case and we're using them only for consistency.
 
 Inside let's add an image `AchievementImage` place a `ScoreLabel` with text "50k" over it, and also as a child of this image add a `TCastleVerticalGroup` named `AchievementInfoGroup` and having its `HorizontalAnchorSelf` `hpLeft` anchored to `HorizontalAnchorParent` `hpRight` with `HorizontalAnchorDelta` of 20 pixels.
 
@@ -2512,9 +2512,9 @@ There's a special UI element that allows us to load another Castle User Interfac
 
 Now we have a familiar `URL` field. Let's click the three dots button again and pick our `achievement1.castle-user-interface`.
 
-Unfortunately it can't scale automatically to fit the underlying design, so we'll have to manually set `Width`:"700" and `Height`:"250" to match those of the design we load. The same way we add the rest of 5 achievements.
+Unfortunately it can't scale automatically to fit the underlying design, so we'll have to manually set `Width`:"712" and `Height`:"200" to match those of the design we load. The same way we add the rest of 5 achievements:
 
-
+![State Achievements design](images/state-achievements-design.png)
 
 ## Happy End!
 
