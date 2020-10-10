@@ -12,7 +12,7 @@ uses
   CastleApplicationProperties, CastleLog, CastleWindow, GameInitialize;
 
 begin
-  ApplicationProperties.Version := '0.1';
+  ApplicationProperties.Version := '1.0';
   Application.ParseStandardParameters;
 
   { On standalone, activate log only after parsing command-line options.
