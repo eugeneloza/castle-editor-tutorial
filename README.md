@@ -48,11 +48,11 @@ Let's open freshly created `ButtonClickerGame.lpi` in Lazarus. We can immediatel
 
 - `data` folder, that contains game data. For now it's almost empty and contains only:
 
-- - `CastleSettings.xml` - settings of our game project.
+- `CastleSettings.xml` - settings of our game project.
 
-- - `state_main.castle-user-interface` - design of the Main State. We can edit it with Castle Editor.
+- `state_main.castle-user-interface` - design of the Main State. We can edit it with Castle Editor.
 
-- - `README.txt` - short reminder of what the `data` folder is and where to get additional information. We don't need this file and it can be deleted right away.
+- `README.txt` - short reminder of what the `data` folder is and where to get additional information. We don't need this file and it can be deleted right away.
 
 Before we finish this part, let's also update some settings in Lazarus for convenience of our future work.
 
