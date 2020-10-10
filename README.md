@@ -353,6 +353,8 @@ Zero means "default" value, we'll learn to change it later. For now let's assign
 
 ![Start button image](images/button-start-font-size-result.png)
 
+### Duplicating buttons
+
 Now, to avoid going through all this process again, we can just create copies of our already designed button. Let's select it and press Design -> Duplicate Component:
 
 ![Duplicate component](images/duplicate-component.png)
@@ -431,6 +433,8 @@ Let's also add one important touch here, so that when we would want to compile f
 Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our MainMenu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
 
 ![Menu looks better](images/menu-looking-better.png)
+
+### Trick with UI organization
 
 However, the buttons are still covering our logo a bit, and there is too much asymmetric free space below. This happened because we aligned our Vertical Group exactly at the center of the screen. There are many different ways to fix this issue, but in the current design we can cheat a bit.
 
