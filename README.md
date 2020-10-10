@@ -2516,5 +2516,11 @@ Unfortunately it can't scale automatically to fit the underlying design, so we'l
 
 ![State Achievements design](images/state-achievements-design.png)
 
+### Adding Achievements to the Game
+
+### Adding Achievements to Main Menu
+
+### Adding Achievements to Game Over
+
 ## Happy End!
 
