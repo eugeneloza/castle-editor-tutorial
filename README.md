@@ -56,6 +56,8 @@ Let's open freshly created `ButtonClickerGame.lpi` in Lazarus. We can immediatel
 
 - `README.txt` - short reminder of what the `data` folder is and where to get additional information. We don't need this file and it can be deleted right away.
 
+### Set up Lazarus Project Inspector
+
 Before we finish this part, let's also update some settings in Lazarus for convenience of our future work.
 
 Firs of all, we may want to have all the project units listed in Project Inspector. We can do that either by simply dragging them from the folder, or by pressing "Add" button.
@@ -68,6 +70,8 @@ If the Project Inspector is not visible on the screen, we may show it by going t
 
 Note, that the required packages `castle-base` and `castle-window` are already included as dependencies of our project.
 
+### Set up Lazarus Project Options
+
 Next let's tweak a couple of Project Options, which can be found in Project -> Project Options:
 
 ![Project options menu](images/project-options-menu.png)
@@ -75,6 +79,8 @@ Next let's tweak a couple of Project Options, which can be found in Project -> P
 First of all, let's go to Project Options -> Miscellaneous and uncheck option "Main unit has Uses section containing all units of project". This will ensure our `lpr` file won't get spammed by all units we add to the game, and avoid compilation problems if we decide to rename our units at some point.
 
 ![Project options menu](images/project-options-miscellaneous.png)
+
+### Set up Debug Mode
 
 Now let's go to any submenu of "Compiler Options" and click "..." button near "Build Modes: Default".
 
@@ -92,7 +98,7 @@ It is important to work on a project in "Debug" mode - which was conveniently au
 
 Obviously, such additional checks slow down the program, so when we are satisfied with the result and are releasing the game to the world, we need to use "Release" mode, which will work faster.
 
-Now we can close both "Build Modes" and "Project Options" windows by pressing OK (to save the changes) and we can go a bit deeper.
+Now we can close both "Build Modes" and "Project Options" windows by pressing OK (to save the changes).
 
 ### Running the Project
 
