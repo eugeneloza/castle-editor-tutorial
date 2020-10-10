@@ -24,8 +24,6 @@ Before we start:
 
 ## Creating a base project
 
-@michaliskambi, _I've never ever been able to setup the environment variables correctly, and generating a new project from a template never worked for me neither on Linux nor on Windows. Therefore I'm cheating here - I'm creating the project in Lazarus and copy files from Castle Editor templates. Please, double-check if it makes sense._
-
 Run Castle Editor and select "New Project":
 
 ![New project](images/new-project.png)
