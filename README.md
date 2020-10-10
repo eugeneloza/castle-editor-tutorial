@@ -2762,13 +2762,15 @@ end else
   StateGameOver.HighScore := false;
 ```
 
-...
+Here we first set `StateGameOver.Achievement := '';` to avoid it accidentally "remembering" previous achievements.
+
+Then in case Player has a High Score (achievements won't make sense otherwise) we sequentially check conditions for every achievement and save the achievement in `UserConfig` and then set it's name to `StateGameOver.Achievement` so that it can be properly shown on Game Over screen. Note, that we do all of this before `UserConfig.Save` so that in case the Player got an achievement, it will be correctly saved.
 
 Finally we can see our achievements in the Game Over screen:
 
 ![Achievements in Game Over](images/achievements-on-gameover.png)
 
-And in our Hall of Fame:
+And in our Hall of Fame they are shown automatically:
 
 ![Achievements in State Achievements](images/achievements-final.png)
 
