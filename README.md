@@ -2794,3 +2794,13 @@ And in our Hall of Fame they are shown automatically:
 
 ## Happy End!
 
+At last! Everything we wanted to put inside this small game is finished. Surprisingly it took a lot of time and effort even in such a simple case, but we finally did it!
+
+Now it's time to switch our build mode to "Release" and compile the game. Maybe also compile it for Android or iOS. Then give it a nice thorough testing, playing as if there is no tomorrow. From time to time fine-tuning some game variables or designs to make the game is convenient and fun to play.
+
+And eventually when everything is running as intended, we can release our game to the public. And don't forget to share your game with Castle Game Engine community, we're very curious to see your progress!
+
+Thanks for reading!
+
+Hope you will have many efficient and productive hours developing your games or programs in Castle Game Engine!
+
