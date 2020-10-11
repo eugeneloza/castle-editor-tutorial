@@ -22,7 +22,31 @@ Good luck and have fun!
 
 ### Windows
 
-No installation required - just extract the game to one folder and play.
+No installation required - just extract the game into one folder and play.
+
+### Linux
+
+No installation required - just extract the game into one folder and play. Most likely you'll also need to set "executable" flag for the binary (chmod +x ButtonClickerGame.run or through file properties in file manager).
+
+You need the following libraries installed to play the game:
+
+* libopenal1
+* libpng
+* zlib1g
+* libvorbis
+* libfreetype6
+* libgtkglext1
+* libatk-adaptor
+* You'll also need OpenGL drivers for your videocard. Usually it is libgl1-mesa-dev.
+* You also need X-system and GTK at least version 2, however, you are very likely to have those already installed :)
+
+### Android
+
+WARNING: Android version is still Beta, there are at least 4 known non-critical bugs.
+
+Download and install the APK.
+
+The game doesn't require any special permissions.
 
 ## Credits
 
