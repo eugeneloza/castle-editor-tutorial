@@ -9,4 +9,8 @@ backup
 # executables and releases
 *.dll
 *.exe
-
+*.apk
+*.run
+ButtonClickerGame
+*.tar.gz
+*.zip
