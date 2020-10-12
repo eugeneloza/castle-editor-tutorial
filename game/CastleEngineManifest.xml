@@ -15,4 +15,8 @@
       <service name="vibrate" />
     </services>
   </android>
+  <package>
+    <include path="README.md" />
+    <include path="../LICENSE" />
+  </package>
 </project>
