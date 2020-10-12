@@ -2816,6 +2816,18 @@ And in our Hall of Fame they are shown automatically:
 
 ![Achievements in State Achievements](images/achievements-final.png)
 
+## Final touches
+
+### Adding icon
+
+To add Windows/Android/iOS icon to our project we need to add it to `CastleEngineManifest.XML` file inside `<project>` tag:
+
+```XML
+<icons>
+  <icon path="icon.png" />
+</icons>
+```
+
 ## Happy End!
 
 At last! Everything we wanted to put inside this small game is finished. Surprisingly it took a lot of time and effort even in such a simple case, but we finally did it!
