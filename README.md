@@ -2838,6 +2838,17 @@ To add Windows/Android/iOS icon to our project we need to add it to `CastleEngin
 </icons>
 ```
 
+### Package additional data
+
+Let's also add `README.md` and `LICENSE` of our game to the prepared package. Again in `CastleEngineManifest.XML` inside `<project>` tag let's add:
+
+```XML
+<package>
+  <include path="README.md" />
+  <include path="../LICENSE" />
+</package>
+```
+
 ## Happy End!
 
 At last! Everything we wanted to put inside this small game is finished. Surprisingly it took a lot of time and effort even in such a simple case, but we finally did it!
