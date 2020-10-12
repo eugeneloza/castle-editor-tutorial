@@ -2818,6 +2818,16 @@ And in our Hall of Fame they are shown automatically:
 
 ## Final touches
 
+### Immersive mode on mobile platforms
+
+Let's also enable immersive mode on mobile platforms by specifying:
+
+```XML
+fullscreen_immersive="true"
+```
+
+In `<project>` tag fields. Immersive mode hides navigation buttons and other OS UI, so that the game screen is truly fullscreen.
+
 ### Adding icon
 
 To add Windows/Android/iOS icon to our project we need to add it to `CastleEngineManifest.XML` file inside `<project>` tag:
