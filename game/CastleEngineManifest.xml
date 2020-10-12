@@ -5,6 +5,7 @@
   qualified_name="io.castleengine.ButtonClickerGame"
   caption="Button Clicker"
   screen_orientation="portrait"
+  fullscreen_immersive="true"
 >
   <icons>
     <icon path="icon.png" />
