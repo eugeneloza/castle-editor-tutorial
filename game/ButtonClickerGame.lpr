@@ -9,6 +9,10 @@ program ButtonClickerGame;
 {$ifdef CASTLE_AUTO_GENERATED_RESOURCES} {$R castle-auto-generated-resources.res} {$endif}
 
 uses
+  {$ifdef CASTLE_THREADS}
+    {$info Thread support enabled.}
+    {$ifdef UNIX} CThreads, {$endif}
+  {$endif}
   CastleApplicationProperties, CastleLog, CastleWindow, GameInitialize;
 
 begin
