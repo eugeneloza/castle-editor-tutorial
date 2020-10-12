@@ -9,7 +9,7 @@ program ButtonClickerGame;
 {$ifdef CASTLE_AUTO_GENERATED_RESOURCES} {$R castle-auto-generated-resources.res} {$endif}
 
 uses
-  {$ifdef CASTLE_THREADS}
+  {$ifndef CASTLE_DISABLE_THREADS}
     {$info Thread support enabled.}
     {$ifdef UNIX} CThreads, {$endif}
   {$endif}
@@ -21,7 +21,8 @@ begin
 
   { On standalone, activate log only after parsing command-line options.
     This allows to handle --version and --help command-line parameters
-    without any extra output on Unix. }
+    without any extra output on Unix.
+    This also allows to set --log-file from Application.ParseStandardParameters. }
   InitializeLog;
 
   Application.MainWindow.OpenAndRun;
