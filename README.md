@@ -1940,6 +1940,18 @@ end;
 
 Note, that it's safe to call this function on platforms that don't support vibration, but nothing will happen.
 
+### Enable vibration on Android
+
+By default our project doesn't have any "services". To ask for "vibrate" service on Android we should add the following request to `CastleEngineManifest.XML` inside `<project>` tag:
+
+```XML
+<android project_type="integrated">
+  <services>
+    <service name="vibrate" />
+  </services>
+</android>
+```
+
 ## State Options
 
 The Player might want to fine-tune some game settings for more convenient gameplay. There isn't really much to tweak in our simple game, but we might want to let Player change the volume of the music and sound.
