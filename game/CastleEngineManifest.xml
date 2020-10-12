@@ -6,4 +6,12 @@
   caption="Button Clicker"
   screen_orientation="portrait"
 >
+  <icons>
+    <icon path="icon.png" />
+  </icons>
+  <android project_type="integrated">
+    <services>
+      <service name="vibrate" />
+    </services>
+  </android>
 </project>
