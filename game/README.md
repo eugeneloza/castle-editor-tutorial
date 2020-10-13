@@ -39,11 +39,11 @@ You need the following libraries installed to play the game:
 
 ### Android
 
-WARNING: Android version is still Beta, there are at least 4 known non-critical bugs.
+WARNING: Android version is still Beta, there are at least 2 known non-critical bugs.
 
 Download and install the APK.
 
-The game doesn't require any special permissions.
+Game requires permission to use device vibration.
 
 ## Credits
 
