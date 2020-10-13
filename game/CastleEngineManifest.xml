@@ -18,6 +18,6 @@
   </android>
   <package>
     <include path="README.md" />
-    <include path="../LICENSE" />
+    <include path="LICENSE" />
   </package>
 </project>
