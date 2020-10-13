@@ -2,6 +2,7 @@
 *.log
 *.lps
 *.dbg
+*.res
 castle-engine-output
 lib
 backup
