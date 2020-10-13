@@ -2849,6 +2849,14 @@ Let's also add `README.md` and `LICENSE` of our game to the prepared package. Ag
 </package>
 ```
 
+### Specify Project Version
+
+To specify a project version add the following tag to `<project>` tag of `CastleEngineManifest.XML`:
+
+```XML
+<version value="1.0.0" />
+```
+
 ## Happy End!
 
 At last! Everything we wanted to put inside this small game is finished. Surprisingly it took a lot of time and effort even in such a simple case, but we finally did it!
