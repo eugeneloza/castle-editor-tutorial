@@ -2835,8 +2835,11 @@ To add Windows/Android/iOS icon to our project we need to add it to `CastleEngin
 ```XML
 <icons>
   <icon path="icon.png" />
+  <icon path="icon.ico" />
 </icons>
 ```
+
+This will instruct Castle Game Engine to add a 512x512 PNG icon and generated Windows icon to the build.
 
 ### Package additional data
 
@@ -2856,6 +2859,17 @@ To specify a project version add the following tag to `<project>` tag of `Castle
 ```XML
 <version value="1.0.0" />
 ```
+
+### Building using Castle Game Engine
+
+...
+
+castle-engine package --os=win32 --cpu=i386 --mode=release
+castle-engine package --os=win64 --cpu=x86_64 --mode=release
+castle-engine package --os=linux --cpu=x86_64 --mode=release
+castle-engine package --os=android --cpu=arm --mode=release*
+
+* will fall back to debug mode : Information about the keys to sign release Android package not found, because "AndroidSigningProperties.txt" file does not exist. See https://github.com/castle-engine/castle-engine/wiki/Android for documentation how to crea
 
 ## Happy End!
 
