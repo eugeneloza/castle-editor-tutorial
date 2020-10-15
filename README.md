@@ -658,6 +658,12 @@ For now let's add one more quality of life detail. On mobile platform we usually
 
 In a similar way as we did that when we forced the Window size on Desktop platforms.
 
+However, in Castle Game Engine there is a more general way of doing so, e.g. guaranteeing that we didn't forget some exotic platform, like Nintendo Switch (which in fact we did :) not that we are going to release our game there) or enable easier debugging of the app look at different platforms. We can use a global variable `ShowUserInterfaceToQuit`. To do this we have to add `CastleApplicationProperties` to `uses` section and instead of the block above write:
+
+```Pascal
+QuitButton.Exists := ApplicationProperties.ShowUserInterfaceToQuit;
+```
+
 ### Set up Default font
 
 Before we proceed, we need to improve how our fonts look. We shall be using two fonts in this game - the default one and the font for captions and buttons. Let's set up the Default font first. It can be done by adding font information to `CastleSettings.xml`:

@@ -27,7 +27,7 @@ var
 implementation
 uses
   CastleComponentSerialize,
-  CastleWindow, CastleSoundEngine,
+  CastleWindow, CastleSoundEngine, CastleApplicationProperties,
   GameFont, GameStateTutorial, GameStateOptions, GameStateCredits,
   GameStateAchievements;
 
@@ -52,8 +52,7 @@ begin
   AchievementsButton.CustomFont := CartoonFont60;
   CreditsButton.CustomFont := CartoonFont60;
   QuitButton.CustomFont := CartoonFont60;
-  {$ifdef CASTLE_IOS}QuitButton.Exists := false;{$endif}
-  {$ifdef ANDROID}QuitButton.Exists := false;{$endif}
+  QuitButton.Exists := ApplicationProperties.ShowUserInterfaceToQuit;
   SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
 end;
 
