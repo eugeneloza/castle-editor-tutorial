@@ -652,8 +652,8 @@ Now we can compile and test if this button is working as expected. We cannot imp
 For now let's add one more quality of life detail. On mobile platform we usually don't need "Quit" button, as the apps are closed by the operation system. So we should simply disable it in this case. We can do it by adding:
 
 ```Pascal
-{$ifdef CASTLE_IOS}QuitButton.Enabled := false;{$endif}
-{$ifdef ANDROID}QuitButton.Enabled := false;{$endif}
+{$ifdef CASTLE_IOS}QuitButton.Exists := false;{$endif}
+{$ifdef ANDROID}QuitButton.Exists := false;{$endif}
   ```
 
 In a similar way as we did that when we forced the Window size on Desktop platforms.

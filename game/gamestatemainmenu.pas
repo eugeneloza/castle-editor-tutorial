@@ -52,8 +52,8 @@ begin
   AchievementsButton.CustomFont := CartoonFont60;
   CreditsButton.CustomFont := CartoonFont60;
   QuitButton.CustomFont := CartoonFont60;
-  {$ifdef CASTLE_IOS}QuitButton.Enabled := false;{$endif}
-  {$ifdef ANDROID}QuitButton.Enabled := false;{$endif}
+  {$ifdef CASTLE_IOS}QuitButton.Exists := false;{$endif}
+  {$ifdef ANDROID}QuitButton.Exists := false;{$endif}
   SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
 end;
 
