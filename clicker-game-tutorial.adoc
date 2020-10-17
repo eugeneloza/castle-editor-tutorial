@@ -2641,17 +2641,17 @@ image::achievement-design.png[]
 
 Now let's save our design as `achievement1.castle-user-interface` and let's make 5 similar files following the next pattern:
 
-[Achievements,cols=4*]
+[Achievements,cols="^,^,^,^"]
 |===
 |Filename
 |ScoreLabel
 |AchievementCaption
 |AchievementDescription
 
-^|achievement1
-^|50k
-^|Nice!
-^|Keep it up!
+|achievement1
+|50k
+|Nice!
+|Keep it up!
 
 |achievement2
 |100k
