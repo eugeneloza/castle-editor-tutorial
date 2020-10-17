@@ -32,7 +32,7 @@ Before we start:
 
 * Make sure Castle Editor is compiled and ready to use.
 
-## Creating a base project
+## Creating an Empty Project
 
 Run Castle Editor and select "New Project":
 
@@ -225,7 +225,7 @@ Now let's try to compile and run our project. We have a perfectly clean, truly "
 
 ## Creating a Main Menu State
 
-### Create empty State
+### Create Empty State
 
 Make sure Castle Engine is running and our project is open. If not, then it's easy to open it by:
 
@@ -243,7 +243,7 @@ Now our window should look like this:
 
 image::designer-empty-state.png[]
 
-### Create background image
+### Create Background Image
 
 On the left we see a "Hierarchy" - this is the tree of User Interface elements that are present within our State currently. For now it's only `ImageControl`. Let's select it by left-clicking in Hierarchy. Now on the right side we have a way to edit the properties of our user interface element:
 
@@ -279,7 +279,7 @@ Let's name our state "MainMenu" and press "Save":
 
 image::save-state.png[]
 
-### Create Logo image
+### Create Logo Image
 
 In simple words, Main Menu is a game logo + a set of buttons that would allow the player to start the game, change options, see credits, etc.
 
@@ -311,7 +311,7 @@ Let's rename this logo image into `LogoImage` and we're done here.
 
 Note, that as we never explicitly set the size of the image, it will have its native dimensions of 740x310.
 
-### Create menu buttons
+### Create Menu Buttons
 
 Next we need to create the actual menu buttons. This is a vertically-aligned set of similar items, which should make use of automatic arrangement, so that we shall have no problems adding/removing the buttons in future. This part is covered by "Vertical Group" UI element. We can add it by Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Note, that first we should select the User Interface Component to which we add it - and it should be our `BackgroundImage`.
 
@@ -367,7 +367,7 @@ Zero means "default" value, we'll learn to change it later. For now let's assign
 
 image::button-start-font-size-result.png[]
 
-### Duplicating buttons
+### Duplicating Buttons
 
 Now, to avoid going through all this process again, we can just create copies of our already designed button. Let's select it and press Design -> Duplicate Component:
 
@@ -389,7 +389,7 @@ Let's set it to 20 and we're done with this part:
 
 image::four-buttons-done-finish.png[]
 
-### Screen aspect ratio and orientation
+### Screen Aspect Ratio and Orientation
 
 Obviously we have a problem that the buttons overlap with the game title. This happens because our current view has proportions of Landscape orientation, but we are aiming at mobile devices in Portrait orientation, which would define our design arrangement, but still the variety of mobile devices resolutions and aspect ratio is extremely high, and we have to make our interface flexible enough to fit most if not all of them. Fortunately, Castle Game Engine does most of this dirty work for us.
 
@@ -452,7 +452,7 @@ Now let's close our project and reopen it again in Castle Editor, so that our ch
 
 image::menu-looking-better.png[]
 
-### Trick with UI organization
+### Trick with UI Organization
 
 However, the buttons are still covering our logo a bit, and there is too much asymmetric free space below. This happened because we aligned our Vertical Group exactly at the center of the screen. There are many different ways to fix this issue, but in the current design we can cheat a bit.
 
@@ -482,7 +482,7 @@ Now, why don't we use this feature to make our Castle Editor window layout more 
 
 image::editor-arrangement.png[]
 
-### Load the Main Menu in the game
+### Load the Main Menu in the Game
 
 Now as we have a ready Main Menu design, we need to use it in the game. Unfortunately at the moment it's still not possible to do that automatically and will require us to return to Lazarus.
 
@@ -582,7 +582,7 @@ Save, compile and run. Now we have our MainMenu successfully loaded in the game.
 
 image::game-window-basic.png[]
 
-### Adding click events
+### Adding Click Events
 
 Now we have to make those buttons actually perform some function. To do that we first have to "find" the button in the loaded design. Let's go back to `GameStateMainMenu` unit. First of all, let's create the variables for the buttons in our class, we'll also need to add `CastleControls` unit to the `uses` section:
 
@@ -698,7 +698,7 @@ However, in Castle Game Engine there is a more general way of doing so, e.g. gua
 QuitButton.Exists := ApplicationProperties.ShowUserInterfaceToQuit;
 ----
 
-### Set up Default font
+### Set up Default Font
 
 Before we proceed, we need to improve how our fonts look. We shall be using two fonts in this game - the default one and the font for captions and buttons. Let's set up the Default font first. It can be done by adding font information to `CastleSettings.xml`:
 
@@ -724,7 +724,7 @@ This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. We
 
 image::better-font.png[]
 
-### Load and use a custom font
+### Load and use a Custom Font
 
 However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 40 - much smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet, so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
 
@@ -774,7 +774,7 @@ And now our design finally looks almost as it was anticipated:
 
 image::better-font2.png[]
 
-### Colored button text
+### Colored Button Text
 
 Still the black color is not good here, so let's go back to Castle Editor and change it to one of the design colors. Let's select one of the buttons, open the tab "All":
 
@@ -808,7 +808,7 @@ Now what we want to do is to have our UI organized in the following way:
 
 - High Score: 99999
 
-### Design score area
+### Design Score Area
 
 Let's start with creating a "Score" area. If we create a "Label" right away, as it is aligned to the center (remember `Alignment` in GameGroup is `hpMiddle`) it will shift around when the score increases. So we have to create a "container" for it, so that we can strictly fix its position horizontally. So, let's add an "Empty Rectangle" by Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface). Let's name it `ScoreArea`. Note, that it's not mandatory to name our UI elements - Castle Editor already provides us valid and unique names for them, however it's a good habit to learn.
 
@@ -830,7 +830,7 @@ Let's go to Layout tab and set `VerticalAnchorParent` and `VerticalAnchorSelf` t
 
 image::score-label-anchors.png[]
 
-### Design gameplay area
+### Design Gameplay Area
 
 Now, the gameplay area is a grid 3x4 consisting of "buttons". There's no "Grid" component for Castle Game Engine ready out-of-the box, but actually we don't really need it here. Let's select `GameGroup` create a Vertical Group and call it `GameplayArea`, also setting `Alignment` to `hpMiddle` again.
 
@@ -870,7 +870,7 @@ Note that Castle Editor named our rows correctly, but other elements - `ButtonGr
 
 image::gameplay-hierarchy.png[]
 
-### Adding High Score label
+### Adding High Score Label
 
 Finally, let's duplicate our `ScoreArea` and name the copy `HighScoreArea`. Let's drag it to the very bottom of our `GameGroup` hierarchy. Hint, we can simply drag it onto `GameGroup` element in the Hierarchy until a gray triangle shows up on the right - this will avoid us having to drag it all along and trying to snap to the end of the group:
 
@@ -880,7 +880,7 @@ Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighSco
 
 image::gameplay-result.png[]
 
-### Loading multiple different font sizes
+### Loading Multiple Different Font Sizes
 
 Before we proceed, note that our numbers are blurry. This happened because again we've used the font significantly larger than the one we've requested in `CastleSettings.XML`. Let's go back to it and add a line `sizes_at_load="40 80"` to `<default_font>`, like this:
 
@@ -983,7 +983,7 @@ If we did everything correctly, now our state should show in the game after we p
 
 image::state-game-first-steps.png[]
 
-### Parse Score and High Score labels
+### Parse Score and High Score Labels
 
 Let's start from easier task, which we already had some experience with. Let's find our 4 labels in the design that correspond to Score and High Score. This is done the same way as we made it with buttons. We have to create references for them in our `TStateGame` class and `FindRequiredComponent` in `Start` like this:
 
@@ -1026,7 +1026,7 @@ The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design
 
 image::wrong-font-position-fixed.png[]
 
-### Parse game field
+### Parse Game Field
 
 Finally we're getting closer to making an actual game. Let's parse the designed elements for gameplay field. We could do it the same way as we did for buttons of the Main Menu and labels for score and high score. However, as we have 12 "buttons" here and we shall need to operate them conveniently, let's create a construction that will contain all the information we need about the "button" in one place:
 
@@ -1077,7 +1077,7 @@ begin
 end;
 ----
 
-### Responsive buttons
+### Responsive Buttons
 
 Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch.
 
@@ -1113,7 +1113,7 @@ begin
 end;
 ----
 
-### Buttons reaction to clicks
+### Buttons Reaction to Clicks
 
 Let's go on with implementing `ButtonPress` procedure. There are more efficient way to handle this, but here we'll go with a simple and straightforward solution - we'll determine which button was clicked by its Name, like this:
 
@@ -1162,7 +1162,7 @@ Yes, surely now we should compile our game and try it out!
 
 image::gameplay-onpress-testing.png[]
 
-### Update event
+### Update Event
 
 Now, next thing that we should do - is to have something happen on the screen as the time passes. That is something should happen every frame, which is handled by `Update` event, which we can `override`:
 
@@ -1189,7 +1189,7 @@ end;
 
 Again, as we `override` some virtual method, we have to call `inherited` to make sure that the parent `class`es run their `Update` code properly.
 
-### Adding gameplay elements
+### Adding Gameplay Elements
 
 Let's think a bit about the anticipated gameplay:
 
@@ -1360,7 +1360,7 @@ Let's compile our project and run it:
 
 image::gameplay-update-testing.png[]
 
-### Clicking those buttons!
+### Clicking Those Buttons!
 
 We're very close. Now we want to be able to harvest those ripe buttons and add their score to player's score. Let's do this by modifying `TStateGame.ButtonPress` procedure:
 
@@ -1403,7 +1403,7 @@ Let's compile and now we can finally start playing this game!
 
 image::gameplay-testing.png[]
 
-### Replacing an image runtime
+### Replacing an Image Runtime
 
 Now before going back to gameplay, let's add a tiny touch to how our game looks. Let's replace the button image for something obviously broken if the Player loses the game. To do this we'll need to load an image with "broken button" and replace it runtime if the game is lost.
 
@@ -1514,7 +1514,7 @@ Done! Now our High Score is automatically assigned when the Player finishes the 
 
 image::gameplay-high-score.png[]
 
-### Fix a possible bug with Update order
+### Fix a Possible Bug with Update Order
 
 Now, before we proceed, let's make our code a bit more "bullet-proof". The problem here is that `Update` event can come at different moments on different platforms. Therefore it'd be a very good idea to `Update` our game view before the first frame is rendered, so that the Player won't see our placeholders for a fraction of a second. Therefore we'd want to `Update` our UI in the end of `Start` procedure.
 
@@ -1823,7 +1823,7 @@ Let's now play our music in game. Let's go to our `GameStateMainMenu` unit and a
 SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
 ----
 
-Which instructs to loop a track named `menu_music` on channel #0. As simple as that. We can now compile and run and see that the music is already working!
+Which instructs to loop a track named `menu_music` on channel "0". As simple as that. We can now compile and run and see that the music is already working!
 
 Let's now go into `GameStateGame`, again add `CastleSoundEngine` to `uses` section and a similar line somewhere in `Start` procedure:
 
@@ -1834,7 +1834,7 @@ SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
 
 And it also works without any problems. We can also test and see that the music is switched when we go from Main Menu State into Game State and back.
 
-### Button clicking sounds
+### Button Clicking Sounds
 
 Let's add our sounds to the registry in the very same way as we did with the music:
 
@@ -1904,7 +1904,7 @@ As we've already noted, we aren't using `stream` feature here. Also using uncomp
 
 This means, that when we call sound named `"click"` from the game `SoundEngine` will randomly play any of the sound that we've specified as `target`s here.
 
-### Accelerate and Game Over sounds
+### Accelerate and Game Over Sounds
 
 The very same way we can add an "acceleration" sound when the Player clicked an empty button:
 
@@ -1958,7 +1958,7 @@ begin
 end;
 ----
 
-### The rest of UI sounds
+### The Rest of UI Sounds
 
 Let's quickly add some other sounds for UI events:
 
@@ -2036,7 +2036,7 @@ end;
 
 Note, that it's safe to call this function on platforms that don't support vibration, but nothing will happen.
 
-### Enable vibration on Android
+### Enable Vibration on Android
 
 By default our project doesn't have any "services". To ask for "vibrate" service on Android we should add the following request to `CastleEngineManifest.XML` inside `<project>` tag:
 
@@ -2625,7 +2625,7 @@ Let's add Achievements to our game. No, we won't be publishing our game on Apple
 
 We'll show Achievements both in a special Achievements page, accessible from Main Menu and in Game Over screen in case Player has reached a new achievement. That means that we might be better to reuse every achievement design, so that we won't have to draw them again and again.
 
-### Creating an achievement
+### Creating an Achievement
 
 In our minimalistic case we could have made it in a simpler way, but let's use this opportunity to learn to use `TCastleDesign` which allows us to reuse designed cuhnks of the UI in different UI states. Let's create our `Achievement1` Design, with Empty Rectangle as Root: Design -> New User Interface (Empty Rectangle as Root) and name it `Root`.
 
@@ -2637,7 +2637,7 @@ Inside this group have two labels - `AchievementCaption` with larger font that w
 
 image::achievement-design.png[]
 
-### Creating 5 achievements
+### Creating 5 Achievements
 
 Now let's save our design as `achievement1.castle-user-interface` and let's make 5 similar files following the next pattern:
 
@@ -2961,7 +2961,7 @@ image::achievements-final.png[]
 
 ## Final touches
 
-### Immersive mode on mobile platforms
+### Immersive Mode on Mobile Platforms
 
 Let's also enable immersive mode on mobile platforms by specifying:
 
@@ -2972,7 +2972,7 @@ fullscreen_immersive="true"
 
 In `<project>` tag fields. Immersive mode hides navigation buttons and other OS UI, so that the game screen is truly fullscreen.
 
-### Adding icon
+### Adding Icon
 
 To add Windows/Android/iOS icon to our project we need to add it to `CastleEngineManifest.XML` file inside `<project>` tag:
 
@@ -2986,7 +2986,7 @@ To add Windows/Android/iOS icon to our project we need to add it to `CastleEngin
 
 This will instruct Castle Game Engine to add a 512x512 PNG icon and generated Windows icon to the build.
 
-### Package additional data
+### Package Additional Data
 
 Let's also add `README.md` and `LICENSE` of our game to the prepared package. Again in `CastleEngineManifest.XML` inside `<project>` tag let's add:
 
@@ -3038,4 +3038,3 @@ And eventually when everything is running as intended, we can release our game t
 And don't forget to share your game with Castle Game Engine community, we're very curious to see your progress!
 
 Hope you will have many efficient and productive hours developing your games or programs in Castle Game Engine!
-
