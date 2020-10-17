@@ -3009,17 +3009,23 @@ To specify a project version add the following tag to `<project>` tag of `Castle
 
 ### Building using Castle Game Engine
 
-...
+Now we can build and package our project. The most correct way to do this is by using Castle Game Engine Build-Tool - which will not only compile and package our game properly, but will also enable us cross-compiling for different platforms.
+
+However, there are several related problems to using the Build-Tool. First of all, it needs to be compiled. It's a matter of simple execution of `make` command (given FPC is installed and can be found on system $PATH) on Linux systems. However, something as simple may become quite tricky on Windows OS. We can workaround this problem by downloading a ready precompiled snapshots for the Castle Games Engine from the official site.
+
+But there is one, more serious problem - compilation for Android requires a proper setup of Android SDK and cross-compilation for Free Pascal Compiler. If you're ready to face the challenge - try following instructions found in Castle Game Engine documentation: https://github.com/castle-engine/castle-engine/wiki/Android. A much easier and efficient solution is by using Castle Game Engine Docker images: https://github.com/castle-engine/castle-engine/wiki/Docker, which can also be not-so-trivial, especially on Windows machines, but still doable without the need for extensive knowledge of Android SDK cross-compilation with Free Pascal. However, going through either solutions of this problem in detail is outside the scope of the current tutorial. Next we suggest that either the cross-compiler is installed and working correctly or that we just skip the step for Android compilation.
+
+Build-Tool is a command-line tool, so we'll have to use `cmd` again. The commands below will build our game and prepare properly archived and consistently named packages for Windows 32 bit, Windows 64 bit, Linux 64 bit and Android:
 
 [source,Shell]
 ----
 castle-engine package --os=win32 --cpu=i386 --mode=release
 castle-engine package --os=win64 --cpu=x86_64 --mode=release
 castle-engine package --os=linux --cpu=x86_64 --mode=release
-castle-engine package --os=android --cpu=arm --mode=release*
+castle-engine package --os=android --cpu=arm --mode=release
 ----
 
-* will fall back to debug mode : Information about the keys to sign release Android package not found, because "AndroidSigningProperties.txt" file does not exist. See https://github.com/castle-engine/castle-engine/wiki/Android for documentation how to crea
+Note: Trying to run `mode=release` for Android will fall back to debug mode, as we didn't create any keys to sign our Android project and it's most certainly outside of the scope of this tutorial. See https://github.com/castle-engine/castle-engine/wiki/Android for more details.
 
 ## Happy End!
 
