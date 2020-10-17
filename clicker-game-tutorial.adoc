@@ -394,7 +394,8 @@ Obviously we have a problem that the buttons overlap with the game title. This h
 
 There are several steps to fix this problem, but first of all, let's go to the settings file `CastleSettings.xml` and look inside. It contains the following lines:
 
-```XML
+[source,XML]
+----
 <castle_settings>
   <ui_scaling
     mode="EncloseReferenceSize"
@@ -402,14 +403,15 @@ There are several steps to fix this problem, but first of all, let's go to the s
     reference_height="900"
   />
 </castle_settings>
-```
+----
 
 Let's set it to the ones specific to iPhone 6, 6s, 7 and 8 in Portrait orientation:
 
-```XML
+[source,XML]
+----
 reference_width="750"
 reference_height="1334"
-```
+----
 
 This will tell the engine that it should consider that all the internal designs of the game are designed for 750x1334 screen. The actual values don't really matter, as we try to aim at diverse possible screen ratios, it's just something that the game engine will take as reference.
 
@@ -433,7 +435,8 @@ Now we can try and compile the game to see that our window is now has a correct 
 
 Let's also add one important touch here, so that when we would want to compile for mobile platforms, our game will tell the device that it wants to run only in Portrait mode. Let's open `CastleEngineManifest.xml` and add a line `screen_orientation="portrait"` somewhere in `project` tag, e.g. after `caption` field. So now it will look something like this:
 
-```XML
+[source,XML]
+----
 <project name="ButtonClickerGame"
   standalone_source="ButtonClickerGame.lpr"
   game_units="GameInitialize"
@@ -442,7 +445,7 @@ Let's also add one important touch here, so that when we would want to compile f
   screen_orientation="portrait"
 >
 </project>
-```
+----
 
 Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our MainMenu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
 
@@ -698,7 +701,8 @@ QuitButton.Exists := ApplicationProperties.ShowUserInterfaceToQuit;
 
 Before we proceed, we need to improve how our fonts look. We shall be using two fonts in this game - the default one and the font for captions and buttons. Let's set up the Default font first. It can be done by adding font information to `CastleSettings.xml`:
 
-```XML
+[source,XML]
+----
 <castle_settings>
   <ui_scaling
     mode="EncloseReferenceSize"
@@ -713,7 +717,7 @@ Before we proceed, we need to improve how our fonts look. We shall be using two 
     />
   </default_font>
 </castle_settings>
-```
+----
 
 This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. We can immediately see that it looks better:
 
@@ -879,7 +883,8 @@ Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighSco
 
 Before we proceed, note that our numbers are blurry. This happened because again we've used the font significantly larger than the one we've requested in `CastleSettings.XML`. Let's go back to it and add a line `sizes_at_load="40 80"` to `<default_font>`, like this:
 
-```XML
+[source,XML]
+----
 <default_font>
   <regular
     url="fonts/CatV_6x12_9.ttf"
@@ -888,7 +893,7 @@ Before we proceed, note that our numbers are blurry. This happened because again
     sizes_at_load="40 80"
   />
 </default_font>
-```
+----
 
 This will instruct Castle Game Engine to load font sizes "40" and "80" for our default font.
 
@@ -1769,12 +1774,13 @@ There are several ways of working with audio in Castle Game Engine. Also there a
 
 Let's go to our `data` folder and create `audio` subfolder, and after dropping our sound files inside, create a file named `index.xml` with the following content:
 
-```XML
+[source,XML]
+----
 <?xml version="1.0"?>
 
 <sounds>
 </sounds>
-```
+----
 
 This is our minimal (and empty) sound repository registry. Now let's go into `GameInitialize` unit, add `CastleSoundEngine` to `uses` section and in `ApplicationInitialize` load it somewhere near `LoadFonts;`:
 
@@ -1789,12 +1795,13 @@ This will instruct Castle Game Engine's SoundEngine to load our `index.xml` file
 
 Let's go back to our `index.xml` file and start filling it up with useful information. Let's add information about our two music tracks inside:
 
-```XML
+[source,XML]
+----
 <sounds>
   <sound name="menu_music" url="music/Curious_Critters_CC_BY_Matthew_Pablo.ogg" stream="true" />
   <sound name="game_music" url="music/Casual_game_track_CC_BY_Alexandr_Zhelanov.ogg" stream="true" />
 </sounds>
-```
+----
 
 Here:
 
@@ -1830,7 +1837,8 @@ And it also works without any problems. We can also test and see that the music 
 
 Let's add our sounds to the registry in the very same way as we did with the music:
 
-```XML
+[source,XML]
+----
 <sounds>
   <sound name="menu_music" url="music/Curious_Critters_CC_BY_Matthew_Pablo.ogg" stream="true" />
   <sound name="game_music" url="music/Casual_game_track_CC_BY_Alexandr_Zhelanov.ogg" stream="true" />
@@ -1858,11 +1866,12 @@ Let's add our sounds to the registry in the very same way as we did with the mus
   <sound name="click_21" url="clicks/21-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
   <sound name="click_22" url="clicks/22-319419__johnthewizar__selection-sounds_CC0_by_johnthewizar.wav" />
 </sounds>
-```
+----
 
 As we've already noted, we aren't using `stream` feature here. Also using uncompressed `wav` format instead of `ogg`. We'd want all of these 22 click sounds to play randomized in our game, when we click game pads. We could do that by providing the `SoundEngine` with the proper sound names, but it can already do this for us. Let's add a special `alias` feature here:
 
-```XML
+[source,XML]
+----
 <sounds>
   ...
   <alias name="click">
@@ -1890,7 +1899,7 @@ As we've already noted, we aren't using `stream` feature here. Also using uncomp
     <target name="click_22" />
   </alias>
 </sounds>
-```
+----
 
 This means, that when we call sound named `"click"` from the game `SoundEngine` will randomly play any of the sound that we've specified as `target`s here.
 
@@ -1898,12 +1907,13 @@ This means, that when we call sound named `"click"` from the game `SoundEngine` 
 
 The very same way we can add an "acceleration" sound when the Player clicked an empty button:
 
-```XML
+[source,XML]
+----
 <sounds>
   ...
   <sound name="accelerate" url="clicks/349311__newagesoup__uplifter-sweep-10s-three-tones_CC0_by_newagesoup.wav" />
 </sounds>
-```
+----
 
 Now in our `GameStateGame` unit we can navigate to `ButtonPress` procedure and at the point where we process the result of user click add two lines to play `"click"` or `"accelerate"` sound depending on which button was clicked:
 
@@ -1928,12 +1938,13 @@ Here `SoundEngine.Sound` plays a sound which is in turn found "by name" using `S
 
 The same way we add a "game over" sound:
 
-```XML
+[source,XML]
+----
 <sounds>
   ...
   <sound name="game_over" url="clicks/245646__unfa__cartoon-pop-distorted_CC0_by_unfa.wav" />
 </sounds>
-```
+----
 
 And play it in `Update`:
 
@@ -2028,13 +2039,14 @@ Note, that it's safe to call this function on platforms that don't support vibra
 
 By default our project doesn't have any "services". To ask for "vibrate" service on Android we should add the following request to `CastleEngineManifest.XML` inside `<project>` tag:
 
-```XML
+[source,XML]
+----
 <android project_type="integrated">
   <services>
     <service name="vibrate" />
   </services>
 </android>
-```
+----
 
 ## State Options
 
@@ -2546,23 +2558,26 @@ There is a solution. We can have the splash screen as a part of our code. This w
 
 There is one catch though, it is a command-line app, not a GUI one. So we have to use console. On Windows it can be done by pressing `Win+R` and typing in `cmd`. Then navigate to the drive and folder where `image-to-pascal` is located. This might be not trivial if you've never had experience using console. Let's imagine our Castle Game Engine installation is in "D:\castle-engine" folder. Then we have to do it this way:
 
-```Shell
+[source,Shell]
+----
 C:\Users\Username\>D:
-```
+----
 
 This will change our current drive to "D:" and then:
 
-```Shell
+[source,Shell]
+----
 D:\>cd castle-engine\tools\image-to-pascal
-```
+----
 
 Which will make `image-to-pascal` folder current.
 
 Now let's specify the following parameters for `image-to-pascal`:
 
-```Shell
+[source,Shell]
+----
 D:\castle-engine\tools\image-to-pascal\>image-to-pascal SplashScreen SplashImage.png
-```
+----
 
 This will create `SplashScreen` unit containing the whole `SplashImage.png`.
 
@@ -2924,9 +2939,10 @@ And in our Hall of Fame they are shown automatically:
 
 Let's also enable immersive mode on mobile platforms by specifying:
 
-```XML
+[source,XML]
+----
 fullscreen_immersive="true"
-```
+----
 
 In `<project>` tag fields. Immersive mode hides navigation buttons and other OS UI, so that the game screen is truly fullscreen.
 
@@ -2934,12 +2950,13 @@ In `<project>` tag fields. Immersive mode hides navigation buttons and other OS 
 
 To add Windows/Android/iOS icon to our project we need to add it to `CastleEngineManifest.XML` file inside `<project>` tag:
 
-```XML
+[source,XML]
+----
 <icons>
   <icon path="icon.png" />
   <icon path="icon.ico" />
 </icons>
-```
+----
 
 This will instruct Castle Game Engine to add a 512x512 PNG icon and generated Windows icon to the build.
 
@@ -2947,29 +2964,34 @@ This will instruct Castle Game Engine to add a 512x512 PNG icon and generated Wi
 
 Let's also add `README.md` and `LICENSE` of our game to the prepared package. Again in `CastleEngineManifest.XML` inside `<project>` tag let's add:
 
-```XML
+[source,XML]
+----
 <package>
   <include path="README.md" />
   <include path="../LICENSE" />
 </package>
-```
+----
 
 ### Specify Project Version
 
 To specify a project version add the following tag to `<project>` tag of `CastleEngineManifest.XML`:
 
-```XML
+[source,XML]
+----
 <version value="1.0.0" />
-```
+----
 
 ### Building using Castle Game Engine
 
 ...
 
+[source,Shell]
+----
 castle-engine package --os=win32 --cpu=i386 --mode=release
 castle-engine package --os=win64 --cpu=x86_64 --mode=release
 castle-engine package --os=linux --cpu=x86_64 --mode=release
 castle-engine package --os=android --cpu=arm --mode=release*
+----
 
 * will fall back to debug mode : Information about the keys to sign release Android package not found, because "AndroidSigningProperties.txt" file does not exist. See https://github.com/castle-engine/castle-engine/wiki/Android for documentation how to crea
 
