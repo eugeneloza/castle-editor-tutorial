@@ -2,7 +2,7 @@
 Yevhen Loza
 include::locale/attributes.adoc[]
 :toc: left
-:toclevels: 4
+:toclevels: 1
 :sectnums:
 :source-highlighter: coderay
 :docinfo1:
