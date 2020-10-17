@@ -2643,10 +2643,10 @@ Now let's save our design as `achievement1.castle-user-interface` and let's make
 
 [Achievements,cols="^,^,^,^"]
 |===
-|Filename
-|ScoreLabel
-|AchievementCaption
-|AchievementDescription
+|**Filename**
+|**ScoreLabel**
+|**AchievementCaption**
+|**AchievementDescription**
 
 |achievement1
 |50k
