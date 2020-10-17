@@ -40,7 +40,7 @@ image::new-project.png[]
 
 In this tutorial we'll be using the most basic template - "Empty". Write a name for the project and press "Create Project" button. Note that the name cannot start with a number. And it's best to avoid non-ASCII characters or spaces in project name or path. Also it's a good idea to limit the path to the project to 255 symbols, which might cause bugs on some exotic platforms.
 
-![Create new project](images/new-project-create.png)
+image::new-project-create.png[]
 
 This will create a simple dummy project we can start filling with our game-specific code and assets.
 
@@ -70,11 +70,11 @@ Before we finish this part, let's also update some settings in Lazarus for conve
 
 Firs of all, we may want to have all the project units listed in Project Inspector. We can do that either by simply dragging them from the folder, or by pressing "Add" button.
 
-![Project inspector](images/project-inspector.png)
+image::project-inspector.png[]
 
 If the Project Inspector is not visible on the screen, we may show it by going to Project -> Project Inspector menu:
 
-![Project inspector menu](images/project-inspector-menu.png)
+image::project-inspector-menu.png[]
 
 Note, that the required packages `castle-base` and `castle-window` are already included as dependencies of our project.
 
@@ -82,25 +82,25 @@ Note, that the required packages `castle-base` and `castle-window` are already i
 
 Next let's tweak a couple of Project Options, which can be found in Project -> Project Options:
 
-![Project options menu](images/project-options-menu.png)
+image::project-options-menu.png[]
 
 First of all, let's go to Project Options -> Miscellaneous and uncheck option "Main unit has Uses section containing all units of project". This will ensure our `lpr` file won't get spammed by all units we add to the game, and avoid compilation problems if we decide to rename our units at some point.
 
-![Project options menu](images/project-options-miscellaneous.png)
+image::project-options-miscellaneous.png[]
 
 ### Set up Debug Mode
 
 Now let's go to any submenu of "Compiler Options" and click "..." button near "Build Modes: Default".
 
-![Project options menu](images/project-options-compiler-options.png)
+image::project-options-compiler-options.png[]
 
 And there press the button "Create Debug and Release modes".
 
-![Project options menu](images/project-options-build-modes.png)
+image::project-options-build-modes.png[]
 
 Now our "Build Modes" screen should look like this:
 
-![Project options menu](images/project-options-build-modes-2.png)
+image::project-options-build-modes-2.png[]
 
 It is important to work on a project in "Debug" mode - which was conveniently autoselected for us already. Debug mode adds a lot of additional checks, that can really help with debugging the game, and also will report memory leaks if any.
 
@@ -112,7 +112,7 @@ Now we can close both "Build Modes" and "Project Options" windows by pressing OK
 
 Now we can **Run** our project. To do that, let's go to Run -> Compile:
 
-![Running project](images/running-project.png)
+image::running-project.png[]
 
 As we're going to use this feature very often to check if our game works as expected after recent changes, it's good to know that we can do the same using F9 key.
 
@@ -126,7 +126,7 @@ Note that there are also several useful options here:
 
 There's also a set of convenient buttons on the Lazarus Toolbar:
 
-![Running Project from Toolbar](images/running-project-toolbar.png)
+image::running-project-toolbar.png[]
 
 First of all we have a green arrow that will do the same as **Compile** menu above - compile and run our game. Next there is a green arrow with a red cross that will do the same, except for disabled debugging - we will get less information in case the game crashes, but the game will run much faster. And finally a cog with a wrench - that allows us quickly chose between run modes (Debug/Release).
 
@@ -205,7 +205,7 @@ uses SysUtils,
 
 Note that we also silently deleted a few other unused units from `uses` section, when you create a project from `Empty` template you may have a little more units there, but Lazarus will notify you in "Messages" window, that some units aren't used in the project:
 
-![Unused units](images/unused-units.png)
+image::unused-units.png[]
 
 It's very reasonable to check "Messages" from time to time to see if Lazarus hints us to change something, usually it's quite useful.
 
@@ -213,11 +213,11 @@ Now it's time to physically delete the files `state_main.castle-user-interface` 
 
 Note, that in case we've added `gamestatemain.pas` to our Project Inspector earlier, it will now complain that the file is missing:
 
-![Missing file](images/missing-file.png)
+image::missing-file.png[]
 
 It won't trigger an error or any other trouble, but we also should remove it by right clicking it and selecting "Remove":
 
-![Missing file](images/missing-file-remove.png)
+image::missing-file-remove.png[]
 
 Of course we can also use "Remove" button which is located above.
 
@@ -229,55 +229,55 @@ Now let's try to compile and run our project. We have a perfectly clean, truly "
 
 Make sure Castle Engine is running and our project is open. If not, then it's easy to open it by:
 
-![Recent projects](images/recent-projects.png)
+image::recent-projects.png[]
 
 After the project opens we see the Castle Editor Designer window:
 
-![Empty designer window](images/designer-empty.png)
+image::designer-empty.png[]
 
 Let's create our new state. There are many different user interface elements we can use as a root, but usually it's most convenient to have either Empty rectangle as root, or a specific user interface we are going to use. In this case let's create a State based on "Image" - so that we shall have an image for background. That is: Design -> New User Interface (Chosen Root) -> Image (TCastleImageControl).
 
-![Create a new state](images/designer-create-state.png)
+image::designer-create-state.png[]
 
 Now our window should look like this:
 
-![Empty state](images/designer-empty-state.png)
+image::designer-empty-state.png[]
 
 ### Create background image
 
 On the left we see a "Hierarchy" - this is the tree of User Interface elements that are present within our State currently. For now it's only `ImageControl`. Let's select it by left-clicking in Hierarchy. Now on the right side we have a way to edit the properties of our user interface element:
 
-![Image control](images/image-control-basic.png)
+image::image-control-basic.png[]
 
 Let's change the `Name` field to "BackgroundImage" and select the actual image to display by clicking the `URL` field and then the button with three dots:
 
-![Url field](images/url-field.png)
+image::url-field.png[]
 
 It will open the `data` folder of our project prompting us to select an image. All of our game data should be stored in this folder, so let's use our file manager to drop some assets there. For now let's add `images` subfolder and drop our background image there. Then our open window will look like this:
 
-![Open image](images/open-image.png)
+image::open-image.png[]
 
 Let's select the background image and press "Open". We immediately see the image in our State:
 
-![Open image result](images/open-image-result.png)
+image::open-image-result.png[]
 
 However, it doesn't seem to be exactly what we want - to behave as a background image, i.e. to fill the entire screen. To improve this behavior we need to go to "All" tab in properties of our ImageControl and set `FullSize` property to true:
 
-![Full size image](images/full-size.png)
+image::full-size.png[]
 
 This will make our background image stretch horizontally and vertically to fill the entire parent User Interface. As this is our topmost user interface - it'll fill the entire window, which is exactly what we want here. Now our background behaves as we intend it to:
 
-![Background image](images/background-image-result.png)
+image::background-image-result.png[]
 
 ### Save State
 
 As Castle Editor doesn't support backups and autosaving yet, we should get a habit of saving our work often - and it's a good habit anyway. To do this we press Design -> Save (or Save As):
 
-![Save state](images/save-state-menu.png)
+image::save-state-menu.png[]
 
 Let's name our state "MainMenu" and press "Save":
 
-![Save state](images/save-state.png)
+image::save-state.png[]
 
 ### Create Logo image
 
@@ -285,25 +285,25 @@ In simple words, Main Menu is a game logo + a set of buttons that would allow th
 
 So first of all we add a logo of our game. The process is very similar to the one that we've been following when creating the empty State, but this time instead of creating a new State, we use Design -> Add User Interface Component like this:
 
-![Add User Interface Component](images/add-user-interface.png)
+image::add-user-interface.png[]
 
 And select an "Image (TCastleImageControl)". In the same way as we did with the background now we pick `images/buttonclickerlogo.png` as the image file. And our image is ready in our user interface:
 
-![Title added](images/title-added.png)
+image::title-added.png[]
 
 Now we should position it in the upper center of our design. To do that we use "Layout" tab of the Castle Editor:
 
-![Layout tab](images/layout-tab.png)
+image::layout-tab.png[]
 
 Let's set `HorizontalAnchorParent` (i.e. to which side of the Parent (currently that is `BackgroundImage`) we align our interface element) and HorizontalAnchorSelf (which side of this user interface element is aligned) both to `hpMiddle` (which stands for "horizontal position - Middle"). And `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpTop` (which stands for "vertical position - Top"). Now we should have something like:
 
-![UI alignment](images/alignment.png)
+image::alignment.png[]
 
 Note, that the values we've changed from the default ones are highlighted in bold and dark red color.
 
 Now we have a small detail - our logo is glued to the top of the design, which is not nice. We need to add a gap, which we can do by changing `VerticalAnchorDelta` property of our logo image. As we are moving the image _down_ we have to specify a _negative value_ here, let's say "-50". Now our image has some free space around it in the design:
 
-![UI alignment](images/alignment2.png)
+image::alignment2.png[]
 
 The same way if we'd wanted to move the image horizontally from the anchor, we'd have had to modify `HorizontalAnchorDelta` property.
 
@@ -315,79 +315,79 @@ Note, that as we never explicitly set the size of the image, it will have its na
 
 Next we need to create the actual menu buttons. This is a vertically-aligned set of similar items, which should make use of automatic arrangement, so that we shall have no problems adding/removing the buttons in future. This part is covered by "Vertical Group" UI element. We can add it by Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Note, that first we should select the User Interface Component to which we add it - and it should be our `BackgroundImage`.
 
-![Vertical Group](images/vertical-group.png)
+image::vertical-group.png[]
 
 Note, the item appearing in our design hierarchy:
 
-![Vertical Group](images/vertical-group-hierarchy.png)
+image::vertical-group-hierarchy.png[]
 
 Now, we already know how to change this component's name to `MenuGroup`. Let's align it to the center of our design in a similar way how we aligned the logo, but this time using `hpMiddle` and `vpMiddle` anchors:
 
-![Vertical Group](images/vertical-group-alignment.png)
+image::vertical-group-alignment.png[]
 
 Now it's time to add our menu buttons to the Vertical Group. Select `MenuGroup` and add a button by Design -> Add User Interface Component -> Button (TCastleButton) and name it `StartGameButton`:
 
-![Start button](images/button-start.png)
+image::button-start.png[]
 
 Now before adding other buttons, let's fix its design. First of all let's assign a proper `Caption` to the button: `Start`.
 
-![Start button](images/button-start-caption.png)
+image::button-start-caption.png[]
 
 Then we want to have some nicely designed image for the button instead of standard box button image. This can be done in "All" tab by modifying "Custom Background" properties:
 
-![Start button image](images/button-start-custom-background.png)
+image::button-start-custom-background.png[]
 
 First we should tick the `CustomBackground` checkbox and next let's click `CustomBackgroundNormal`:
 
-![Start button image](images/button-start-custom-background-normal.png)
+image::button-start-custom-background-normal.png[]
 
 It's easy to see, that it looks very similar to how we were working with `TCastleImageControl` as both are using `TCastleImage` class underneath. For now we are interested in `URL` property - let's add an image here just like we did before for background and logo. The same way let's add URLs of images to `CustomBackgroundPressed` (this will be the image displayed when user presses the button) and `CustomBackgroundFocused` (the image displayed when the user hovers the mouse pointer over the button).
 
 Now the button should look like this:
 
-![Start button image](images/button-start-custom-background-small.png)
+image::button-start-custom-background-small.png[]
 
 However, the button is too small, let's go to "Layout" tab and uncheck the `AutoSize` property:
 
-![Start button image](images/auto-size-property.png)
+image::auto-size-property.png[]
 
 Now the button fits in a 100x100 square:
 
-![Start button image](images/button-start-custom-background-autosizeoff.png)
+image::button-start-custom-background-autosizeoff.png[]
 
 Now the button has size of `Width` and `Height` specified in the same tab. Let's change those values to 406x160:
 
-![Start button image](images/button-start-custom-background-size.png)
+image::button-start-custom-background-size.png[]
 
 Also let's change the `FontSize`, so that the text won't be so tiny. It can be done in "Basic" tab:
 
-![Start button image](images/button-start-font-size.png)
+image::button-start-font-size.png[]
 
 Zero means "default" value, we'll learn to change it later. For now let's assign it to 60:
 
-![Start button image](images/button-start-font-size-result.png)
+image::button-start-font-size-result.png[]
 
 ### Duplicating buttons
 
 Now, to avoid going through all this process again, we can just create copies of our already designed button. Let's select it and press Design -> Duplicate Component:
 
-![Duplicate component](images/duplicate-component.png)
+image::duplicate-component.png[]
 
 Now we have two identical buttons in the design. Let's create two more the same way, so that we have four buttons in total:
 
-![Duplicate buttons](images/four-buttons.png)
+image::four-buttons.png[]
 
 Let's name the second button `OptionsButton` and set its caption "Options", then `CreditsButton` and set its caption "Credits" and finally `QuitButton` with "Quit" caption:
 
-![Duplicate buttons](images/four-buttons-done.png)
+image::four-buttons-done.png[]
 
 And as a final touch let's add some spacing between the buttons by selecting `MenuGroup` and changing `Spacing` property in "Basic" tab:
 
-![Duplicate buttons](images/four-buttons-done-spacing.png)
+image::four-buttons-done-spacing.png[]
 
 Let's set it to 20 and we're done with this part:
 
-![Duplicate buttons](images/four-buttons-done-finish.png)
+image::four-buttons-done-finish.png[]
 
 ### Screen aspect ratio and orientation
 
@@ -450,7 +450,7 @@ Let's also add one important touch here, so that when we would want to compile f
 
 Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our MainMenu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
 
-![Menu looks better](images/menu-looking-better.png)
+image::menu-looking-better.png[]
 
 ### Trick with UI organization
 
@@ -458,29 +458,29 @@ However, the buttons are still covering our logo a bit, and there is too much as
 
 As we already have the Vertical Group, let's just add our logo to it, so that it will be arranged the same way as the buttons. To do that, just click the `LogoImage` in the Hierarchy and drag it into the `MenuGroup`:
 
-![Menu looks better](images/menu-looking-better2.png)
+image::menu-looking-better2.png[]
 
 Now the whole Logo + Menu buttons construction is properly aligned to the screen center vertically and horizontally, but they aren't aligned to each other. It's fixed by selecting `MenuGroup` and going into "All" tab:
 
-![Alignment](images/menu-looking-better-alignment.png)
+image::menu-looking-better-alignment.png[]
 
 Let's edit `Align` property and change it from `hpLeft` (which means all the elements in the Vertical Group are aligned by their left border) to `hpMiddle` (which means all the elements in the Vertical Group are aligned to middle). And everything looks cool now:
 
-![Menu looks better](images/menu-looking-better-result.png)
+image::menu-looking-better-result.png[]
 
 Now we can try changing the screen aspect ratio by dragging these separators:
 
-![Separators](images/separators.png)
+image::separators.png[]
 
 And we see that the design remains consistent no matter what screen resolution or aspect ratio we pick:
 
-![Menu looks better](images/menu-looking-better3.png)
+image::menu-looking-better3.png[]
 
-![Menu looks better](images/menu-looking-better4.png)
+image::menu-looking-better4.png[]
 
 Now, why don't we use this feature to make our Castle Editor window layout more convenient? Let our game window indeed be something Portrait-like. Let's drag the lower separator straight to the bottom, we shan't be using anything from below in this tutorial:
 
-![Editor arrangement](images/editor-arrangement.png)
+image::editor-arrangement.png[]
 
 ### Load the Main Menu in the game
 
@@ -488,7 +488,7 @@ Now as we have a ready Main Menu design, we need to use it in the game. Unfortun
 
 First of all we need to create a unit for our new Game State. It's done by clicking File -> New Unit:
 
-![New unit](images/file-new-unit.png)
+image::file-new-unit.png[]
 
 Now we've got an empty pascal unit with the first line containing its name: `unit Unit1;`. Let's change it to `unit GameStateMainMenu;` and save the file.
 
@@ -580,7 +580,7 @@ uses SysUtils,
 
 Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons react to mouse cursor hovering over them, and clicking.
 
-![Game window](images/game-window-basic.png)
+image::game-window-basic.png[]
 
 ### Adding click events
 
@@ -722,7 +722,7 @@ Before we proceed, we need to improve how our fonts look. We shall be using two 
 
 This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. We can immediately see that it looks better:
 
-![New default font look](images/better-font.png)
+image::better-font.png[]
 
 ### Load and use a custom font
 
@@ -772,21 +772,21 @@ QuitButton.CustomFont := CartoonFont60;
 
 And now our design finally looks almost as it was anticipated:
 
-![New custom font](images/better-font2.png)
+image::better-font2.png[]
 
 ### Colored button text
 
 Still the black color is not good here, so let's go back to Castle Editor and change it to one of the design colors. Let's select one of the buttons, open the tab "All":
 
-![Button text color](images/button-text-color.png)
+image::button-text-color.png[]
 
 Check the `CutsomTextColorUse` checkbox and paste "162D40" into `CutsomTextColor` field above to get:
 
-![Button text color](images/button-text-color2.png)
+image::button-text-color2.png[]
 
 Let's repeat this step for all buttons, save the design and run the game from Lazarus:
 
-![Final view of Main Menu](images/main-menu-final.png)
+image::main-menu-final.png[]
 
 ## Creating a Game State
 
@@ -814,21 +814,21 @@ Let's start with creating a "Score" area. If we create a "Label" right away, as 
 
 By default it has dimensions 100x100. Let's make it 650x100, like this:
 
-![Empty rectangle width](images/empty-rectangle-width.png)
+image::empty-rectangle-width.png[]
 
 Now we have a rigid container which size won't change. Let's add two labels to it by Design -> Add User Interface Component -> Label (TCastleLabel). Be sure to select `GameGroup` after adding the first label before adding the second one - as the first label will be automatically selected, and the second label will be added as its child. This is not a problem, but it's better to keep things clean.
 
-![Score area](images/score-area.png)
+image::score-area.png[]
 
 Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Score:" and "9999999". Let's set color of both to "162D40" and font size "60" for the first one and "80" for the second. Now our labels properties "Basic" tabs look like this:
 
-![Label's properties](images/scoretext-properties.png)
+image::scoretext-properties.png[]
 
-![Label's properties](images/scorelabel-properties.png)
+image::scorelabel-properties.png[]
 
 Let's go to Layout tab and set `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpMiddle` for both labels. Let's leave `HorizontalAnchorParent` and `HorizontalAnchorSelf` at default `hpLeft` and change `HorizontalAnchorDelta` to "100" and "320" correspondingly. Now our design looks like this:
 
-![Labels anchors](images/score-label-anchors.png)
+image::score-label-anchors.png[]
 
 ### Design gameplay area
 
@@ -838,17 +838,17 @@ Let's add a "Horizontal Group" to it and call it `GameplayRow1`.
 
 Let's add an image to it, calling it `Button11` and load "button.png" file by using `URL` property. Now it looks like this:
 
-![Adding button](images/adding-button-image.png)
+image::adding-button-image.png[]
 
 Before adding another image, let's add a Label to this one, name it "Label11", set its `Caption` to "999", `Font` to "80" and `Color` to "162D40". Finally, let's go into "Layout" tab and set its anchors: `VerticalAnchorParent`:`vpMiddle`; `VerticalAnchorSelf`:`vpMiddle`; `HorizontalAnchorParent`:`hpMiddle`; `HorizontalAnchorSelf`:`hpMiddle`. Now our button looks like this:
 
-![designing-clicker-button](images/designing-clicker-button.png)
+image::designing-clicker-button.png[]
 
 Yes, you might have already noticed, that we say "button" but actually we've created an "Image". We'll know why we did that a bit later.
 
 For now let's create two copies of our button by selecting and duplicating (Design -> Duplicate Component) it. Now our design looks like this:
 
-![duplicating-buttons](images/duplicating-buttons.png)
+image::duplicating-buttons.png[]
 
 As we can see the buttons are too close to each other. We could have done this by selecting `GameplayRow` and set `Spacing` to "50". However, it's not the best idea to go this way. Let's rather increase the size of the buttons, so that the Player will not have "dead areas" where clicking/tapping the gameplay field will not trigger any events. Yes, that means we'll learn to rework a ready design.
 
@@ -858,27 +858,27 @@ Let's add an Empty Rectangle (Design -> Add User Interface Component -> Empty Re
 
 Now let's drag `Button11` into `ButtonGroup11`. Let's go to "Layout" tab, and set `VerticalAnchorDelta` and `HorizontalAnchorDelta` to zero and `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle`. Now our design looks like:
 
-![button-group](images/button-group.png)
+image::button-group.png[]
 
 Now let's duplicate our `ButtonGroup11` two times. Note that Castle Editor sometimes "remembers" names of already deleted components and may try to call the new ones with insequential numbers. To fix that we have to save and re-open the design:
 
-![duplicate button-group](images/duplicating-buttongroups.png)
+image::duplicating-buttongroups.png[]
 
 Now, let's duplicate the `GameplayRow1` three times to get four rows in total
 
 Note that Castle Editor named our rows correctly, but other elements - `ButtonGroup`s, `Button`s and `Label`s are simply keep naming consequently. Let's change their names so that the first digit would correspond to row number and the second one - column number. We'll have to start from the bottom, as e.g. name "21" is already taken by some of the elements lower in the hierarchy. Now our hierarchy looks like this:
 
-![Hierarchy after duplications](images/gameplay-hierarchy.png)
+image::gameplay-hierarchy.png[]
 
 ### Adding High Score label
 
 Finally, let's duplicate our `ScoreArea` and name the copy `HighScoreArea`. Let's drag it to the very bottom of our `GameGroup` hierarchy. Hint, we can simply drag it onto `GameGroup` element in the Hierarchy until a gray triangle shows up on the right - this will avoid us having to drag it all along and trying to snap to the end of the group:
 
-![Hierarchy after duplications](images/dragging-high-score.png)
+image::dragging-high-score.png[]
 
 Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighScoreText` and `HighScoreLabel`, set the corresponding font sizes to "30" and "40" and `HorizontalAnchorDelta`s to "160" and "360" to accommodate the new font sizes. Let's change `HighScoreText` caption to "High Score:".
 
-![Gameplay design result](images/gameplay-result.png)
+image::gameplay-result.png[]
 
 ### Loading multiple different font sizes
 
@@ -926,7 +926,7 @@ end.
 
 Now if we reload our project in Castle Editor, everything looks crisp:
 
-![Gameplay design result](images/gameplay-result-crisp.png)
+image::gameplay-result-crisp.png[]
 
 ### Start Game State
 
@@ -981,7 +981,7 @@ end;
 
 If we did everything correctly, now our state should show in the game after we press "Start" button. As simple as that.
 
-![State Game is working](images/state-game-first-steps.png)
+image::state-game-first-steps.png[]
 
 ### Parse Score and High Score labels
 
@@ -1020,11 +1020,11 @@ HighscoreText.CustomFont := CartoonFont30;
 
 As we can see:
 
-![Wrong font position](images/wrong-font-position.png)
+image::wrong-font-position.png[]
 
 The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design (because there is no way to set and preview the second font in Castle Editor yet). Let's fix this by going back to Castle Editor. For `ScoreText` let's change `HorizontalAnchorDelta` from "100" to "50" and `VerticalAnchorDelta` from "0" to "11". And for `HighScoreText` change `HorizontalAnchorDelta` from "160" to "110" and `VerticalAnchorDelta` from "0" to "5". Now it looks much better:
 
-![Wrong font position fixed](images/wrong-font-position-fixed.png)
+image::wrong-font-position-fixed.png[]
 
 ### Parse game field
 
@@ -1160,7 +1160,7 @@ Here we've done a lot of things, let's explain what they mean line-by-line:
 
 Yes, surely now we should compile our game and try it out!
 
-![Testing OnPress event](images/gameplay-onpress-testing.png)
+image::gameplay-onpress-testing.png[]
 
 ### Update event
 
@@ -1358,7 +1358,7 @@ Here:
 
 Let's compile our project and run it:
 
-![Testing Update event](images/gameplay-update-testing.png)
+image::gameplay-update-testing.png[]
 
 ### Clicking those buttons!
 
@@ -1401,7 +1401,7 @@ Here:
 
 Let's compile and now we can finally start playing this game!
 
-![Testing the gameplay for the first time](images/gameplay-testing.png)
+image::gameplay-testing.png[]
 
 ### Replacing an image runtime
 
@@ -1469,7 +1469,7 @@ Note, that we also set `OwnsImage := false;` so that Castle Game Engine won't fr
 
 This replaces the image of `TCastleImageControl` with our new image of a broken button:
 
-![Replacing the image runtime](images/gameplay-broken-button.png)
+image::gameplay-broken-button.png[]
 
 ### Loading and Saving High Score
 
@@ -1512,7 +1512,7 @@ end;
 
 Done! Now our High Score is automatically assigned when the Player finishes the game and is safely stored in game configuration.
 
-![High Score saved](images/gameplay-high-score.png)
+image::gameplay-high-score.png[]
 
 ### Fix a possible bug with Update order
 
@@ -1542,7 +1542,7 @@ Let's duplicate this button and name it `MainMenuButton` with `Caption`: "Main M
 
 Now our State design looks like:
 
-![Game Over popup](images/designing-gameover-popup.png)
+image::designing-gameover-popup.png[]
 
 ### Creating a State for Game Over Popup
 
@@ -1657,7 +1657,7 @@ We've also added `if GameRunning then` condition to avoid possible rare bug in c
 
 Save, compile and run. We've got our State Game Over running with both buttons already useful:
 
-![Game Over state - first results](images/gameover-first-results.png)
+image::gameover-first-results.png[]
 
 ### Passing Data to Game Over Popup
 
@@ -1699,7 +1699,7 @@ end else
   StateGameOver.HighScore := false;
 ----
 
-![Passing data to a State](images/passing-data-to-state.png)
+image::passing-data-to-state.png[]
 
 ### Animating Game Over Popup
 
@@ -1763,7 +1763,7 @@ Here we increase `AnimationTime` every frame. If it's less than `AnimationDurati
 
 If `AnimationTime >= AnimationDuration` we just set the final values for the variables. Now our Game Over screen looks like this:
 
-![Animated Game Over](images/animated-gameover.png)
+image::animated-gameover.png[]
 
 ## Audio
 
@@ -2061,25 +2061,25 @@ Let's add a `TCastleHorizontalGroup` named `VolumeGroup` inside. Let's add a `TC
 
 As a child of `ButtonVolume0` let's add a `TCastleImageControl` with name "SelectedVolume0" and URL pointing to "selected_circle.png", let's center it in "Layout" tab. So it'll now look like this:
 
-![Volume button design](images/volume-button-design.png)
+image::volume-button-design.png[]
 
 Now, it's just to duplicate our button 4 times so that we have 5 buttons:
 
-![Volume buttons](images/volume-buttons.png)
+image::volume-buttons.png[]
 
 Now let's duplicate our whole `VolumeGroup` and name it `MusicGroup`. Also let's rename all buttons and images correspondingly:
 
-![Volume and music options](images/volume-and-music-options.png)
+image::volume-and-music-options.png[]
 
 Note that here we've also done a small trick and `MusicText` `Caption` is set to "Music: " (notice space in the end) - just to avoid alignment problems quick and dirty thanks to using monospace font.
 
 Let's duplicate our `MusicGroup` and call it `VibrationGroup`, doing the very same renames, but only leave 2 buttons with captions changed into "OFF" and "ON":
 
-![Volume, music and vibration options](images/volume-music-vibration-options.png)
+image::volume-music-vibration-options.png[]
 
 Let's add an Empty Rectangle to `OptionsGroup` that would work as a separator here. And in the end add a button with equal design like Main Menu buttons:
 
-![Options design](images/options-design.png)
+image::options-design.png[]
 
 ### Adding State Options to the Game
 
@@ -2339,7 +2339,7 @@ That's all we needed here. Almost nothing new, the same things we did when we we
 
 That's how our Options State now looks on Desktop:
 
-![Options in game](images/options-in-game.png)
+image::options-in-game.png[]
 
 ### Using the new Options
 
@@ -2379,17 +2379,17 @@ It is respectful and often legally required to mention the people who worked on 
 
 We already know how to create designs in Castle Editor, so let's not go into any detail and just get straight into our result:
 
-![State Credits design](images/credits-design.png)
+image::credits-design.png[]
 
 The only thing worth mentioning here is `CastleGameEngineLabel`. First of all, this label has multiple lines. Large labels can be edited by editing `Text` property (press button with three dots) instead of `Caption`:
 
-![Editing large labels](images/credits-multiline-label.png)
+image::credits-multiline-label.png[]
 
 And the second one is we set this label as a child of Castle Game Engine logo and align `hpLeft` of the label to `hpRight` of Parent with `HorizontalAnchorDelta` of 20. This way the label starts exactly 20 pixels to the right of the parent (in this case - logo).
 
 In order for the lines of multiline text don't stick together too tightly, we can increase `LineSpacing` from "2" to "10" in "All" tab:
 
-![Line spacing](images/credits-line-spacing.png)
+image::credits-line-spacing.png[]
 
 Everything else is something that we've already done before - labels, images and empty rectangles packed inside a `TCastleVerticalGroup`.
 
@@ -2481,11 +2481,11 @@ Another very small and simple state to create is a short information for the Pla
 
 We know everything now! Let's just make it without any additional words:
 
-![Tutorial design](images/tutorial-design.png)
+image::tutorial-design.png[]
 
 Still one note to be made: we've changed some of the labels `Alignment` property that can align the text left (`hpLeft`) or right (`hpRight`):
 
-![Text alignment on Label](images/text-alignment-on-label.png)
+image::text-alignment-on-label.png[]
 
 And edited images `Color` property, the same way as we do it in-game, to emulate how the button will look.
 
@@ -2613,7 +2613,7 @@ Next we set one of `Theme`'s images namely `tiLoading` which is shown as a Splas
 
 And finally we suggest `Theme` the resolution for which the image has been created. This doesn't work as good as UI scaling we've been using so far, so we should take some caution that our Splash Screen image would look fine in different aspect ratios.
 
-![Splash Screen](images/splashscreen.png)
+image::splashscreen.png[]
 
 Note, that Splash Screen is just a static image that appears any time the game is initializing. That happens once on Desktop platforms, but may happen often on mobile devices - to be more exact, every time the app starts or returns from background. Also, if at some point we'll need an animated Splash Screen, we'll have to implement it as a separate state that would start before any other state in the game.
 
@@ -2635,7 +2635,7 @@ Inside let's add an image `AchievementImage` place a `ScoreLabel` with text "50k
 
 Inside this group have two labels - `AchievementCaption` with larger font that will hold the caption of the achievement, and `AchievementDescription` which will have the description of the achievement. Don't forget to set color of all labels to `162D40`.
 
-![Achievement design](images/achievement-design.png)
+image::achievement-design.png[]
 
 ### Creating 5 achievements
 
@@ -2667,7 +2667,7 @@ Now we have a familiar `URL` field. Let's click the three dots button again and 
 
 Unfortunately it can't scale automatically to fit the underlying design, so we'll have to manually set `Width`:"712" and `Height`:"200" to match those of the design we load. The same way we add the rest of 5 achievements:
 
-![State Achievements design](images/state-achievements-design.png)
+image::state-achievements-design.png[]
 
 ### Adding Achievements to the Game
 
@@ -2854,11 +2854,11 @@ end;
 
 However, if we compile and run the game now, we see that "Achievements" button caption is too large to fit in our button. Let's go back into Castle Editor and change `Width` of all our buttons from 406 to 650. Now everything looks good:
 
-![Main Menu with Achievements button](images/achievements-main-menu.png)
+image::achievements-main-menu.png[]
 
 We can also try clicking the button and see our `StateAchievements` in-game:
 
-![State Achievements in Game](images/achievements-in-game.png)
+image::achievements-in-game.png[]
 
 ### Adding Achievements to Game Over
 
@@ -2928,11 +2928,11 @@ Then in case Player has a High Score (achievements won't make sense otherwise) w
 
 Finally we can see our achievements in the Game Over screen:
 
-![Achievements in Game Over](images/achievements-on-gameover.png)
+image::achievements-on-gameover.png[]
 
 And in our Hall of Fame they are shown automatically:
 
-![Achievements in State Achievements](images/achievements-final.png)
+image::achievements-final.png[]
 
 ## Final touches
 
