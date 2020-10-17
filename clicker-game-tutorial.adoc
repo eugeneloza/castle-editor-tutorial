@@ -1,4 +1,11 @@
 # Tutorial: Creating a simple clicker game in Castle Game Engine and Castle Editor
+Yevhen Loza
+include::locale/attributes.adoc[]
+:toc: left
+:toclevels: 4
+:sectnums:
+:source-highlighter: coderay
+:docinfo1:
 
 ## Abstract
 
