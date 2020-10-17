@@ -139,15 +139,17 @@ Simply deleting `state_main.castle-user-interface` and `gamestatemain.pas` is no
 
 As you can see it will be called when the application (our game) will start up:
 
-```Pascal
+[source,pascal]
+----
 initialization
   ...
   Application.OnInitialize := @ApplicationInitialize;
-```
+----
 
 That is this procedure contains everything that happens during the game startup - usually loading of game data and initialization of game States. Let's see what we have there right now (comments are removed for more compact view):
 
-```Pascal
+[source,pascal]
+----
 procedure ApplicationInitialize;
 begin
   Window.Container.LoadSettings('castle-data:/CastleSettings.xml');
@@ -155,16 +157,17 @@ begin
   StateMain := TStateMain.Create(Application);
   TUIState.Current := StateMain;
 end;
-```
+----
 
 So, first of all, we load `CastleSettings.xml` file by calling `Window.Container.LoadSettings`. It will set up our Window parameters. We could do this here by manually setting `Window` properties that we need to change from default, but having a `CastleSettings` file is usually more convenient and flexible. Moreover, it allows Castle Editor to know more about how our game should look like.
 
 The next line `StateMain := TStateMain.Create(Application);` creates a singleton for `TStateMain` - the class that manages our Main State. Inside `GameStateMain` unit you can see that the class API (`interface`), `implementation` and also declaration of the singleton variable:
 
-```Pascal
+[source,pascal]
+----
 var
   StateMain: TStateMain;
-```
+----
 
 Next we set our `StateMain` as the `Current` state by calling `TUIState.Current := StateMain;`.
 
@@ -172,29 +175,32 @@ We shall create our own states in the very same way, but for now we are going to
 
 Now our `ApplicationInitialize` will look like:
 
-```Pascal
+[source,pascal]
+----
 procedure ApplicationInitialize;
 begin
   Window.Container.LoadSettings('castle-data:/CastleSettings.xml');
 end;
-```
+----
 
 and we also should adjust our `uses` section to remove the reference to `GameStateMain` unit. That would be just changing:
 
-```Pascal
+[source,pascal]
+----
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties, CastleUiState
   GameStateMain;
-```
+----
 
 into
 
-```Pascal
+[source,pascal]
+----
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties, CastleUiState;
-```
+----
 
 Note that we also silently deleted a few other unused units from `uses` section, when you create a project from `Empty` template you may have a little more units there, but Lazarus will notify you in "Messages" window, that some units aren't used in the project:
 
@@ -409,14 +415,15 @@ This will tell the engine that it should consider that all the internal designs 
 
 Note that setting `reference_width` and `reference_height` doesn't enforce the actual screen size, so in case of Desktop application we should do it manually. Let's open `GameInitialize` unit and add the following lines in the very end of `initialization` section, right before the `end.`:
 
-```Pascal
+[source,pascal]
+----
 {$ifndef CASTLE_IOS}
   {$ifndef ANDROID}
     Window.Height := Application.ScreenHeight * 5 div 6;
     Window.Width := Window.Height * 750 div 1334;
   {$endif}
 {$endif}
-```
+----
 
 Here we set the `Window.Height` based on current monitor resolution `Application.ScreenHeight` - to fit almost all the screen height, and then scale `Window.Width` accordingly to our 750x1334 reference screen size.
 
@@ -483,39 +490,44 @@ Now we've got an empty pascal unit with the first line containing its name: `uni
 
 Let's add `CastleUiState` to `uses` section, like this:
 
-```Pascal
+[source,pascal]
+----
 uses
   Classes, SysUtils, CastleUiState;
-```
+----
 
 And create a dummy TStateMainMenu class right behind the `uses` section:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateMainMenu = class(TUiState)
   end;
-```
+----
 
 We should also create a singleton variable for this class, by adding right after the class definition:
 
-```Pascal
+[source,pascal]
+----
 var
   StateMainMenu: TStateMainMenu;
-```
+----
 
 Now we need to create a `Start` procedure that will be run when this state is activated. This is a `virtual` procedure, present in ancestor class, therefore we have to `override` it and use `inherited` inside to call the inherited code from the ancestor which is in turn required for the state to operate properly. Now our class declaration will look like this:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateMainMenu = class(TUiState)
   public
     procedure Start; override;
   end;
-```
+----
 
 And we have to _implement_ this procedure in `implementation` section below:
 
-```Pascal
+[source,pascal]
+----
 implementation
 
 procedure TStateMainMenu.Start;
@@ -523,11 +535,12 @@ begin
   inherited;
   //here will be our code
 end;
-```
+----
 
 Next we have to load the specific design into our State:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateMainMenu.Start;
 var
   UiOwner: TComponent;
@@ -535,7 +548,7 @@ begin
   inherited;
   InsertUserInterface('castle-data:/MainMenu.castle-user-interface', FreeAtStop, UiOwner);
 end;
-```
+----
 
 Here we use `InsertUserInterface` procedure to insert our newly designed `MainMenu.castle-user-interface` design into this State. Here `castle-data:/` is a protocol that enables us to reference the `data` folder in a safe cross-platform way, so that it'll work on Desktop and iPhone equally well.
 
@@ -545,19 +558,21 @@ Here we use `InsertUserInterface` procedure to insert our newly designed `MainMe
 
 Last but not least we should create our `StateMainMenu` class and set it as current. We can do it in the unit `gameinitialize` - in `ApplicationInitialize` procedure by adding two lines:
 
-```Pascal
+[source,pascal]
+----
 StateMainMenu := TStateMainMenu.Create(Application);
 TUiState.Current := StateMainMenu;
-```
+----
 
 We also have to add the unit of the state to `GameInitialize`'s `uses` section:
 
-```Pascal
+[source,pascal]
+----
 uses SysUtils,
   CastleWindow, CastleScene, CastleControls, CastleLog, CastleFilesUtils,
   CastleUIControls, CastleApplicationProperties,
   GameStateMainMenu;
-```
+----
 
 Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons react to mouse cursor hovering over them, and clicking.
 
@@ -567,7 +582,8 @@ Save, compile and run. Now we have our MainMenu successfully loaded in the game.
 
 Now we have to make those buttons actually perform some function. To do that we first have to "find" the button in the loaded design. Let's go back to `GameStateMainMenu` unit. First of all, let's create the variables for the buttons in our class, we'll also need to add `CastleControls` unit to the `uses` section:
 
-```Pascal
+[source,pascal]
+----
 uses
   Classes, SysUtils, CastleUiState, CastleControls;
 
@@ -578,11 +594,12 @@ type
   public
     procedure Start; override;
   end;
-```
+----
 
 Next we'll need to add `CastleComponentSerialize` unit to our `uses` section, let's add it after `implementation`. It will allow us to "find" the buttons by their names in the loaded design by calling:
 
-```Pascal
+[source,pascal]
+----
 implementation
 uses
   CastleComponentSerialize;
@@ -598,11 +615,12 @@ begin
   CreditsButton := UiOwner.FindRequiredComponent('CreditsButton') as TCastleButton;
   QuitButton := UiOwner.FindRequiredComponent('QuitButton') as TCastleButton;
 end;
-```
+----
 
 Next we have to create dummy procedures that will be assigned to the buttons' click events:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateMainMenu = class(TUiState)
   private
@@ -614,11 +632,12 @@ type
   public
     procedure Start; override;
   end;
-```
+----
 
 And their corresponding `implementation`:
 
-```
+[source,pascal]
+----
 procedure TStateMainMenu.ClickStart(Sender: TObject);
 begin
 end;
@@ -634,42 +653,46 @@ end;
 procedure TStateMainMenu.ClickQuit(Sender: TObject);
 begin
 end;
-```
+----
 
 Lastly let's assign our buttons `OnClick` event to these procedures in the end of `Start`:
 
-```Pascal
+[source,pascal]
+----
 StartGameButton.OnClick := @ClickStart;
 OptionsButton.OnClick := @ClickOptions;
 CreditsButton.OnClick := @ClickCredits;
 QuitButton.OnClick := @ClickQuit;
-```
+----
 
 Now we may immediately implement the `QuitButton` behavior by adding `CastleWindow` to `uses` section and calling `Application.MainWindow.Close` in the button click procedure (`ClickQuit`):
 
-```Pascal
+[source,pascal]
+----
 procedure TStateMainMenu.ClickQuit(Sender: TObject);
 begin
   Application.MainWindow.Close;
 end;
-```
+----
 
 Now we can compile and test if this button is working as expected. We cannot implement the other buttons behavior yet, as we need to create corresponding game states.
 
 For now let's add one more quality of life detail. On mobile platform we usually don't need "Quit" button, as the apps are closed by the operation system. So we should simply disable it in this case. We can do it by adding:
 
-```Pascal
+[source,pascal]
+----
 {$ifdef CASTLE_IOS}QuitButton.Exists := false;{$endif}
 {$ifdef ANDROID}QuitButton.Exists := false;{$endif}
-  ```
+----
 
 In a similar way as we did that when we forced the Window size on Desktop platforms.
 
 However, in Castle Game Engine there is a more general way of doing so, e.g. guaranteeing that we didn't forget some exotic platform, like Nintendo Switch (which in fact we did :) not that we are going to release our game there) or enable easier debugging of the app look at different platforms. We can use a global variable `ShowUserInterfaceToQuit`. To do this we have to add `CastleApplicationProperties` to `uses` section and instead of the block above write:
 
-```Pascal
+[source,pascal]
+----
 QuitButton.Exists := ApplicationProperties.ShowUserInterfaceToQuit;
-```
+----
 
 ### Set up Default font
 
@@ -700,7 +723,8 @@ This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. We
 
 However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 40 - much smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet, so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
 
-```Pascal
+[source,pascal]
+----
 unit GameFont;
 
 {$mode objfpc}{$H+}
@@ -725,7 +749,7 @@ end;
 finalization
   FreeAndNil(CartoonFont60);
 end.
-```
+----
 
 This unit creates a variable CartoonFont60 with an alternative font `Big_Bottom_Cartoon.ttf` of size "60". We shall load it by calling `LoadFonts` procedure, and it will be automatically freed upon the game end by calling `FreeAndNil(CartoonFont60)` in `finalization` section.
 
@@ -733,12 +757,13 @@ Now let's add this unit to `GameInitialize` `uses` section and call `LoadFonts;`
 
 The last step remaining is to assign this font to our buttons. To do this, add `GameFont` to the `uses` section of `GameStateMainMenu` and in the `Start` procedure write:
 
-```Pascal
+[source,pascal]
+----
 StartGameButton.CustomFont := CartoonFont60;
 OptionsButton.CustomFont := CartoonFont60;
 CreditsButton.CustomFont := CartoonFont60;
 QuitButton.CustomFont := CartoonFont60;
-```
+----
 
 And now our design finally looks almost as it was anticipated:
 
@@ -871,7 +896,8 @@ Note, that every loaded font size is a texture, which occupies some decent amoun
 
 Let's also go to our `GameFont` unit and ask it to load different font sizes for our fancy font. We already have `CartoonFont60` there, so let's create `CartoonFont30` the same way:
 
-```Pascal
+[source,pascal]
+----
 var
   CartoonFont60: TTextureFont;
   CartoonFont30: TTextureFont;
@@ -890,7 +916,7 @@ finalization
   FreeAndNil(CartoonFont60);
   FreeAndNil(CartoonFont30);
 end.
-```
+----
 
 Now if we reload our project in Castle Editor, everything looks crisp:
 
@@ -900,7 +926,8 @@ Now if we reload our project in Castle Editor, everything looks crisp:
 
 Now it's time to start integrating the new State into our game. Let's create a new unit in Lazarus and call it `GameStateGame`. Let's crate a yet empty `class` `TStateGame` with a yet empty `Start` procedure and a singleton variable for our class:
 
-```Pascal
+[source,pascal]
+----
 uses
   Classes, SysUtils,
   CastleUiState, CastleControls;
@@ -927,22 +954,24 @@ begin
   inherited;
   InsertUserInterface('castle-data:/Game.castle-user-interface', FreeAtStop, UiOwner);
 end;
-```
+----
 
 Let's also create our state in `GameInitialize` by adding `GameStateGame` to `uses` section and inside `ApplicationInitialize` after `LoadFonts` add a line:
 
-```Pascal
+[source,pascal]
+----
 StateGame := TStateGame.Create(Application);
-```
+----
 
 Now let's also show this state if in Main Menu the Player clicks the button "Start". To do this, let's go to `GameStateMainMenu` unit and add `GameStateGame` to `uses` section and in `ClickStart` let's set `StateGame` as current:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateMainMenu.ClickStart(Sender: TObject);
 begin
   TUiState.Current := StateGame;
 end;
-```
+----
 
 If we did everything correctly, now our state should show in the game after we press "Start" button. As simple as that.
 
@@ -952,7 +981,8 @@ If we did everything correctly, now our state should show in the game after we p
 
 Let's start from easier task, which we already had some experience with. Let's find our 4 labels in the design that correspond to Score and High Score. This is done the same way as we made it with buttons. We have to create references for them in our `TStateGame` class and `FindRequiredComponent` in `Start` like this:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateGame = class(TUiState)
   private
@@ -972,14 +1002,15 @@ begin
   HighScoreText := UiOwner.FindRequiredComponent('HighScoreText') as TCastleLabel;
   HighScoreLabel := UiOwner.FindRequiredComponent('HighScoreLabel') as TCastleLabel;
 end;
-```
+----
 
 Let's also use `CartoonFont60` and `CartoonFont30` for the `ScoreText` and `HighScoreText` labels the same way as we did with the `Button`s in the Main Menu. Let's add these two lines to `Start`:
 
-```Pascal
+[source,pascal]
+----
 ScoreText.CustomFont := CartoonFont60;
 HighscoreText.CustomFont := CartoonFont30;
-```
+----
 
 As we can see:
 
@@ -993,14 +1024,15 @@ The `ScoreText` and `HighScoreText` are now incorrectly positioned in the design
 
 Finally we're getting closer to making an actual game. Let's parse the designed elements for gameplay field. We could do it the same way as we did for buttons of the Main Menu and labels for score and high score. However, as we have 12 "buttons" here and we shall need to operate them conveniently, let's create a construction that will contain all the information we need about the "button" in one place:
 
-```Pascal
+[source,pascal]
+----
 type
   TGamePad = record
     Group: TCastleUserInterface;
     Image: TCastleImageControl;
     Caption: TCastleLabel;
   end;
-```
+----
 
 Here we're using a minimalistic `record` data type for simplicity reasons. Often when creating such complex UI elements, we would want to create a `class` that would manage them appropriately. However, in our case we only need to keep them together, and avoiding memory management here is favorable.
 
@@ -1008,7 +1040,8 @@ Note, that unlike other UI elements, `TCastleUserInterface` is located inside `C
 
 Now we can have a (again minimalistic) static 2-dimensional array to hold our 12 `TGamePad`s inside `TStateGame`:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateGame = class(TUiState)
   private
@@ -1016,11 +1049,12 @@ type
     ScoreText, ScoreLabel, HighScoreText, HighScoreLabel: TCastleLabel;
   ...
   end;
-```
+----
 
 And finally in `Start` we "find" all those 12 pads in our design. Of course we could do it the same way as we did with labels and buttons, but here it'll be much more efficient to make a loop that will cycle through all 3x4 elements and assign them to corresponding array elements:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGame.Start;
 var
   UiOwner: TComponent;
@@ -1035,7 +1069,7 @@ begin
       GamePads[X, Y].Caption := UiOwner.FindRequiredComponent('Label' + Y.ToString + X.ToString) as TCastleLabel;
     end;
 end;
-```
+----
 
 ### Responsive buttons
 
@@ -1047,34 +1081,38 @@ We could have done that by creating a child of `TCastleUserInterface` (or any ot
 
 Let's create a `private` callback for this event inside `TStateGame`:
 
-```Pascal
+[source,pascal]
+----
 procedure ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
-```
+----
 
 Note that `TInputPressRelease` is inside `CastleKeysMouse`, so we have to add this unit to `uses` section too. This procedure will receive three parameters: `Sender` which will be the object that was clicked, we'll need its `Name` to determine which exactly button was clicked, `Event` - a thorough description of the `Press` `Event` that happened and if this event was already `Handled` by some other UI element (we won't need it in this game).
 
 Next, let's assign `OnPress` event to this procedure for our "ButtonGroup"s. In the loop we need just to add one line:
 
-```Pascal
+[source,pascal]
+----
 GamePads[X, Y].Group := UiOwner.FindRequiredComponent('ButtonGroup' + Y.ToString + X.ToString) as TCastleUserInterface;
 GamePads[X, Y].Group.OnPress := @ButtonPress;
 GamePads[X, Y].Image := UiOwner.FindRequiredComponent('Button' + Y.ToString + X.ToString) as TCastleImageControl;
 GamePads[X, Y].Caption := UiOwner.FindRequiredComponent('Label' + Y.ToString + X.ToString) as TCastleLabel;
-```
+----
 
 And finally let's implement an empty `ButtonPress` procedure somewhere in `implementation` section.
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
 begin
 end;
-```
+----
 
 ### Buttons reaction to clicks
 
 Let's go on with implementing `ButtonPress` procedure. There are more efficient way to handle this, but here we'll go with a simple and straightforward solution - we'll determine which button was clicked by its Name, like this:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
 var
   ThisGamePad: ^TGamePad;
@@ -1100,7 +1138,7 @@ begin
     ThisGamePad^.Caption.Caption := '!!!';
   end;
 end;
-```
+----
 
 Here we've done a lot of things, let's explain what they mean line-by-line:
 
@@ -1122,7 +1160,8 @@ Yes, surely now we should compile our game and try it out!
 
 Now, next thing that we should do - is to have something happen on the screen as the time passes. That is something should happen every frame, which is handled by `Update` event, which we can `override`:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateGame = class(TUiState)
   ...
@@ -1130,16 +1169,17 @@ type
     procedure Start; override;
     procedure Update(const SecondsPassed: Single; var HandleInput: boolean); override;
   end;
-```
+----
 
 And add its implementation, empty for now:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGame.Update(const SecondsPassed: Single; var HandleInput: boolean);
 begin
   inherited;
 end;
-```
+----
 
 Again, as we `override` some virtual method, we have to call `inherited` to make sure that the parent `class`es run their `Update` code properly.
 
@@ -1157,15 +1197,17 @@ Let's think a bit about the anticipated gameplay:
 
 Next, let's define 2 constants, that will govern our game pace: time for the button to "grow"->"ripe" and "ripe"-"overripe".
 
-```Pascal
+[source,pascal]
+----
 const
   GrowTime = 2;
   RipeTime = GrowTime + 10;
-```
+----
 
 The gameplay will be accelerating and the buttons will ripe and overripe much faster plus each button will "grow" with a randomly different speed, therefore these values are only for reference - but an "average button at the start of the game" will take 2 seconds to "grow" and 10 seconds to "ripe". So, let's add the relative variables for each of our "buttons":
 
-```Pascal
+[source,pascal]
+----
 type
   TGamePad = record
     Speed: Single;
@@ -1175,7 +1217,7 @@ type
     Image: TCastleImageControl;
     Caption: TCastleLabel;
   end;
-```
+----
 
 Here:
 
@@ -1187,7 +1229,8 @@ Here:
 
 Also, let's introduce global game pace in `TStateGame`:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateGame = class(TUiState)
   private
@@ -1196,7 +1239,7 @@ type
     GameRunning: Boolean;
   ...
   end;
-```
+----
 
 Here:
 
@@ -1208,7 +1251,8 @@ Here:
 
 Now let's set the initial values for each of these new variables in our `Start` procedure:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGame.Start;
 var
   UiOwner: TComponent;
@@ -1231,11 +1275,12 @@ begin
   GameScore := 0;
   GameRunning := true;
 end;
-```
+----
 
 And finally in `Update` we cycle through all of our buttons and update them properly:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGame.Update(const SecondsPassed: Single; var HandleInput: boolean);
 var
   X, Y: Integer;
@@ -1252,7 +1297,7 @@ begin
   end;
   ScoreLabel.Caption := GameScore.ToString;
 end;
-```
+----
 
 Here:
 
@@ -1266,7 +1311,8 @@ Here:
 
 Next thing to do, we should update our visuals, based on how "ripe" the button is. Let's do this by working inside the loop in `Update`:
 
-```Pascal
+[source,pascal]
+----
 for X := 1 to 3 do
   for Y := 1 to 4 do
   begin
@@ -1292,7 +1338,7 @@ for X := 1 to 3 do
       GameRunning := false;
     end;
   end;
-```
+----
 
 Here:
 
@@ -1312,7 +1358,8 @@ Let's compile our project and run it:
 
 We're very close. Now we want to be able to harvest those ripe buttons and add their score to player's score. Let's do this by modifying `TStateGame.ButtonPress` procedure:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGame.ButtonPress(const Sender: TInputListener; const Event: TInputPressRelease; var Handled: Boolean);
 var
   ThisGamePad: ^TGamePad;
@@ -1336,7 +1383,7 @@ begin
     end;
   end;
 end;
-```
+----
 
 Here:
 
@@ -1356,18 +1403,20 @@ Now before going back to gameplay, let's add a tiny touch to how our game looks.
 
 First of all, let's add `CastleImages` unit to our `uses` section and in `TStateGame` add the button image:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateGame = class(TUiState)
   private
     BrokenButton: TCastleImage;
   ...
   end;
-```
+----
 
 We could have loaded the `BrokenButton` in `Start`, but that'll make the image loaded every time the Player start playing the game, while the image itself never changes. So, let's go a bit harder but more efficient way. By loading the image in `constructor`. Of course, we'll need to remember to `FreeAndNil` it in `destructor`. Let's add `constructor` and `destructor` to our class, keeping in mind that they are `virtual` so that we have to `override` them and call parent's code by `inherited`:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateGame = class(TUiState)
   ...
@@ -1376,11 +1425,12 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   end;
-```
+----
 
 With their corresponding `implementation`:
 
-```Pascal
+[source,pascal]
+----
 constructor TStateGame.Create(AOwner: TComponent);
 begin
   inherited;
@@ -1392,13 +1442,14 @@ begin
   FreeAndNil(BrokenButton);
   inherited;
 end;
-```
+----
 
 Here we load the `BrokenButton` image by calling `LoadImage` providing it the image URL and expected image type. `TRGBAlphaImage` means that the image is RGB with Alpha (transparency). And in `destructor` we free the memory occupied by the image by calling `FreeAndNil(BrokenButton);`.
 
 Finally in our `Update` we add a line `GamePads[X, Y].Image.Image := BrokenButton;` to "GameOver" section:
 
-```Pascal
+[source,pascal]
+----
 //GameOver
 GamePads[X, Y].Score := -1;
 GamePads[X, Y].Caption.Exists := false;
@@ -1406,7 +1457,7 @@ GamePads[X, Y].Image.Image := BrokenButton;
 GamePads[X, Y].Image.OwnsImage := false;
 GamePads[X, Y].Image.Color := Vector4(1.0, 0.0, 0.0, 1.0);
 GameRunning := false;
-```
+----
 
 Note, that we also set `OwnsImage := false;` so that Castle Game Engine won't free this image, when this `TCastleImageControl` will be `destroy`ed - as the whole idea is that we want to keep this image in memory until the game quits, and images are created and destroyed every time the Player starts or finishes the game.
 
@@ -1420,23 +1471,26 @@ Before we start implementing Game Over state, let's do one more small but import
 
 First, let's "load" the configuration. To do this, let's add `CastleConfig` to `uses` section of `GameInitialize` and in `ApplicationInitialize` add a line somewhere around `LoadFonts`:
 
-```Pascal
+[source,pascal]
+----
 UserConfig.Load;
-```
+----
 
 As simple as that. Now our information (whatever it is) will be properly loaded from game configuration file. Note, that in case this file doesn't exist (e.g. when the Player runs the game for the first time) there will be no information in `UserConfig`.
 
 Now in `GameStateGame` we again have to add `CastleConfig` in `uses` section of `implementation`. And in the end of `Start` procedure add the line:
 
-```Pascal
+[source,pascal]
+----
 HighScoreLabel.Caption := UserConfig.GetValue('high_score', 0).ToString;
-```
+----
 
 I.e. here we set the `Caption` of our `HighScoreLabel` to the value of `'high_score'` configuration entry stored in our `UserConfig`. And in case no value is stored, we have this value set to `0`.
 
 And finally, we have to set the High Score when the game is over:
 
-```Pascal
+[source,pascal]
+----
 begin
   //GameOver
   if UserConfig.GetValue('high_score', 0) < GameScore then
@@ -1448,7 +1502,7 @@ begin
   ...
   GameRunning := false;
 end;
-```
+----
 
 Done! Now our High Score is automatically assigned when the Player finishes the game and is safely stored in game configuration.
 
@@ -1488,7 +1542,8 @@ Now our State design looks like:
 
 The very same way as we already did twice, let's make a State for Game Over Popup. Let's create a unit `GameStateGameOver` with the following contents:
 
-```Pascal
+[source,pascal]
+----
 unit GameStateGameOver;
 
 {$mode objfpc}{$H+}
@@ -1562,7 +1617,7 @@ begin
 end;
 
 end.
-```
+----
 
 We've already been through all of this process twice, so let's not waste any time. Just a short summary of what we did here:
 
@@ -1580,7 +1635,8 @@ The same way as before let's create our State in `GameInitialize` adding `GameSt
 
 Now, as this is a popup, we'd want to show it without hiding the underlying state. Let's go into unit `GameStateGame`, add `GameStateGameOver` to `uses` section in `implementation` and inside `TStateGame.Update` find our block that corresponds to "Game Over" state. In the end of this block, when everything was updated correctly, let's add `TUiState.Push(StateGameOver);` like this:
 
-```Pascal
+[source,pascal]
+----
 begin
   //GameOver
   ...
@@ -1589,7 +1645,7 @@ begin
     TUiState.Push(StateGameOver);
   GameRunning := false;
 end;
-```
+----
 
 We've also added `if GameRunning then` condition to avoid possible rare bug in case two popups will fire simultaneously.
 
@@ -1601,7 +1657,8 @@ Save, compile and run. We've got our State Game Over running with both buttons a
 
 Now, let's pass some data to the Popup, so that it will show relevant image and score. Let's add two `public` variables to `TStateGameOver`:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateGameOver = class(TUiState)
   ...
@@ -1611,19 +1668,21 @@ type
     procedure Start; override;
     procedure Update(const SecondsPassed: Single; var HandleInput: Boolean); override;
   end;
-```
+----
 
 In `Start` let's add somewhere near the end, before calling `Update` hack:
 
-```Pascal
+[source,pascal]
+----
 ScoreValueLabel.Caption := Score.ToString;
 HighScoreImage.Exists := HighScore;
 GameOverImage.Exists := not HighScore;
-```
+----
 
 This way we set the `Caption` of `ScoreValueLabel` to value of `Score` and set visibility of `HighScoreImage` and `GameOverImage` based on boolean variable `HighScore`. Now in `GameStateGame` in the block relating to "Game Over" let's set these variables to current Player's results:
 
-```Pascal
+[source,pascal]
+----
 StateGameOver.Score := GameScore;
 if UserConfig.GetValue('high_score', 0) < GameScore then
 begin
@@ -1632,7 +1691,7 @@ begin
   StateGameOver.HighScore := true;
 end else
   StateGameOver.HighScore := false;
-```
+----
 
 ![Passing data to a State](images/passing-data-to-state.png)
 
@@ -1640,25 +1699,28 @@ end else
 
 As we've already noted, we'll do the animations through `Update` procedure in `GameStateGameOver`. We'll be animating two objects: color of `BackgroundColor` and position of `GameOverPopup`. First let's add a `const` with animation time somewhere in `interface` section:
 
-```Pascal
+[source,pascal]
+----
 const
   AnimationDuration = 0.3;
-```
+----
 
 This specifies the animation duration - 0.3 seconds. Now in `TStateGameOver` let's create a `private` variable:
 
-```Pascal
+[source,pascal]
+----
 type
   TStateGameOver = class(TUiState)
   private
     AnimationTime: Single;
     ...
   end;
-```
+----
 
 Set it to zero in `Start`:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGameOver.Start;
 var
   UiOwner: TComponent;
@@ -1669,11 +1731,12 @@ begin
   AnimationTime := 0;
   Update(0, UnusedBooleanVariable);
 end;
-```
+----
 
 Now let's add `SecondsPassed` to it in `Update` and set parameters of our two animated objects based on this value:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateGameOver.Update(const SecondsPassed: Single; var HandleInput: Boolean);
 begin
   inherited;
@@ -1688,7 +1751,7 @@ begin
     GameOverPopup.VerticalAnchorDelta := 0;
   end;
 end;
-```
+----
 
 Here we increase `AnimationTime` every frame. If it's less than `AnimationDuration` we slowly increase alpha (opacity) of `BackgroundColor` and set it to a cyan tint. Also we're changing `GameOverPopup.VerticalAnchorDelta` which is its vertical position - moving it from below the screen to central position (where `VerticalAnchorDelta` is zero).
 
@@ -1715,9 +1778,10 @@ Let's go to our `data` folder and create `audio` subfolder, and after dropping o
 
 This is our minimal (and empty) sound repository registry. Now let's go into `GameInitialize` unit, add `CastleSoundEngine` to `uses` section and in `ApplicationInitialize` load it somewhere near `LoadFonts;`:
 
-```Pascal
+[source,pascal]
+----
 SoundEngine.RepositoryURL := 'castle-data:/audio/index.xml';
-```
+----
 
 This will instruct Castle Game Engine's SoundEngine to load our `index.xml` file which will be immediately ready to use.
 
@@ -1746,17 +1810,19 @@ Here:
 
 Let's now play our music in game. Let's go to our `GameStateMainMenu` unit and add `CastleSoundEngine` to `uses` section. Now somewhere in `Start` let's add a line:
 
-```Pascal
+[source,pascal]
+----
 SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
-```
+----
 
 Which instructs to loop a track named `menu_music` on channel #0. As simple as that. We can now compile and run and see that the music is already working!
 
 Let's now go into `GameStateGame`, again add `CastleSoundEngine` to `uses` section and a similar line somewhere in `Start` procedure:
 
-```Pascal
+[source,pascal]
+----
 SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
-```
+----
 
 And it also works without any problems. We can also test and see that the music is switched when we go from Main Menu State into Game State and back.
 
@@ -1841,7 +1907,8 @@ The very same way we can add an "acceleration" sound when the Player clicked an 
 
 Now in our `GameStateGame` unit we can navigate to `ButtonPress` procedure and at the point where we process the result of user click add two lines to play `"click"` or `"accelerate"` sound depending on which button was clicked:
 
-```Pascal
+[source,pascal]
+----
 if ThisGamePad^.Score > 0 then
 begin
   SoundEngine.Sound(SoundEngine.SoundFromName('click'));
@@ -1855,7 +1922,7 @@ begin
   GamePace += 0.25;
   SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
 end;
-```
+----
 
 Here `SoundEngine.Sound` plays a sound which is in turn found "by name" using `SoundEngine.SoundFromName`. We can now test and see that it's working.
 
@@ -1870,19 +1937,21 @@ The same way we add a "game over" sound:
 
 And play it in `Update`:
 
-```Pascal
+[source,pascal]
+----
 begin
   //GameOver
   SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
   ...
 end;
-```
+----
 
 ### The rest of UI sounds
 
 Let's quickly add some other sounds for UI events:
 
-```XML
+[source,pascal]
+----
 <sounds>
   ...
   <sound name="ui_click_1" url="ui/click_001_CC0_by_Kenney.wav" />
@@ -1920,7 +1989,7 @@ Let's quickly add some other sounds for UI events:
     <target name="quit_7" />
   </alias>
 </sounds>
-```
+----
 
 Let's put `SoundEngine.Sound(SoundEngine.SoundFromName('start_game'));` inside `ClickStart` in `GameStateMainMenu` and inside `ClickPlayAgain` in `GameStateGameOver` (don't forget to add `CastleSoundEngine` to `uses` section). Let's add `SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));` into `ClickOptions`, `ClickCredits` in `GameStateMainMenu`. And finally `SoundEngine.Sound(SoundEngine.SoundFromName('quit'));` to `ClickQuit` in `GameStateMainMenu` and `ClickMainMenu` in `GameStateGameOver`.
 
@@ -1932,24 +2001,26 @@ Some platform, mobile devices first of all, can also vibrate. Normally, we shoul
 
 Let's add `CastleOpenDocument` to `uses` section of `GameStateGame`. Next, navigate to `ButtonPress` and add `Vibrate(100);` near the line where we play the sound. This will tell our device to vibrate for 100 milliseconds:
 
-```Pascal
+[source,pascal]
+----
 begin
   GamePace += 0.25;
   SoundEngine.Sound(SoundEngine.SoundFromName('accelerate'));
   Vibrate(100);
 end;
-```
+----
 
 And in `Update` add `Vibrate(500);` to vibrate for 0.5 seconds in case the game is over:
 
-```Pascal
+[source,pascal]
+----
 begin
   //GameOver
   Vibrate(500);
   SoundEngine.Sound(SoundEngine.SoundFromName('game_over'));
   ...
 end;
-```
+----
 
 Note, that it's safe to call this function on platforms that don't support vibration, but nothing will happen.
 
@@ -2001,7 +2072,8 @@ Let's add an Empty Rectangle to `OptionsGroup` that would work as a separator he
 
 Again, we're quickly going through the already known process of implementing a `GameStateOptions` unit. Let's make a short summary of its content:
 
-```Pascal
+[source,pascal]
+----
 unit GameStateOptions;
 
 {$mode objfpc}{$H+}
@@ -2228,7 +2300,7 @@ begin
 end;
 
 end.
-```
+----
 
 On the first hand it may look huge, but most of it is very simple and similar to what we've already done before:
 
@@ -2262,26 +2334,29 @@ First of all, we have to create our `StateOptions` in `GameInitialize`. Let's ad
 
 As we are already changing the volumes for `SoundEngine` it's a good idea to set them to the values stored in `UserConfig`:
 
-```Pascal
+[source,pascal]
+----
 SoundEngine.Volume := UserConfig.GetFloat('volume', 1.0);
 SoundEngine.LoopingChannel[0].Volume := UserConfig.GetFloat('music', 0.5);
-```
+----
 
 Note, that both here and in `GameStateOptions` we propose 0.5 default music volume.
 
 Yes, that's all about sound. Now, the final touch - in `GameStateGame` let's call `Vibrate` only in case it's enabled in `UserConfig`. In `ButtonPress` we set:
 
-```Pascal
+[source,pascal]
+----
 if UserConfig.GetValue('vibration', true) then
   Vibrate(100);
-```
+----
 
 And in `Update` - where our GameOver state happens:
 
-```Pascal
+[source,pascal]
+----
 if UserConfig.GetValue('vibration', true) then
   Vibrate(500);
-```
+----
 
 ## State Credits
 
@@ -2309,7 +2384,8 @@ Everything else is something that we've already done before - labels, images and
 
 Let's create a unit `GameStateCredits` in Lazarus, as we usually do:
 
-```Pascal
+[source,pascal]
+----
 unit GameStateCredits;
 
 {$mode objfpc}{$H+}
@@ -2351,13 +2427,14 @@ begin
 end;
 
 end.
-```
+----
 
 The only "new" thing here is `function Press` which is called when the Player presses mouse button, keyboard key or taps the screen. It's very similar to the `OnPress` event we've used when implementing `GameStateGame`. And in the function itself we simply send the Player back to `StateMainMenu` - upon pressing anything. Also note the new syntax of calling `inherited;`:
 
-```Pascal
+[source,pascal]
+----
 Result := inherited;
-```
+----
 
 Which sets the `Result` of our `function` to the `Result` of the `function` inherited from the Parent class.
 
@@ -2365,19 +2442,21 @@ Also note, that we actually don't even process anything in `Start` - this state 
 
 Now, as usually let's add `GameStateCredits` to `uses` section of `GameInitialize` and create our State in `ApplicationInitialize`:
 
-```Pascal
+[source,pascal]
+----
 StateCredits := TStateCredits.Create(Application);
-```
+----
 
 And again add `GameStateCredits` to `uses` section of `StateMainMenu` and in `ClickCredits` set `StateCredits` as `Current`:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateMainMenu.ClickCredits(Sender: TObject);
 begin
   SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));
   TUiState.Current := StateCredits;
 end;
-```
+----
 
 All done!
 
@@ -2401,7 +2480,8 @@ And edited images `Color` property, the same way as we do it in-game, to emulate
 
 Implementation of this state is almost identical to `StateCredits`:
 
-```Pascal
+[source,pascal]
+----
 unit GameStateTutorial;
 
 {$mode objfpc}{$H+}
@@ -2443,13 +2523,14 @@ begin
 end;
 
 end.
-```
+----
 
 Exactly the same way we add `GameStateTutorial` to `uses` section of `GameInitialize` and create the `TStateTutorial` class in `ApplicationInitialize`:
 
-```Pascal
+[source,pascal]
+----
 StateTutorial := TStateTutorial.Create(Application);
-```
+----
 
 The only thing left to do - is now to show the tutorial before going into `StateGame` state from the `StateMainMenu`. We simply have to replace `GameStateGame` for `GameStateTutorial` in `uses` section of `GameStateMainMenu` and replace `StateGame` with `StateTutorial` in `ClickStart`.
 
@@ -2495,7 +2576,8 @@ On Linux system the shell commands are very similar, however, Linux users usuall
 
 Let's add `SplashScreen` and `CastleColors` to `uses` section of `GameInitialize` and in `initialization` add:
 
-```Pascal
+[source,pascal]
+----
 initialization
   ApplicationProperties.ApplicationName := 'ButtonClickerGame';
 
@@ -2507,7 +2589,7 @@ initialization
   Theme.OwnsImages[tiLoading] := false;
   Theme.LoadingImageForWindowHeight := 1334;
   ...
-```
+----
 
 Here we modify default values of the `Theme` - to set background color (`LoadingBackgroundColor`) for our Splash Screen (that would be color of everything beyond our image). `HexToColor` is a useful function from `CastleColors` that converts color in HEX notation (often used by graphic designers) into `TCastleColor` - that is a color usable in the program.
 
@@ -2575,7 +2657,8 @@ Unfortunately it can't scale automatically to fit the underlying design, so we'l
 
 The FreePascal unit `StateAchievements` will be very similar to `StateCredits` and `StateTutorial`. However, just as in `StateGame` let's load an image to replace runtime:
 
-```Pascal
+[source,pascal]
+----
 unit GameStateAchievements;
 
 {$mode objfpc}{$H+}
@@ -2633,7 +2716,7 @@ begin
 end;
 
 end.
-```
+----
 
 As usually, let's add `GameStateAchievements` to `uses` section of `GameInitialize` and create the state with `StateAchievements := TStateAchievements.Create(Application);` in `ApplicationInitialize`.
 
@@ -2641,7 +2724,8 @@ As usually, let's add `GameStateAchievements` to `uses` section of `GameInitiali
 
 Now in `Start` procedure let's work a bit with our embedded designs. Also, we'll use a bit different approach here - just not to get too bored with doing the same things over and over again. And practically it's more efficient to do it the following way. Before for every UI element we wanted to change or work with we created a new `private` variable in our state. However, as already seen, we aren't going to change any of them outside of our `Start` procedure. Therefore, we may not spam `private` section with temporary variables, that will be used only once, but we can simply declare them as local variables. Or even not use any variables at all, but directly modify the UI element that was returned by `FindRequiredComponent`. So, first of all, let's find our `TCastleDesign` instances in the usual way:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateAchievements.Start;
 var
   UiOwner: TComponent;
@@ -2656,7 +2740,7 @@ begin
   DesignAchievement4 := UiOwner.FindRequiredComponent('DesignAchievement4') as TCastleDesign;
   DesignAchievement5 := UiOwner.FindRequiredComponent('DesignAchievement5') as TCastleDesign;
 end;
-```
+----
 
 The only difference above is that we declared variables `DesignAchievement1, DesignAchievement2, DesignAchievement3, DesignAchievement4, DesignAchievement5` as local variables inside `Start` procedure.
 
@@ -2664,7 +2748,8 @@ Next goes the new part. As we've already mentioned `UiOwner.FindRequiredComponen
 
 And the second feature - we don't actually have to create a variable to work with the result of `FindRequiredComponent` - if it's just a single (or very rare) operation to perform, we can just directly work on the `FindRequiredComponent` result like this:
 
-```
+[source,pascal]
+----
 procedure TStateAchievements.Start;
 var
   UiOwner: TComponent;
@@ -2716,7 +2801,7 @@ begin
   (UiOwner.FindRequiredComponent('HighScoreText') as TCastleLabel).CustomFont := CartoonFont60;
   (UiOwner.FindRequiredComponent('HighScoreValue') as TCastleLabel).Caption := UserConfig.GetValue('high_score', 0).ToString;
 end;
-```
+----
 
 Here again we check if the Player has an achievement by checking if the information about achievement is stored in the `UserConfig`: `UserConfig.GetValue('achievement1', false)` and in case it is not found, then we replace the achievement image by `NoAchievementImage` and hide the `AchievementDescription` label by `Exists := false` - repeating for all 5 achievements. In case the achievement is obtained by the player there is no need to do anything - our design already contains all the elements we should show to the Player in this case, there is even no need to find `DesignAchievement1` in `UiOwner` as we aren't going to change it in this case.
 
@@ -2726,7 +2811,8 @@ Finally we change the font of `HighScoreText` label and value of `HighScoreValue
 
 Let's add our new `StateAchievements` to `GameStateMainMenu`. First of all we'll need to add one more button to Main Menu design by duplicating some other button and naming it `AchievementsButton`. In `GameStateMainMenu` let's add a private variable `AchievementsButton: TCastleButton;` and work with it in `Start` procedure:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateMainMenu.Start;
 var
   UiOwner: TComponent;
@@ -2737,17 +2823,18 @@ begin
   AchievementsButton.CustomFont := CartoonFont60;
   ...
 end;
-```
+----
 
 Let's add `GameStateAchievements` to `uses` section and a `private` procedure to accept clicks `procedure ClickAchievements(Sender: TObject);` with the following implementation:
 
-```Pascal
+[source,pascal]
+----
 procedure TStateMainMenu.ClickAchievements(Sender: TObject);
 begin
   SoundEngine.Sound(SoundEngine.SoundFromName('ui_click'));
   TUiState.Current := StateAchievements;
 end;
-```
+----
 
 However, if we compile and run the game now, we see that "Achievements" button caption is too large to fit in our button. Let's go back into Castle Editor and change `Width` of all our buttons from 406 to 650. Now everything looks good:
 
@@ -2763,7 +2850,8 @@ The final step is to award the player with Achievements when the player reaches 
 
 Now in `TStateGameOver` let's create a `private` variable `DesignAchievement: TCastleDesign;` and a `public` variable `Achievement: String;`. Then somewhere inside `Start` let's add:
 
-```Pascal
+[source,pascal]
+----
 DesignAchievement := UiOwner.FindRequiredComponent('DesignAchievement') as TCastleDesign;
 case Achievement of
   'achievement1': DesignAchievement.Url := 'castle-data:/achievement1.castle-user-interface';
@@ -2773,7 +2861,7 @@ case Achievement of
   'achievement5': DesignAchievement.Url := 'castle-data:/achievement5.castle-user-interface';
   else DesignAchievement.Exists := false;
 end;
-```
+----
 
 Here we find `DesignAchievement` inside our design. And then based on the value of `Achievement` variable we load a different `Url` runtime. In case `Achievement` variable is not found in the expected list (e.g. empty) we will hide the whole UI element by `Exists := false`.
 
@@ -2781,7 +2869,8 @@ Here we find `DesignAchievement` inside our design. And then based on the value 
 
 Next, let's go into `GameStateGame` and inside `Update` find our block that corresponds to "Game Over" situation and around `UserConfig.Save;` let's add code that will award the Player:
 
-```Pascal
+[source,pascal]
+----
 StateGameOver.Achievement := '';
 if UserConfig.GetValue('high_score', 0) < GameScore then
 begin
@@ -2815,7 +2904,7 @@ begin
   StateGameOver.HighScore := true;
 end else
   StateGameOver.HighScore := false;
-```
+----
 
 Here we first set `StateGameOver.Achievement := '';` to avoid it accidentally "remembering" previous achievements.
 
