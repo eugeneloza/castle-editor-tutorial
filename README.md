@@ -2,4 +2,4 @@ This tutorial is aimed at new users, who have some minor knowledge of Pascal and
 
 The tutorial text is written in Ascii Doctor syntax, see https://asciidoctor.org/ for details.
 
-Notepad++ plugin for Ascii Doctor highlight: https://github.com/edusantana/asciidoc-highlight/blob/master/notepad%2B%2B/userDefineLang.xml
+Notepad++ plugin for Ascii Doctor highlight: https://github.com/edusantana/asciidoc-highlight/blob/master/notepad%2B%2B/userDefineLang.xml (it's bad, but I couldn't find anything better).
