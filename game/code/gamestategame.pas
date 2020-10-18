@@ -44,7 +44,7 @@ var
 
 implementation
 uses
-  CastleComponentSerialize,
+  CastleComponentSerialize, CastleApplicationProperties,
   CastleVectors, CastleConfig, CastleSoundEngine, CastleOpenDocument,
   GameStateGameOver, GameFont;
 
@@ -210,7 +210,10 @@ begin
           GameRunning := false;
         end;
       end;
-    GamePace += SecondsPassed / 120;
+    if ApplicationProperties.TouchDevice then
+      GamePace += SecondsPassed / 120
+    else
+      GamePace += SecondsPassed / 160;
   end;
   ScoreLabel.Caption := GameScore.ToString;
 end;

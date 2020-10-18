@@ -1337,6 +1337,22 @@ Here:
 
 - `ScoreLabel.Caption := GameScore.ToString;` sets `Caption` of our label that represents the game score to current Player's score.
 
+### Post-Testing Game Balance Improvement
+
+Now running a bit ahead of time, let's note that testing of the final game showed that it's easier to play on touch devices, than on Desktop, because on touch screen the Player can use 2 fingers simultaneously. The test showed that it's approximately 30% easier to play on a tablet than on a Desktop platform. So, let's make those chances equal by adding `CastleApplicationProperties` to `uses` section and replacing the line `GamePace += SecondsPassed / 120;` into a platform-dependent one:
+
+[source,pascal]
+----
+if ApplicationProperties.TouchDevice then
+  GamePace += SecondsPassed / 120
+else
+  GamePace += SecondsPassed / 160;
+----
+
+Here we ask the `ApplicationProperties` if the current platform is a "`TouchDevice`" and if yes then we accelerate the game twice in 2 minutes, if no - in 2 minutes and 40 seconds. Obviously it's not so easy to perfectly balance the game across different platforms, but as we don't have any on-line leaderboards, we are ok with just making the game a bit more fair for Desktop players.
+
+### Changing Buttons Colors
+
 Next thing to do, we should update our visuals, based on how "ripe" the button is. Let's do this by working inside the loop in `Update`:
 
 [source,pascal]
