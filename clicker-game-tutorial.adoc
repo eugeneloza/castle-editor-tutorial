@@ -12,11 +12,11 @@ include::locale/attributes.adoc[]
 
 This tutorial is aimed at new users, who have some minor knowledge of Pascal and general concepts of programming and game development. It will cover all steps necessary from creation and setting up of the project, to a small but finished game.
 
-You can download the compiled version of the game at https://decoherence.itch.io/button-clicker-game.
+You can download the compiled version of the game at https://decoherence.itch.io/button-clicker-game (Windows, Linux, Android).
 
 ## Set up the Environment
 
-For this tutorial we shall be using Lazarus IDE. We shan't use GUI provided by Lazarus, therefore this is not a requirement, just a personal preference. You can easily follow this tutorial in any other IDE capable of editing FreePascal code.
+For this tutorial we shall be using Lazarus IDE. We shan't use GUI provided by Lazarus, therefore this is not a requirement, just a personal preference. The tutorial can be easily followed using any other IDE or even a text editor capable of editing FreePascal code.
 
 Before we start:
 
@@ -26,11 +26,13 @@ Before we start:
 
 * Make sure that `alternative_castle_window_based_on_lcl.lpk` is _**NOT**_ installed in Lazarus, as it will conflict with `castle_window.lpk` package we shall be using.
 
-* Make sure the required libraries are available on system $PATH. Try compiling a few examples from `examples` folder to make sure they're working.
+* Make sure the required libraries are installed in the system or available on system $PATH. Try compiling a few examples from `examples` folder to make sure they're working.
 
 * Make sure system environment variables required for Castle Game Engine and Castle Editor are set up properly.
 
-* Make sure Castle Editor is compiled and ready to use.
+* Make sure Castle Editor, set up properly, is compiled and ready to use.
+
+More details can be found at https://castle-engine.io/documentation.php.
 
 ## Creating an Empty Project
 
@@ -76,7 +78,7 @@ If the Project Inspector is not visible on the screen, we may show it by going t
 
 image::project-inspector-menu.png[]
 
-Note, that the required packages `castle-base` and `castle-window` are already included as dependencies of our project.
+Note, that the required packages `castle-base` and `castle-window` are already automatically included as dependencies of our project.
 
 ### Set up Lazarus Project Options
 
@@ -122,13 +124,13 @@ Note that there are also several useful options here:
 
 - **Build** - Will only compile the game, without running it.
 
-- **Clean up and Build** - Will recompile everything clean, without running the game. In case of working with huge projects sometimes it's necessary.
+- **Clean up and Build** - Will recompile everything clean, without running the game. In case of working with huge projects sometimes it's necessary to make a proper clean up.
 
 There's also a set of convenient buttons on the Lazarus Toolbar:
 
 image::running-project-toolbar.png[]
 
-First of all we have a green arrow that will do the same as **Compile** menu above - compile and run our game. Next there is a green arrow with a red cross that will do the same, except for disabled debugging - we will get less information in case the game crashes, but the game will run much faster. And finally a cog with a wrench - that allows us quickly chose between run modes (Debug/Release).
+First of all (going from right to left) we have a green arrow that will do the same as **Compile** menu above - compile and run our game. Next there is a green arrow with a red cross that will do the same, except for disabled debugging - we will get less information in case the game crashes, but the game will run much faster. And finally a cog with a wrench - that allows us quickly chose between run modes (Debug/Release).
 
 ## More Order in Units and States
 
@@ -136,7 +138,7 @@ First of all we have a green arrow that will do the same as **Compile** menu abo
 
 **State** is one of the game's view, like Main menu, Gameplay view, High scores, maybe some different States, like Inventory, Achievements, different game modes, etc.
 
-As we noted above the "Empty" template is not actually empty - it already contains a Main State with a FPS label. We could have cleaned those up and reused, but we might want to use this opportunity to learn how to delete a state.
+As we noted above the "Empty" template is not actually empty - it already contains a Main State with a FPS label. We could have cleaned those up and reused, but we might want to use this opportunity to learn how to delete a State.
 
 Simply deleting `state_main.castle-user-interface` and `gamestatemain.pas` is not enough, as they are referenced from within our game. Let's look more closely at our `gameinitialize.pas`. What we are interested in is the procedure `ApplicationInitialize`.
 
@@ -174,7 +176,7 @@ var
 
 Next we set our `StateMain` as the `Current` state by calling `TUIState.Current := StateMain;`.
 
-We shall create our own states in the very same way, but for now we are going to delete this state. This means we need to delete files `state_main.castle-user-interface` and `gamestatemain.pas` and remove the state initialization from `gameinitialize.pas`.
+We shall create our own states in the very same way, but for now we are going to delete this State. This means we need to delete files `state_main.castle-user-interface` and `gamestatemain.pas` and remove the state initialization from `gameinitialize.pas`.
 
 Now our `ApplicationInitialize` will look like:
 
@@ -205,7 +207,7 @@ uses SysUtils,
   CastleUIControls, CastleApplicationProperties, CastleUiState;
 ----
 
-Note that we also silently deleted a few other unused units from `uses` section, when you create a project from `Empty` template you may have a little more units there, but Lazarus will notify you in "Messages" window, that some units aren't used in the project:
+Note that we also silently deleted a few other unused units from `uses` section, when we create a project from `Empty` template we may have a little more units there, than we actually need. But after building our game Lazarus will notify us in "Messages" window, that some units aren't used in the project:
 
 image::unused-units.png[]
 
