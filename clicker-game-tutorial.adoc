@@ -130,7 +130,9 @@ image::running-project-toolbar.png[]
 
 First of all we have a green arrow that will do the same as **Compile** menu above - compile and run our game. Next there is a green arrow with a red cross that will do the same, except for disabled debugging - we will get less information in case the game crashes, but the game will run much faster. And finally a cog with a wrench - that allows us quickly chose between run modes (Debug/Release).
 
-## Deleting a State
+## More Order in Units and States
+
+### Deleting a State
 
 **State** is one of the game's view, like Main menu, Gameplay view, High scores, maybe some different States, like Inventory, Achievements, different game modes, etc.
 
