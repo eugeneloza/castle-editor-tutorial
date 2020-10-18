@@ -50,7 +50,7 @@ Let's open freshly created `ButtonClickerGame.lpi` in Lazarus. We can immediatel
 
 - `ButtonClickerGame.lpi` - Lazarus project file. It is created and maintained automatically by Lazarus.
 
-- `ButtonClickerGame.lpr` - a program initialization file, that was automatically created for us by Castle Editor and we don't need to change anything in there, maybe only update the proper game version as we would be working on it. You can open it in Lazarus or any text editor. `lpr` stands for "Lazarus project" but in everything else it's equal to a normal `pas` file.
+- `ButtonClickerGame.lpr` - a program initialization file, that was automatically created for us by Castle Editor and we don't need to change anything in there, maybe only update the proper game version as we would be working on it. It can be opened it in Lazarus or any text editor. `lpr` stands for "Lazarus project" but in everything else it's equal to a normal `pas` file.
 
 - `CastleEngineManifest.xml` - a Castle Game Engine manifest file, that describes some important settings for the project that control how the project is compiled, packaged and distributed.
 
@@ -142,7 +142,7 @@ As we noted above the "Empty" template is not actually empty - it already contai
 
 Simply deleting `state_main.castle-user-interface` and `gamestatemain.pas` is not enough, as they are referenced from within our game. Let's look more closely at our `gameinitialize.pas`. What we are interested in is the procedure `ApplicationInitialize`.
 
-As you can see it will be called when the application (our game) will start up:
+This procedure is called when the application (our game) will start up:
 
 [source,pascal]
 ----
@@ -166,7 +166,7 @@ end;
 
 So, first of all, we load `CastleSettings.xml` file by calling `Window.Container.LoadSettings`. It will set up our Window parameters. We could do this here by manually setting `Window` properties that we need to change from default, but having a `CastleSettings` file is usually more convenient and flexible. Moreover, it allows Castle Editor to know more about how our game should look like.
 
-The next line `StateMain := TStateMain.Create(Application);` creates a singleton for `TStateMain` - the class that manages our Main State. Inside `GameStateMain` unit you can see that the class API (`interface`), `implementation` and also declaration of the singleton variable:
+The next line `StateMain := TStateMain.Create(Application);` creates a singleton for `TStateMain` - the class that manages our Main State. Inside `GameStateMain` unit we can see that the class API (`interface`), `implementation` and also declaration of the singleton variable:
 
 [source,pascal]
 ----
@@ -868,7 +868,7 @@ Before adding another image, let's add a Label to this one, name it "Label11", s
 
 image::designing-clicker-button.png[]
 
-Yes, you might have already noticed, that we say "button" but actually we've created an "Image". We'll know why we did that a bit later.
+Yes, as one might have already noticed, that we say "button" but actually we've created an "Image". We'll know why we did that a bit later.
 
 For now let's create two copies of our button by selecting and duplicating (Design -> Duplicate Component) it. Now our design looks like this:
 
@@ -878,7 +878,7 @@ As we can see the buttons are too close to each other. We could have done this b
 
 Surprisingly, it's usually easier to delete the duplicated components and duplicate them again later, than to apply some significant change to every component. Let's delete our `Button12` and `Button13` by Design -> Delete Component.
 
-Let's add an Empty Rectangle (Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface)) to our `GameplayArea` and call it `ButtonGroup11`. If you peek into our `data` folder, our image has dimensions of 176x185 and Our screen has reference width 750. To let 3 buttons cover it completely, our "clickable area" should have size 750/3 = 250x250, so, let's set `ButtonGroup11` `Width` and `Height` to "250" in "Layout" tab.
+Let's add an Empty Rectangle (Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface)) to our `GameplayArea` and call it `ButtonGroup11`. If we peek into our `data` folder, our image has dimensions of 176x185 and Our screen has reference width 750. To let 3 buttons cover it completely, our "clickable area" should have size 750/3 = 250x250, so, let's set `ButtonGroup11` `Width` and `Height` to "250" in "Layout" tab.
 
 Now let's drag `Button11` into `ButtonGroup11`. Let's go to "Layout" tab, and set `VerticalAnchorDelta` and `HorizontalAnchorDelta` to zero and `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle`. Now our design looks like:
 
@@ -2595,9 +2595,9 @@ All done! Now we can compile, run and see that our Tutorial is displayed when we
 
 Our game also needs a more prominent "Splash Screen" than a minimal "Loading..." text provided to us by Castle Game Engine. We have to note that loading of the game, especially on slow mobile devices, can take relatively significant amount of time, therefore the splash screen is not a regular "State" with which we had some experience before. In the very beginning we can't even count that it's possible to read files, as the corresponding permissions may have not yet been given to our game - that is we can't read the Splash Screen image from a file.
 
-There is a solution. We can have the splash screen as a part of our code. This way it will be absolutely robust and will load lighting-fast and will be ready to display as soon as anything can be displayed. Therefore we have to convert an image to Pascal code. This can be done by Castle Game Engine's tool called `image-to-pascal`. It can be found in `tools` folder. You can compile it using Lazarus by double-clicking the `image-to-pascal.lpi` file and pressing F9 or Run.
+There is a solution. We can have the splash screen as a part of our code. This way it will be absolutely robust and will load lighting-fast and will be ready to display as soon as anything can be displayed. Therefore we have to convert an image to Pascal code. This can be done by Castle Game Engine's tool called `image-to-pascal`. It can be found in `tools` folder. We can compile it using Lazarus by double-clicking the `image-to-pascal.lpi` file and pressing F9 or Run.
 
-There is one catch though, it is a command-line app, not a GUI one. So we have to use console. On Windows it can be done by pressing `Win+R` and typing in `cmd`. Then navigate to the drive and folder where `image-to-pascal` is located. This might be not trivial if you've never had experience using console. Let's imagine our Castle Game Engine installation is in "D:\castle-engine" folder. Then we have to do it this way:
+There is one catch though, it is a command-line app, not a GUI one. So we have to use console. On Windows it can be done by pressing `Win+R` and typing in `cmd`. Then navigate to the drive and folder where `image-to-pascal` is located. This might be not trivial if we've never had experience using console. Let's imagine our Castle Game Engine installation is in "D:\castle-engine" folder. Then we have to do it this way:
 
 [source,Shell]
 ----
@@ -2622,7 +2622,7 @@ D:\castle-engine\tools\image-to-pascal\>image-to-pascal SplashScreen SplashImage
 
 This will create `SplashScreen` unit containing the whole `SplashImage.png`.
 
-You can find the original `SplashImage.png` image for Button Clicker inside `source_images` directory in `game` folder of this tutorial.
+The original `SplashImage.png` image for Button Clicker can be found inside `source_images` directory in `game` folder of this tutorial.
 
 The command above will generate two files: `splashscreen.pas` which contains the image definition and `splashscreen.image_data` which contains the image data. Let's copy or move those to our game folder.
 
@@ -3075,6 +3075,6 @@ Now it's time to switch our build mode to "Release" and compile the game. Maybe 
 
 And eventually when everything is running as intended, we can release our game to the public. In the end, we'll need to "package" everything together - we'll need the `ButtonClickerGame.exe` file - our compiled game, `data` folder - our assets, `README` that would describe how to run and play the game. On Windows platforms it's also necessary to package the _DLL_ libraries that are required to run the game. On Linux platforms we'll need to mention in `README` what libraries are required for the user to run the game.
 
-And don't forget to share your game with Castle Game Engine community, we're very curious to see your progress!
+And don't forget to share your game with Castle Game Engine community (https://castle-engine.io/talk.php), we're very curious to see your progress!
 
 Hope you will have many efficient and productive hours developing your games or programs in Castle Game Engine!
