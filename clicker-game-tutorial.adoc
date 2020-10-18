@@ -221,7 +221,13 @@ image::missing-file-remove.png[]
 
 Of course we can also use "Remove" button which is located above.
 
-Now let's try to compile and run our project. We have a perfectly clean, truly "Empty" window. In case we missed some of the references to the deleted unit, we may run into compilation errors which in this case should be easy to fix, but after going through all the process above - we're all good and ready to start working!
+Now let's try to compile and run our project. We have a perfectly clean, truly "Empty" window. In case we missed some of the references to the deleted unit, we may run into compilation errors which in this case should be easy to fix.
+
+### Moving units
+
+One more thing to do is to put some more order into our game files. Right now all the code files are located in the same "root" folder of our project. This is Ok for very simple projects, however, 
+
+After going through all the process above - we're all good and ready to start working!
 
 ## Creating a Main Menu State
 
