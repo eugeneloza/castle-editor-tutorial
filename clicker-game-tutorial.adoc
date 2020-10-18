@@ -2997,7 +2997,7 @@ And in our Hall of Fame they are shown automatically:
 
 image::achievements-final.png[]
 
-## Final touches
+## Final Touch
 
 ### Immersive Mode on Mobile Platforms
 
