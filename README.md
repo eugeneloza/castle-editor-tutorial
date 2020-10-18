@@ -8,4 +8,4 @@ The tutorial text is written in Ascii Doctor syntax, see https://asciidoctor.org
 
 ## Feedback
 
-If you have any questions, suggestions or other feedback, please use Issues in this repository: https://github.com/eugeneloza/castle-editor-tutorial/. You can also use Castle Game Engine official Discord server or official forum, links to which you can find at: https://castle-engine.io/talk.php
+If you have any questions, suggestions or other feedback, please use Issues in this repository: https://github.com/eugeneloza/castle-editor-tutorial/. You can also use Castle Game Engine official Discord server or official forum, links to which you can find at: https://castle-engine.io/talk.php.
