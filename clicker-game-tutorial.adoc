@@ -225,7 +225,21 @@ Now let's try to compile and run our project. We have a perfectly clean, truly "
 
 ### Moving units
 
-One more thing to do is to put some more order into our game files. Right now all the code files are located in the same "root" folder of our project. This is Ok for very simple projects, however, 
+One more thing to do is to put some more order into our game files. Right now all the code files are located in the same "root" folder of our project. This is Ok for very simple projects, however, our project though small, but will be still larger than just a couple of units.
+
+Before we actually started developing our game it's going to be simple: we have only one unit to be moved: `gameinitialize.pas`. Let's open it in Lazarus, make sure it's the active tab and then go File -> Save As:
+
+image::save-as.png[]
+
+In the open dialogue let's create a folder named `code` and save our unit under the same name there. We'll get a prompt asking us to add the `code` folder to our project build modes. That means, the folder will be searched for game units when we're building in those build modes. Of course we want that, so let's select all three modes we have and let Lazarus do the job of adjusting the Project Options automatically:
+
+image::save-as-build-modes.png[]
+
+After pressing OK we get another prompt asking us if we want to delete the old file. Let's respond with "Yes" as we don't need to have two copies of the file in our project:
+
+image::save-as-delete-old-file.png[]
+
+Next we just save all of our new units to this folder, the process will be simpler.
 
 After going through all the process above - we're all good and ready to start working!
 
