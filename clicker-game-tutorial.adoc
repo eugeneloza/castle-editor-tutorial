@@ -269,15 +269,15 @@ image::designer-empty-state.png[]
 
 ### Create Background Image
 
-On the left we see a "Hierarchy" - this is the tree of User Interface elements that are present within our State currently. For now it's only `ImageControl`. Let's select it by left-clicking in Hierarchy. Now on the right side we have a way to edit the properties of our user interface element:
+On the left of the Editor window we see a "Hierarchy" - this is the tree of User Interface elements that are present within our State currently. For now it's only `ImageControl` - the one we selected as Root for our design. Let's select it by left-clicking in Hierarchy. Now on the right side we have a way to edit the properties of our user interface element:
 
 image::image-control-basic.png[]
 
-Let's change the `Name` field to "BackgroundImage" and select the actual image to display by clicking the `URL` field and then the button with three dots:
+Let's change the `Name` field to "BackgroundImage" and select the actual image to display by clicking the `URL` field and then pressing the button with three dots:
 
 image::url-field.png[]
 
-It will open the `data` folder of our project prompting us to select an image. All of our game data should be stored in this folder, so let's use our file manager to drop some assets there. For now let's add `images` subfolder and drop our background image there. Then our open window will look like this:
+This will open the `data` folder of our project prompting us to select an image. All of our game data should be stored in this folder, so let's use our file manager to drop some assets there. For now let's add `images` subfolder and drop our background image there. Let's navigate into this folder and our open window will look like this:
 
 image::open-image.png[]
 
@@ -285,13 +285,15 @@ Let's select the background image and press "Open". We immediately see the image
 
 image::open-image-result.png[]
 
-However, it doesn't seem to be exactly what we want - to behave as a background image, i.e. to fill the entire screen. To improve this behavior we need to go to "All" tab in properties of our ImageControl and set `FullSize` property to true:
+However, it doesn't seem to be exactly what we want - to behave as a background image, i.e. to fill the entire screen. To improve this behavior we need to go to "All" tab in properties of our `TCastleImageControl` and set `FullSize` property to true:
 
 image::full-size.png[]
 
-This will make our background image stretch horizontally and vertically to fill the entire parent User Interface. As this is our topmost user interface - it'll fill the entire window, which is exactly what we want here. Now our background behaves as we intend it to:
+This will make our `BackgroundImage` stretch horizontally and vertically to fill the entire parent User Interface. As this is our topmost User Interface - it'll fill the entire window, which is exactly what we want here. Now our background behaves as we intend it to:
 
 image::background-image-result.png[]
+
+Note that an image with `FullSize = true` cannot maintain proportions for obvious reasons.
 
 ### Save State
 
@@ -303,6 +305,8 @@ Let's name our state "MainMenu" and press "Save":
 
 image::save-state.png[]
 
+Note that on some filesystems file names are case-sensitive. Therefore to avoid unexpected runtime bugs we should carefully follow capitalization of files and folders we use should we reference them from our game code.
+
 ### Create Logo Image
 
 In simple words, Main Menu is a game logo + a set of buttons that would allow the player to start the game, change options, see credits, etc.
@@ -311,21 +315,23 @@ So first of all we add a logo of our game. The process is very similar to the on
 
 image::add-user-interface.png[]
 
-And select an "Image (TCastleImageControl)". In the same way as we did with the background now we pick `images/buttonclickerlogo.png` as the image file. And our image is ready in our user interface:
+Let's add an "Image (TCastleImageControl)". In the same way as we did with the `BackgroundImage` now we pick `images/buttonclickerlogo.png` as the image file. And our image has appeared ready in our user interface:
 
 image::title-added.png[]
+
+Note that above a "forward slash" is used as path delimiter, like in URLs - not depending on the OS. This is because all references to files in Castle Game Engine are actually URLs and can point to local or online resources in the same way.
 
 Now we should position it in the upper center of our design. To do that we use "Layout" tab of the Castle Editor:
 
 image::layout-tab.png[]
 
-Let's set `HorizontalAnchorParent` (i.e. to which side of the Parent (currently that is `BackgroundImage`) we align our interface element) and HorizontalAnchorSelf (which side of this user interface element is aligned) both to `hpMiddle` (which stands for "horizontal position - Middle"). And `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpTop` (which stands for "vertical position - Top"). Now we should have something like:
+Let's set `HorizontalAnchorParent` (i.e. to which side of the Parent (currently that is `BackgroundImage`) we align our interface element) and HorizontalAnchorSelf (which side of this user interface element which is being aligned) both to `hpMiddle` (which stands for "horizontal position - Middle"). And `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpTop` (which stands for "vertical position - Top"). Now we should have something like:
 
 image::alignment.png[]
 
 Note, that the values we've changed from the default ones are highlighted in bold and dark red color.
 
-Now we have a small detail - our logo is glued to the top of the design, which is not nice. We need to add a gap, which we can do by changing `VerticalAnchorDelta` property of our logo image. As we are moving the image _down_ we have to specify a _negative value_ here, let's say "-50". Now our image has some free space around it in the design:
+Now we have a small detail - our logo is glued to the top of the design, which is not nice. We need to add a gap, which we can do by changing `VerticalAnchorDelta` property of our logo image. As we are moving the image _down_ we have to specify a _negative value_ here, let's say "-50" (the origin of screen coordinates is located in lower-left corner of the screen). Now our image has some free space around it in the design:
 
 image::alignment2.png[]
 
@@ -333,7 +339,7 @@ The same way if we'd wanted to move the image horizontally from the anchor, we'd
 
 Let's rename this logo image into `LogoImage` and we're done here.
 
-Note, that as we never explicitly set the size of the image, it will have its native dimensions of 740x310.
+Note, that as we never explicitly set the size of the image, it will have its native dimensions of 740x310 pixels.
 
 ### Create Menu Buttons
 
