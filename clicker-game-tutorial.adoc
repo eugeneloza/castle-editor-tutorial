@@ -377,6 +377,8 @@ Now the button should look like this:
 
 image::button-start-custom-background-small.png[]
 
+### Size of User Interface Elements
+
 However, the button is too small, let's go to "Layout" tab and uncheck the `AutoSize` property:
 
 image::auto-size-property.png[]
