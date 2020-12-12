@@ -894,11 +894,13 @@ Now let's duplicate our `ButtonGroup11` two times. Note that Castle Editor somet
 
 image::duplicating-buttongroups.png[]
 
-Now, let's duplicate the `GameplayRow1` three times to get four rows in total
+Now, let's duplicate the `GameplayRow1` three times to get four rows in total.
 
 Note that Castle Editor named our rows correctly, but other elements - `ButtonGroup`s, `Button`s and `Label`s are simply keep naming consequently. Let's change their names so that the first digit would correspond to row number and the second one - column number. We'll have to start from the bottom, as e.g. name "21" is already taken by some of the elements lower in the hierarchy. Now our hierarchy looks like this:
 
 image::gameplay-hierarchy.png[]
+
+We may also note here, that generating those buttons by code may be a better and more consistent way, but for simplicity let's make it this way.
 
 ### Adding High Score Label
 
