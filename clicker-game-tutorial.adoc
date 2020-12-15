@@ -259,7 +259,7 @@ After the project opens we see the Castle Editor Designer window:
 
 image::designer-empty.png[]
 
-Let's create our new state. There are many different user interface elements we can use as a root, but usually it's most convenient to have either Empty rectangle as root, or a specific user interface we are going to use. In this case let's create a State based on "Image" - so that we shall have an image for background. That is: Design -> New User Interface (Chosen Root) -> Image (TCastleImageControl).
+Let's create our new state. There are many different User Interface elements we can use as a root, but usually it's most convenient to have either Empty rectangle as root, or a specific User Interface we are going to use. In this case let's create a State based on "Image" - so that we shall have an image for background. That is: Design -> New User Interface (Chosen Root) -> Image (TCastleImageControl).
 
 image::designer-create-state.png[]
 
@@ -269,7 +269,7 @@ image::designer-empty-state.png[]
 
 ### Create Background Image
 
-On the left of the Editor window we see a "Hierarchy" - this is the tree of User Interface elements that are present within our State currently. For now it's only `ImageControl` - the one we selected as Root for our design. Let's select it by left-clicking in Hierarchy. Now on the right side we have a way to edit the properties of our user interface element:
+On the left of the Editor window we see a "Hierarchy" - this is the tree of User Interface elements that are present within our State currently. For now it's only `ImageControl` - the one we selected as Root for our design. Let's select it by left-clicking in Hierarchy. Now on the right side we have a way to edit the properties of our User Interface element:
 
 image::image-control-basic.png[]
 
@@ -309,13 +309,13 @@ Note that on some filesystems file names are case-sensitive. Therefore to avoid 
 
 ### Create Logo Image
 
-In simple words, Main Menu is a game logo + a set of buttons that would allow the player to start the game, change options, see credits, etc.
+In simple words, Main Menu is a game logo + a set of buttons that would allow the Player to start the game, change options, see credits, etc.
 
 So first of all we add a logo of our game. The process is very similar to the one that we've been following when creating the empty State, but this time instead of creating a new State, we use Design -> Add User Interface Component like this:
 
 image::add-user-interface.png[]
 
-Let's add an "Image (TCastleImageControl)". In the same way as we did with the `BackgroundImage` now we pick `images/buttonclickerlogo.png` as the image file. And our image has appeared ready in our user interface:
+Let's add an "Image (TCastleImageControl)". In the same way as we did with the `BackgroundImage` now we pick `images/buttonclickerlogo.png` as the image file. And our image has appeared ready in our User Interface:
 
 image::title-added.png[]
 
@@ -325,7 +325,7 @@ Now we should position it in the upper center of our design. To do that we use "
 
 image::layout-tab.png[]
 
-Let's set `HorizontalAnchorParent` (i.e. to which side of the Parent (currently that is `BackgroundImage`) we align our interface element) and HorizontalAnchorSelf (which side of this user interface element which is being aligned) both to `hpMiddle` (which stands for "horizontal position - Middle"). And `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpTop` (which stands for "vertical position - Top"). Now we should have something like:
+Let's set `HorizontalAnchorParent` (i.e. to which side of the Parent (currently that is `BackgroundImage`) we align our interface element) and HorizontalAnchorSelf (which side of this User Interface element which is being aligned) both to `hpMiddle` (which stands for "horizontal position - Middle"). And `VerticalAnchorParent` and `VerticalAnchorSelf` to `vpTop` (which stands for "vertical position - Top"). Now we should have something like:
 
 image::alignment.png[]
 
@@ -371,11 +371,13 @@ First we should tick the `CustomBackground` checkbox and next let's click `Custo
 
 image::button-start-custom-background-normal.png[]
 
-It's easy to see, that it looks very similar to how we were working with `TCastleImageControl` as both are using `TCastleImage` class underneath. For now we are interested in `URL` property - let's add an image here just like we did before for background and logo. The same way let's add URLs of images to `CustomBackgroundPressed` (this will be the image displayed when user presses the button) and `CustomBackgroundFocused` (the image displayed when the user hovers the mouse pointer over the button).
+It's easy to see, that it looks very similar to how we were working with `TCastleImageControl` as both are using `TCastleImage` class underneath. For now we are interested in `URL` property - let's add an image here just like we did before for background and logo. The same way let's add URLs of images to `CustomBackgroundPressed` (this will be the image displayed when the Player presses the button) and `CustomBackgroundFocused` (the image displayed when the Player hovers the mouse pointer over the button).
 
 Now the button should look like this:
 
 image::button-start-custom-background-small.png[]
+
+### Size of User Interface Elements
 
 However, the button is too small, let's go to "Layout" tab and uncheck the `AutoSize` property:
 
@@ -1113,7 +1115,7 @@ end;
 
 Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch.
 
-On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the clicker button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the user `Press`es and `Release`s the button. This way we'll have to create "our own button" that reacts to `Press` event.
+On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the clicker button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the Player `Press`es and `Release`s the button. This way we'll have to create "our own button" that reacts to `Press` event.
 
 We could have done that by creating a child of `TCastleUserInterface` (or any other UI element, e.g. `TCastleImagecontrol`) and override its `Press` function. But in current simple situation, Castle Game Engine already has this solution ready for us - `OnPress` event, that works very similarly to `OnClick`.
 
@@ -1229,7 +1231,7 @@ Let's think a bit about the anticipated gameplay:
 
 - The button "grow"s until it's "ripe".
 
-- When the button is "ripe" it can be "harvested" by the player.
+- When the button is "ripe" it can be "harvested" by the Player.
 
 - If some button becomes "overripe", then the game is over.
 
@@ -1281,7 +1283,7 @@ type
 
 Here:
 
-- `GamePace` - current speed of the game. The longer the player plays, the faster the game becomes.
+- `GamePace` - current speed of the game. The longer the Player plays, the faster the game becomes.
 
 - `GameScore` - current Player's score.
 
@@ -1410,7 +1412,7 @@ image::gameplay-update-testing.png[]
 
 ### Clicking Those Buttons!
 
-We're very close. Now we want to be able to harvest those ripe buttons and add their score to player's score. Let's do this by modifying `TStateGame.ButtonPress` procedure:
+We're very close. Now we want to be able to harvest those ripe buttons and add their score to the Player's score. Let's do this by modifying `TStateGame.ButtonPress` procedure:
 
 [source,pascal]
 ----
@@ -1964,7 +1966,7 @@ The very same way we can add an "acceleration" sound when the Player clicked an 
 </sounds>
 ----
 
-Now in our `GameStateGame` unit we can navigate to `ButtonPress` procedure and at the point where we process the result of user click add two lines to play `"click"` or `"accelerate"` sound depending on which button was clicked:
+Now in our `GameStateGame` unit we can navigate to `ButtonPress` procedure and at the point where we process the result of the Player click add two lines to play `"click"` or `"accelerate"` sound depending on which button was clicked:
 
 [source,pascal]
 ----
@@ -2057,7 +2059,7 @@ Let's note that now the music plays a bit too loud to properly hear `ui_click` s
 
 ### Vibration
 
-Some platform, mobile devices first of all, can also vibrate. Normally, we shouldn't overuse this feature. Let's add some vibration in case when the player clicks an empty button (and the game accelerates) and when losing the game.
+Some platform, mobile devices first of all, can also vibrate. Normally, we shouldn't overuse this feature. Let's add some vibration in case when the Player clicks an empty button (and the game accelerates) and when losing the game.
 
 Let's add `CastleOpenDocument` to `uses` section of `GameStateGame`. Next, navigate to `ButtonPress` and add `Vibrate(100);` near the line where we play the sound. This will tell our device to vibrate for 100 milliseconds:
 
@@ -2371,7 +2373,7 @@ On the first hand it may look huge, but most of it is very simple and similar to
 
 - We implement click events for the buttons like `procedure ClickVolume0` and assign them to the corresponding buttons in `Start`.
 
-- We play sounds when user clicks buttons.
+- We play sounds when the Player clicks buttons.
 
 - We find `VibrationGroup` and hide it in case our platform is not `CASTLE_IOS` or `ANDROID`.
 
@@ -2892,7 +2894,7 @@ begin
 end;
 ----
 
-Here again we check if the Player has an achievement by checking if the information about achievement is stored in the `UserConfig`: `UserConfig.GetValue('achievement1', false)` and in case it is not found, then we replace the achievement image by `NoAchievementImage` and hide the `AchievementDescription` label by `Exists := false` - repeating for all 5 achievements. In case the achievement is obtained by the player there is no need to do anything - our design already contains all the elements we should show to the Player in this case, there is even no need to find `DesignAchievement1` in `UiOwner` as we aren't going to change it in this case.
+Here again we check if the Player has an achievement by checking if the information about achievement is stored in the `UserConfig`: `UserConfig.GetValue('achievement1', false)` and in case it is not found, then we replace the achievement image by `NoAchievementImage` and hide the `AchievementDescription` label by `Exists := false` - repeating for all 5 achievements. In case the achievement is obtained by the Player there is no need to do anything - our design already contains all the elements we should show to the Player in this case, there is even no need to find `DesignAchievement1` in `UiOwner` as we aren't going to change it in this case.
 
 Finally we change the font of `HighScoreText` label and value of `HighScoreValue` to represent the current Player's High Score. Also change of the font forced us to move `HorizontalAnchorDelta`s of both labels a bit in the Design, as usually, but we already know how to do that and let's pretend that nothing happened :)
 
@@ -2935,7 +2937,7 @@ image::achievements-in-game.png[]
 
 ### Adding Achievements to Game Over
 
-The final step is to award the player with Achievements when the player reaches some milestone. First let's create a way to display an achievement on `StateGameOver` screen. In Castle Editor in `GameOver.castle-user-interface` let's add a `TCastleDesign` named `DesignAchievement` inside `GameOverGroup`. Let's change its `Width`:"712" and `Height`:"200". No need to set any URL, we'll do that from the code.
+The final step is to award the Player with Achievements when the Player reaches some milestone. First let's create a way to display an achievement on `StateGameOver` screen. In Castle Editor in `GameOver.castle-user-interface` let's add a `TCastleDesign` named `DesignAchievement` inside `GameOverGroup`. Let's change its `Width`:"712" and `Height`:"200". No need to set any URL, we'll do that from the code.
 
 Now in `TStateGameOver` let's create a `private` variable `DesignAchievement: TCastleDesign;` and a `public` variable `Achievement: String;`. Then somewhere inside `Start` let's add:
 
@@ -3081,7 +3083,7 @@ At last! Everything we wanted to put inside this small game is finished. Surpris
 
 Now it's time to switch our build mode to "Release" and compile the game. Maybe also compile it for Android or iOS. Then give it a nice thorough testing, playing as if there is no tomorrow. From time to time fine-tuning some game variables or designs to make the game is convenient and fun to play.
 
-And eventually when everything is running as intended, we can release our game to the public. In the end, we'll need to "package" everything together - we'll need the `ButtonClickerGame.exe` file - our compiled game, `data` folder - our assets, `README` that would describe how to run and play the game. On Windows platforms it's also necessary to package the _DLL_ libraries that are required to run the game. On Linux platforms we'll need to mention in `README` what libraries are required for the user to run the game.
+And eventually when everything is running as intended, we can release our game to the public. In the end, we'll need to "package" everything together - we'll need the `ButtonClickerGame.exe` file - our compiled game, `data` folder - our assets, `README` that would describe how to run and play the game. On Windows platforms it's also necessary to package the _DLL_ libraries that are required to run the game. On Linux platforms we'll need to mention in `README` what libraries are required for the User to run the game.
 
 And don't forget to share your game with Castle Game Engine community (https://castle-engine.io/talk.php), we're very curious to see your progress!
 
