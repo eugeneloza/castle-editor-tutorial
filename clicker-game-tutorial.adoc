@@ -480,7 +480,7 @@ Let's also add one important touch here, so that when we would want to compile f
 </project>
 ----
 
-Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our MainMenu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
+Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our Main Menu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
 
 image::menu-looking-better.png[]
 
@@ -532,7 +532,7 @@ uses
   Classes, SysUtils, CastleUiState;
 ----
 
-And create a dummy TStateMainMenu class right behind the `uses` section:
+And create a dummy `TStateMainMenu` class right behind the `uses` section:
 
 [source,pascal]
 ----
@@ -614,7 +614,7 @@ uses SysUtils,
   GameStateMainMenu;
 ----
 
-Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons react to mouse cursor hovering over them, and clicking.
+Save, compile and run. Now we have our Main Menu successfully loaded in the game. More than that, the buttons react to mouse cursor hovering over them, and clicking.
 
 image::game-window-basic.png[]
 
@@ -764,7 +764,7 @@ Before we proceed, we need to improve how our fonts look. We shall be using two 
 
 This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. Note that the `url` is automatically recognized as relative to our `data` folder.
 
-We can immediately see that the MainMenu looks better:
+We can immediately see that the Main Menu looks better:
 
 image::better-font.png[]
 
