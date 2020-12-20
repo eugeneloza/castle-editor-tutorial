@@ -516,7 +516,7 @@ image::editor-arrangement.png[]
 
 ### Load the Main Menu in the Game
 
-Now as we have a ready Main Menu design, we need to use it in the game. Unfortunately at the moment it's still not possible to do that automatically and will require us to return to Lazarus.
+Now as we have a ready Main Menu design, we need to use it in the game. Unfortunately at the moment it's still not possible to do that automatically (it most certainly will be possible in the future) and will require us to return to Lazarus.
 
 First of all we need to create a unit for our new Game State. It's done by clicking File -> New Unit:
 
@@ -541,7 +541,7 @@ type
   end;
 ----
 
-We should also create a singleton variable for this class, by adding right after the class definition:
+We should also create a singleton variable for this class, by adding 'var' section right after the class definition:
 
 [source,pascal]
 ----
@@ -549,7 +549,7 @@ var
   StateMainMenu: TStateMainMenu;
 ----
 
-Now we need to create a `Start` procedure that will be run when this state is activated. This is a `virtual` procedure, present in ancestor class, therefore we have to `override` it and use `inherited` inside to call the inherited code from the ancestor which is in turn required for the state to operate properly. Now our class declaration will look like this:
+Now we need to create a `Start` procedure that will be run when this state is activated. This is a `virtual` procedure, present in ancestor class (`TUiState`), therefore we have to `override` it and use `inherited` inside to call the inherited code from the ancestor which is in turn required for the state to operate properly. Now our class declaration will look like this:
 
 [source,pascal]
 ----
@@ -573,7 +573,7 @@ begin
 end;
 ----
 
-Next we have to load the specific design into our State:
+Next we have to load the specific design file into our State:
 
 [source,pascal]
 ----
@@ -588,11 +588,11 @@ end;
 
 Here we use `InsertUserInterface` procedure to insert our newly designed `MainMenu.castle-user-interface` design into this State. Here `castle-data:/` is a protocol that enables us to reference the `data` folder in a safe cross-platform way, so that it'll work on Desktop and iPhone equally well.
 
-`FreeAtStop` is a `TComponent` class that will free every unit assigned to it when the State will call `Stop`.
+`FreeAtStop` is a `TComponent` class that will free every unit assigned to it when the State will call `Stop` (this happens automatically when the state is no longer active, e.g. when we start another state).
 
 `UiOwner` is a container for our design, that we can use to get references to its specific components.
 
-Last but not least we should create our `StateMainMenu` class and set it as current. We can do it in the unit `gameinitialize` - in `ApplicationInitialize` procedure by adding two lines:
+Last but not least we should create our `StateMainMenu` class instance and set it as current. We can do it in the unit `gameinitialize` - in `ApplicationInitialize` procedure by adding two lines:
 
 [source,pascal]
 ----
@@ -600,7 +600,11 @@ StateMainMenu := TStateMainMenu.Create(Application);
 TUiState.Current := StateMainMenu;
 ----
 
-We also have to add the unit of the state to `GameInitialize`'s `uses` section:
+The first line creates an instance of `TStateMainMenu` class and assigns its ownership to `Application` - a class that manages our game. In other words that means that when we close/exit the game, `StateMainMenu` will be automatically freed.
+
+The second line sets `StateMainMenu` as `Current` state - i.e. the only state that is being displayed at the moment.
+
+We also have to add the unit with `TStateMainMenu` class definition to `GameInitialize`'s `uses` section:
 
 [source,pascal]
 ----
