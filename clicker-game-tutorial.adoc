@@ -620,7 +620,7 @@ image::game-window-basic.png[]
 
 ### Adding Click Events
 
-Now we have to make those buttons actually perform some function. To do that we first have to "find" the button in the loaded design. Let's go back to `GameStateMainMenu` unit. First of all, let's create the variables for the buttons in our class, we'll also need to add `CastleControls` unit to the `uses` section:
+Now we have to make those buttons actually perform some function. To do that we first have to "find" the button in the loaded design. Let's go back to `GameStateMainMenu` unit. First of all, let's create the variables for the buttons in our class. To have access to `TCastleButton` definition we'll also need to add `CastleControls` unit to the `uses` section:
 
 [source,pascal]
 ----
@@ -636,7 +636,7 @@ type
   end;
 ----
 
-Next we'll need to add `CastleComponentSerialize` unit to our `uses` section, let's add it after `implementation`. It will allow us to "find" the buttons by their names in the loaded design by calling:
+Next we'll need to add `CastleComponentSerialize` unit to our `uses` section, let's add it after `implementation`. It will allow us to "find" the buttons by their names in the loaded design by calling `UiOwner.FindRequiredComponent` :
 
 [source,pascal]
 ----
@@ -656,6 +656,8 @@ begin
   QuitButton := UiOwner.FindRequiredComponent('QuitButton') as TCastleButton;
 end;
 ----
+
+`FindRequiredComponent` here means that it tries to find a `TComponent` derivative (such as all Castle Game Engine 2D and 3D elements) inside the design hierarchy and will throw an exception in case it can't find it (e.g. if the component doesn't exist or we've made a typo in its name).
 
 Next we have to create dummy procedures that will be assigned to the buttons' click events:
 
@@ -705,7 +707,9 @@ CreditsButton.OnClick := @ClickCredits;
 QuitButton.OnClick := @ClickQuit;
 ----
 
-Now we may immediately implement the `QuitButton` behavior by adding `CastleWindow` to `uses` section and calling `Application.MainWindow.Close` in the button click procedure (`ClickQuit`):
+### Quit Button
+
+We can immediately implement the `QuitButton` behavior by adding `CastleWindow` to `uses` section and calling `Application.MainWindow.Close` in the button click procedure (`ClickQuit`):
 
 [source,pascal]
 ----
@@ -717,7 +721,9 @@ end;
 
 Now we can compile and test if this button is working as expected. We cannot implement the other buttons behavior yet, as we need to create corresponding game states.
 
-For now let's add one more quality of life detail. On mobile platform we usually don't need "Quit" button, as the apps are closed by the operation system. So we should simply disable it in this case. We can do it by adding:
+### Quit Button on Mobile
+
+For now let's add one more quality of life detail. On mobile platform we usually don't need "Quit" button, as the apps are closed by the operation system. So we should simply hide it in this case. We can do it by adding:
 
 [source,pascal]
 ----
@@ -725,7 +731,7 @@ For now let's add one more quality of life detail. On mobile platform we usually
 {$ifdef ANDROID}QuitButton.Exists := false;{$endif}
 ----
 
-In a similar way as we did that when we forced the Window size on Desktop platforms.
+In a similar way we did that when we forced the Window size on Desktop platforms.
 
 However, in Castle Game Engine there is a more general way of doing so, e.g. guaranteeing that we didn't forget some exotic platform, like Nintendo Switch (which in fact we did :) not that we are going to release our game there) or enable easier debugging of the app look at different platforms. We can use a global variable `ShowUserInterfaceToQuit`. To do this we have to add `CastleApplicationProperties` to `uses` section and instead of the block above write:
 
