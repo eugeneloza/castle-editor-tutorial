@@ -762,7 +762,9 @@ Before we proceed, we need to improve how our fonts look. We shall be using two 
 </castle_settings>
 ----
 
-This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. We can immediately see that it looks better:
+This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. Note that the `url` is automatically recognized as relative to our `data` folder.
+
+We can immediately see that the MainMenu looks better:
 
 image::better-font.png[]
 
