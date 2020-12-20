@@ -768,9 +768,9 @@ We can immediately see that the MainMenu looks better:
 
 image::better-font.png[]
 
-### Load and use a Custom Font
+### Load Custom Font
 
-However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 40 - much smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet, so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
+However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 40 - much smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet (but soon will be), so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
 
 [source,pascal]
 ----
@@ -803,6 +803,8 @@ end.
 This unit creates a variable CartoonFont60 with an alternative font `Big_Bottom_Cartoon.ttf` of size "60". We shall load it by calling `LoadFonts` procedure, and it will be automatically freed upon the game end by calling `FreeAndNil(CartoonFont60)` in `finalization` section.
 
 Now let's add this unit to `GameInitialize` `uses` section and call `LoadFonts;` before creating `StateMainMenu`.
+
+### Custom Font in Main Menu
 
 The last step remaining is to assign this font to our buttons. To do this, add `GameFont` to the `uses` section of `GameStateMainMenu` and in the `Start` procedure write:
 
