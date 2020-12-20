@@ -858,17 +858,17 @@ Now what we want to do is to have our UI organized in the following way:
 
 ### Design Score Area
 
-Let's start with creating a "Score" area. If we create a "Label" right away, as it is aligned to the center (remember `Alignment` in GameGroup is `hpMiddle`) it will shift around when the score increases. So we have to create a "container" for it, so that we can strictly fix its position horizontally. So, let's add an "Empty Rectangle" by Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface). Let's name it `ScoreArea`. Note, that it's not mandatory to name our UI elements - Castle Editor already provides us valid and unique names for them, however it's a good habit to learn.
+Let's start with creating a "Score" area. If we create a "Label" right away, as it is aligned to the center (remember `Alignment` in GameGroup is `hpMiddle`) it will shift around when the score changes. So we have to create a "container" for it, so that we can strictly fix its position horizontally. So, let's add an "Empty Rectangle" by Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface). Let's name it `ScoreArea`. Note, that it's not mandatory to name our UI elements - Castle Editor already provides us valid and unique names for them, however it's a good habit to learn, as it makes our designs more clear and readable.
 
-By default it has dimensions 100x100. Let's make it 650x100, like this:
+By default the Empty Rectangle has dimensions 100x100. Let's make it 650x100, like this:
 
 image::empty-rectangle-width.png[]
 
-Now we have a rigid container which size won't change. Let's add two labels to it by Design -> Add User Interface Component -> Label (TCastleLabel). Be sure to select `GameGroup` after adding the first label before adding the second one - as the first label will be automatically selected, and the second label will be added as its child. This is not a problem, but it's better to keep things clean.
+Now we have a rigid container which size won't change. Let's add two labels to it by Design -> Add User Interface Component -> Label (TCastleLabel). Be sure to select `ScoreArea` after adding the first label before adding the second one - as the first label will be automatically selected, and the second label will be added as its child. This is not a problem to move it later, but it's better to keep things clean.
 
 image::score-area.png[]
 
-Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Score:" and "9999999". Let's set color of both to "162D40" and font size "60" for the first one and "80" for the second. Now our labels properties "Basic" tabs look like this:
+Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption` s to "Score:" and "9999999". Let's set color of both to "162D40" and font size "60" for the first one and "80" for the second. Now our labels properties "Basic" tabs look like this:
 
 image::scoretext-properties.png[]
 
