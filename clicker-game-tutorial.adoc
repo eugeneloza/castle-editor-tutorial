@@ -604,7 +604,7 @@ The first line creates an instance of `TStateMainMenu` class and assigns its own
 
 The second line sets `StateMainMenu` as `Current` state - i.e. the only state that is being displayed at the moment.
 
-We also have to add the unit with `TStateMainMenu` class definition to `GameInitialize`'s `uses` section:
+We also have to add the unit with `TStateMainMenu` class definition to `GameInitialize` 's `uses` section:
 
 [source,pascal]
 ----
