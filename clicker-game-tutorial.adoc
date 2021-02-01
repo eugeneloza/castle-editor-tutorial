@@ -423,7 +423,7 @@ image::four-buttons-done-finish.png[]
 
 ### Screen Aspect Ratio and Orientation
 
-Obviously we have a problem that the buttons overlap with the game title. This happens because our current view has proportions of Landscape orientation, but we are aiming at mobile devices in Portrait orientation, which would define our design arrangement, but still the variety of mobile devices resolutions and aspect ratio is extremely high, and we have to make our interface flexible enough to fit most if not all of them. Fortunately, Castle Game Engine does most of this dirty work for us.
+Obviously we have a problem that the buttons overlap with the game title. This happens because our current view has proportions of Landscape orientation, but we are aiming at mobile devices in Portrait orientation, which would define our design arrangement. Moreover the variety of mobile devices resolutions and aspect ratio is extremely high, and we have to make our interface flexible enough to fit most if not all of them. Fortunately, Castle Game Engine does most of this dirty work for us.
 
 There are several steps to fix this problem, but first of all, let's go to the settings file `CastleSettings.xml` and look inside. It contains the following lines:
 
@@ -446,9 +446,9 @@ reference_width="750"
 reference_height="1334"
 ----
 
-This will tell the engine that it should consider that all the internal designs of the game are designed for 750x1334 screen. The actual values don't really matter, as we try to aim at diverse possible screen ratios, it's just something that the game engine will take as reference.
+This will tell the engine that it should consider that all the internal designs of the game are designed for 750x1334 screen. The actual values don't really matter, as we try to aim at diverse screen ratios, it's just something that the Engine will take as reference.
 
-Note that setting `reference_width` and `reference_height` doesn't enforce the actual screen size, so in case of Desktop application we should do it manually. Let's open `GameInitialize` unit and add the following lines in the very end of `initialization` section, right before the `end.`:
+Note that setting `reference_width` and `reference_height` doesn't enforce the actual screen size. In order to have an easier testing on Desktop, we should do it manually. Let's open `GameInitialize` unit and add the following lines in the very end of `initialization` section, right before the `end.`:
 
 [source,pascal]
 ----
@@ -460,9 +460,9 @@ Note that setting `reference_width` and `reference_height` doesn't enforce the a
 {$endif}
 ----
 
-Here we set the `Window.Height` based on current monitor resolution `Application.ScreenHeight` - to fit almost all the screen height, and then scale `Window.Width` accordingly to our 750x1334 reference screen size.
+Here we set the `Window.Height` based on current monitor resolution `Application.ScreenHeight` - to fit almost all the screen height, and then scale `Window.Width` accordingly to our 750x1334 reference screen size. Note that unlike most of the coordinates in Castle Game Engine, window size must be set in integer numbers, that is why we're using integer division `div` here.
 
-`{$ifndef CASTLE_IOS}...{$endif}` and `{$ifndef ANDROID}...{$endif}` are compiler directives that tell the Free Pascal compiler not to set `Window.Width` and `Window.Height` for Android and iOS devices.
+`{$ifndef CASTLE_IOS}...{$endif}` and `{$ifndef ANDROID}...{$endif}` are compiler directives that tell the Free Pascal compiler not to set `Window.Width` and `Window.Height` for Android and iOS devices, where it is determined automatically based on the device native screen resolution.
 
 Now we can try and compile the game to see that our window is now has a correct shape in Portrait orientation.
 
@@ -480,7 +480,7 @@ Let's also add one important touch here, so that when we would want to compile f
 </project>
 ----
 
-Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our MainMenu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
+Now let's close our project and reopen it again in Castle Editor, so that our changes to `CastleSettings.xml` would take effect. Let's open our Main Menu design again by choosing Design -> Open, selecting `MainMenu.castle-user-interface` file and clicking "Open". Now the Main Menu immediately looks better even though Castle Editor window is still in Landscape orientation:
 
 image::menu-looking-better.png[]
 
@@ -488,7 +488,7 @@ image::menu-looking-better.png[]
 
 However, the buttons are still covering our logo a bit, and there is too much asymmetric free space below. This happened because we aligned our Vertical Group exactly at the center of the screen. There are many different ways to fix this issue, but in the current design we can cheat a bit.
 
-As we already have the Vertical Group, let's just add our logo to it, so that it will be arranged the same way as the buttons. To do that, just click the `LogoImage` in the Hierarchy and drag it into the `MenuGroup`:
+As we already have the Vertical Group, let's just add our logo to it, so that it will be arranged the same way as the buttons. To do that, just click the `LogoImage` in the Hierarchy and drag it into the `MenuGroup`. Now it looks like this:
 
 image::menu-looking-better2.png[]
 
@@ -516,7 +516,7 @@ image::editor-arrangement.png[]
 
 ### Load the Main Menu in the Game
 
-Now as we have a ready Main Menu design, we need to use it in the game. Unfortunately at the moment it's still not possible to do that automatically and will require us to return to Lazarus.
+Now as we have a ready Main Menu design, we need to use it in the game. Unfortunately at the moment it's still not possible to do that automatically (it most certainly will be possible in the future) and will require us to return to Lazarus.
 
 First of all we need to create a unit for our new Game State. It's done by clicking File -> New Unit:
 
@@ -532,7 +532,7 @@ uses
   Classes, SysUtils, CastleUiState;
 ----
 
-And create a dummy TStateMainMenu class right behind the `uses` section:
+And create a dummy `TStateMainMenu` class right behind the `uses` section:
 
 [source,pascal]
 ----
@@ -541,7 +541,7 @@ type
   end;
 ----
 
-We should also create a singleton variable for this class, by adding right after the class definition:
+We should also create a singleton variable for this class, by adding 'var' section right after the class definition:
 
 [source,pascal]
 ----
@@ -549,7 +549,7 @@ var
   StateMainMenu: TStateMainMenu;
 ----
 
-Now we need to create a `Start` procedure that will be run when this state is activated. This is a `virtual` procedure, present in ancestor class, therefore we have to `override` it and use `inherited` inside to call the inherited code from the ancestor which is in turn required for the state to operate properly. Now our class declaration will look like this:
+Now we need to create a `Start` procedure that will be run when this state is activated. This is a `virtual` procedure, present in ancestor class (`TUiState`), therefore we have to `override` it and use `inherited` inside to call the inherited code from the ancestor which is in turn required for the state to operate properly. Now our class declaration will look like this:
 
 [source,pascal]
 ----
@@ -573,7 +573,7 @@ begin
 end;
 ----
 
-Next we have to load the specific design into our State:
+Next we have to load the specific design file into our State:
 
 [source,pascal]
 ----
@@ -588,11 +588,11 @@ end;
 
 Here we use `InsertUserInterface` procedure to insert our newly designed `MainMenu.castle-user-interface` design into this State. Here `castle-data:/` is a protocol that enables us to reference the `data` folder in a safe cross-platform way, so that it'll work on Desktop and iPhone equally well.
 
-`FreeAtStop` is a `TComponent` class that will free every unit assigned to it when the State will call `Stop`.
+`FreeAtStop` is a `TComponent` class that will free every unit assigned to it when the State will call `Stop` (this happens automatically when the state is no longer active, e.g. when we start another state).
 
 `UiOwner` is a container for our design, that we can use to get references to its specific components.
 
-Last but not least we should create our `StateMainMenu` class and set it as current. We can do it in the unit `gameinitialize` - in `ApplicationInitialize` procedure by adding two lines:
+Last but not least we should create our `StateMainMenu` class instance and set it as current. We can do it in the unit `gameinitialize` - in `ApplicationInitialize` procedure by adding two lines:
 
 [source,pascal]
 ----
@@ -600,7 +600,11 @@ StateMainMenu := TStateMainMenu.Create(Application);
 TUiState.Current := StateMainMenu;
 ----
 
-We also have to add the unit of the state to `GameInitialize`'s `uses` section:
+The first line creates an instance of `TStateMainMenu` class and assigns its ownership to `Application` - a class that manages our game. In other words that means that when we close/exit the game, `StateMainMenu` will be automatically freed.
+
+The second line sets `StateMainMenu` as `Current` state - i.e. the only state that is being displayed at the moment.
+
+We also have to add the unit with `TStateMainMenu` class definition to `GameInitialize` 's `uses` section:
 
 [source,pascal]
 ----
@@ -610,13 +614,13 @@ uses SysUtils,
   GameStateMainMenu;
 ----
 
-Save, compile and run. Now we have our MainMenu successfully loaded in the game. More than that, the buttons react to mouse cursor hovering over them, and clicking.
+Save, compile and run. Now we have our Main Menu successfully loaded in the game. More than that, the buttons react to mouse cursor hovering over them, and clicking.
 
 image::game-window-basic.png[]
 
 ### Adding Click Events
 
-Now we have to make those buttons actually perform some function. To do that we first have to "find" the button in the loaded design. Let's go back to `GameStateMainMenu` unit. First of all, let's create the variables for the buttons in our class, we'll also need to add `CastleControls` unit to the `uses` section:
+Now we have to make those buttons actually perform some function. To do that we first have to "find" the button in the loaded design. Let's go back to `GameStateMainMenu` unit. First of all, let's create the variables for the buttons in our class. To have access to `TCastleButton` definition we'll also need to add `CastleControls` unit to the `uses` section:
 
 [source,pascal]
 ----
@@ -632,7 +636,7 @@ type
   end;
 ----
 
-Next we'll need to add `CastleComponentSerialize` unit to our `uses` section, let's add it after `implementation`. It will allow us to "find" the buttons by their names in the loaded design by calling:
+Next we'll need to add `CastleComponentSerialize` unit to our `uses` section, let's add it after `implementation`. It will allow us to "find" the buttons by their names in the loaded design by calling `UiOwner.FindRequiredComponent` :
 
 [source,pascal]
 ----
@@ -652,6 +656,8 @@ begin
   QuitButton := UiOwner.FindRequiredComponent('QuitButton') as TCastleButton;
 end;
 ----
+
+`FindRequiredComponent` here means that it tries to find a `TComponent` derivative (such as all Castle Game Engine 2D and 3D elements) inside the design hierarchy and will throw an exception in case it can't find it (e.g. if the component doesn't exist or we've made a typo in its name).
 
 Next we have to create dummy procedures that will be assigned to the buttons' click events:
 
@@ -701,7 +707,9 @@ CreditsButton.OnClick := @ClickCredits;
 QuitButton.OnClick := @ClickQuit;
 ----
 
-Now we may immediately implement the `QuitButton` behavior by adding `CastleWindow` to `uses` section and calling `Application.MainWindow.Close` in the button click procedure (`ClickQuit`):
+### Quit Button
+
+We can immediately implement the `QuitButton` behavior by adding `CastleWindow` to `uses` section and calling `Application.MainWindow.Close` in the button click procedure (`ClickQuit`):
 
 [source,pascal]
 ----
@@ -713,7 +721,9 @@ end;
 
 Now we can compile and test if this button is working as expected. We cannot implement the other buttons behavior yet, as we need to create corresponding game states.
 
-For now let's add one more quality of life detail. On mobile platform we usually don't need "Quit" button, as the apps are closed by the operation system. So we should simply disable it in this case. We can do it by adding:
+### Quit Button on Mobile
+
+For now let's add one more quality of life detail. On mobile platform we usually don't need "Quit" button, as the apps are closed by the operation system. So we should simply hide it in this case. We can do it by adding:
 
 [source,pascal]
 ----
@@ -721,7 +731,7 @@ For now let's add one more quality of life detail. On mobile platform we usually
 {$ifdef ANDROID}QuitButton.Exists := false;{$endif}
 ----
 
-In a similar way as we did that when we forced the Window size on Desktop platforms.
+In a similar way we did that when we forced the Window size on Desktop platforms.
 
 However, in Castle Game Engine there is a more general way of doing so, e.g. guaranteeing that we didn't forget some exotic platform, like Nintendo Switch (which in fact we did :) not that we are going to release our game there) or enable easier debugging of the app look at different platforms. We can use a global variable `ShowUserInterfaceToQuit`. To do this we have to add `CastleApplicationProperties` to `uses` section and instead of the block above write:
 
@@ -752,13 +762,15 @@ Before we proceed, we need to improve how our fonts look. We shall be using two 
 </castle_settings>
 ----
 
-This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. We can immediately see that it looks better:
+This will make `CatV_6x12_9.ttf` a default font for the game, with `size` 40. Note that the `url` is automatically recognized as relative to our `data` folder.
+
+We can immediately see that the Main Menu looks better:
 
 image::better-font.png[]
 
-### Load and use a Custom Font
+### Load Custom Font
 
-However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 40 - much smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet, so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
+However, it's still blurry (because we requested font size 60 for the buttons, and the loaded font size is 40 - much smaller) and it doesn't fit well into the design. Therefore, we'll be using a different font for button captions. There is no way to do that through Castle Editor yet (but soon will be), so let's load the font by code. In order to be easily able to reference the loaded alternative font, let's create a new unit and call it `GameFont` and make it have the following content:
 
 [source,pascal]
 ----
@@ -792,6 +804,8 @@ This unit creates a variable CartoonFont60 with an alternative font `Big_Bottom_
 
 Now let's add this unit to `GameInitialize` `uses` section and call `LoadFonts;` before creating `StateMainMenu`.
 
+### Custom Font in Main Menu
+
 The last step remaining is to assign this font to our buttons. To do this, add `GameFont` to the `uses` section of `GameStateMainMenu` and in the `Start` procedure write:
 
 [source,pascal]
@@ -824,13 +838,15 @@ image::main-menu-final.png[]
 
 ### Start designing Game State
 
-Now, finally we can start working on the game. Let's note here, that it is actually better to start working on the gameplay from the beginning, and only after that create other UI states, like Main Menu. This way we shall have a working prototype quite soon, that can be easily tested and some adjustments can be made as early as possible. However, as in our case the game is expected to be extra simple and still creating a game is more complex than creation of a simple UI - we did the first part so now we can concentrate more on the game itself, than on using the Castle Editor.
+Now, finally we can start working on the game.
 
-But of course, we shall be creating the game screen in Castle Editor. Let's start by creating a new Design by doing the same way as we did for Main Menu: Design -> New User Interface (Chosen Root) -> Image (TCastleImageControl). Again, let's call this image `BackgroundImage` and load our background image in "Basic" tab and make it `FullScreen` in "All" tab.
+Let's note here, that in a "normal situation" it is usually better to start working on the gameplay from the beginning, and only after that create other UI states, like Main Menu. This way we shall have a working prototype sooner, that can be easily tested and some adjustments can be made as early as possible. However, as in our case the game is expected to be very simple and creating a game is more complex than creating a simple UI - which we did the first part, it was more reasonable to start from Main Menu. Now we can concentrate more on the game itself, than on basics of using the Castle Editor.
+
+But of course, we shall be creating the game screen in Castle Editor. Let's start by creating a new Design by doing the same way as we did for the Main Menu: Design -> New User Interface (Chosen Root) -> Image (TCastleImageControl). Again, let's call this image `BackgroundImage` and load our background image in "Basic" tab and make it `FullScreen` in "All" tab.
 
 Finally let's save this design as `Game.castle-user-interface`.
 
-Next, again as our design is quite simple, let's reuse the cheat we've done in Main Menu and create a one large Vertical Group for all our design: Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Let's name it `GameGroup` and set `Spacing` to 20. Let's again align it to the center by setting `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle` and `VerticalAnchorDelta` and `VerticalAnchorSelf` to `vpMiddle` in "Layout" tab. Also let's set `Alignment` to `hpMiddle` at "All" tab.
+Next, again as our design is quite simple, let's reuse the cheat we've done for the Main Menu and create a one large Vertical Group for all our design: Design -> Add User Interface Component -> Vertical Group (TCastleVerticalGroup). Let's name it `GameGroup` and set `Spacing` to 20. Let's again align it to the center by setting `HorizontalAnchorParent` and `HorizontalAnchorSelf` to `hpMiddle` and `VerticalAnchorDelta` and `VerticalAnchorSelf` to `vpMiddle` in "Layout" tab. Also let's set `Alignment` to `hpMiddle` at "All" tab.
 
 Now what we want to do is to have our UI organized in the following way:
 
@@ -842,17 +858,17 @@ Now what we want to do is to have our UI organized in the following way:
 
 ### Design Score Area
 
-Let's start with creating a "Score" area. If we create a "Label" right away, as it is aligned to the center (remember `Alignment` in GameGroup is `hpMiddle`) it will shift around when the score increases. So we have to create a "container" for it, so that we can strictly fix its position horizontally. So, let's add an "Empty Rectangle" by Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface). Let's name it `ScoreArea`. Note, that it's not mandatory to name our UI elements - Castle Editor already provides us valid and unique names for them, however it's a good habit to learn.
+Let's start with creating a "Score" area. If we create a "Label" right away, as it is aligned to the center (remember `Alignment` in GameGroup is `hpMiddle`) it will shift around when the score changes. So we have to create a "container" for it, so that we can strictly fix its position horizontally. So, let's add an "Empty Rectangle" by Design -> Add User Interface Component -> Empty Rectangle (TCastleUserInterface). Let's name it `ScoreArea`. Note, that it's not mandatory to name our UI elements - Castle Editor already provides us valid and unique names for them, however it's a good habit to learn, as it makes our designs more clear and readable.
 
-By default it has dimensions 100x100. Let's make it 650x100, like this:
+By default the Empty Rectangle has dimensions 100x100. Let's make it 650x100, like this:
 
 image::empty-rectangle-width.png[]
 
-Now we have a rigid container which size won't change. Let's add two labels to it by Design -> Add User Interface Component -> Label (TCastleLabel). Be sure to select `GameGroup` after adding the first label before adding the second one - as the first label will be automatically selected, and the second label will be added as its child. This is not a problem, but it's better to keep things clean.
+Now we have a rigid container which size won't change. Let's add two labels to it by Design -> Add User Interface Component -> Label (TCastleLabel). Be sure to select `ScoreArea` after adding the first label before adding the second one - as the first label will be automatically selected, and the second label will be added as its child. This is not a problem to move it later, but it's better to keep things clean.
 
 image::score-area.png[]
 
-Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption`s to "Score:" and "9999999". Let's set color of both to "162D40" and font size "60" for the first one and "80" for the second. Now our labels properties "Basic" tabs look like this:
+Let's name our labels `ScoreText` and `ScoreLabel`. Let's set `Caption` s to "Score:" and "9999999". Let's set color of both to "162D40" and font size "60" for the first one and "80" for the second. Now our labels properties "Basic" tabs look like this:
 
 image::scoretext-properties.png[]
 
@@ -896,11 +912,13 @@ Now let's duplicate our `ButtonGroup11` two times. Note that Castle Editor somet
 
 image::duplicating-buttongroups.png[]
 
-Now, let's duplicate the `GameplayRow1` three times to get four rows in total
+Now, let's duplicate the `GameplayRow1` three times to get four rows in total.
 
 Note that Castle Editor named our rows correctly, but other elements - `ButtonGroup`s, `Button`s and `Label`s are simply keep naming consequently. Let's change their names so that the first digit would correspond to row number and the second one - column number. We'll have to start from the bottom, as e.g. name "21" is already taken by some of the elements lower in the hierarchy. Now our hierarchy looks like this:
 
 image::gameplay-hierarchy.png[]
+
+We may also note here, that generating those buttons by code may be a better and more consistent way, but for simplicity let's make it this way.
 
 ### Adding High Score Label
 
