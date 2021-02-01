@@ -26,7 +26,7 @@ No installation required - just extract the game into one folder and play.
 
 ### Linux
 
-No installation required - just extract the game into one folder and play. Most likely you'll also need to set "executable" flag for the binary (`chmod +x ButtonClickerGame` or through file properties in file manager).
+No installation required - just extract the game into one folder and play. Most likely you'll also need to set "executable" flag for the binary (`chmod +x ButtonClickerGame` or through file properties in the file manager).
 
 You need the following libraries installed to play the game:
 
