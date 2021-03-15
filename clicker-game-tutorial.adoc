@@ -1094,7 +1094,7 @@ Here we're using a minimalistic `record` data type for simplicity reasons. Often
 
 Note, that unlike other UI elements, `TCastleUserInterface` is located inside `CastleUiControls`, so we have to add this unit to the `uses` section.
 
-Now we can have a (again minimalistic) static 2-dimensional array to hold our 12 `TGamePad`s inside `TStateGame`:
+Now we can have a (again minimalistic) static 2-dimensional array to hold our 12 ``TGamePad``s inside `TStateGame`:
 
 [source,pascal]
 ----
@@ -1131,7 +1131,7 @@ end;
 
 Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch.
 
-On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the clicker button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the Player `Press`es and `Release`s the button. This way we'll have to create "our own button" that reacts to `Press` event.
+On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the clicker button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the Player ``Press``es and ``Release``s the button. This way we'll have to create "our own button" that reacts to `Press` event.
 
 We could have done that by creating a child of `TCastleUserInterface` (or any other UI element, e.g. `TCastleImagecontrol`) and override its `Press` function. But in current simple situation, Castle Game Engine already has this solution ready for us - `OnPress` event, that works very similarly to `OnClick`.
 
@@ -1968,7 +1968,7 @@ As we've already noted, we aren't using `stream` feature here. Also using uncomp
 </sounds>
 ----
 
-This means, that when we call sound named `"click"` from the game `SoundEngine` will randomly play any of the sound that we've specified as `target`s here.
+This means, that when we call sound named `"click"` from the game `SoundEngine` will randomly play any of the sound that we've specified as ``target``s here.
 
 ### Accelerate and Game Over Sounds
 
@@ -2912,7 +2912,7 @@ end;
 
 Here again we check if the Player has an achievement by checking if the information about achievement is stored in the `UserConfig`: `UserConfig.GetValue('achievement1', false)` and in case it is not found, then we replace the achievement image by `NoAchievementImage` and hide the `AchievementDescription` label by `Exists := false` - repeating for all 5 achievements. In case the achievement is obtained by the Player there is no need to do anything - our design already contains all the elements we should show to the Player in this case, there is even no need to find `DesignAchievement1` in `UiOwner` as we aren't going to change it in this case.
 
-Finally we change the font of `HighScoreText` label and value of `HighScoreValue` to represent the current Player's High Score. Also change of the font forced us to move `HorizontalAnchorDelta`s of both labels a bit in the Design, as usually, but we already know how to do that and let's pretend that nothing happened :)
+Finally we change the font of `HighScoreText` label and value of `HighScoreValue` to represent the current Player's High Score. Also change of the font forced us to move ``HorizontalAnchorDelta``s of both labels a bit in the Design, as usually, but we already know how to do that and let's pretend that nothing happened :)
 
 ### Adding Achievements to Main Menu
 
