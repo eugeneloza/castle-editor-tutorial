@@ -496,7 +496,7 @@ Now the whole Logo + Menu buttons construction is properly aligned to the screen
 
 image::menu-looking-better-alignment.png[]
 
-Let's edit `Align` property and change it from `hpLeft` (which means all the elements in the Vertical Group are aligned by their left border) to `hpMiddle` (which means all the elements in the Vertical Group are aligned to middle). And everything looks cool now:
+Let's edit `Alignment` property and change it from `hpLeft` (which means all the elements in the Vertical Group are aligned by their left border) to `hpMiddle` (which means all the elements in the Vertical Group are aligned to middle). And everything looks cool now:
 
 image::menu-looking-better-result.png[]
 
