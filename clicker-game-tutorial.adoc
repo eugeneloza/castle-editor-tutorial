@@ -926,7 +926,7 @@ Finally, let's duplicate our `ScoreArea` and name the copy `HighScoreArea`. Let'
 
 image::dragging-high-score.png[]
 
-Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighScoreText` and `HighScoreLabel`, set the corresponding font sizes to "30" and "40" and `HorizontalAnchorDelta`s to "160" and "360" to accommodate the new font sizes. Let's change `HighScoreText` caption to "High Score:".
+Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighScoreText` and `HighScoreLabel`, set the corresponding font sizes to "30" and "40" and pass:quotes[`HorizontalAnchorDelta`]s to "160" and "360" to accommodate the new font sizes. Let's change `HighScoreText` caption to "High Score:".
 
 image::gameplay-result.png[]
 
