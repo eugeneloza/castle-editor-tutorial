@@ -1131,7 +1131,7 @@ end;
 
 Now it's time to talk a bit about the gameplay. So, as we know, we're making a clicker game, where the Player is supposed to click buttons as fast as possible. That means, that the buttons must be very responsive to Player's click or touch.
 
-On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the clicker button to react instantly to Player's actions - that is when the User `Press`es the button, but `OnClick` fires when the Player ``Press``es and ``Release``s the button. This way we'll have to create "our own button" that reacts to `Press` event.
+On the other hand, `OnClick` event, we've used in Main Menu state is not a responsive event. We would want the clicker button to react instantly to Player's actions - that is when the User ``Press``es the button, but `OnClick` fires when the Player ``Press``es and ``Release``s the button. This way we'll have to create "our own button" that reacts to `Press` event.
 
 We could have done that by creating a child of `TCastleUserInterface` (or any other UI element, e.g. `TCastleImagecontrol`) and override its `Press` function. But in current simple situation, Castle Game Engine already has this solution ready for us - `OnPress` event, that works very similarly to `OnClick`.
 
