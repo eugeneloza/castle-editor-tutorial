@@ -980,7 +980,7 @@ image::gameplay-result-crisp.png[]
 
 ### Start Game State
 
-Now it's time to start integrating the new State into our game. Let's create a new unit in Lazarus and call it `GameStateGame`. Let's crate a yet empty `class` `TStateGame` with a yet empty `Start` procedure and a singleton variable for our class:
+Now it's time to start integrating the new State into our game. Let's create a new unit in Lazarus and call it `GameStateGame`. Let's create a yet empty `class` `TStateGame` with a yet empty `Start` procedure and a singleton variable for our class:
 
 [source,pascal]
 ----
