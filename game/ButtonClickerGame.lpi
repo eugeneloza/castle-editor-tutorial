@@ -9,15 +9,16 @@
         <MainUnitHasCreateFormStatements Value="False"/>
         <MainUnitHasTitleStatement Value="False"/>
         <MainUnitHasScaledStatement Value="False"/>
+        <CompatibilityMode Value="True"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <Title Value="ButtonClickerGame"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
-    <BuildModes>
-      <Item Name="Default" Default="True"/>
-      <Item Name="Debug">
+    <BuildModes Count="3">
+      <Item1 Name="Default" Default="True"/>
+      <Item2 Name="Debug">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -52,8 +53,8 @@
             </Debugging>
           </Linking>
         </CompilerOptions>
-      </Item>
-      <Item Name="Release">
+      </Item2>
+      <Item3 Name="Release">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -78,7 +79,7 @@
             <LinkSmart Value="True"/>
           </Linking>
         </CompilerOptions>
-      </Item>
+      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -87,64 +88,64 @@
     <RunParams>
       <FormatVersion Value="2"/>
     </RunParams>
-    <RequiredPackages>
-      <Item>
+    <RequiredPackages Count="2">
+      <Item1>
         <PackageName Value="castle_window"/>
-      </Item>
-      <Item>
+      </Item1>
+      <Item2>
         <PackageName Value="castle_base"/>
-      </Item>
+      </Item2>
     </RequiredPackages>
-    <Units>
-      <Unit>
+    <Units Count="10">
+      <Unit0>
         <Filename Value="ButtonClickerGame.lpr"/>
         <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
+      </Unit0>
+      <Unit1>
         <Filename Value="code\gameinitialize.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameInitialize"/>
-      </Unit>
-      <Unit>
+      </Unit1>
+      <Unit2>
         <Filename Value="code\gamestatemainmenu.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateMainMenu"/>
-      </Unit>
-      <Unit>
+      </Unit2>
+      <Unit3>
         <Filename Value="code\gamefont.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameFont"/>
-      </Unit>
-      <Unit>
+      </Unit3>
+      <Unit4>
         <Filename Value="code\gamestategame.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateGame"/>
-      </Unit>
-      <Unit>
+      </Unit4>
+      <Unit5>
         <Filename Value="code\gamestategameover.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateGameOver"/>
-      </Unit>
-      <Unit>
+      </Unit5>
+      <Unit6>
         <Filename Value="code\gamestateoptions.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateOptions"/>
-      </Unit>
-      <Unit>
+      </Unit6>
+      <Unit7>
         <Filename Value="code\gamestatecredits.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateCredits"/>
-      </Unit>
-      <Unit>
+      </Unit7>
+      <Unit8>
         <Filename Value="code\gamestatetutorial.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateTutorial"/>
-      </Unit>
-      <Unit>
+      </Unit8>
+      <Unit9>
         <Filename Value="code\gamestateachievements.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameStateAchievements"/>
-      </Unit>
+      </Unit9>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -160,16 +161,16 @@
     </SearchPaths>
   </CompilerOptions>
   <Debugging>
-    <Exceptions>
-      <Item>
+    <Exceptions Count="3">
+      <Item1>
         <Name Value="EAbort"/>
-      </Item>
-      <Item>
+      </Item1>
+      <Item2>
         <Name Value="ECodetoolError"/>
-      </Item>
-      <Item>
+      </Item2>
+      <Item3>
         <Name Value="EFOpenError"/>
-      </Item>
+      </Item3>
     </Exceptions>
   </Debugging>
 </CONFIG>
