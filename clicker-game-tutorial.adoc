@@ -2693,7 +2693,7 @@ We'll show Achievements both in a special Achievements page, accessible from Mai
 
 ### Creating an Achievement
 
-In our minimalistic case we could have made it in a simpler way, but let's use this opportunity to learn to use `TCastleDesign` which allows us to reuse designed cuhnks of the UI in different UI states. Let's create our `Achievement1` Design, with Empty Rectangle as Root: Design -> New User Interface (Empty Rectangle as Root) and name it `Root`.
+In our minimalistic case we could have made it in a simpler way, but let's use this opportunity to learn to use `TCastleDesign` which allows us to reuse designed chunks of the UI in different UI states. Let's create our `Achievement1` Design, with Empty Rectangle as Root: Design -> New User Interface (Empty Rectangle as Root) and name it `Root`.
 
 Let's go to "All" tab and uncheck `FullSize` property. Then set `Width`: "712" and `Height`:"200". Note that these values don't matter in this case and we're using them only for consistency.
 
