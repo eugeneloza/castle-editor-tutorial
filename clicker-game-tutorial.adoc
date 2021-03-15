@@ -1200,7 +1200,7 @@ Here we've done a lot of things, let's explain what they mean line-by-line:
 
 - `ThisGamePad: ^TGamePad;` is a pointer to our `TGamePad` construction.
 
-- `if Event.EventType = itMouseButton then` checks what exactly was `Press`ed. It can be a key on the keyboard, a mouse wheel or a mouse button. We proceed only in case a mouse button was pressed. This can be either left or right mouse button - we don't really care. This can also be a touch on mobile devices. Note that on mobile devices we can receive multiple touches simultaneously for different UI elements - and we don't have to worry about this, Castle Game Engine will take care of all of them and will send an `OnPress` callback for each.
+- `if Event.EventType = itMouseButton then` checks what exactly was pressed. It can be a key on the keyboard, a mouse wheel or a mouse button. We proceed only in case a mouse button was pressed. This can be either left or right mouse button - we don't really care. This can also be a touch on mobile devices. Note that on mobile devices we can receive multiple touches simultaneously for different UI elements - and we don't have to worry about this, Castle Game Engine will take care of all of them and will send an `OnPress` callback for each.
 
 - `case Sender.Name of` cycles through possible values of `Sender.Name` and in the next lines determines actions that should be taken in each specific case. For example `'ButtonGroup22': ThisGamePad := @GamePads[2, 2];` means that in case `Sender.Name` is equal to `ButtonGroup22` then `ThisGamePad` pointer should point (`@` symbol) at `GamePads[2, 2]`.
 
