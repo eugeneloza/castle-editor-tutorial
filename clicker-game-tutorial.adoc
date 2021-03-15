@@ -914,7 +914,7 @@ image::duplicating-buttongroups.png[]
 
 Now, let's duplicate the `GameplayRow1` three times to get four rows in total.
 
-Note that Castle Editor named our rows correctly, but other elements - `ButtonGroup`s, `Button`s and `Label`s are simply keep naming consequently. Let's change their names so that the first digit would correspond to row number and the second one - column number. We'll have to start from the bottom, as e.g. name "21" is already taken by some of the elements lower in the hierarchy. Now our hierarchy looks like this:
+Note that Castle Editor named our rows correctly, but other elements - ``ButtonGroup``s, ``Button``s and ``Label``s are simply keep naming consequently. Let's change their names so that the first digit would correspond to row number and the second one - column number. We'll have to start from the bottom, as e.g. name "21" is already taken by some of the elements lower in the hierarchy. Now our hierarchy looks like this:
 
 image::gameplay-hierarchy.png[]
 
@@ -926,7 +926,7 @@ Finally, let's duplicate our `ScoreArea` and name the copy `HighScoreArea`. Let'
 
 image::dragging-high-score.png[]
 
-Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighScoreText` and `HighScoreLabel`, set the corresponding font sizes to "30" and "40" and pass:quotes[`HorizontalAnchorDelta`]s to "160" and "360" to accommodate the new font sizes. Let's change `HighScoreText` caption to "High Score:".
+Let's set `Height` of the `HighScoreArea` to "50", name its children as `HighScoreText` and `HighScoreLabel`, set the corresponding font sizes to "30" and "40" and ``HorizontalAnchorDelta``s to "160" and "360" to accommodate the new font sizes. Let's change `HighScoreText` caption to "High Score:".
 
 image::gameplay-result.png[]
 
@@ -1060,7 +1060,7 @@ begin
 end;
 ----
 
-Let's also use `CartoonFont60` and `CartoonFont30` for the `ScoreText` and `HighScoreText` labels the same way as we did with the `Button`s in the Main Menu. Let's add these two lines to `Start`:
+Let's also use `CartoonFont60` and `CartoonFont30` for the `ScoreText` and `HighScoreText` labels the same way as we did with the ``Button``s in the Main Menu. Let's add these two lines to `Start`:
 
 [source,pascal]
 ----
