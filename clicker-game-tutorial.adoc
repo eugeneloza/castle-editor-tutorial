@@ -908,7 +908,7 @@ Now let's drag `Button11` into `ButtonGroup11`. Let's go to "Layout" tab, and se
 
 image::button-group.png[]
 
-Now let's duplicate our `ButtonGroup11` two times. Note that Castle Editor sometimes "remembers" names of already deleted components and may try to call the new ones with insequential numbers. To fix that we have to save and re-open the design:
+Now let's duplicate our `ButtonGroup11` two times: 
 
 image::duplicating-buttongroups.png[]
 
