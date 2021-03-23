@@ -1895,7 +1895,7 @@ Let's now go into `GameStateGame`, again add `CastleSoundEngine` to `uses` secti
 
 [source,pascal]
 ----
-SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
+SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('game_music');
 ----
 
 And it also works without any problems. We can also test and see that the music is switched when we go from Main Menu State into Game State and back.
