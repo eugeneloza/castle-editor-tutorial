@@ -2123,7 +2123,7 @@ The Player might want to fine-tune some game settings for more convenient gamepl
 
 Let's create a new Design, the very same way as we did for Main Menu and Game States, with `TCastleImagecontrol` as root element, call it `BackgroundImage` and load our regular background image into it. Save the design as `Options.castle-user-interface`. Again, let's add a `TCastleVerticalGroup` to the design naming it `OptionsGroup` and centering it on screen "Layout" tab, and setting `Alignment` to `hpMiddle`.
 
-Let's add a `TCastleHorizontalGroup` named `VolumeGroup` inside. Let's add a `TCastleLabel` named `VolumeText` with caption "Volume:" and color "162D40". Let's add a button with `CustomBackground`: "True"; and `CustomBackgroundNormal`: "smallbutton_cyan.png"; `CustomBackgroundFocused`: "smallbutton_green.png"; `CustomBackgroundPressed`: "smallbutton_yellow.png"; `AutoSizeToChildren`: "false"; `CustomTextColorUse`: "true"; `CustomTextColor`: "162D40"; `Width`: "76"; `Height`: "80"; `Name`: "ButtonVolume0"; `Caption`: "0%".
+Let's add a `TCastleHorizontalGroup` named `VolumeGroup` inside. Let's add a `TCastleLabel` named `VolumeText` with caption "Volume:" and color "162D40". Let's add a button with `CustomBackground`: "true"; and `CustomBackgroundNormal`: "smallbutton_cyan.png"; `CustomBackgroundFocused`: "smallbutton_green.png"; `CustomBackgroundPressed`: "smallbutton_yellow.png"; `AutoSizeToChildren`: "false"; `CustomTextColorUse`: "true"; `CustomTextColor`: "162D40"; `Width`: "76"; `Height`: "80"; `Name`: "ButtonVolume0"; `Caption`: "0%".
 
 As a child of `ButtonVolume0` let's add a `TCastleImageControl` with name "SelectedVolume0" and URL pointing to "selected_circle.png", let's center it in "Layout" tab. So it'll now look like this:
 
