@@ -880,7 +880,7 @@ image::score-label-anchors.png[]
 
 ### Design Gameplay Area
 
-Now, the gameplay area is a grid 3x4 consisting of "buttons". There's no "Grid" component for Castle Game Engine ready out-of-the box, but actually we don't really need it here. Let's select `GameGroup` create a Vertical Group and call it `GameplayArea`, also setting `Alignment` to `hpMiddle` again.
+Now, the gameplay area is a grid 3x4 consisting of "buttons". There's no "Grid" component for Castle Game Engine ready out-of-the box, but actually we don't really need it here. We can combine TCastleVerticalGroup with TCastleHorizontalGroup to get grid functionality. Let's select `GameGroup` create a Vertical Group and call it `GameplayArea`, also setting `Alignment` to `hpMiddle` again.
 
 Let's add a "Horizontal Group" to it and call it `GameplayRow1`.
 
