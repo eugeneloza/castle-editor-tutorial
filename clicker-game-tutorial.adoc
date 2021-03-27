@@ -880,7 +880,7 @@ image::score-label-anchors.png[]
 
 ### Design Gameplay Area
 
-Now, the gameplay area is a grid 3x4 consisting of "buttons". There's no "Grid" component for Castle Game Engine ready out-of-the box, but actually we don't really need it here. Let's select `GameGroup` create a Vertical Group and call it `GameplayArea`, also setting `Alignment` to `hpMiddle` again.
+Now, the gameplay area is a grid 3x4 consisting of "buttons". There's no "Grid" component for Castle Game Engine ready out-of-the box, but actually we don't really need it here. We can combine TCastleVerticalGroup with TCastleHorizontalGroup to get grid functionality. Let's select `GameGroup` create a Vertical Group and call it `GameplayArea`, also setting `Alignment` to `hpMiddle` again.
 
 Let's add a "Horizontal Group" to it and call it `GameplayRow1`.
 
@@ -908,7 +908,7 @@ Now let's drag `Button11` into `ButtonGroup11`. Let's go to "Layout" tab, and se
 
 image::button-group.png[]
 
-Now let's duplicate our `ButtonGroup11` two times. Note that Castle Editor sometimes "remembers" names of already deleted components and may try to call the new ones with insequential numbers. To fix that we have to save and re-open the design:
+Now let's duplicate our `ButtonGroup11` two times: 
 
 image::duplicating-buttongroups.png[]
 
@@ -1895,7 +1895,7 @@ Let's now go into `GameStateGame`, again add `CastleSoundEngine` to `uses` secti
 
 [source,pascal]
 ----
-SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('menu_music');
+SoundEngine.LoopingChannel[0].Sound := SoundEngine.SoundFromName('game_music');
 ----
 
 And it also works without any problems. We can also test and see that the music is switched when we go from Main Menu State into Game State and back.
@@ -2123,7 +2123,7 @@ The Player might want to fine-tune some game settings for more convenient gamepl
 
 Let's create a new Design, the very same way as we did for Main Menu and Game States, with `TCastleImagecontrol` as root element, call it `BackgroundImage` and load our regular background image into it. Save the design as `Options.castle-user-interface`. Again, let's add a `TCastleVerticalGroup` to the design naming it `OptionsGroup` and centering it on screen "Layout" tab, and setting `Alignment` to `hpMiddle`.
 
-Let's add a `TCastleHorizontalGroup` named `VolumeGroup` inside. Let's add a `TCastleLabel` named `VolumeText` with caption "Volume:" and color "162D40". Let's add a button with `CustomBackgroun` and `CustomBackgroundNormal`: "smallbutton_cyan.png"; `CustomBackgroundFocused`: "smallbutton_green.png"; `CustomBackgroundPressed`: "smallbutton_yellow.png"; `AutoSizeToChildren`: "false"; `CustomTextColorUse`: "true"; `CustomTextColor`: "162D40"; `Width`: "76"; `Height`: "80"; `Name`: "ButtonVolume0"; `Caption`: "0%".
+Let's add a `TCastleHorizontalGroup` named `VolumeGroup` inside. Let's add a `TCastleLabel` named `VolumeText` with caption "Volume:" and color "162D40". Let's add a button with `CustomBackground`: "true"; and `CustomBackgroundNormal`: "smallbutton_cyan.png"; `CustomBackgroundFocused`: "smallbutton_green.png"; `CustomBackgroundPressed`: "smallbutton_yellow.png"; `AutoSizeToChildren`: "false"; `CustomTextColorUse`: "true"; `CustomTextColor`: "162D40"; `Width`: "76"; `Height`: "80"; `Name`: "ButtonVolume0"; `Caption`: "0%".
 
 As a child of `ButtonVolume0` let's add a `TCastleImageControl` with name "SelectedVolume0" and URL pointing to "selected_circle.png", let's center it in "Layout" tab. So it'll now look like this:
 
