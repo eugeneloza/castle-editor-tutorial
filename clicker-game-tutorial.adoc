@@ -18,7 +18,9 @@ Required level of Castle Game Engine knowledge: Zero.
 
 ## Goal of this tutorial
 
+(In this tutorial we'll learn how to)
 
+(Simple introduction at the beginning with game rules, screenshot, download button)
 
 You can download the compiled version of the game at https://decoherence.itch.io/button-clicker-game (Windows, Linux, Android).
 
