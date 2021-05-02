@@ -12,6 +12,14 @@ include::locale/attributes.adoc[]
 
 This tutorial is aimed at new users, who have some minor knowledge of Pascal and general concepts of programming and game development. It will cover all steps necessary from creation and setting up of the project, to a small but finished game.
 
+Required level of Pascal knowledge: Low.
+
+Required level of Castle Game Engine knowledge: Zero.
+
+## Goal of this tutorial
+
+
+
 You can download the compiled version of the game at https://decoherence.itch.io/button-clicker-game (Windows, Linux, Android).
 
 ## Set up the Environment
