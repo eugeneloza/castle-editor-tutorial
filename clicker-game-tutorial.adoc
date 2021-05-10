@@ -48,6 +48,8 @@ More details can be found at https://castle-engine.io/documentation.php.
 
 ## Creating an Empty Project
 
+### Creating a Project in Castle Editor
+
 Run Castle Editor and select "New Project":
 
 image::a-001-000-new-project.png[]
@@ -65,4 +67,8 @@ The filled-in form should look something like that:
 image::a-003-000-new-project-filled-in.png[]
 
 All that's left to do is to press "Create Project" button. This will create a simple dummy project we can start filling with our game-specific code and assets.
+
+### What's inside?
+
+Let's open freshly created `ButtonClickerGame.lpi` in Lazarus. We can immediately compile and run it. As it is a template, it's a fully functional minimalistic project, that will show us an empty dark gray window with a lone FPS counter. No, Empty project is not actually empty, but it contains:
 
