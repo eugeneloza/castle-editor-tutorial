@@ -12,6 +12,5 @@ backup
 *.exe
 *.apk
 *.run
-ButtonClickerGame
 *.tar.gz
 *.zip
