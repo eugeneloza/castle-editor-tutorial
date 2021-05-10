@@ -54,3 +54,5 @@ image::a-001-000-new-project.png[]
 
 It will open "New Project" dialogue, which will ask us to select template, name and folder for the project:
 
+image::a-002-000-new-project-parameters.png[]
+
