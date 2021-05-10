@@ -16,6 +16,8 @@ Required level of Pascal knowledge: Low.
 
 Required level of Castle Game Engine knowledge: Zero.
 
+Expected duration: 3-4 hours.
+
 ## Goal of this tutorial
 
 (In this tutorial we'll learn how to)
