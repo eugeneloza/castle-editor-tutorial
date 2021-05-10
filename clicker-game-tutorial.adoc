@@ -56,3 +56,13 @@ It will open "New Project" dialogue, which will ask us to select template, name 
 
 image::a-002-000-new-project-parameters.png[]
 
+In this tutorial we'll be using the most basic template - "Empty".
+
+Next, let's write a name for the project "ButtonClickerGame". Note that the name cannot start with a number. And it's best to avoid non-ASCII characters or spaces in project name or path. Also it's a good idea to limit the path to the project to 255 symbols, which might cause bugs on some exotic platforms.
+
+The filled-in form should look something like that:
+
+image::a-003-000-new-project-filled-in.png[]
+
+All that's left to do is to press "Create Project" button. This will create a simple dummy project we can start filling with our game-specific code and assets.
+
