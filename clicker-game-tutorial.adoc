@@ -50,7 +50,7 @@ More details can be found at https://castle-engine.io/documentation.php.
 
 Run Castle Editor and select "New Project":
 
-image::00100-new-project.png[]
+image::a-001-000-new-project.png[]
 
 It will open "New Project" dialogue, which will ask us to select template, name and folder for the project:
 
