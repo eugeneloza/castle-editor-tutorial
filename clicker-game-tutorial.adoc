@@ -1,5 +1,5 @@
 # Tutorial: Creating a simple clicker game in Castle Game Engine and Castle Editor
-Yevhen Loza
+Yevhen Loza, Andrzej Kilijański, Michalis Kamburelis
 include::locale/attributes.adoc[]
 :toc: left
 :toclevels: 1
@@ -45,4 +45,12 @@ Before we start:
 * Make sure Castle Editor, set up properly, is compiled and ready to use.
 
 More details can be found at https://castle-engine.io/documentation.php.
+
+## Creating an Empty Project
+
+Run Castle Editor and select "New Project":
+
+image::00100-new-project.png[]
+
+It will open "New Project" dialogue, which will ask us to select template, name and folder for the project:
 
