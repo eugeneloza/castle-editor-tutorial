@@ -88,7 +88,7 @@ image:a-005-000-initial-game-folder.png[]
 
 * `data` folder where the data for our project is located. We shall be adding our game data inside there as we go.
 
-- `CastleSettings.xml` - settings of our game project.
+- `CastleSettings.xml` - settings of our game project, can be edited with any text editor like notepad.
 
 - `state_main.castle-user-interface` - design of the Main State. We can edit it with Castle Editor.
 
@@ -104,4 +104,5 @@ image:a-005-000-initial-game-folder.png[]
 
 * `CastleEngineManifest.xml` - a Castle Game Engine manifest file, that describes some important settings for the project that control how the project is compiled, packaged and distributed.
 
-* `README.md`
+* `README.md` - a short readme file for our project - or rather a place to get us started writing our own.
+
