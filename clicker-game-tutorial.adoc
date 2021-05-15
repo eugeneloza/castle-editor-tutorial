@@ -78,6 +78,8 @@ image::a-004-000-empty-project-run.png[]
 
 No, Empty project is not actually empty, but it contains:
 
+image:a-005-000-initial-game-folder.png[]
+
 * `code` folder where the code of the project is stred. We shall also store our own units in this folder.
 
 * `data` folder where the data for our project is located. We shall be adding our game data inside there as we go.
