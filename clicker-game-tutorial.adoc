@@ -100,6 +100,10 @@ image:a-004-000-initial-game-folder.png[]
 
 * `README.md` - a short readme file for our project - or rather a place to get us started writing our own.
 
+Note that we can see the same files from the lower part of Castle Editor:
+
+image:a-004-010-initial-game-folder-castle-editor.png[]
+
 ### Running the project
 
 Let's open freshly created `ButtonClickerGame_standalone.lpi` in Lazarus. We can immediately compile and run it (by selecting Run -> Run menu or by pressing "F9" on the keyboard):
