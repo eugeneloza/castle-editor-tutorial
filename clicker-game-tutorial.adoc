@@ -70,13 +70,7 @@ All that's left to do is to press "Create Project" button. This will create a si
 
 ### What's inside?
 
-Let's open freshly created `ButtonClickerGame_standalone.lpi` in Lazarus. We can immediately compile and run it (by selecting Run -> Run menu or by pressing "F9" on the keyboard).
-
-As it is a template, it's a fully functional minimalistic project, that will show us an empty dark gray window with a lone FPS counter:
-
-image::a-004-000-empty-project-run.png[]
-
-No, Empty project is not actually empty, but it contains:
+Castle Editor now created our project, that initially contains:
 
 image:a-005-000-initial-game-folder.png[]
 
@@ -105,4 +99,12 @@ image:a-005-000-initial-game-folder.png[]
 * `CastleEngineManifest.xml` - a Castle Game Engine manifest file, that describes some important settings for the project that control how the project is compiled, packaged and distributed.
 
 * `README.md` - a short readme file for our project - or rather a place to get us started writing our own.
+
+### Running the project
+
+Let's open freshly created `ButtonClickerGame_standalone.lpi` in Lazarus. We can immediately compile and run it (by selecting Run -> Run menu or by pressing "F9" on the keyboard).
+
+As it is a template, it's a fully functional minimalistic project, that will show us an empty dark gray window with a lone FPS counter:
+
+image::a-004-000-empty-project-run.png[]
 
