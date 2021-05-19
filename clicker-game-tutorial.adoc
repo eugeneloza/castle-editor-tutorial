@@ -132,3 +132,14 @@ image::a-007-000-toolbar-run.png[]
 
 We can use the green triangle button to quickly compile and run the game. There is also a green triangle with a red cross that will do the same, except for disabled debugging - we will get less information in case the game crashes, but the game will run notably faster.
 
+Note, that Castle Editor enables us to do absolutely the same through "Run" menu:
+
+a-008-000-run-castle-editor.png
+
+Here we can the same way:
+
+- **Compile** - Will compile the game, without running it.
+
+- **Compile And Run** - Will compile the game, and run it.
+
+- **Run (Without Compiling)** - Will run the executable, if it is available.
