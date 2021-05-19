@@ -118,11 +118,13 @@ As we're going to use "Run" feature very often to check if our game works as exp
 
 Note that there are also several useful options here:
 
-- **Compile** - Will compile and run the game.
+- **Compile** - Will compile only changed files, without running the game.
 
-- **Build** - Will only compile the game, without running it.
+- **Build** - Will compile all files in the project, without running the game.
 
-- **Clean up and Build** - Will recompile everything clean, without running the game. In case of working with huge projects sometimes it's necessary to make a proper clean up.
+- **Clean up and Build** - Will recompile everything clean, Castle Game Engine included, again, without running the game.
+
+Note, that usually we don't need to use any of those options, as Lazarus/FPC is smart enough to properly understand what has been changed and what should be recompiled to create a proper executable binary. However, in case of working with large/huge projects sometimes it's necessary to make a proper clean up.
 
 There's also a set of convenient buttons on the Lazarus Toolbar:
 
