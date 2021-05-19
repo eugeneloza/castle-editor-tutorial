@@ -106,11 +106,13 @@ image:a-004-010-initial-game-folder-castle-editor.png[]
 
 ### Running the project
 
-Let's open freshly created `ButtonClickerGame_standalone.lpi` in Lazarus. We can immediately compile and run it (by selecting Run -> Run menu or by pressing "F9" on the keyboard):
+Let's open freshly created `ButtonClickerGame_standalone.lpi` in Lazarus. We can immediately compile and run it:
 
 image::a-005-000-run-run.png[]
 
 It's a template but it's a fully functional minimalistic project, that we can compile and run. The template will show us an empty dark gray window with a lone FPS counter:
 
 image::a-006-000-empty-project-run.png[]
+
+As we're going to use "Run" feature very often to check if our game works as expected after recent changes, it's good to know that we can do the same using F9 hotkey.
 
