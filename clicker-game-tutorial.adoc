@@ -128,3 +128,7 @@ Note, that usually we don't need to use any of those options, as Lazarus/FPC is 
 
 There's also a set of convenient buttons on the Lazarus Toolbar:
 
+image::a-007-000-toolbar-run.png[]
+
+We can use the green triangle button to quickly compile and run the game. There is also a green triangle with a red cross that will do the same, except for disabled debugging - we will get less information in case the game crashes, but the game will run notably faster.
+
