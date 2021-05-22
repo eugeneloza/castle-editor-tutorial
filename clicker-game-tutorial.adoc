@@ -152,3 +152,10 @@ Again as a personal preference - there are many other ways to, we shall use Proj
 
 image::a-009-000-project-inspector-menu.png[]
 
+Right now our Project inspector contains files automatically added by Castle Editor:
+
+image::a-010-000-project-inspector.png[]
+
+Double-clicking the file in the Project Inspector opens the file for us in the Source Editor.
+
+
