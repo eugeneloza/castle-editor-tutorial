@@ -143,3 +143,12 @@ Here we can the same way:
 - **Compile And Run** - Will compile the game, and run it.
 
 - **Run (Without Compiling)** - Will run the executable, if it is available.
+
+### What do we have here?
+
+Let's have a closer look at what code is there inside the project.
+
+Again as a personal preference - there are many other ways to, we shall use Project Inspector to find our way around the project. If it is not visible by default we can easily activate it by going to Project -> Project Inspector:
+
+image::a-009-000-project-inspector-menu.png[]
+
